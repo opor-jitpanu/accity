@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+</head>
+<body>
+
+	<div class="container">
+		<input type="email" id="txtEmail" placeholder="Email">
+		<input type="password" id="txtPassword" placeholder="Password">
+		<button id="btnLogin" onclick="loginOnClick()" class="btn btn-action">Log in</button>
+		<button id="btnSignup" class="btn btn-secondary">Sign Up</button>
+		<button id="btnLogout" class="btn btn-action hide">Logout</button>
+	</div>
+
+	<script type="text/javascript" src="scripts/app_index.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</body>
+</html>

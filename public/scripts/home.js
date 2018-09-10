@@ -1,6 +1,7 @@
 window.onload = function(){
 	// showData();
-	showData2();
+	// showData2();
+  showData3();
 }
 
 
@@ -30,4 +31,25 @@ function showData2(){
         console.log(childSnapshot.val().firstname);
       });
    });
+}
+
+function showData3(){
+  firebase.auth().onAuthStateChanged(function(user) {
+  // console.log('oo');
+
+  console.log(user.email);
+  document.getElementById("p1").innerHTML = user.email;
+});
+
+}
+
+
+
+
+
+
+function logoutOnClick(){
+  firebase.auth().signOut();
+  window.location = 'index.html';
+
 }

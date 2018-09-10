@@ -16,7 +16,19 @@ function loginOnClick(){
 }
 
 window.onload = function(){
+
+
+	firebase.auth().onAuthStateChanged(function(user) {
+  // console.log('oo');
+
+  console.log(user);
+  // document.getElementById("p1").innerHTML = user.uid;
+});
+
+
+	
 	showData();
+
 	
 }
 
