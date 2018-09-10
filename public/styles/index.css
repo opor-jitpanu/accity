@@ -1,0 +1,40 @@
+body{
+	background: #520C0C;
+}
+
+
+#head_txt{
+	color: white;
+	font-size: 40px;
+
+	left: 0%;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 30%;
+    width: 100%;
+
+}
+
+#btnLogin{
+	left: 30%;
+    line-height: 30px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 60%;
+    width: 40%;
+
+}
+
+#btnRegister{
+	left: 30%;
+    line-height: 30px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 70%;
+    width: 40%;
+
+}

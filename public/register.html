@@ -35,6 +35,7 @@
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet'>
 
     <!-- <link rel="stylesheet" type="text/css" href="styles/materialize.css"> -->
     <link rel="stylesheet" type="text/css" href="styles/style.css">
@@ -43,50 +44,104 @@
 
     <link rel="manifest" href="/manifest.json">
 
+    <style type="text/css">
+      body{
+        background: #520C0C;
+      }
+      #head_txt{
+        color: white;
+        font-family: Arimo;
+
+      }
+      #color_white{
+        color: white;
+      }
+
+      #form_size{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: Arimo;
+      }
+
+      #btnBack{
+        margin-left: 2%;
+
+      }
+
+
+      
+
+    </style>
+
 
 
 
 </head>
 <body>
+  <br>
+  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
 
 
-
-  <center><h1>Register</h1></center>
+<center><h1 id="head_txt">Register</h1></center>
   <br><br>
 
-  
-
+<div id="form_size">
 
     <div class="form-group">
-      <label for="InputFirstname">First name : </label>
+      <label for="InputFirstname" id="color_white" >First name : </label>
       <input type="text" class="form-control" id="InputFirstname" a placeholder="Enter First name">
     </div>
 
     <div class="form-group">
-      <label for="InputLastname">Last name : </label>
+      <label for="InputLastname" id="color_white">Last name : </label>
       <input type="text" class="form-control" id="InputLastname" a placeholder="Enter Last name">
     </div>
 
 
   <div class="form-group">
-    <label for="InputEmail">E-mail : </label>
+    <label for="InputEmail" id="color_white">E-mail : </label>
     <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
-  <div class="form-group">
-      <label for="InputUsername">Username : </label>
-      <input type="text" class="form-control" id="InputUsername" a placeholder="Enter Username">
-    </div>
 
     <div class="form-group">
-      <label for="InputPassword">Password : </label>
+      <label for="InputPassword" id="color_white" >Password : </label>
       <input type="password" class="form-control" id="InputPassword" a placeholder="Enter Password">
     </div>
 
+    <div class="form-group">
+      <label for="ReInputPassword" id="color_white" >Re-Password : </label>
+      <input type="password" class="form-control" id="ReInputPassword" a placeholder="Re Enter Password">
+    </div>
+
+    <label for="InputSex" id="color_white" >Sex : </label>
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+      <label class="form-check-label" for="exampleRadios1" id="color_white">
+        Male
+      </label>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+      <label class="form-check-label" for="exampleRadios2" id="color_white">
+        Female
+      </label>
+    </div>
+
+
+</div>
+
+
+
+<br>
 
 
 
   <center><button onclick="saveRegisterOnClick()" class="btn btn-primary">Register</button></center>
+  
+  
 
 
 

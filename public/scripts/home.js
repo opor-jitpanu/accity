@@ -41,6 +41,15 @@ function showData3(){
   document.getElementById("p1").innerHTML = user.email;
 });
 
+  var ref = firebase.database().ref("User");
+  ref.once("value")
+    .then(function(snapshot){
+      var firstname = snapshot.child("-LLtkcGZxjgTqcAI9Yom").child("firstname").val();
+      console.log(firstname);
+  });
+
+
+
 }
 
 

@@ -43,18 +43,39 @@
 
     <link rel="manifest" href="/manifest.json">
 
+    <style type="text/css">
+      body{
+        background: #520C0C;
+      }
+      #head_txt{
+        color: white;
+        font-family: Arimo;
+
+      }
+      #color_white{
+        color: white;
+      }
+      #btnBack{
+        margin-left: 2%;
+
+      }
+      #p1{
+        color: white;
+      }
+    </style>
+
 
 
 
 </head>
 <body>
+  <br>
+  <button onclick="logoutOnClick()" id="btnBack" type="button" class="btn btn-primary">Logout</button>
 
-
-
-  <center><h1>Wellcome!</h1></center>
+  <center><h1 id="head_txt">Wellcome!</h1></center>
   <br><br>
-  <p>Email : </p><p id="p1"></p>
-  <center><button onclick="logoutOnClick()" type="button" class="btn btn-primary">Logout</button></center>
+  <p id="color_white">Email : </p><p id="p1"></p>
+  
   
 
 
