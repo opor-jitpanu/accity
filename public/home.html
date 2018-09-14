@@ -7,22 +7,25 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-	<title>DB</title>
+	<title>Home</title>
 	<script type="text/javascript" src="scripts/home.js"></script>
+
+
 
 
 
 
 	<!-- BootStrap -->
 	<!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
 <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
 
 <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -42,6 +45,9 @@
     <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
 
     <link rel="manifest" href="/manifest.json">
+
+
+
 
     <style type="text/css">
       body{
@@ -73,6 +79,57 @@
       }
       #p5{
         color: white;
+        font-size: 50px;
+      }
+      #btnBar1{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar2{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 25%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar3{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar4{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 75%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #text_in_button{
+        text-align: center;
+        vertical-align: middle;
+        line-height: 70px;
+        color: black;
       }
     </style>
 
@@ -86,13 +143,72 @@
 
   <center><h1 id="head_txt">Wellcome!</h1></center>
   <br><br>
+
+
+ <div class="row">
+  <div class="col-1"></div>
+  <div class="col-6">
+    <p id="color_white">MY POINTS</p>
+    <p id="p5"></p>
+  </div>
+  <div class="col-5">
+    <p id="color_white">Barcode</p>
+    
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-3">
+    <p id="color_white" onclick="showInformation()">INFORMATION</p>
+  </div>
+  <div class="col-1"></div>
+  <div class="col-3">
+    <p id="color_white">TICKET</p>
+    
+  </div>
+  <div class="col-3">
+    <p id="color_white">HISTORY</p>
+    
+  </div>
+</div>
+
+
+
+<div id="information">
+  <p id="color_white">Firstname : </p><p id="p3"></p>
+  <p id="color_white">Lastname : </p><p id="p4"></p>
+  <p id="color_white">Birth : </p><p id="p_birth"></p>
+  <p id="color_white">Tel : </p><p id="p_tel"></p>
+  
+</div>
+
+
+<div id="ticket">
+  <p id="color_white">Issued Date : </p><p id="p3"></p>
+  <p id="color_white">Valid Date : </p><p id="p4"></p>
+  
+</div>
+
+
+
+
+
   <p id="color_white">Email : </p><p id="p1"></p>
   <p id="color_white">ID : </p><p id="p2"></p>
   <p id="color_white">Firstname : </p><p id="p3"></p>
   <p id="color_white">Lastname : </p><p id="p4"></p>
-  <p id="color_white">Point : </p><p id="p5"></p>
+  <!-- <p id="color_white">Point : </p><p id="p5"></p> -->
   
-  
+  <!-- <button onclick="logoutOnClick()" id="btnBar1" type="button" class="btn">Logout1</button> -->
+  <a href="promotion.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
+  <a href="#"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a>
+  <a href="#"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
+  <a href="#"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
+
+
 
 
 

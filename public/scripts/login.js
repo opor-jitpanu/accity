@@ -2,61 +2,78 @@ function signInOnClick(){
 	var email = document.getElementById('loginEmail').value;
 	var password = document.getElementById('loginPassword').value;
 	
-	firebase.auth().signInWithEmailAndPassword(email, password)
+// 	firebase.auth().signInWithEmailAndPassword(email, password)
 
-    .catch(function(error) {
-// Handle Errors here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  if (errorCode === 'auth/wrong-password') {
-    alert('Wrong password.');
+//     .catch(function(error) {
+
+//   var errorCode = error.code;
+//   var errorMessage = error.message;
+//   if (errorCode === 'auth/wrong-password') {
+//     alert('Wrong password.');
     
-  } else {
-    // alert(errorMessage);
+//   } else {
     
-  }
-  console.log(error);
+    
+//   }
+//   console.log(error);
+
+// });
 
 
 
 
 
-});
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function(authData) {
+          auth = authData;
+          // $('#messageModalLabel').html(spanText('Success!', ['center', 'success']))
+          // $('#messageModal').modal('hide');
+          console.log("LOGIN SUCCES");
+          alert("LOGIN SUCESS");
+          myFunction();
+        })
+        .catch(function(error) {
+          console.log("Login Failed!");
+          console.log(error.code);
+          alert("LOGIN FAILED : " + error.code);
+          // $('#messageModalLabel').html(spanText('ERROR: '+error.code, ['danger']))
+        });
+ 
 
 
 
 
 
-firebase.auth().onAuthStateChanged(function(user) {
-	// console.log('oo');
-
-  // console.log(user);
-  // var timer1 =setTimeout(run, 3000);
- 	// window.location= "home.html";
 
 
-
- 	myFunction();
-
-});
 
 
 var myVar;
 
 function myFunction() {
-    myVar = setTimeout(alertFunc, 2500);
+  firebase.auth().onAuthStateChanged(function(user) {
+    myFunction2();
+  });
+
+
+
+    
 }
+function myFunction2() {
+  myVar = setTimeout(alertFunc, 2500);
+  }
+
 
 function alertFunc() {
     
     window.location= "home.html";
 }
 
-
-
-
-
 }
+
+
+
+
 
 
 

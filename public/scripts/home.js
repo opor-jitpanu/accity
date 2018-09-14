@@ -78,6 +78,7 @@ function showId(email){
 }
 
 
+
 function showPoint(id){
   var ref = firebase.database().ref("User");
     ref.once("value")
@@ -97,7 +98,26 @@ function showPoint(id){
         var point = snapshot.child(id).child("point").val();
         document.getElementById("p5").innerHTML = point;
     });
+      ref.once("value")
+      .then(function(snapshot){
+        var point = snapshot.child(id).child("tel").val();
+        document.getElementById("p_tel").innerHTML = point;
+    });
 }
+
+
+
+function showInformation(){
+
+    var x = document.getElementById("information");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+}
+
 
 
 function logoutOnClick(){
