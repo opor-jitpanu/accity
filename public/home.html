@@ -65,6 +65,10 @@
         margin-left: 2%;
 
       }
+      .text{
+        color: white;
+        font-size: 20px;
+      }
       #p1{
         color: white;
       }
@@ -141,7 +145,7 @@
   <br>
   <button onclick="logoutOnClick()" id="btnBack" type="button" class="btn btn-primary">Logout</button>
 
-  <center><h1 id="head_txt">Wellcome!</h1></center>
+  <center><h1 id="head_txt">Welcome!</h1></center>
   <br><br>
 
 
@@ -162,44 +166,68 @@
 <div class="row">
   <div class="col-1"></div>
   <div class="col-3">
-    <p id="color_white" onclick="showInformation()">INFORMATION</p>
+    <!-- <p id="color_white" onclick="showInformation()">INFORMATION</p> -->
+    <button onclick="showInformation()" type="button" class="btn btn-info">INFORMATION</button>
   </div>
   <div class="col-1"></div>
   <div class="col-3">
-    <p id="color_white">TICKET</p>
+    <!-- <p id="color_white">TICKET</p> -->
+    <button onclick="showTicket()" type="button" class="btn btn-info">TICKET</button>
     
   </div>
   <div class="col-3">
-    <p id="color_white">HISTORY</p>
+    <!-- <p id="color_white">HISTORY</p> -->
+    <button onclick="showHistory()" type="button" class="btn btn-info">HISTORY</button>
     
   </div>
 </div>
 
-
+<br><br>
 
 <div id="information">
-  <p id="color_white">Firstname : </p><p id="p3"></p>
-  <p id="color_white">Lastname : </p><p id="p4"></p>
-  <p id="color_white">Birth : </p><p id="p_birth"></p>
-  <p id="color_white">Tel : </p><p id="p_tel"></p>
-  
+  <div class="row">
+    <div class="col-3"></div>
+      <div class="col-6">
+        <p id="color_white">Firstname : </p><p id="p_firstname" class="text"></p>
+        <p id="color_white">Lastname : </p><p id="p_lastname" class="text"></p>
+        <p id="color_white">Birth : </p><p id="p_birth" class="text"></p>
+        <p id="color_white">Tel : </p><p id="p_tel" class="text"></p>
+      </div>
+    <div class="col-3"></div>
+  </div>
 </div>
 
 
 <div id="ticket">
-  <p id="color_white">Issued Date : </p><p id="p3"></p>
-  <p id="color_white">Valid Date : </p><p id="p4"></p>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <p id="color_white">Issued Date : </p><p id="p3" class="text"></p>
+      <p id="color_white">Valid Date : </p><p id="p4" class="text"></p>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
   
+</div>
+<div id="history">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+          <p id="color_white">History : </p><p id="p3" class="text"></p>
+        </div>
+        <div class="col-3"></div>
+    </div>
 </div>
 
 
 
 
 
-  <p id="color_white">Email : </p><p id="p1"></p>
+  <!-- <p id="color_white">Email : </p><p id="p1"></p>
   <p id="color_white">ID : </p><p id="p2"></p>
   <p id="color_white">Firstname : </p><p id="p3"></p>
-  <p id="color_white">Lastname : </p><p id="p4"></p>
+  <p id="color_white">Lastname : </p><p id="p4"></p> -->
   <!-- <p id="color_white">Point : </p><p id="p5"></p> -->
   
   <!-- <button onclick="logoutOnClick()" id="btnBar1" type="button" class="btn">Logout1</button> -->
@@ -210,7 +238,7 @@
 
 
 
-
+<br><br><br><br>
 
 
 

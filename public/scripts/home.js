@@ -1,7 +1,45 @@
 window.onload = function(){
 	// showData();
 	// showData2();
-  showData();
+  // showData();
+  var x = document.getElementById("ticket");
+  x.style.display = "none";
+  var z = document.getElementById("history");
+  z.style.display = "none";
+  showInformation();
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    // console.log('oo');
+    // console.log(user.email);
+    // document.getElementById("p1").innerHTML = user.email;
+    showId(user.email);
+  });
+
+  function showId(email){
+  var ref = firebase.database().ref("User");
+  ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+    // console.log(snapshot.val());
+    snapshot.forEach(function(data) {
+        // console.log(data.key);
+        var id = data.key;
+        // document.getElementById("p2").innerHTML = data.key;
+        showPoint(data.key);
+    });
+  });
+  
+  }
+  function showPoint(id){
+  var ref = firebase.database().ref("User");
+  ref.once("value")
+      .then(function(snapshot){
+        var point = snapshot.child(id).child("point").val();
+        document.getElementById("p5").innerHTML = point;
+    });
+    
+    
+  }
+
 }
 
 
@@ -33,18 +71,18 @@ window.onload = function(){
 //    });
 // }
 
-function showData(){
+// function showData(){
 
 
 
-  firebase.auth().onAuthStateChanged(function(user) {
-  // console.log('oo');
+//   firebase.auth().onAuthStateChanged(function(user) {
+//   // console.log('oo');
 
-  // console.log(user.email);
-  document.getElementById("p1").innerHTML = user.email;
-  showId(user.email);
+//   // console.log(user.email);
+//   // document.getElementById("p1").innerHTML = user.email;
+//   showId(user.email);
 
-});
+// });
 
 
   
@@ -61,63 +99,133 @@ function showData(){
 
 
 
-}
+// }
 
-function showId(email){
+// function showId(email){
+//   var ref = firebase.database().ref("User");
+//   ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+//     // console.log(snapshot.val());
+//     snapshot.forEach(function(data) {
+//         // console.log(data.key);
+//         var id = data.key;
+//         // document.getElementById("p2").innerHTML = data.key;
+//         showPoint(data.key);
+//     });
+//   });
+  
+// }
+
+
+
+// function showPoint(id){
+//   var ref = firebase.database().ref("User");
+//     ref.once("value")
+//       .then(function(snapshot){
+//         var firstname = snapshot.child(id).child("firstname").val();
+//         // document.getElementById("p3").innerHTML = firstname;
+//     });
+
+//     ref.once("value")
+//       .then(function(snapshot){
+//         var lastname = snapshot.child(id).child("lastname").val();
+//         // document.getElementById("p4").innerHTML = lastname;
+//     });
+
+//       ref.once("value")
+//       .then(function(snapshot){
+//         var point = snapshot.child(id).child("point").val();
+//         // document.getElementById("p5").innerHTML = point;
+//     });
+//       ref.once("value")
+//       .then(function(snapshot){
+//         var point = snapshot.child(id).child("tel").val();
+//         // document.getElementById("p_tel").innerHTML = point;
+//     });
+// }
+
+
+
+function showInformation(){
+    var x = document.getElementById("information");
+    x.style.display = "block";
+    var y = document.getElementById("ticket");
+    y.style.display = "none";
+    var z = document.getElementById("history");
+  z.style.display = "none";
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    // console.log('oo');
+    // console.log(user.email);
+    // document.getElementById("p1").innerHTML = user.email;
+    showId(user.email);
+  });
+
+  function showId(email){
   var ref = firebase.database().ref("User");
   ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
     // console.log(snapshot.val());
     snapshot.forEach(function(data) {
         // console.log(data.key);
         var id = data.key;
-        document.getElementById("p2").innerHTML = data.key;
+        // document.getElementById("p2").innerHTML = data.key;
         showPoint(data.key);
     });
   });
   
-}
-
-
-
-function showPoint(id){
+  }
+  function showPoint(id){
   var ref = firebase.database().ref("User");
-    ref.once("value")
+  ref.once("value")
       .then(function(snapshot){
         var firstname = snapshot.child(id).child("firstname").val();
-        document.getElementById("p3").innerHTML = firstname;
+        document.getElementById("p_firstname").innerHTML = firstname;
     });
-
     ref.once("value")
       .then(function(snapshot){
         var lastname = snapshot.child(id).child("lastname").val();
-        document.getElementById("p4").innerHTML = lastname;
+        document.getElementById("p_lastname").innerHTML = lastname;
     });
+    ref.once("value")
+      .then(function(snapshot){
+        var tel = snapshot.child(id).child("tel").val();
+        document.getElementById("p_tel").innerHTML = tel;
+    });
+    ref.once("value")
+      .then(function(snapshot){
+        var birth = snapshot.child(id).child("birth").val();
+        document.getElementById("p_birth").innerHTML = birth;
+    });
+    
+  }
 
-      ref.once("value")
-      .then(function(snapshot){
-        var point = snapshot.child(id).child("point").val();
-        document.getElementById("p5").innerHTML = point;
-    });
-      ref.once("value")
-      .then(function(snapshot){
-        var point = snapshot.child(id).child("tel").val();
-        document.getElementById("p_tel").innerHTML = point;
-    });
+
+
+
 }
 
 
-
-function showInformation(){
-
+function showTicket(){
+  var y = document.getElementById("ticket");
+  y.style.display = "block";
+  // y.style.display = "none";
     var x = document.getElementById("information");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-
+  x.style.display = "none";
+  var z = document.getElementById("history");
+  z.style.display = "none";
+  
 }
 
+
+function showHistory(){
+  var z = document.getElementById("history");
+  z.style.display = "block";
+  // y.style.display = "none";
+    var x = document.getElementById("information");
+  x.style.display = "none";
+  var y = document.getElementById("ticket");
+    y.style.display = "none";
+  
+}
 
 
 function logoutOnClick(){
