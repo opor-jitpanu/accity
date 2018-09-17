@@ -1,4 +1,16 @@
 window.onload = function(){
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    // console.log('oo');
+    // console.log(user.email);
+    // document.getElementById("p1").innerHTML = user.email;
+    var url = 'https://barcode.tec-it.com/barcode.ashx?data=' + user.email + '&code=Code128&dpi=96&dataseparator=';
+      $('#barcode2').attr('src', url);
+  });
+
+
+  document.getElementById("code").innerHTML = "Qr Code";
 	// showData();
 	// showData2();
   // showData();
@@ -144,6 +156,15 @@ window.onload = function(){
 // }
 
 
+function changeCode(){
+  if(document.getElementById("code").innerHTML == "Qr Code"){
+    document.getElementById("code").innerHTML = "Bar Code";
+    
+  }
+
+}
+
+
 
 function showInformation(){
     var x = document.getElementById("information");
@@ -157,6 +178,9 @@ function showInformation(){
     // console.log('oo');
     // console.log(user.email);
     // document.getElementById("p1").innerHTML = user.email;
+    var nric = $('#text').val();
+    var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + user.email + '&amp;size=50x50';
+      $('#barcode').attr('src', url);
     showId(user.email);
   });
 
@@ -171,8 +195,8 @@ function showInformation(){
         showPoint(data.key);
     });
   });
-  
   }
+
   function showPoint(id){
   var ref = firebase.database().ref("User");
   ref.once("value")
@@ -207,12 +231,43 @@ function showInformation(){
 function showTicket(){
   var y = document.getElementById("ticket");
   y.style.display = "block";
-  // y.style.display = "none";
-    var x = document.getElementById("information");
+  var x = document.getElementById("information");
   x.style.display = "none";
   var z = document.getElementById("history");
   z.style.display = "none";
-  
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    // console.log(user.email);
+    showId(user.email);
+  });
+  function showId(email){
+    var ref = firebase.database().ref("Ticket");
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+      snapshot.forEach(function(data) {
+          var id = data.key;
+          // console.log(data.key);
+          showPoint(data.key);
+      });
+    });
+    }
+
+    function showPoint(id){
+      var ref = firebase.database().ref("Ticket");
+      ref.once("value")
+          .then(function(snapshot){
+            var issue = snapshot.child(id).child("issue").val();
+            // console.log(issue);
+            document.getElementById("p_issue").innerHTML = issue;
+        });
+        ref.once("value")
+          .then(function(snapshot){
+            var valid = snapshot.child(id).child("valid").val();
+            // console.log(issue);
+            document.getElementById("p_valid").innerHTML = valid;
+        });
+         
+      }
+
 }
 
 

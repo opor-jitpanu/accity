@@ -118,7 +118,7 @@
 
 
     <div id="InputSex">
-    <label for="InputSex" id="color_white" >Sex : </label>
+    <label for="InputSex" id="color_white" >Gender : </label>
     <div class="form-check">
       <input class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="male" checked>
       <label class="form-check-label" for="exampleRadios1" id="color_white">
@@ -133,12 +133,50 @@
       </label>
     </div>
     </div>
+    <br>
+
+
+    <label for="InputBirth" id="color_white" >Birth Day : </label>
+    <div class="row">
+        
+        <div class="col-3">
+            <input type="text" class="form-control" id="InputBirthDay" placeholder="Enter Birth Day">
+        </div>
+        
+        <div class="col-3">
+            <select class="form-control" id="InputBirthMonth">
+                <option value="January ">January </option>
+                <option value="February">February</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="August">August</option>
+                <option value="September">September</option>
+                <option value="October">October</option>
+                <option value="November">November</option>
+                <option value="Decembere">December</option>
+              </select>
+        </div>
+        
+        <div class="col-3">
+            <input type="text" class="form-control" id="InputBirthYear" placeholder="Enter Birth Year">
+        </div>
+        
+    </div>
+  <br>
+
+
+    <div class="form-group">
+        <label for="InputTelephone" id="color_white" >Telephone : </label>
+        <input type="tel" class="form-control" id="InputTelephone" a placeholder="Enter Telephone">
+    </div>
 
 
 
 
-
-
+<label for="InputCountry" id="color_white" >Country : </label>
 <select class="form-control" id="InputCountry">
   <option value="AF">Afghanistan</option>
   <option value="AX">Åland Islands</option>
@@ -401,7 +439,7 @@
   <center><button onclick="saveRegisterOnClick()" class="btn btn-primary">Register</button></center>
   
   
-
+  <br><br>
 
 
  

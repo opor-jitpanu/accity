@@ -11,6 +11,7 @@ function saveRegisterOnClick() {
 	var email = document.getElementById('InputEmail');
 	var password = document.getElementById('InputPassword');
 	var sex = document.getElementById('InputSex').value;
+	var tel = document.getElementById('InputTelephone');
 
 	if (document.getElementById('radio1').checked) {
   		sex_value = document.getElementById('radio1').value;
@@ -19,12 +20,20 @@ function saveRegisterOnClick() {
 	}
 
 	var country = document.getElementById('InputCountry').value;
+
+	var day = document.getElementById('InputBirthDay').value;
+	var month = document.getElementById('InputBirthMonth').value;
+	var year = document.getElementById('InputBirthYear').value;
+
+	var birth = day+' '+month+' '+year;
+	// console.log(birth);
+
 	// console.log(country);
 
 	// var rates = document.getElementById('rates').value;
 
 
-	insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country);
+	insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth);
 
 
 	// console.log(firstname.value, lastname.value, email.value, username.value, password.value );
@@ -33,7 +42,7 @@ function saveRegisterOnClick() {
 	// console.log(rate_value);
 }
 
-function insertData(firstname, lastname, email, password, sex, country){
+function insertData(firstname, lastname, email, password, sex, country, tel, birth){
 	var firebaseRef = firebase.database().ref("User");
 	firebaseRef.push({
 		firstname:firstname,
@@ -42,7 +51,15 @@ function insertData(firstname, lastname, email, password, sex, country){
 		password:password,
 		sex:sex,
 		point:'0',
-		country:country
+		country:country,
+		tel:tel,
+		birth:birth
+	});
+	var firebaseRef2 = firebase.database().ref("Ticket");
+	firebaseRef2.push({
+		email:email,
+		valid:'-',
+		issue:'-'
 	});
 	console.log("Insert Success");
 	signUp();

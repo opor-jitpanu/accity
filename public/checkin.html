@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-	<title>Login</title>
-	<script type="text/javascript" src="scripts/login.js"></script>
+	<title>Check In</title>
+	<script type="text/javascript" src="scripts/checkin.js"></script>
+
+
 
 
 
@@ -22,6 +24,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -42,6 +45,10 @@
     <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
 
     <link rel="manifest" href="/manifest.json">
+
+
+
+
     <style type="text/css">
       body{
         background: #520C0C;
@@ -49,19 +56,84 @@
       #head_txt{
         color: white;
         font-family: Arimo;
-      }
-      #btnBack{
-        margin-left: 2%;
 
       }
       #color_white{
         color: white;
       }
-      #form_size{
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        font-family: Arimo;
+      #btnBack{
+        margin-left: 2%;
+
+      }
+      .text{
+        color: white;
+        font-size: 20px;
+      }
+      #p1{
+        color: white;
+      }
+      #p2{
+        color: white;
+      }
+      #p3{
+        color: white;
+      }
+      #p4{
+        color: white;
+      }
+      #p5{
+        color: white;
+        font-size: 50px;
+      }
+      #btnBar1{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar2{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 25%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar3{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar4{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 75%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #text_in_button{
+        text-align: center;
+        vertical-align: middle;
+        line-height: 70px;
+        color: black;
       }
     </style>
 
@@ -70,41 +142,31 @@
 
 </head>
 <body>
-<br>
-<button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+  <br>
 
-  <center><h1 id="head_txt">Login</h1></center>
+  <center><h1 id="head_txt">Check In</h1></center>
   <br><br>
 
-  
-<div id="form_size">
+  <button onclick="getLocation()" class="btn btn-primary">Get Location</button>
+  <br><br>
+  <p id="location" class="text"></p>
 
-    <div class="form-group">
-      <label for="loginEmail" id="color_white">E-mail : </label>
-      <input type="text" class="form-control" id="loginEmail" a placeholder="Enter E-mail">
-    </div>
-
-    <div class="form-group">
-      <label for="loginPassword" id="color_white">Password : </label>
-      <input type="password" class="form-control" id="loginPassword" a placeholder="Enter Last name">
-    </div>
-
-</div>
  
 
 
 
-
-  <center><button onclick="signInOnClick()" type="button" class="btn btn-primary">Login</button></center>
-
-
-
-
+  <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
+  <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a>
+  <a href="#"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
+  <a href="#"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
 
 
 
+<br><br><br><br>
 
-	
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
 <script>
   // Initialize Firebase
