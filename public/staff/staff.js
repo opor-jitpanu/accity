@@ -20,6 +20,7 @@ function submit(){
         var ref = firebase.database().ref("Ticket");
         ref.child(id)
         .update({ issue: issue, valid: valid });
+        alert("Edit Complete!");
     }
 
 

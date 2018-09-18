@@ -31,9 +31,17 @@ function saveRegisterOnClick() {
 	// console.log(country);
 
 	// var rates = document.getElementById('rates').value;
+	console.log(password.value.length);
 
-
-	insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth);
+	if (password.value.length >= 6) {
+		console.log("yes");
+		insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth);
+		
+	}else{
+		console.log("no");
+		alert("Your password is too short. (Must be at least 6 characters.)");
+	}
+	// ๒๒๒insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth);
 
 
 	// console.log(firstname.value, lastname.value, email.value, username.value, password.value );
@@ -61,7 +69,7 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		valid:'-',
 		issue:'-'
 	});
-	console.log("Insert Success");
+	console.log("Insert to Database Success");
 	signUp();
 }
 
