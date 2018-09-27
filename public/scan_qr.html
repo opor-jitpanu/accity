@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+	<title>ScanQR</title>
+	<script src="./jsQR.js"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Template PWA">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <!-- Windows -->
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#2F3BA2">
+
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+    <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
+
+    <link rel="manifest" href="/manifest.json">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <style type="text/css">
+      body{
+        background: #520C0C;
+      }
+      #head_txt{
+        color: white;
+        font-family: Arimo;
+
+      }
+      #color_white{
+        color: white;
+      }
+      #btnBack{
+        margin-left: 2%;
+
+      }
+      .text{
+        color: white;
+        font-size: 20px;
+      }
+      #p1{
+        color: white;
+      }
+      #p2{
+        color: white;
+      }
+      #p3{
+        color: white;
+      }
+      #p4{
+        color: white;
+      }
+      #p5{
+        color: yellow;
+        font-size: 3rem;
+      }
+      #btnBar1{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar2{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 25%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar3{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #btnBar4{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 75%;
+        width: 25%;
+        padding: 110;
+        height: 10%;
+        background-color: white;
+        text-align: center;
+      }
+      #text_in_button{
+        text-align: center;
+        vertical-align: middle;
+        line-height: 70px;
+        color: black;
+      }
+
+    </style>
+
+
+
+
+</head>
+<body>
+
+  <br>
+  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+
+  
+  <br><br>
+
+  <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
+  <canvas id="canvas" hidden></canvas>
+
+  <div id="output" hidden>
+    <div id="outputMessage">No QR code detected.</div>
+    <div hidden><b>Data:</b> <span id="outputData"></span></div>
+  </div>
+
+
+
+
+
+
+
+
+
+    <script>
+    var video = document.createElement("video");
+    var canvasElement = document.getElementById("canvas");
+    var canvas = canvasElement.getContext("2d");
+    var loadingMessage = document.getElementById("loadingMessage");
+    var outputContainer = document.getElementById("output");
+    var outputMessage = document.getElementById("outputMessage");
+    var outputData = document.getElementById("outputData");
+
+    function drawLine(begin, end, color) {
+      canvas.beginPath();
+      canvas.moveTo(begin.x, begin.y);
+      canvas.lineTo(end.x, end.y);
+      canvas.lineWidth = 4;
+      canvas.strokeStyle = color;
+      canvas.stroke();
+    }
+
+    // Use facingMode: environment to attemt to get the front camera on phones
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.play();
+      requestAnimationFrame(tick);
+    });
+
+    function tick() {
+      loadingMessage.innerText = "⌛ Loading video..."
+      if (video.readyState === video.HAVE_ENOUGH_DATA) {
+        loadingMessage.hidden = true;
+        canvasElement.hidden = false;
+        outputContainer.hidden = false;
+
+        canvasElement.height = video.videoHeight;
+        canvasElement.width = video.videoWidth;
+        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+        var imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+        var code = jsQR(imageData.data, imageData.width, imageData.height, {
+          inversionAttempts: "dontInvert",
+        });
+        if (code) {
+          // drawLine(code.location.topLeftCorner, code.location.topRightCorner, "#FF3B58");
+          // drawLine(code.location.topRightCorner, code.location.bottomRightCorner, "#FF3B58");
+          // drawLine(code.location.bottomRightCorner, code.location.bottomLeftCorner, "#FF3B58");
+          // drawLine(code.location.bottomLeftCorner, code.location.topLeftCorner, "#FF3B58");
+          outputMessage.hidden = true;
+          outputData.parentElement.hidden = false;
+          outputData.innerText = code.data;
+          alert(code.data);
+        } else {
+          outputMessage.hidden = false;
+          outputData.parentElement.hidden = true;
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+  </script>
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</body>
+</html>
