@@ -135,6 +135,10 @@
         line-height: 70px;
         color: black;
       }
+      #header_txt{
+        font-size: 2rem;
+        color: white;
+      }
     </style>
 
 
@@ -147,11 +151,92 @@
   <center><h1 id="head_txt">Check In</h1></center>
   <br><br>
 
-  <button onclick="getLocation()" class="btn btn-primary">Get Location</button>
+  <!-- <button onclick="getLocation()" class="btn btn-primary">Get Location</button>
   <br><br>
   <p id="location" class="text"></p>
+  <br> -->
+
+  
+      <button onclick="refreshOnClick()" class="btn btn-primary">Refresh</button>
+    
+      <center><p id="header_txt">Nearby Places</p></center>
+
+
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 11rem;">
+        <img class="card-img-top" id="image1"  alt="Card image cap">
+        <div class="card-body">
+          <p id="name_place1"></p>
+          <p id="place1"></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card" style="width: 11rem;">
+        <img class="card-img-top" id="image2"  alt="Card image cap">
+        <div class="card-body">
+          <p id="name_place2"></p>
+          <p id="place2"></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 11rem;">
+        <img class="card-img-top" id="image3"  alt="Card image cap">
+        <div class="card-body">
+          <p id="name_place3"></p>
+          <p id="place3"></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card" style="width: 11rem;">
+        <img class="card-img-top" id="image4"  alt="Card image cap">
+        <div class="card-body">
+          <p id="name_place4"></p>
+          <p id="place4"></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <div class="card" style="width: 11rem;">
+        <img class="card-img-top" id="image5"  alt="Card image cap">
+        <div class="card-body">
+          <p id="name_place5"></p>
+          <p id="place5"></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="card" style="width: 11rem;">
+        <img class="card-img-top" id="image6"  alt="Card image cap">
+        <div class="card-body">
+          <p id="name_place6"></p>
+          <p id="place6"></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
 
  
+  
+
 
 
 
