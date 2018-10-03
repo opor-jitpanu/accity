@@ -60,7 +60,7 @@ function myFunction() {
     
 }
 function myFunction2() {
-  myVar = setTimeout(alertFunc, 2500);
+  myVar = setTimeout(alertFunc, 700);
   }
 
 
