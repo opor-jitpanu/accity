@@ -31,26 +31,37 @@ function saveRegisterOnClick() {
 	// console.log(country);
 
 	// var rates = document.getElementById('rates').value;
-	console.log(password.value.length);
+	// console.log(password.value.length);
+
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+	    dd = '0'+dd
+	} 
+
+	if(mm<10) {
+	    mm = '0'+mm
+	} 
+
+	today = dd + '/' + mm + '/' + yyyy;
+
 
 	if (password.value.length >= 6) {
 		console.log("yes");
-		insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth);
+		insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
+		
 		
 	}else{
 		console.log("no");
 		alert("Your password is too short. (Must be at least 6 characters.)");
 	}
-	// ๒๒๒insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth);
-
-
-	// console.log(firstname.value, lastname.value, email.value, username.value, password.value );
-
-	// console.log(firstname.value,lastname.value, email.value, password.value, sex_value);
-	// console.log(rate_value);
+	
 }
 
-function insertData(firstname, lastname, email, password, sex, country, tel, birth){
+function insertData(firstname, lastname, email, password, sex, country, tel, birth, today){
 	var firebaseRef = firebase.database().ref("User");
 	firebaseRef.push({
 		firstname:firstname,
@@ -69,6 +80,15 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		valid:'-',
 		issue:'-'
 	});
+
+	var firebaseRef3 = firebase.database().ref("Time");
+	firebaseRef3.push({
+		date:today,
+		email:email,
+		time_in:'-',
+		time_out:'-'
+	});
+
 	console.log("Insert to Database Success");
 	signUp();
 }

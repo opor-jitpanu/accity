@@ -8,29 +8,46 @@ function getLocation(){
             // x.innerHTML = "Latitude: " + position.coords.latitude + 
             // "<br>Longitude: " + position.coords.longitude;
             // console.log(position.coords.latitude);
+            var x = document.getElementById("debug_txt");
+            x.innerHTML ="Debug : " + position.coords.latitude + " , " + position.coords.longitude;
 
             loadwindow(position.coords.latitude, position.coords.longitude);
         }
+
+
      
 }
 
 
 
 function refreshOnClick(){
+  alert("Refresh Complete!");
   getLocation();
 }
 
 
 window.onload = function(){
+
+    reload();
     getLocation();
   }
 
 
-function loadwindow(a, b){
 
+  function reload(){
+    setTimeout(function(){
+      // alert("opor");
+      getLocation();
+      reload();
+}, 1000);
+
+  }
+
+
+function loadwindow(a, b){
   
-  // var myLocation = [a, b];
-  var myLocation = [13.967334, 100.681166];
+  var myLocation = [a, b];
+  // var myLocation = [13.967334, 100.681166];
 
   var place_10 = [13.543415, 100.625869];
   var place_27 = [13.545837, 100.628526];
