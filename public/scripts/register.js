@@ -72,7 +72,8 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		point:'0',
 		country:country,
 		tel:tel,
-		birth:birth
+		birth:birth,
+		login:'no'
 	});
 	var firebaseRef2 = firebase.database().ref("Ticket");
 	firebaseRef2.push({

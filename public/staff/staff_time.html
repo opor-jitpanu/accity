@@ -6,27 +6,27 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ประวัติการเข้าชม</title>
-	
+  <title>ประวัติการเข้าชม</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-    <!-- <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script> -->
-    <script type="text/javascript" src="staff_index.js"></script>
-    <style>
-table, td {
+  <!-- <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script> -->
+  <script type="text/javascript" src="staff_index.js"></script>
+  <style>
+  table, td {
     border: 1px solid black;
 
-}
-table{
-  border-collapse: collapse;
+  }
+  table{
+    border-collapse: collapse;
     width: 100%;
-}
+  }
 </style>
 
 
@@ -35,6 +35,26 @@ table{
   <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
   <br>
   <center><h1>ประวัติการเข้าชม</h1></center>
+  
+  <br>
+  <div class="row">
+    <div class="col-5"></div>
+    <div class="col-2">
+      <div>
+        <center>
+          <label for="start">Date</label>
+          <input type="date" id="inputDate" name="trip"
+          value=""
+          min="2017-01-01" max="2019-12-31"/>
+          <br>
+          <button onclick="dateOnClick()" type="button" class="btn btn-primary">Go</button>
+        </center>
+      </div>
+    </div>
+    <div class="col-5"></div>
+  </div>
+  <br>
+  <p id="date_txt"></p>
   <br>
 
   <div class="row">
@@ -42,22 +62,22 @@ table{
     <div class="col-10">
       <table id="myTable">
       </table>
-    
+
     </div>
     <div class="col-1"></div>
   </div>
 
 
   
-    
-    
-    
-        
-    
+
+
+
+
+
   
-	
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-<script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
