@@ -20,9 +20,11 @@
   
 <br><br><br>
   <center>
-      <button type="button" class="btn btn-outline-warning btn-lg" onclick="timeOnClick()" >ประวัติการเข้าชม</button>
-      <button type="button" class="btn btn-outline-warning btn-lg" onclick="golfOnClick()">ประการเช่ารถกอล์ฟ</button>
-      <button type="button" class="btn btn-outline-warning btn-lg">ประวัติการเช่ารถจักรยาน</button>
+      <button type="button" class="btn btn-info btn-lg" onclick="timeOnClick()" >ประวัติการเข้าชม</button>
+      <button type="button" class="btn btn-info btn-lg" onclick="golfOnClick()">ประการเช่ารถกอล์ฟ</button>
+      <button type="button" class="btn btn-info btn-lg">ประวัติการเช่ารถจักรยาน</button>
+      <button type="button" class="btn btn-info btn-lg" onclick="changeLogoutOnClick()">Change Logout</button>
+      <button type="button" class="btn btn-info btn-lg" onclick="editPlaceOnClick()">Change Data Place</button>
   </center>
     
   
@@ -33,6 +35,12 @@
     }
     function golfOnClick(){
         window.location.href = "staff_golf_car.html";
+    }
+    function changeLogoutOnClick(){
+        window.location.href = "staff_change_logout.html";
+    }
+    function editPlaceOnClick(){
+        window.location.href = "staff_change_place.html";
     }
 
 </script>

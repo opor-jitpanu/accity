@@ -57,7 +57,10 @@ function showGolf(day){
 			var cell_check_out = row.insertCell(3);
 			cell_check_out.innerHTML = check_out;
 
-			var cell_email = row.insertCell(4);
+			var cell_price = row.insertCell(4);
+			cell_price.innerHTML = (Math.abs(check_in - check_out) -1) * 200;
+
+			var cell_email = row.insertCell(5);
 			cell_email.innerHTML = email_val;
 
 
@@ -93,7 +96,10 @@ function last(){
 	var cell = row.insertCell(3);
 	cell.innerHTML = "<center><b>Check out</b></center>";
 	var cell = row.insertCell(4);
+	cell.innerHTML = "<center><b>Price</b></center>";
+	var cell = row.insertCell(5);
 	cell.innerHTML = "<center><b>Email</b></center>";
+
 
 }
 

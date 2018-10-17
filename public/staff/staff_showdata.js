@@ -19,12 +19,12 @@ function getId(email){
         // console.log(data.key);
         var id = data.key;
         // document.getElementById("p2").innerHTML = data.key;
-        showInfo(data.key);
+        showInfo(data.key,email);
       });
   });
 }
 
-function showInfo(id){
+function showInfo(id,email){
 	var ref = firebase.database().ref("User");
  ref.once("value")
  .then(function(snapshot){
@@ -72,13 +72,13 @@ function showInfo(id){
   document.getElementById("point").innerHTML = "Point : " + point;
 });
 
- showCheckin();
+ showCheckin(email);
 
 }
 
 
-function showCheckin(){
-  var userDataRef = firebase.database().ref("Checkin").orderByChild("email").equalTo("opor@gmail.com");
+function showCheckin(email){
+  var userDataRef = firebase.database().ref("Checkin").orderByChild("email").equalTo(email);
   // var userDataRef = firebase.database().ref("Time").orderByKey();
   // var ref = firebase.database().ref("User");
 

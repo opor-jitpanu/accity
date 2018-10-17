@@ -84,7 +84,7 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 
 	var firebaseRef3 = firebase.database().ref("Time");
 	firebaseRef3.push({
-		date:today,
+		date:'-',
 		email:email,
 		time_in:'-',
 		time_out:'-'

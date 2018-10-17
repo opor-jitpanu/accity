@@ -28,7 +28,7 @@ function refreshOnClick(){
 
 window.onload = function(){
 
-    reload();
+    // reload();
     getLocation();
   }
 
@@ -89,31 +89,44 @@ function loadwindow(a, b){
   x.innerHTML ="Distance : "+sortedCities[0][1]+" m.";
   document.getElementById('image1').src='images/'+sortedCities[0][0]+'.jpg';
   showNamePlace(sortedCities[0][0], 1);
+  var x2 = document.getElementById("btnlink1");
+  x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[0][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
+
 
   var x = document.getElementById("place2");
   x.innerHTML ="Distance : "+sortedCities[1][1]+" m.";
   document.getElementById('image2').src='images/'+sortedCities[1][0]+'.jpg';
   showNamePlace(sortedCities[1][0], 2);
+  var x2 = document.getElementById("btnlink2");
+  x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[1][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
 
   var x = document.getElementById("place3");
   x.innerHTML ="Distance : "+sortedCities[2][1]+" m.";
   document.getElementById('image3').src='images/'+sortedCities[2][0]+'.jpg';
   showNamePlace(sortedCities[2][0], 3);
+   var x2 = document.getElementById("btnlink3");
+  x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[2][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
 
   var x = document.getElementById("place4");
   x.innerHTML ="Distance : "+sortedCities[3][1]+" m.";
   document.getElementById('image4').src='images/'+sortedCities[3][0]+'.jpg';
   showNamePlace(sortedCities[3][0], 4);
+   var x2 = document.getElementById("btnlink4");
+  x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[3][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
 
   var x = document.getElementById("place5");
   x.innerHTML ="Distance : "+sortedCities[4][1]+" m.";
   document.getElementById('image5').src='images/'+sortedCities[4][0]+'.jpg';
   showNamePlace(sortedCities[4][0], 5);
+   var x2 = document.getElementById("btnlink5");
+  x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[4][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
 
   var x = document.getElementById("place6");
   x.innerHTML ="Distance : "+sortedCities[5][1]+" m.";
   document.getElementById('image6').src='images/'+sortedCities[5][0]+'.jpg';
   showNamePlace(sortedCities[5][0], 6);
+   var x2 = document.getElementById("btnlink6");
+  x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[5][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
 
   
     

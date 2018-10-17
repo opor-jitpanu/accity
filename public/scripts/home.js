@@ -259,17 +259,19 @@ function checkinOnClick(){
       var d = new Date(); // for now
       var hour = d.getHours(); // => 9
       var minute = d.getMinutes(); // =>  30
+      
+      if (minute < 10) {
+        minute = '0' + minute;
+      }
+
       var time = hour + ":" + minute;
-      // d.getSeconds(); // => 51
-      // console.log(today);
-      // console.log(hour + ":" + minute);
 
       var ref = firebase.database().ref("Time");
       ref.child(id)
       .update({ date: today,
        time_in: time
      });
-
+      // alert("Time IN = " + time);
       
     }
     alert("Time in Complete!");
@@ -280,71 +282,53 @@ function checkinOnClick(){
 
 
   function checkoutOnClick(){
-
-
-
     firebase.auth().onAuthStateChanged(function(user) {
-    // console.log('oo');
-    // console.log(user.email);
-    // document.getElementById("p1").innerHTML = user.email;
-    insertEmail(user.email);
-    // alert(user.email);
+    insertEmail2(user.email);
   });
 
-
-
-
-  // var email = document.getElementById("inputEmail").value;
-
-    // console.log(email);
-
-    function insertEmail(email){
+    function insertEmail2(email){
 
       var ref = firebase.database().ref("Time");
       ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-      // console.log(snapshot.val());
       snapshot.forEach(function(data) {
-        //   console.log(data.key);
-        //   var id = data.key;
-          // document.getElementById("p2").innerHTML = data.key;
-
-          // alert(data.key);
-          edit(data.key);
+          edit2(data.key);
         });
     });
     }
 
-    function edit(id){
-      var today = new Date();
-      var dd = today.getDate();
-      var mm = today.getMonth()+1; //January is 0!
-      var yyyy = today.getFullYear();
+    function edit2(id){
+      var today2 = new Date();
+      var dd2 = today2.getDate();
+      var mm2 = today2.getMonth()+1;
+      var yyyy2 = today2.getFullYear();
 
-      if(dd<10) {
-        dd = '0'+dd
+      if(dd2<10) {
+        dd2 = '0'+dd2
       } 
 
-      if(mm<10) {
-        mm = '0'+mm
+      if(mm2<10) {
+        mm2 = '0'+mm2
       } 
 
-      today = dd + '/' + mm + '/' + yyyy;
+      today2 = dd2 + '/' + mm2 + '/' + yyyy2;
 
-      var d = new Date(); // for now
-      var hour = d.getHours(); // => 9
-      var minute = d.getMinutes(); // =>  30
-      var time = hour + ":" + minute;
-      // d.getSeconds(); // => 51
-      // console.log(today);
-      // console.log(hour + ":" + minute);
+      var d2 = new Date(); // for now
+      var hour2 = d2.getHours(); // => 9
+      var minute2 = d2.getMinutes(); // =>  30
+
+      if (minute2 < 10) {
+        minute2 = '0' + minute2;
+      }
+
+      var time2 = hour2 + ":" + minute2;
 
       var ref = firebase.database().ref("Time");
       ref.child(id)
-      .update({ date: today,
-       time_out: time
+      .update({ date: today2,
+       time_out: time2
      });
 
-      
+      // alert("Time OUT = " + time);
     }
     alert("Time out Complete!");
 

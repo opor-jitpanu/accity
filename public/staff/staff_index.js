@@ -19,7 +19,6 @@ window.onload = function(){
 
 
 
-
 function showData(day){
 
 	var userDataRef = firebase.database().ref("Time").orderByChild("date").equalTo(day);
