@@ -28,7 +28,7 @@ function refreshOnClick(){
 
 window.onload = function(){
 
-    // reload();
+    reload();
     getLocation();
   }
 
