@@ -153,7 +153,7 @@
     font-size: 20px;
   }
   #image1{
-    width: 70%;
+
   }
 
 </style>
@@ -163,45 +163,55 @@
 
 </head>
 <body>
-  <p id="debug_txt"></p>
-  <br>
+  <p id="point_txt" class="font_small"></p>
 
   <center><h1 id="head_txt">Check In</h1></center>
   <br><br>
 
   <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
-  <center><p id="name_head" class="white_txt font_med"></p> <br>
 
-    <img id="image1"  alt="Card image cap"> <br>
 
-    <p id="point_txt" class="white_txt font_small"></p> <br>
-    <p id="description_txt" class="white_txt font_small"></p> <br>
-    <p id="point2_txt" class="white_txt font_med"></p> <br>
 
-    <p id="check1_txt" class="white_txt font_med"></p> <br>
-
-    <div id="btnCheckin">
-      <button onclick="getScoreOnClick()" id="btnScore" class="btn btn-primary">Check In</button>
+  <center>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" id="image1" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title" id="name_head">Card title</h5>
+        <p class="card-text" id="description_txt"></p>
+        <p class="card-text" id="point2_txt"></p>
+        <br>
+        <p class="card-text" id="check1_txt"></p>
+        <div id="btnCheckin">
+          <button onclick="getScoreOnClick()" id="btnScore" class="btn btn-primary">Check In</button>
+        </div>
+      </div>
     </div>
 
+  </center>
 
 
 
 
-    <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
-    <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a>
-    <a href="#"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
-    <a href="#"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
+  
 
 
 
-    <br><br><br><br>
+
+
+  <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
+  <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a>
+  <a href="#"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
+  <a href="#"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
 
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
-    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-    <script>
+  <br><br><br><br>
+
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",

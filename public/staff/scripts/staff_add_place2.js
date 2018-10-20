@@ -3,17 +3,21 @@ function AddPlaceOnClick() {
 	var name = document.getElementById('namePlace').value;
 	var description = document.getElementById('descriptionPlace').value;
 	var point = document.getElementById('pointPlace').value;
-	insertData(id, name, description, point);
+	var latitude = document.getElementById('latitudetPlace').value;
+	var longtitude = document.getElementById('longtitudePlace').value;
+	insertData(id, name, description, point, latitude, longtitude);
 }
 
 
-function insertData(id, name, description, point){
+function insertData(id, name, description, point, latitude, longtitude){
 	var firebaseRef = firebase.database().ref("Place");
 	firebaseRef.push({
 		place_id:id,
 		name:name,
 		point:point,
-		description:description
+		description:description,
+		latitude:latitude,
+		longtitude:longtitude
 	});
 	myFunction2();
 }

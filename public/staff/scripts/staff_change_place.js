@@ -37,8 +37,13 @@ function showData(){
 			var cell_description = row.insertCell(3);
 			cell_description.innerHTML = description;
 
+			// showImage(place_id);
+
 			var cell_btn = row.insertCell(4);
 			cell_btn.innerHTML = '<center><a href="staff_edit_place.html?place='+place_id+'" ><button class="btn btn-primary">Edit</button></a><center>';
+
+			var cell_btn2 = row.insertCell(5);
+			cell_btn2.innerHTML = '<center><a href="staff_delete_place.html?place='+place_id+'" ><button class="btn btn-danger">Delete</button></a><center>';
 
 			
 		});
@@ -71,9 +76,31 @@ function last(){
 	cell.innerHTML = "<center><b>Description</b></center>";
 	var cell = row.insertCell(4);
 	cell.innerHTML = "<center><b>Edit</b></center>";
+	var cell = row.insertCell(5);
+	cell.innerHTML = "<center><b>Delete</b></center>";
+	var cell = row.insertCell(6);
+	cell.innerHTML = "<center><b>Imges</b></center>";
 }
 
+function showImage(place, line){
+	var storageRef = firebase.storage().ref();
+	var spaceRef = storageRef.child('images/'+place+'.jpg');
+	storageRef.child('images/'+place+'.jpg').getDownloadURL().then(function(url) {
+		var test = url;
+		// document.getElementById('image'+line).src = url;
 
+		var table = document.getElementById("myTable");
+		var row = table.insertRow(6);
+
+		var img = document.createElement('img');
+		img.src = url;
+		row.appendChild(img);
+
+
+	}).catch(function(error) {
+
+	});
+}
 
 
 

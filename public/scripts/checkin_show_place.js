@@ -6,43 +6,28 @@ window.onload = function(){
 	var url = new URL(url_string);
 	var place = url.searchParams.get("place");
 
-	switch(place) {
-		case "p10":
-		text = "ตลาดโบราณ";
-		break;
-		case "p27":
-		text = "พระที่นั่งสรรเพชญปราสาท อยุธยา";
-		break;
-		case "p30":
-		text = "หอพระแก้ว";
-		break;
-		case "p45":
-		text = "ตลาดน้ำ";
-		break;
-		case "p55":
-		text = "วัดจองคำ ลำปาง";
-		break;
-		case "p58":
-		text = "วิหารวัดเชียงของ เชียงราย";
-		break;
-		case "p66":
-		text = "พระธาตุบังพวน หนองคาย";
-		break;
-		case "p72":
-		text = "ปราสาทพระวิหาร ศรีสะเกษ";
-		break;
-		case "p106":
-		text = "พระโพธิสัตว์อวโลกิเตศวร ปางแสดงปาฎิหาริย์";
-		break;
-		case "p110":
-		text = "ศาลาพระอรหัต์";
-		break;
-		case "p46":
-		text = "วิหารวัดพร้าว ตาก";
-		break;
-	}
-	document.getElementById('image1').src='images/'+place+'.jpg';
-	document.getElementById("name_head").innerHTML = text;
+	var ref = firebase.database().ref("Place");
+	ref.orderByChild('place_id').equalTo(place).on("value", function(snapshot) {
+		snapshot.forEach(function(data) {
+
+
+			var storageRef = firebase.storage().ref();
+			var spaceRef = storageRef.child('images/'+place+'.jpg');
+			storageRef.child('images/'+place+'.jpg').getDownloadURL().then(function(url) {
+				var test = url;
+				document.getElementById('image1').src= url;
+				
+
+			}).catch(function(error) {
+
+			});
+
+
+			
+			document.getElementById("name_head").innerHTML = data.child("name").val();
+		});
+	});
+	
 	
 
 	getID(place);
