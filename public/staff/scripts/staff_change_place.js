@@ -37,14 +37,14 @@ function showData(){
 			var cell_description = row.insertCell(3);
 			cell_description.innerHTML = description;
 
-			// showImage(place_id);
-
 			var cell_btn = row.insertCell(4);
 			cell_btn.innerHTML = '<center><a href="staff_edit_place.html?place='+place_id+'" ><button class="btn btn-primary">Edit</button></a><center>';
 
 			var cell_btn2 = row.insertCell(5);
 			cell_btn2.innerHTML = '<center><a href="staff_delete_place.html?place='+place_id+'" ><button class="btn btn-danger">Delete</button></a><center>';
 
+			var cell_btn3 = row.insertCell(6);
+			cell_btn3.innerHTML = '<center><a href="staff_edit_image.html?place='+place_id+'" ><button class="btn btn-info">Image</button></a><center>';
 			
 		});
 		last();
@@ -79,28 +79,11 @@ function last(){
 	var cell = row.insertCell(5);
 	cell.innerHTML = "<center><b>Delete</b></center>";
 	var cell = row.insertCell(6);
-	cell.innerHTML = "<center><b>Imges</b></center>";
+	cell.innerHTML = "<center><b>Image</b></center>";
+
 }
 
-function showImage(place, line){
-	var storageRef = firebase.storage().ref();
-	var spaceRef = storageRef.child('images/'+place+'.jpg');
-	storageRef.child('images/'+place+'.jpg').getDownloadURL().then(function(url) {
-		var test = url;
-		// document.getElementById('image'+line).src = url;
 
-		var table = document.getElementById("myTable");
-		var row = table.insertRow(6);
-
-		var img = document.createElement('img');
-		img.src = url;
-		row.appendChild(img);
-
-
-	}).catch(function(error) {
-
-	});
-}
 
 
 

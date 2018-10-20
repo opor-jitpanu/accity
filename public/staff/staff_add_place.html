@@ -36,56 +36,58 @@
   <br>
   <center><h1>Add Place</h1></center>
   
-  <br>
+  <br><br>
 
-  
-  <br>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
 
-  
+      <div class="form-group">
+        <label for="name" id="color_white">ID Place : </label>
+        <input type="text" class="form-control" id="idPlace" a placeholder="Enter Place ID">
+      </div>
 
-  <div id="form_size">
+      <div class="form-group">
+        <label for="name" id="color_white">Name Place : </label>
+        <input type="text" class="form-control" id="namePlace" a placeholder="Enter Place Name">
+      </div>
 
-    <div class="form-group">
-      <label for="name" id="color_white">ID Place : </label>
-      <input type="text" class="form-control" id="idPlace" a placeholder="Enter Place ID">
+      <div class="form-group">
+        <label for="name" id="color_white">Description Place : </label>
+        <textarea class="form-control" rows="5" id="descriptionPlace" a placeholder="Enter Place Description"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="name" id="color_white">Point Place : </label>
+        <input type="text" class="form-control" id="pointPlace" a placeholder="Enter Place point">
+      </div>
+
+
+      <div class="row">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="name" id="color_white">Latitude Place : </label>
+            <input type="text" class="form-control" id="latitudetPlace" a placeholder="Enter Latitude">
+          </div>
+        </div>
+        <div class="col-6">
+         <div class="form-group">
+          <label for="name" id="color_white">Longtitude Place : </label>
+          <input type="text" class="form-control" id="longtitudePlace" a placeholder="Enter Longtitude">
+        </div>
+      </div>
     </div>
 
-    <div class="form-group">
-      <label for="name" id="color_white">Name Place : </label>
-      <input type="text" class="form-control" id="namePlace" a placeholder="Enter Place Name">
-    </div>
-
-    <div class="form-group">
-      <label for="name" id="color_white">Description Place : </label>
-      <input type="text" class="form-control" id="descriptionPlace" a placeholder="Enter Place Description">
-    </div>
-
-    <div class="form-group">
-      <label for="name" id="color_white">Point Place : </label>
-      <input type="text" class="form-control" id="pointPlace" a placeholder="Enter Place point">
-    </div>
-
-    <div class="form-group">
-      <label for="name" id="color_white">Latitude Place : </label>
-      <input type="text" class="form-control" id="latitudetPlace" a placeholder="Enter Latitude">
-    </div>
-
-    <div class="form-group">
-      <label for="name" id="color_white">Longtitude Place : </label>
-      <input type="text" class="form-control" id="longtitudePlace" a placeholder="Enter Longtitude">
-    </div>
-
+  </div>
+  <div class="col-2"></div>
 </div>
 
+<center><input type="file" name="pic" id="uploadImage" accept="image/*"></center>
 
-<button onclick="AddPlaceOnClick()" type="button" class="btn btn-primary">Add</button>
+<center><button onclick="AddPlaceOnClick()" type="button" class="btn btn-primary btn-lg">Add</button></center>
 
-
-
-  
-
-  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-  <script>
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",

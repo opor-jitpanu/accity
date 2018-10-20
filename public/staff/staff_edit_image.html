@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Edit place</title>
+  <title>Place</title>
 
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -17,7 +17,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
   <!-- <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script> -->
-  <script type="text/javascript" src="scripts/staff_edit_place.js"></script>
+  <script type="text/javascript" src="scripts/staff_edit_image.js"></script>
   <style>
   table, td {
     border: 1px solid black;
@@ -29,54 +29,35 @@
   }
 </style>
 
+
 </head>
 <body>
   <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
   <br>
-  <center><h1>Edit Place</h1></center>
+  <center><h1>Image Place</h1></center>
   
   <br>
 
-  <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+  <center><p id="name_text"></p></center>
+  <br>
 
-      <p id="place_id"></p>
+  <center><img id="image1" width="50%"></center>
+  <br>
+  
+  <br>
 
-      <div class="form-group">
-        <label id="place_name"></label>
-        <input type="text" class="form-control" id="name_text">
-      </div>
+  <center><input type="file" name="pic" id="uploadImage" accept="image/*"></center>
 
-      <div class="form-group">
-        <label id="place_description"></label>
-        <textarea class="form-control" rows="5" id="description_text"></textarea>
-      </div>
+  <br>
+  <center>
+  <button onclick="addPlaceOnClick()" id="btnChange" class="btn btn-primary">Change</button>
+</center>
+  <br>
 
-      <div class="form-group">
-        <label id="place_point"></label>
-        <input type="text" class="form-control" id="point_text">
-      </div>
 
-      <div class="row">
-        <div class="col-6">
-          <div class="form-group">
-            <label id="place_latitude"></label>
-            <input type="text" class="form-control" id="latitude_text">
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="form-group">
-            <label id="place_longtitude"></label>
-            <input type="text" class="form-control" id="longtitude_text">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-2"></div>
-  </div>
 
-  <center><button type="button" class="btn btn-info btn-lg" onclick="submitOnClick()">Submit</button></center>
+
+  
 
   <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
   <script>
@@ -90,6 +71,10 @@
     messagingSenderId: "44267136823"
   };
   firebase.initializeApp(config);
+
+
+
+  
 </script>
 
 </body>

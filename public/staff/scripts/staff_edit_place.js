@@ -1,7 +1,5 @@
 window.onload = function(){
 
-
-
 	var url_string = window.location.href; //window.location.href
 	var url = new URL(url_string);
 	var place = url.searchParams.get("place");
