@@ -6,50 +6,54 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Index</title>
-	
+  <title>Index</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <!-- <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script> -->
-    <!-- <script type="text/javascript" src="staff_index.js"></script> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script> -->
+  <!-- <script type="text/javascript" src="staff_index.js"></script> -->
 
 
 </head>
 <body>
-  
-<br><br><br>
+
+  <br><br><br>
   <center>
-      <button type="button" class="btn btn-info btn-lg" onclick="timeOnClick()" >ประวัติการเข้าชม</button>
-      <button type="button" class="btn btn-info btn-lg" onclick="golfOnClick()">ประการเช่ารถกอล์ฟ</button>
-      <button type="button" class="btn btn-info btn-lg">ประวัติการเช่ารถจักรยาน</button>
-      <button type="button" class="btn btn-info btn-lg" onclick="changeLogoutOnClick()">Change Logout</button>
-      <button type="button" class="btn btn-info btn-lg" onclick="editPlaceOnClick()">Change Data Place</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="timeOnClick()" >ประวัติการเข้าชม</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="golfOnClick()">ประการเช่ารถกอล์ฟ</button>
+    <button type="button" class="btn btn-info btn-lg">ประวัติการเช่ารถจักรยาน</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="changeLogoutOnClick()">Change Logout</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="editPlaceOnClick()">Change Data Place</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="promotionOnClick()">Promotion</button>
   </center>
-    
+
   
 
-    <script type="text/javascript">
+  <script type="text/javascript">
     function timeOnClick(){
-        window.location.href = "staff_time.html";
+      window.location.href = "staff_time.html";
     }
     function golfOnClick(){
-        window.location.href = "staff_golf_car.html";
+      window.location.href = "staff_golf_car.html";
     }
     function changeLogoutOnClick(){
-        window.location.href = "staff_change_logout.html";
+      window.location.href = "staff_change_logout.html";
     }
     function editPlaceOnClick(){
-        window.location.href = "staff_change_place.html";
+      window.location.href = "staff_change_place.html";
+    }
+    function promotionOnClick(){
+      window.location.href = "staff_promotion.html";
     }
 
-</script>
-        
-    
+  </script>
+
+
   
-	
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-<script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
