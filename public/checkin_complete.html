@@ -169,9 +169,10 @@
   <center><h1 id="head_txt">Check In</h1></center>
   <br><br>
 
-  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+
     <center><p class="font_big white_txt"> COMPLETE </p></center>
     <center><p id="point_txt" class="font_med white_txt"></p></center>
+    <center><button onclick="backBtn()" id="btnBack" class="btn btn-primary btn-lg">Back</button></center>
 
 
 
@@ -202,6 +203,11 @@
     messagingSenderId: "44267136823"
   };
   firebase.initializeApp(config);
+
+
+  function backBtn() {
+    window.location.href = "checkin.html";
+  }
 </script>
 
 </body>

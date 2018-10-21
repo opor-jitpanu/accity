@@ -38,7 +38,7 @@ body{
     width: 40%;
 
 }
-#btnScan{
+#btnFacebook{
     left: 30%;
     line-height: 30px;
     margin: auto;
@@ -49,7 +49,7 @@ body{
 
 }
 
-#btnLocation{
+#btn1{
     left: 30%;
     line-height: 30px;
     margin: auto;

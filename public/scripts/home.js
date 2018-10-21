@@ -101,22 +101,22 @@ function showInformation(){
     ref.once("value")
     .then(function(snapshot){
       var firstname = snapshot.child(id).child("firstname").val();
-      document.getElementById("p_firstname").innerHTML = firstname;
+      document.getElementById("p_firstname").innerHTML = "Firstname : "+firstname;
     });
     ref.once("value")
     .then(function(snapshot){
       var lastname = snapshot.child(id).child("lastname").val();
-      document.getElementById("p_lastname").innerHTML = lastname;
+      document.getElementById("p_lastname").innerHTML = "Lastname : "+lastname;
     });
     ref.once("value")
     .then(function(snapshot){
       var tel = snapshot.child(id).child("tel").val();
-      document.getElementById("p_tel").innerHTML = tel;
+      document.getElementById("p_tel").innerHTML = "Telephone : "+tel;
     });
     ref.once("value")
     .then(function(snapshot){
       var birth = snapshot.child(id).child("birth").val();
-      document.getElementById("p_birth").innerHTML = birth;
+      document.getElementById("p_birth").innerHTML = "Birth : "+birth;
     });
     
   }
@@ -156,13 +156,13 @@ function showTicket(){
     .then(function(snapshot){
       var issue = snapshot.child(id).child("issue").val();
             // console.log(issue);
-            document.getElementById("p_issue").innerHTML = issue;
+            document.getElementById("p_issue").innerHTML = "Issue : "+issue;
           });
     ref.once("value")
     .then(function(snapshot){
       var valid = snapshot.child(id).child("valid").val();
             // console.log(issue);
-            document.getElementById("p_valid").innerHTML = valid;
+            document.getElementById("p_valid").innerHTML = "Valid : "+valid;
           });
 
   }
