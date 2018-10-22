@@ -1,4 +1,5 @@
 function signInOnClick(){
+  document.getElementById("loading1").style.display = "block";
 	var email = document.getElementById('loginEmail').value;
 	var password = document.getElementById('loginPassword').value;
   var id;
@@ -8,19 +9,15 @@ function signInOnClick(){
   function showId(email,password){
     var ref = firebase.database().ref("User");
     ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-    // console.log(snapshot.val());
+
     snapshot.forEach(function(data) {
-        // console.log(data.key);
         var id = data.key;
         console.log("ID1 : " + id);
         checkState(id, email, password);
-        // document.getElementById("p2").innerHTML = data.key;
-        
-        // alert(data.key);
+
       });
   });
-    // checkState(id);
-    // console.log("ID : " + id);
+
   }
 
 
@@ -32,7 +29,6 @@ function signInOnClick(){
       var point = snapshot.child(id).child("login").val();
       console.log("Point : " + point);
       if (point == 'no') {
-        // alert("NO");
         login1(email, password);
         
       }else{
@@ -51,7 +47,7 @@ function signInOnClick(){
     .then(function(authData) {
       auth = authData;
       console.log("LOGIN SUCCES");
-      alert("LOGIN SUCESS");
+      // alert("LOGIN SUCESS");
       myFunction(email);
     })
     .catch(function(error) {
@@ -100,7 +96,9 @@ function editLogin(email){
     window.location= "home.html";
   }
 
-
+window.onload = function(){
+  document.getElementById("loading1").style.display = "none";
+}
 
 
 
