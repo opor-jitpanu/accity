@@ -173,7 +173,7 @@ function showNamePlace(place,line){
   ref.orderByChild('place_id').equalTo(place).on("value", function(snapshot) {
     snapshot.forEach(function(data) {
       var div_place = "name_place" + line;
-      document.getElementById(div_place).innerHTML = data.child("name").val() + "firebase";
+      document.getElementById(div_place).innerHTML = data.child("name").val();
     });
   });
 
