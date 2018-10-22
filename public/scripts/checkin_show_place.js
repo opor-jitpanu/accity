@@ -5,7 +5,8 @@ window.onload = function(){
 	var url_string = window.location.href; //window.location.href
 	var url = new URL(url_string);
 	var place = url.searchParams.get("place");
-
+	var check_distance = url.searchParams.get("check");
+	// console.log(check_distance);
 	var ref = firebase.database().ref("Place");
 	ref.orderByChild('place_id').equalTo(place).on("value", function(snapshot) {
 		snapshot.forEach(function(data) {
@@ -31,12 +32,12 @@ window.onload = function(){
 	
 
 	getID(place);
-	showBtn(place);
+	showBtn(place,check_distance);
 
 }
 
 
-function showBtn(place){
+function showBtn(place, check_distance){
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		
@@ -65,11 +66,16 @@ function showBtn(place){
 					}
 
 
-					if (check == "no") {
+					if (check == "no" && check_distance == "yes") {
 						console.log("block");
 						var x = document.getElementById("btnCheckin");
 						x.style.display = "block";
 						document.getElementById("check1_txt").innerHTML = "You can Check In";
+					}else if (check == "no" && check_distance == "no") {
+						console.log("block");
+						var x = document.getElementById("btnCheckin");
+						x.style.display = "none";
+						document.getElementById("check1_txt").innerHTML = "You are far from place";
 					}else if (check == "checked") {
 						console.log("none");
 						var x = document.getElementById("btnCheckin");

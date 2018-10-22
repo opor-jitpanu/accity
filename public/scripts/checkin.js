@@ -40,13 +40,14 @@ function reload(){
 }
 
 
-function loadwindow(a, b){
+function loadwindow(c, d){
 
 
 
 
-
-  var myLocation = [a, b];
+  var a = 13.548565;
+  var b = 100.628249;
+  // var myLocation = [13.548565, 100.628249];
   var obj2 = {};
 
 
@@ -71,48 +72,92 @@ function loadwindow(a, b){
 
     var sortedCities = sortProperties(obj3);
 
+
     var x = document.getElementById("place1");
     x.innerHTML ="Distance : "+sortedCities[0][1]+" m.";
+    var distance2 = parseInt(sortedCities[0][1]);
+    var check  = '';
+    if (distance2 < 300) {
+      check = 'yes';
+    }else if(distance2 >= 301){
+      check = 'no';
+    }
     showImage(sortedCities[0][0],1);
     showNamePlace(sortedCities[0][0], 1);
     var x2 = document.getElementById("btnlink1");
-    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[0][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
+    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[0][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
 
 
     var x = document.getElementById("place2");
     x.innerHTML ="Distance : "+sortedCities[1][1]+" m.";
+    var distance2 = parseInt(sortedCities[1][1]);
+    var check  = '';
+    if (distance2 < 300) {
+      check = 'yes';
+    }else if(distance2 >= 301){
+      check = 'no';
+    }
     showImage(sortedCities[1][0],2);
     showNamePlace(sortedCities[1][0], 2);
     var x2 = document.getElementById("btnlink2");
-    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[1][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
+    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[1][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
 
     var x = document.getElementById("place3");
     x.innerHTML ="Distance : "+sortedCities[2][1]+" m.";
+    var distance2 = parseInt(sortedCities[2][1]);
+    var check  = '';
+    if (distance2 < 300) {
+      check = 'yes';
+    }else if(distance2 >= 301){
+      check = 'no';
+    }
     showImage(sortedCities[2][0],3);
     showNamePlace(sortedCities[2][0], 3);
     var x2 = document.getElementById("btnlink3");
-    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[2][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
+    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[2][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
 
     var x = document.getElementById("place4");
     x.innerHTML ="Distance : "+sortedCities[3][1]+" m.";
+    var distance2 = parseInt(sortedCities[3][1]);
+    var check  = '';
+    if (distance2 < 300) {
+      check = 'yes';
+    }else if(distance2 >= 301){
+      check = 'no';
+    }
     showImage(sortedCities[3][0],4);
     showNamePlace(sortedCities[3][0], 4);
     var x2 = document.getElementById("btnlink4");
-    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[3][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
+    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[3][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
 
     var x = document.getElementById("place5");
     x.innerHTML ="Distance : "+sortedCities[4][1]+" m.";
+    var distance2 = parseInt(sortedCities[4][1]);
+    var check  = '';
+    if (distance2 < 300) {
+      check = 'yes';
+    }else if(distance2 >= 301){
+      check = 'no';
+    }
     showImage(sortedCities[4][0],5);
     showNamePlace(sortedCities[4][0], 5);
     var x2 = document.getElementById("btnlink5");
-    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[4][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
+    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[4][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
 
     var x = document.getElementById("place6");
     x.innerHTML ="Distance : "+sortedCities[5][1]+" m.";
+    var distance2 = parseInt(sortedCities[5][1]);
+    var check  = '';
+    if (distance2 < 300) {
+      check = 'yes';
+    }else if(distance2 >= 301){
+
+      check = 'no';
+    }
     showImage(sortedCities[5][0],6);
     showNamePlace(sortedCities[5][0], 6);
     var x2 = document.getElementById("btnlink6");
-    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[5][0]+'"><button class="btn btn-primary">More Information</button></a><center>';
+    x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[5][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
 
   });
 
