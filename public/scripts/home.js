@@ -118,6 +118,7 @@ function showInformation(){
       var birth = snapshot.child(id).child("birth").val();
       document.getElementById("p_birth").innerHTML = "Birth : "+birth;
     });
+    $('#loading').hide();
     
   }
 
@@ -128,6 +129,7 @@ function showInformation(){
 
 
 function showTicket(){
+  $('#loading').show();
   var y = document.getElementById("ticket");
   y.style.display = "block";
   var x = document.getElementById("information");
@@ -163,6 +165,7 @@ function showTicket(){
       var valid = snapshot.child(id).child("valid").val();
             // console.log(issue);
             document.getElementById("p_valid").innerHTML = "Valid : "+valid;
+            $('#loading').hide();
           });
 
   }
