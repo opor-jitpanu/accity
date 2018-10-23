@@ -135,6 +135,25 @@
     line-height: 70px;
     color: black;
   }
+  #loading1 {
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #fff;
+   z-index: 99;
+   text-align: center;
+ }
+
+ #loading-image {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  z-index: 100;
+}
 </style>
 
 
@@ -142,6 +161,9 @@
 
 </head>
 <body>
+  <div id="loading1">
+    <img id="loading-image" src="images/loader.gif" alt="Loading..." />
+  </div>
   <br>
   <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
   <center><h1 id="head_txt">Promotion</h1></center>
@@ -160,7 +182,7 @@
     <div id="promotion10"></div>
 
     
-   
+
   </center>
   <br><br><br><br>
 

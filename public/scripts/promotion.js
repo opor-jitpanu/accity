@@ -25,6 +25,7 @@ window.onload = function(){
 			}).catch(function(error) {
 
 			});
+			document.getElementById("loading1").style.display = "none";
 
 		});
 		

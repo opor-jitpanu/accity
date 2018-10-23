@@ -50,6 +50,7 @@ window.onload = function(){
 
 		var a = '<div class="card" style="width: 20rem;"><img class="card-img-top" src="'+ test +'" alt="Card image cap"><div class="card-body"><p>'+title+'</p><p class="card-text">'+des2+'</p></div></div><br>';
 		document.getElementById("promotion_show").innerHTML = a;
+		document.getElementById("loading1").style.display = "none";
 
 	}
 

@@ -7,193 +7,215 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-	<title>Check In</title>
-	<script type="text/javascript" src="scripts/checkin.js"></script>
+  <title>Check In</title>
+  <script type="text/javascript" src="scripts/checkin.js"></script>
 
 
 
 
 
 
-	<!-- BootStrap -->
-	<!-- Latest compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+  <!-- BootStrap -->
+  <!-- Latest compiled and minified CSS -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
-<!-- Optional theme -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+  <!-- Optional theme -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
 
-<!-- Latest compiled and minified JavaScript -->
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+  <!-- Latest compiled and minified JavaScript -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="Template PWA">
-    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
-    <!-- Windows -->
-    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#2F3BA2">
-
-
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <!-- <link rel="stylesheet" type="text/css" href="styles/materialize.css"> -->
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-
-    <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
-
-    <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Template PWA">
+  <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+  <!-- Windows -->
+  <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
 
 
 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <style type="text/css">
-      body{
-        background: #520C0C;
-      }
-      #head_txt{
-        color: white;
-        font-family: 'supermarketregular';
+  <!-- <link rel="stylesheet" type="text/css" href="styles/materialize.css"> -->
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
 
-      }
-      #color_white{
-        color: white;
-      }
-      #btnBack{
-        margin-left: 2%;
+  <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
 
-      }
-      .text{
-        color: white;
-        font-size: 20px;
-      }
-      #p1{
-        color: white;
-      }
-      #p2{
-        color: white;
-      }
-      #p3{
-        color: white;
-      }
-      #p4{
-        color: white;
-      }
-      #p5{
-        color: white;
-        font-size: 50px;
-      }
-      #btnBar1{
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 0%;
-        width: 25%;
-        padding: 110;
-        height: 10%;
-        background-color: white;
-        text-align: center;
-      }
-      #btnBar2{
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 25%;
-        width: 25%;
-        padding: 110;
-        height: 10%;
-        background-color: white;
-        text-align: center;
-      }
-      #btnBar3{
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 50%;
-        width: 25%;
-        padding: 110;
-        height: 10%;
-        background-color: white;
-        text-align: center;
-      }
-      #btnBar4{
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        left: 75%;
-        width: 25%;
-        padding: 110;
-        height: 10%;
-        background-color: white;
-        text-align: center;
-      }
-      #text_in_button{
-        text-align: center;
-        vertical-align: middle;
-        line-height: 70px;
-        color: black;
-      }
-      #header_txt{
-        font-size: 2rem;
-        color: white;
-      }
+  <link rel="manifest" href="/manifest.json">
 
 
-.card {
-      background: #fff;
-      display: inline-block;
-      border: 1px solid #ddd;
-      width: 100%;
-      box-shadow: 5px 10px 18px black;
-      margin: auto;
-    }
 
-    .image {
-      float: left;
-      background: #000;
-      width: 50%;
-      height: 170px;
-      background-size: cover;
+
+  <style type="text/css">
+  body{
+    background: #520C0C;
+  }
+  #head_txt{
+    color: white;
+    font-family: 'supermarketregular';
+
+  }
+  #color_white{
+    color: white;
+  }
+  #btnBack{
+    margin-left: 2%;
+
+  }
+  .text{
+    color: white;
+    font-size: 20px;
+  }
+  #p1{
+    color: white;
+  }
+  #p2{
+    color: white;
+  }
+  #p3{
+    color: white;
+  }
+  #p4{
+    color: white;
+  }
+  #p5{
+    color: white;
+    font-size: 50px;
+  }
+  #btnBar1{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0%;
+    width: 25%;
+    padding: 110;
+    height: 10%;
+    background-color: white;
+    text-align: center;
+  }
+  #btnBar2{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 25%;
+    width: 25%;
+    padding: 110;
+    height: 10%;
+    background-color: white;
+    text-align: center;
+  }
+  #btnBar3{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 50%;
+    width: 25%;
+    padding: 110;
+    height: 10%;
+    background-color: white;
+    text-align: center;
+  }
+  #btnBar4{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 75%;
+    width: 25%;
+    padding: 110;
+    height: 10%;
+    background-color: white;
+    text-align: center;
+  }
+  #text_in_button{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 70px;
+    color: black;
+  }
+  #header_txt{
+    font-size: 2rem;
+    color: white;
+  }
+
+
+  .card {
+    background: #fff;
+    display: inline-block;
+    border: 1px solid #ddd;
+    width: 100%;
+    box-shadow: 5px 10px 18px black;
+    margin: auto;
+  }
+
+  .image {
+    float: left;
+    background: #000;
+    width: 50%;
+    height: 170px;
+    background-size: cover;
     background-repeat: no-repeat;
-    }
+  }
 
-    .content {
-      float: left;
-      height: 170px;
-      width: 50%;
-      overflow: hidden;
-      padding: 5px;
-    }
+  .content {
+    float: left;
+    height: 170px;
+    width: 50%;
+    overflow: hidden;
+    padding: 5px;
+  }
 
-    .content h4 {
-      margin: 5px 0;
-    }
+  .content h4 {
+    margin: 5px 0;
+  }
 
-    #btn1{
-      font-size: 30px;
-      color: white;
-    }
+  #btn1{
+    font-size: 30px;
+    color: white;
+  }
 
-    .card-img-top {
+  .card-img-top {
     width: 100%;
     height: 170px;
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);
   }
+  #loading1 {
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   position: fixed;
+   display: block;
+   opacity: 0.7;
+   background-color: #fff;
+   z-index: 99;
+   text-align: center;
+ }
+
+ #loading-image {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  z-index: 100;
+}
 
 
 
 
 
-    </style>
+</style>
 
 
 
 
 </head>
 <body>
+  <div id="loading1">
+    <img id="loading-image" src="images/loader.gif" alt="Loading..." />
+  </div>
   <p id="debug_txt"></p>
   <br>
 
@@ -206,158 +228,158 @@
   <br> -->
 
   
-      <button onclick="refreshOnClick()" class="btn btn-primary">Refresh</button>
-    
-      <center><p id="header_txt">Nearby Places</p> <br>
+  <button onclick="refreshOnClick()" class="btn btn-primary">Refresh</button>
+
+  <center><p id="header_txt">Nearby Places</p> <br>
 
 
 
 
-       <div class="container">
+   <div class="container">
 
-      <div class="col-md-4">
+    <div class="col-md-4">
 
-        <div class="card">
-          <div class="image pull-left" >
+      <div class="card">
+        <div class="image pull-left" >
 
-            <img class="card-img-top" id="image1"  alt="Card image cap">
+          <img class="card-img-top" id="image1"  alt="Card image cap">
 
-          </div>
-          <div class="content pull-left">
-            <p id="name_place1"></p>
+        </div>
+        <div class="content pull-left">
+          <p id="name_place1"></p>
           <p id="place1"></p>
           <p id="btnlink1"></p>
           
-            <br>
+          <br>
 
-          </div>
-          <div class="clearfix">
-            
+        </div>
+        <div class="clearfix">
 
-          </div>
+
         </div>
       </div>
-    </div> <br>
+    </div>
+  </div> <br>
 
-           <div class="container">
+  <div class="container">
 
-      <div class="col-md-4">
+    <div class="col-md-4">
 
-        <div class="card">
-          <div class="image pull-left" >
+      <div class="card">
+        <div class="image pull-left" >
 
-            <img class="card-img-top" id="image2"  alt="Card image cap">
+          <img class="card-img-top" id="image2"  alt="Card image cap">
 
-          </div>
-          <div class="content pull-left">
-            <p id="name_place2"></p>
+        </div>
+        <div class="content pull-left">
+          <p id="name_place2"></p>
           <p id="place2"></p>
           <p id="btnlink2"></p>
-            <br>
+          <br>
 
-          </div>
-          <div class="clearfix">
+        </div>
+        <div class="clearfix">
 
-          </div>
         </div>
       </div>
-    </div><br>
+    </div>
+  </div><br>
 
-           <div class="container">
+  <div class="container">
 
-      <div class="col-md-4">
+    <div class="col-md-4">
 
-        <div class="card">
-          <div class="image pull-left" >
+      <div class="card">
+        <div class="image pull-left" >
 
-            <img class="card-img-top" id="image3"  alt="Card image cap">
+          <img class="card-img-top" id="image3"  alt="Card image cap">
 
-          </div>
-          <div class="content pull-left">
-            <p id="name_place3"></p>
+        </div>
+        <div class="content pull-left">
+          <p id="name_place3"></p>
           <p id="place3"></p>
           <p id="btnlink3"></p>
-            <br>
+          <br>
 
-          </div>
-          <div class="clearfix">
+        </div>
+        <div class="clearfix">
 
-          </div>
         </div>
       </div>
-    </div><br>
+    </div>
+  </div><br>
 
-           <div class="container">
+  <div class="container">
 
-      <div class="col-md-4">
+    <div class="col-md-4">
 
-        <div class="card">
-          <div class="image pull-left" >
+      <div class="card">
+        <div class="image pull-left" >
 
-            <img class="card-img-top" id="image4"  alt="Card image cap">
+          <img class="card-img-top" id="image4"  alt="Card image cap">
 
-          </div>
-          <div class="content pull-left">
-            <p id="name_place4"></p>
+        </div>
+        <div class="content pull-left">
+          <p id="name_place4"></p>
           <p id="place4"></p>
           <p id="btnlink4"></p>
-            <br>
+          <br>
 
-          </div>
-          <div class="clearfix">
+        </div>
+        <div class="clearfix">
 
-          </div>
         </div>
       </div>
-    </div><br>
+    </div>
+  </div><br>
 
-           <div class="container">
+  <div class="container">
 
-      <div class="col-md-4">
+    <div class="col-md-4">
 
-        <div class="card">
-          <div class="image pull-left" >
+      <div class="card">
+        <div class="image pull-left" >
 
-            <img class="card-img-top" id="image5"  alt="Card image cap">
+          <img class="card-img-top" id="image5"  alt="Card image cap">
 
-          </div>
-          <div class="content pull-left">
-            <p id="name_place5"></p>
+        </div>
+        <div class="content pull-left">
+          <p id="name_place5"></p>
           <p id="place5"></p>
           <p id="btnlink5"></p>
-            <br>
+          <br>
 
-          </div>
-          <div class="clearfix">
+        </div>
+        <div class="clearfix">
 
-          </div>
         </div>
       </div>
-    </div><br>
+    </div>
+  </div><br>
 
-           <div class="container">
+  <div class="container">
 
-      <div class="col-md-4">
+    <div class="col-md-4">
 
-        <div class="card">
-          <div class="image pull-left" >
+      <div class="card">
+        <div class="image pull-left" >
 
-            <img class="card-img-top" id="image6"  alt="Card image cap">
+          <img class="card-img-top" id="image6"  alt="Card image cap">
 
-          </div>
-          <div class="content pull-left">
-            <p id="name_place6"></p>
+        </div>
+        <div class="content pull-left">
+          <p id="name_place6"></p>
           <p id="place6"></p>
           <p id="btnlink6"></p>
-            <br>
+          <br>
 
-          </div>
-          <div class="clearfix">
+        </div>
+        <div class="clearfix">
 
-          </div>
         </div>
       </div>
-    </div> </center>
+    </div>
+  </div> </center>
 
 
 
@@ -437,7 +459,7 @@
 
   
 
- 
+
   
 
 
@@ -450,13 +472,13 @@
 
 
 
-<br><br><br><br>
+  <br><br><br><br>
 
 
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-<script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",

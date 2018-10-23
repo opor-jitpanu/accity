@@ -161,6 +161,8 @@ function loadwindow(c, d){
 
   });
 
+  document.getElementById("loading1").style.display = "none";
+
 }
 
 
