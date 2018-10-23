@@ -257,29 +257,33 @@ function getScoreOnClick(){
 
 		var time2 = hour2 + ":" + minute2;
 
-		var firebaseRef = firebase.database().ref("Checkin");
-		
-		
-		firebaseRef.push({
-			email:email,
-			location:place,
-			time_checkin:time2,
-			date:today2
-		});
-
-		UpdatePoint(id, userscore, placescore, email, count);
+		UpdatePoint(id, userscore, placescore, email, count, place, time2, today2);
 		
 
 	}
 
 
-	function UpdatePoint(id, userscore, placescore, email, count){
+	function UpdatePoint(id, userscore, placescore, email, count, place, time2, today2){
 		var sum_score = parseInt(userscore) + parseInt(placescore);
-		var ref = firebase.database().ref("User");
-		ref.child(id)
-		.update({ point: sum_score
-		});
-		window.location.href = "checkin_complete.html";
+			console.log("o");
+			var firebaseRef = firebase.database().ref("Checkin");
+			firebaseRef.push({
+				email:email,
+				location:place,
+				time_checkin:time2,
+				date:today2
+			});
+
+
+			console.log(sum_score);
+			var enc = window.btoa(sum_score);
+			console.log(enc);
+
+
+
+
+		alert('Complete');
+		window.location.href = "checkin_complete.html?sum=" + enc;
 	}
 }
 
