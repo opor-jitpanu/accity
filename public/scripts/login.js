@@ -1,5 +1,5 @@
 function signInOnClick(){
-  document.getElementById("loading1").style.display = "block";
+  document.getElementById("loading").style.display = "block";
 	var email = document.getElementById('loginEmail').value;
 	var password = document.getElementById('loginPassword').value;
   var id;
@@ -97,7 +97,7 @@ function editLogin(email){
   }
 
 window.onload = function(){
-  document.getElementById("loading1").style.display = "none";
+  document.getElementById("loading").style.display = "none";
 }
 
 

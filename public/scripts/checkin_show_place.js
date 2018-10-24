@@ -128,14 +128,14 @@ function showInfo(id){
 		document.getElementById("point2_txt").innerHTML = "Point : " + point;
 	});
 
-	document.getElementById("loading1").style.display = "none";
+	document.getElementById("loading").style.display = "none";
 
 
 }
 
 
 function getScoreOnClick(){
-	document.getElementById("loading1").style.display = "block";
+	document.getElementById("loading").style.display = "block";
 	var count = 0;
 
 	firebase.auth().onAuthStateChanged(function(user) {
@@ -283,7 +283,7 @@ function getScoreOnClick(){
 
 
 
-			document.getElementById("loading1").style.display = "none";
+			document.getElementById("loading").style.display = "none";
 		alert('Complete');
 		window.location.href = "checkin_complete.html?sum=" + enc;
 	}

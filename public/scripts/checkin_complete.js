@@ -34,7 +34,7 @@ window.onload = function(){
 		.update({ point: sum
 		});
 		document.getElementById("point_txt").innerHTML = "Your current point : " + sum;
-		document.getElementById("loading1").style.display = "none";
+		document.getElementById("loading").style.display = "none";
 	}
 	
 }
