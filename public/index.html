@@ -56,10 +56,16 @@
 	<br>
 	<center><button id="btnRegister" class="btn btn-primary" onclick="registerOnClick()" type="submit">Register</button></center>
 	<br>
-	<center><button id="btnFacebook" class="btn btn-primary" onclick="registerByFacebookOnClick()" type="submit">Facebook</button></center>
+	<!-- <center><button id="btnFacebook" class="btn btn-primary" onclick="registerByFacebookOnClick()" type="submit">Facebook</button></center> -->
 
-	
-
+	<center>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" id="btnBuy">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="UVB8QJ6L7Q28S">
+			<input type="image" src="https://www.paypalobjects.com/th_TH/TH/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - วิธีชำระเงินแบบออนไลน์ที่ปลอดภัยกว่าและง่ายกว่า!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/th_TH/i/scr/pixel.gif" width="1" height="1">
+		</form>
+	</center>
 
 	<script type="text/javascript">
 

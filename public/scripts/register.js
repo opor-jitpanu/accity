@@ -90,6 +90,15 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		time_out:'-'
 	});
 
+	var firebaseRef4 = firebase.database().ref("Checkin");
+	firebaseRef4.push({
+		email:email,
+		date:'-',
+		location:'-',
+		time_checkin:'-'
+	});
+
+
 	console.log("Insert to Database Success");
 	signUp();
 }
@@ -106,7 +115,7 @@ function signUp(){
 				alert('The password is too weak');
 
 			}else{
-				alert('errorMessage');
+				// alert('errorMessage');
 			}
 			console.log(error);
 		});
