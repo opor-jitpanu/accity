@@ -90,6 +90,7 @@ function showCheckin(email){
 
       var location = childSnapshot.val().location;
       var check_in = childSnapshot.val().time_checkin;
+      var date = childSnapshot.val().date;
       
 
       var table = document.getElementById("myTable");
@@ -103,6 +104,8 @@ function showCheckin(email){
       var cell_date = row.insertCell(1);
       cell_date.innerHTML = check_in;
 
+      var cell_date2 = row.insertCell(2);
+      cell_date2.innerHTML = date;
 
 
 
@@ -123,6 +126,8 @@ function last(){
   cell.innerHTML = "<center><b>Location ID</b></center>";
   var cell = row.insertCell(1);
   cell.innerHTML = "<center><b>Time</b></center>";
+  var cell = row.insertCell(2);
+  cell.innerHTML = "<center><b>Date</b></center>";
   
 
 }
