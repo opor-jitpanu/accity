@@ -101,12 +101,12 @@ function showInformation(){
     ref.once("value")
     .then(function(snapshot){
       var firstname = snapshot.child(id).child("firstname").val();
-      document.getElementById("p_firstname").innerHTML = "Firstname : "+firstname;
+      document.getElementById("p_firstname").innerHTML = "Firstname : "+capitalizeFirstLetter(firstname);
     });
     ref.once("value")
     .then(function(snapshot){
       var lastname = snapshot.child(id).child("lastname").val();
-      document.getElementById("p_lastname").innerHTML = "Lastname : "+lastname;
+      document.getElementById("p_lastname").innerHTML = "Lastname : "+capitalizeFirstLetter(lastname);
     });
     ref.once("value")
     .then(function(snapshot){
@@ -120,6 +120,10 @@ function showInformation(){
     });
     $('#loading').hide();
     
+  }
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
 
@@ -287,17 +291,17 @@ function checkinOnClick(){
 
   function checkoutOnClick(){
     firebase.auth().onAuthStateChanged(function(user) {
-    insertEmail2(user.email);
-  });
+      insertEmail2(user.email);
+    });
 
     function insertEmail2(email){
 
       var ref = firebase.database().ref("Time");
       ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-      snapshot.forEach(function(data) {
+        snapshot.forEach(function(data) {
           edit2(data.key);
         });
-    });
+      });
     }
 
     function edit2(id){
