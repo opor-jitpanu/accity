@@ -19,6 +19,8 @@ function showData(){
 			var promotion_description1 = childSnapshot.val().description1;
 			var promotion_description2 = childSnapshot.val().description2;
 			var key = childSnapshot.val().id;
+			var date_in = childSnapshot.val().date_in;
+			var date_out = childSnapshot.val().date_out;
 
 			
 
@@ -34,8 +36,8 @@ function showData(){
 			var cell_des2 = row.insertCell(2);
 			cell_des2.innerHTML = promotion_description2;
 
-			var cell_key = row.insertCell(3);
-			cell_key.innerHTML = key;
+			var cell_date = row.insertCell(3);
+			cell_date.innerHTML = date_in+ ' - ' + date_out;
 
 
 			var cell_btn = row.insertCell(4);
@@ -74,7 +76,7 @@ function last(){
 	var cell = row.insertCell(2);
 	cell.innerHTML = "<center><b>More Description</b></center>";
 	var cell = row.insertCell(3);
-	cell.innerHTML = "<center><b>Key</b></center>";
+	cell.innerHTML = "<center><b>Date</b></center>";
 	var cell = row.insertCell(4);
 	cell.innerHTML = "<center><b>Edit</b></center>";
 	var cell = row.insertCell(5);

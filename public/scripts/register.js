@@ -112,7 +112,7 @@ function signUp(){
 			var errorCode = error.code;
 			var errorMessage = error.message;
 			if(errorCode === 'auth/weak-password'){
-				alert('The password is too weak');
+				// alert('The password is too weak');
 
 			}else{
 				// alert('errorMessage');
