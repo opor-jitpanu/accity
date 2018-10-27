@@ -19,23 +19,21 @@ window.onload = function(){
 
 
   firebase.auth().onAuthStateChanged(function(user) {
-    // console.log('oo');
-    // console.log(user.email);
-    // document.getElementById("p1").innerHTML = user.email;
+
     showId(user.email);
   });
 
   function showId(email){
     var ref = firebase.database().ref("User");
     ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-    // console.log(snapshot.val());
-    snapshot.forEach(function(data) {
-        // console.log(data.key);
+
+      snapshot.forEach(function(data) {
+
         var id = data.key;
-        // document.getElementById("p2").innerHTML = data.key;
+
         showPoint(data.key);
       });
-  });
+    });
 
   }
   function showPoint(id){

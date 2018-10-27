@@ -14,7 +14,7 @@ function getLocation(){
 
 }
 
-
+var check = 0;
 
 function refreshOnClick(){
   alert("Refresh Complete!");
@@ -24,9 +24,73 @@ function refreshOnClick(){
 
 window.onload = function(){
 
+  if (check == 0) {
+    checkTimeIn();
+  }else{
+    reload();
+    getLocation();
+  }
 
-  reload();
-  getLocation();
+  
+  
+}
+
+
+function checkTimeIn(){
+  firebase.auth().onAuthStateChanged(function(user) {
+    GetID(user.email);
+  });
+
+  function GetID(email){
+    var ref = firebase.database().ref("Time");
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+      snapshot.forEach(function(data) {
+
+        var id = data.key;
+
+        showPoint(data.key);
+      });
+    });
+  }
+
+
+  function showPoint(id){
+    var ref = firebase.database().ref("Time");
+    ref.once("value")
+    .then(function(snapshot){
+      var time = snapshot.child(id).child("date").val();
+
+      var today_out = new Date();
+      var dd_out = today_out.getDate();
+      var mm_out = today_out.getMonth()+1;
+      var yyyy_out = today_out.getFullYear();
+
+      if(dd_out<10) {
+        dd_out = '0'+dd_out;
+      } 
+
+      if(mm_out<10) {
+        mm_out = '0'+mm_out;
+      } 
+
+      date_out = dd_out + '/' + mm_out + '/' + yyyy_out;
+
+
+      check = 1;
+
+      if (date_out == time) {
+        reload();
+        getLocation();
+      }else if (date_out != time){
+        alert("Pleae Check Time In");
+        window.location.href = "home.html";
+      }
+
+    });
+    
+    
+  }
 }
 
 
@@ -161,7 +225,7 @@ function loadwindow(c, d){
 
   });
 
-  document.getElementById("loading").style.display = "none";
+document.getElementById("loading").style.display = "none";
 
 }
 
