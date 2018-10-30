@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ancientcity</title>
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- BootStrap -->
+  <!-- Latest compiled and minified CSS -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+  <!-- Optional theme -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+  <!-- Latest compiled and minified JavaScript -->
+  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Ancientcity">
+  <link rel="apple-touch-icon" href="icon/icon.png">
+  <!-- Windows -->
+  <meta name="msapplication-TileImage" content="icon/icon.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- <link rel="stylesheet" type="text/css" href="styles/materialize.css"> -->
+  <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <link rel="manifest" href="/manifest.json">
+
+  <style type="text/css">
+  body{
+    background-image: url("images/indexbg.png");
+    background-size: 100%;
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    background-position: bottom center;
+  }
+  
+  }
+</style>
+
+</head>
+<body>
+<br><br><br><br>
+  
+  
+<center><div id="paypal-button-container"></div></center>
+
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+// Render the PayPal button
+paypal.Button.render({
+// Set your environment
+env: 'sandbox', // sandbox | production
+
+// Specify the style of the button
+style: {
+  layout: 'vertical',  // horizontal | vertical
+  size:   'medium',    // medium | large | responsive
+  shape:  'rect',      // pill | rect
+  color:  'gold'       // gold | blue | silver | white | black
+},
+
+// Specify allowed and disallowed funding sources
+//
+// Options:
+// - paypal.FUNDING.CARD
+// - paypal.FUNDING.CREDIT
+// - paypal.FUNDING.ELV
+funding: {
+  allowed: [
+    paypal.FUNDING.CARD,
+    paypal.FUNDING.CREDIT
+  ],
+  disallowed: []
+},
+
+// PayPal Client IDs - replace with your own
+// Create a PayPal app: https://developer.paypal.com/developer/applications/create
+client: {
+  sandbox: 'AR6Lb4-AObu511gWXnWgyvlSbFb39ntqtFadAw5mbwQ-9a_uJx8UeAD6RmIHZLA3DzgiD2aiDpIqRbdk',
+  production: '<insert production client id>'
+},
+
+payment: function (data, actions) {
+  return actions.payment.create({
+    payment: {
+      transactions: [
+        {
+          amount: {
+            total: '0.50',
+            currency: 'USD'
+          }
+        }
+      ]
+    }
+  });
+},
+
+onAuthorize: function (data, actions) {
+  return actions.payment.execute()
+    .then(function () {
+      window.alert('Payment Complete!');
+    });
+}
+}, '#paypal-button-container');
+</script>
+
+
+
+
+
+
+  
+  
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
