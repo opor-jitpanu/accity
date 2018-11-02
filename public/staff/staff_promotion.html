@@ -33,6 +33,7 @@
 </head>
 <body>
   <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+  <button onclick="homeOnClick()" id="btnBack" class="btn btn-primary">Home</button>
   <br>
   <center><h1>Promotion</h1></center>
   
@@ -58,6 +59,9 @@
   <script type="text/javascript">
     function addPromotionOnClick(){
       window.location.href = "staff_add_promotion.html"; 
+    }
+    function homeOnClick(){
+      window.location.href = "index_staff.html"; 
     }
   </script>
 

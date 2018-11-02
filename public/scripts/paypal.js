@@ -1,33 +1,53 @@
-var firstname = document.getElementById('InputFirstname').value;
-    var lastname = document.getElementById('InputLastname').value;
-    var email = document.getElementById('InputEmail').value;
-    var idcard = document.getElementById('InputId').value;
+function SubmitOnClick() {
+  var email = document.getElementById('InputEmail').value;
+  var ticket = document.getElementById('InputTicket').value;
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1;
+  var yyyy = today.getFullYear();
 
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1;
-    var yyyy = today.getFullYear();
+  if(dd<10) {
+    dd = '0'+dd
+  } 
 
-    if(dd<10) {
-      dd = '0'+dd
-    } 
+  if(mm<10) {
+    mm = '0'+mm
+  } 
 
-    if(mm<10) {
-      mm = '0'+mm
-    } 
+  today = dd + '/' + mm + '/' + yyyy;
 
-    today = dd + '/' + mm + '/' + yyyy;
+  for (var i = 0; i < parseInt(ticket); i++) {
 
-    var d = new Date();
-    var key = d.getTime();
 
-    var firebaseRef = firebase.database().ref("Buy");
-    firebaseRef.push({
-      firstname:firstname,
-      lastname:lastname,
+
+
+    var firebaseRef = firebase.database().ref("Ticket");
+
+
+
+    var newPostRef = firebaseRef.push({
       email:email,
-      idcard:idcard,
+      date_buy:today,
       status:'stanby',
-      date:today,
-      code:key
+      time_in:'-',
+      time_out:'-',
+      date_in:'-'
     });
+
+    var postID = newPostRef.key;
+
+
+    console.log(postID);
+
+
+
+  }
+
+  alert("Complete");
+
+
+}
+
+
+
+

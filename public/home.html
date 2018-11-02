@@ -84,7 +84,7 @@
     color: white;
   }
   #p5{
-    color: yellow;
+    color: #ffce3b;;
     font-size: 3rem;
   }
   #btnBar1{
@@ -136,6 +136,18 @@
     vertical-align: middle;
     line-height: 70px;
     color: black;
+  }
+  .text_white{
+    color: white;
+  }
+
+  table, td {
+    border: 1px solid white;
+
+  }
+  table{
+    border-collapse: collapse;
+    width: 100%;
   }
 
   
@@ -261,41 +273,81 @@
 
   <div id="information">
     <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6">
+      <div class="col-2"></div>
+      <div class="col-8">
         <p id="color_white"></p><p id="p_firstname" class="text"></p>
         <p id="color_white"></p><p id="p_lastname" class="text"></p>
         <p id="color_white"></p><p id="p_birth" class="text"></p>
         <p id="color_white"></p><p id="p_tel" class="text"></p>
       </div>
-      <div class="col-3"></div>
+      <div class="col-2"></div>
     </div>
   </div>
 
 
   <div id="ticket">
     <div class="row">
-      <div class="col-3"></div>
-      <div class="col-6">
-        <p id="color_white"></p><p id="p_issue" class="text"></p>
-        <p id="color_white"></p><p id="p_valid" class="text"></p>
+      <div class="col-1"></div>
+      <div class="col-10">
+        <p id="have_ticket" class="text_white"></p>
+        <button onclick="useTicket()" type="button" id="useticket_btn" class="btn btn-light">Use Ticket</button>
+        <br>
+        <br>
+
+        <table id="myTable" class="text_white">
+        </table>
+
+
+
+
       </div>
-      <div class="col-3"></div>
+      <div class="col-1"></div>
     </div>
   </div>
+
+
+
+
+
+
   
 </div>
 <div id="history">
   <div class="row">
-    <div class="col-3"></div>
-    <div class="col-6">
+    <div class="col-2"></div>
+    <div class="col-8">
       <p id="color_white">History : </p><p id="p3" class="text"></p>
     </div>
-    <div class="col-3"></div>
+    <div class="col-2"></div>
   </div>
 </div>
 
+<div class="modal" id="myModal2">
+        <div class="modal-dialog">
+          <div class="modal-content">
 
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Barcode</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <img id="barcode3" src='' 
+              alt='Barcode Generator TEC-IT'
+              width="100%"
+              />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
 
 
   <!-- <p id="color_white">Email : </p><p id="p1"></p>

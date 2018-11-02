@@ -129,9 +129,17 @@ function showInformation(){
 
 }
 
+function useTicket(){
+  var d = new Date();
+  var key = d.getTime();
+
+
+}
+
 
 function showTicket(){
   $('#loading').show();
+  
   var y = document.getElementById("ticket");
   y.style.display = "block";
   var x = document.getElementById("information");
@@ -139,36 +147,98 @@ function showTicket(){
   var z = document.getElementById("history");
   z.style.display = "none";
 
+  var a = document.getElementById("useticket_btn");
+  a.style.display = "none";
+
+
   firebase.auth().onAuthStateChanged(function(user) {
-    // console.log(user.email);
     showId(user.email);
   });
   function showId(email){
-    var ref = firebase.database().ref("Ticket");
+    var ref = firebase.database().ref("User");
     ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
       snapshot.forEach(function(data) {
         var id = data.key;
-          // console.log(data.key);
-          showPoint(data.key);
-        });
+        showPoint(data.key,email);
+      });
     });
   }
 
-  function showPoint(id){
-    var ref = firebase.database().ref("Ticket");
+  function showPoint(id,email){
+    var ref = firebase.database().ref("User");
+    var userDataRef = firebase.database().ref("Ticket");
+
     ref.once("value")
     .then(function(snapshot){
-      var issue = snapshot.child(id).child("issue").val();
-            // console.log(issue);
-            document.getElementById("p_issue").innerHTML = "Issue : "+issue;
-          });
-    ref.once("value")
-    .then(function(snapshot){
-      var valid = snapshot.child(id).child("valid").val();
-            // console.log(issue);
-            document.getElementById("p_valid").innerHTML = "Valid : "+valid;
-            $('#loading').hide();
-          });
+      var ticket = snapshot.child(id).child("ticket").val();
+      if (ticket > 0) {
+        $('#useticket_btn').show();
+      }
+      
+      $('#loading').hide();
+    });
+
+
+    userDataRef.orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
+      var countTicket = 0;
+      snapshot.forEach(function(childSnapshot) {
+        countTicket += 1;
+        var key = childSnapshot.key;
+        var childData = childSnapshot.val();
+
+        var date = childSnapshot.val().date;
+        var email = childSnapshot.val().email;
+        var status = childSnapshot.val().status;
+
+        var time_in = childSnapshot.val().time_in;
+        var time_out = childSnapshot.val().time_out;
+        var date_in = childSnapshot.val().date_in;
+        var date_out = childSnapshot.val().date_out;
+
+
+
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(0);
+
+        var cell_key = row.insertCell(0);
+        cell_key.innerHTML = key;
+
+        var cell_status = row.insertCell(1);
+        if (status == "stanby") {
+
+          cell_status.innerHTML = '<center><a href="activate_ticket.html?ticket='+key+'" ><button class="btn btn-primary">Activate</button></a><center>';
+
+          var cell_time_in = row.insertCell(2);
+          cell_time_in.innerHTML = '<center><a href="transfer_ticket.html?ticket='+key+'" ><button class="btn btn-danger">Transfer</button></a><center>';
+
+
+
+
+
+
+        }else if (status == "activated") {
+          cell_status.innerHTML = "Activated";
+
+          var cell_time_in = row.insertCell(2);
+          cell_time_in.innerHTML = time_in;
+
+          var cell_date_in = row.insertCell(3);
+          cell_date_in.innerHTML = date_in;
+
+          var cell_barcode = row.insertCell(4);
+          var url = 'https://barcode.tec-it.com/barcode.ashx?data=' + key + '&code=Code128&dpi=96&dataseparator=';
+          $('#barcode3').attr('src', url);
+          cell_barcode.innerHTML = '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal2">Barcode</button>';
+
+
+        }
+
+        
+
+
+      });
+      document.getElementById("have_ticket").innerHTML = "You have "+countTicket+" ticket";
+    });
 
   }
 
@@ -215,131 +285,123 @@ function checkinOnClick(){
 
 
   firebase.auth().onAuthStateChanged(function(user) {
-    // console.log('oo');
-    // console.log(user.email);
-    // document.getElementById("p1").innerHTML = user.email;
+
     insertEmail(user.email);
-    // alert(user.email);
+
   });
 
 
 
 
-  // var email = document.getElementById("inputEmail").value;
 
-    // console.log(email);
+  function insertEmail(email){
 
-    function insertEmail(email){
+    var ref = firebase.database().ref("Time");
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
 
-      var ref = firebase.database().ref("Time");
-      ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-      // console.log(snapshot.val());
       snapshot.forEach(function(data) {
-        //   console.log(data.key);
-        //   var id = data.key;
-          // document.getElementById("p2").innerHTML = data.key;
 
-          // alert(data.key);
-          edit(data.key);
-        });
-    });
-    }
-
-    function edit(id){
-      var today_in = new Date();
-      var dd_in = today_in.getDate();
-      var mm_in = today_in.getMonth()+1; //January is 0!
-      var yyyy_in = today_in.getFullYear();
-
-      if(dd_in<10) {
-        dd_in = '0'+dd_in;
-      } 
-
-      if(mm_in<10) {
-        mm_in = '0'+mm_in;
-      } 
-
-      date_in = dd_in + '/' + mm_in + '/' + yyyy_in;
-
-      var d_in = new Date(); // for now
-      var hour_in = d_in.getHours(); // => 9
-      var minute_in = d_in.getMinutes(); // =>  30
-      
-      if (minute_in < 10) {
-        minute_in = '0' + minute_in;
-      }
-
-      var time_in = hour_in + ":" + minute_in;
-
-      var ref = firebase.database().ref("Time");
-      ref.child(id)
-      .update({ date: date_in,
-       time_in: time_in
-     });
-      // alert("Time IN = " + time);
-      
-    }
-    alert("Time in Complete!");
-
-
-  }
-
-
-
-
-  function checkoutOnClick(){
-    firebase.auth().onAuthStateChanged(function(user) {
-      insertEmail2(user.email);
-    });
-
-    function insertEmail2(email){
-
-      var ref = firebase.database().ref("Time");
-      ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-        snapshot.forEach(function(data) {
-          edit2(data.key);
-        });
+        edit(data.key);
       });
+    });
+  }
+
+  function edit(id){
+    var today_in = new Date();
+    var dd_in = today_in.getDate();
+    var mm_in = today_in.getMonth()+1;
+    var yyyy_in = today_in.getFullYear();
+
+    if(dd_in<10) {
+      dd_in = '0'+dd_in;
+    } 
+
+    if(mm_in<10) {
+      mm_in = '0'+mm_in;
+    } 
+
+    date_in = dd_in + '/' + mm_in + '/' + yyyy_in;
+
+    var d_in = new Date(); 
+    var hour_in = d_in.getHours();
+    var minute_in = d_in.getMinutes(); 
+
+    if (minute_in < 10) {
+      minute_in = '0' + minute_in;
     }
 
-    function edit2(id){
-      var today_out = new Date();
-      var dd_out = today_out.getDate();
-      var mm_out = today_out.getMonth()+1;
-      var yyyy_out = today_out.getFullYear();
+    var time_in = hour_in + ":" + minute_in;
 
-      if(dd_out<10) {
-        dd_out = '0'+dd_out;
-      } 
-
-      if(mm_out<10) {
-        mm_out = '0'+mm_out;
-      } 
-
-      date_out = dd_out + '/' + mm_out + '/' + yyyy_out;
-
-      var d_out = new Date(); // for now
-      var hour_out = d_out.getHours(); // => 9
-      var minute_out = d_out.getMinutes(); // =>  30
-
-      if (minute_out < 10) {
-        minute_out = '0' + minute_out;
-      }
-
-      var time_out = hour_out + ":" + minute_out;
-
-      var ref = firebase.database().ref("Time");
-      ref.child(id)
-      .update({ 
-       time_out: time_out
-     });
-
-      // alert("Time OUT = " + time);
-    }
-    alert("Time out Complete!");
+    var ref = firebase.database().ref("Time");
+    ref.child(id)
+    .update({ date: date_in,
+     time_in: time_in,
+     time_out: '-'
+   });
 
 
   }
+  alert("Time in Complete!");
+
+
+}
+
+
+
+
+function checkoutOnClick(){
+  firebase.auth().onAuthStateChanged(function(user) {
+    insertEmail2(user.email);
+  });
+
+  function insertEmail2(email){
+
+    var ref = firebase.database().ref("Time");
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+      snapshot.forEach(function(data) {
+        edit2(data.key);
+      });
+    });
+  }
+
+  function edit2(id){
+    var today_out = new Date();
+    var dd_out = today_out.getDate();
+    var mm_out = today_out.getMonth()+1;
+    var yyyy_out = today_out.getFullYear();
+
+    if(dd_out<10) {
+      dd_out = '0'+dd_out;
+    } 
+
+    if(mm_out<10) {
+      mm_out = '0'+mm_out;
+    } 
+
+    date_out = dd_out + '/' + mm_out + '/' + yyyy_out;
+
+    var d_out = new Date();
+    var hour_out = d_out.getHours(); 
+    var minute_out = d_out.getMinutes(); 
+
+    if (minute_out < 10) {
+      minute_out = '0' + minute_out;
+    }
+
+    var time_out = hour_out + ":" + minute_out;
+
+    var ref = firebase.database().ref("Time");
+    ref.child(id)
+    .update({ 
+     time_out: time_out
+   });
+
+
+  }
+  alert("Time out Complete!");
+
+
+}
 
 
 
