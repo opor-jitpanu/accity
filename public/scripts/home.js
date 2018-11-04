@@ -228,6 +228,8 @@ function showTicket(){
     today = dd + '/' + mm + '/' + yyyy;
 
     var countTicket = 1;
+    var countTable1 = 0;
+    var countTable2 = 0;
 
     userDataRef.orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
 
@@ -260,6 +262,8 @@ function showTicket(){
 
           if (status == "stanby") {
 
+            countTable1 += 1;
+
             document.getElementById("p_youTicket").innerHTML = "Your Ticket : ";
 
             var table = document.getElementById("myTable");
@@ -281,6 +285,8 @@ function showTicket(){
 
 
           }else if (status == "activated") {
+
+            countTable2 += 1;
 
             document.getElementById("p_TicketActivated").innerHTML = "Ticket Activated : ";
             var table3 = document.getElementById("myTable3");
@@ -304,8 +310,16 @@ function showTicket(){
         }
 
       });
-      lastShowTicket();
-      lastShowTicket2();
+
+      if (countTable1 >0) {
+        lastShowTicket();
+      }
+
+      if (countTable2 >0) {
+        lastShowTicket2();
+      }
+      
+      
     });
 
   }

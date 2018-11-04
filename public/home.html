@@ -41,6 +41,7 @@
 
   <!-- <link rel="stylesheet" type="text/css" href="styles/materialize.css"> -->
   <link rel="stylesheet" type="text/css" href="styles/style.css">
+  <link rel="stylesheet" type="text/css" href="styles/btn_bar.css">
 
   <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
 
@@ -87,56 +88,8 @@
     color: #ffce3b;;
     font-size: 3rem;
   }
-  #btnBar1{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 0%;
-    width: 25%;
-    padding: 110;
-    height: 10%;
-    background-color: white;
-    text-align: center;
-  }
-  #btnBar2{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 25%;
-    width: 25%;
-    padding: 110;
-    height: 10%;
-    background-color: white;
-    text-align: center;
-  }
-  #btnBar3{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 50%;
-    width: 25%;
-    padding: 110;
-    height: 10%;
-    background-color: white;
-    text-align: center;
-  }
-  #btnBar4{
-    position: fixed;
-    right: 0;
-    bottom: 0;
-    left: 75%;
-    width: 25%;
-    padding: 110;
-    height: 10%;
-    background-color: white;
-    text-align: center;
-  }
-  #text_in_button{
-    text-align: center;
-    vertical-align: middle;
-    line-height: 70px;
-    color: black;
-  }
+  
+  
   .text_white{
     color: white;
   }
@@ -148,6 +101,10 @@
   table{
     border-collapse: collapse;
     width: 100%;
+  }
+
+  #logo{
+    left: 50%;
   }
 
   
@@ -162,7 +119,7 @@
   <br>
   <button onclick="logoutOnClick()" id="btnBack" type="button" class="btn btn-danger">Logout</button>
 
-  <img src="images/logo2.png" id="logo" width="25%" height="25%" position="center" ">
+  <center><img src="images/logo2.png" id="logo" width="35%" height="35%" position="center"></center>
 
   <div id="loading">
     <img id="loading-image" src="images/loader.gif" alt="Loading..." />
@@ -230,18 +187,20 @@
 
   <div class="row">
     <div class="col-1"></div>
-    <div class="col-3">
+    <div class="col-4">
       <!-- <p id="color_white" onclick="showInformation()">INFORMATION</p> -->
       <button onclick="checkinOnClick()" type="button" class="btn btn-success">Check in</button>
+      <br>
       <p class="text_white" id="user_time_in"></p>
     </div>
     <!-- <div class="col-1"></div> -->
-    <div class="col-3">
+    <div class="col-4">
       <!-- <p id="color_white">TICKET</p> -->
       <button onclick="checkoutOnClick()" type="button" class="btn btn-danger">Check out</button>
 
     </div>
   </div>
+  
   <br>
 
 

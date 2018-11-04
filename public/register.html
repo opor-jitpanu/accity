@@ -55,6 +55,11 @@
   }
   #color_white{
     color: white;
+    font-size: 20px;
+  }
+  #color_white2{
+    color: white;
+    
   }
 
   #form_size{
@@ -69,7 +74,16 @@
 
   }
 
+  .white_txt{
+    color: white;
+  }
 
+
+  .btn-edit{
+    background-color: #4c1b12;
+    border-color: white;
+    color: white;
+  }
 
 
 
@@ -81,7 +95,7 @@
 </head>
 <body>
   <br>
-  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+  <button onclick="history.back(-1)" id="btnBack" class="btn btn-edit">back</button>
 
 
   <center><h1 id="head_txt">Register</h1></center>
@@ -103,13 +117,13 @@
     <div class="form-group">
       <label for="InputEmail" id="color_white">E-mail : </label>
       <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <small id="emailHelp" class="white_txt">We'll never share your email with anyone else.</small>
     </div>
 
     <div class="form-group">
       <label for="InputPassword" id="color_white" >Password : </label>
       <input type="password" class="form-control" id="InputPassword" a placeholder="Enter Password">
-      <small id="passwordHelp" class="form-text text-muted">Password must be A-Z, a-z or numbers at least 6 characters.</small>
+      <small id="passwordHelp" class="white_txt">Password must be A-Z, a-z or numbers at least 6 characters.</small>
     </div>
 
     <div class="form-group">
@@ -118,7 +132,7 @@
     </div>
 
 
-
+<br>
     <div id="InputSex">
       <label for="InputSex" id="color_white" >Gender : </label>
       <div class="form-check">
@@ -135,6 +149,7 @@
         </label>
       </div>
     </div>
+    <br>
     <br>
 
 
@@ -594,7 +609,7 @@
 
 
 
-  <center><button onclick="saveRegisterOnClick()" class="btn btn-primary">Register</button></center>
+  <center><button onclick="saveRegisterOnClick()" class="btn btn-edit">Register</button></center>
   
   
   <br><br>

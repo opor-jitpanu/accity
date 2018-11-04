@@ -45,6 +45,14 @@
   #color_white{
     color: white;
   }
+  .color_white{
+    color: white;
+  }
+  .btn-edit{
+    background-color: #4c1b12;
+    border-color: white;
+    color: white;
+  }
   
 }
 </style>
@@ -52,7 +60,7 @@
 </head>
 <body>
  <br>
- <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+ <button onclick="history.back(-1)" id="btnBack" class="btn btn-edit">back</button>
 
 
 
@@ -97,12 +105,44 @@
   <div class="col-1"></div>
 </div>
 <br><br>
- <center><button onclick="SubmitOnClick()" class="btn btn-primary">Submit</button></center>
+<center><button onclick="SubmitOnClick()" class="btn btn-edit">Submit</button></center>
 <br><br>
-<center><div id="paypal-button-container"></div></center>
 
 
 
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Confirm email and ticket</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <p id="email_text" ></p>
+        <p id="ticket_text" ></p>
+
+
+        <center><div id="paypal-button-container"></div></center>
+
+        
+
+        <center><button onclick="SubmitCheckOnClick()" class="btn btn-edit">Submit</button></center>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
 
@@ -162,16 +202,6 @@ payment: function (data, actions) {
 onAuthorize: function (data, actions) {
   return actions.payment.execute()
   .then(function () {
-
-    var email = document.getElementById('InputEmail').value;
-
-    var firebaseRef = firebase.database().ref("Buy");
-    firebaseRef.push({
-      email:email
-    });
-
-
-
     window.alert('Payment Complete!');
   });
 }
@@ -179,7 +209,7 @@ onAuthorize: function (data, actions) {
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-  <script>
+<script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",

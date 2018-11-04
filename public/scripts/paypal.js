@@ -1,6 +1,22 @@
 function SubmitOnClick() {
+
+  $('#myModal').modal('show')
+
   var email = document.getElementById('InputEmail').value;
   var ticket = document.getElementById('InputTicket').value;
+
+
+
+  document.getElementById("email_text").innerHTML = "Email : " + email;
+  document.getElementById("ticket_text").innerHTML = "Ticket : " + ticket;
+}
+
+function SubmitCheckOnClick(){
+
+  var email = document.getElementById('InputEmail').value;
+  var ticket = document.getElementById('InputTicket').value;
+
+
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1;
