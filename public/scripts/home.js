@@ -1,4 +1,7 @@
+
 window.onload = function(){
+
+
 
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -31,17 +34,43 @@ window.onload = function(){
 
         var id = data.key;
 
-        showPoint(data.key);
+        showPoint(data.key, email);
       });
     });
 
   }
-  function showPoint(id){
+  function showPoint(id, email){
     var ref = firebase.database().ref("User");
     ref.once("value")
     .then(function(snapshot){
       var point = snapshot.child(id).child("point").val();
       document.getElementById("p5").innerHTML = point;
+    });
+    
+    showId2(email);
+  }
+
+  function showId2(email){
+    
+    var ref = firebase.database().ref("Time");
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+      snapshot.forEach(function(data) {
+
+        var id = data.key;
+
+        showPoint2(data.key);
+         
+      });
+    });
+
+  }
+  function showPoint2(id){
+    var ref = firebase.database().ref("Time");
+    ref.once("value")
+    .then(function(snapshot){
+      var time_in = snapshot.child(id).child("time_in").val();
+      document.getElementById("user_time_in").innerHTML = "Time In : " + time_in;
     });
     
     
@@ -138,8 +167,13 @@ function useTicket(){
 
 
 function showTicket(){
+
   $('#loading').show();
-  
+  var Table1 = document.getElementById("myTable");
+  Table1.innerHTML = "";
+  var table3 = document.getElementById("myTable3");
+  table3.innerHTML = "";
+
   var y = document.getElementById("ticket");
   y.style.display = "block";
   var x = document.getElementById("information");
@@ -147,8 +181,7 @@ function showTicket(){
   var z = document.getElementById("history");
   z.style.display = "none";
 
-  var a = document.getElementById("useticket_btn");
-  a.style.display = "none";
+
 
 
   firebase.auth().onAuthStateChanged(function(user) {
@@ -174,15 +207,32 @@ function showTicket(){
       if (ticket > 0) {
         $('#useticket_btn').show();
       }
-      
+
       $('#loading').hide();
     });
 
 
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+      dd = '0'+dd
+    } 
+
+    if(mm<10) {
+      mm = '0'+mm
+    } 
+
+    today = dd + '/' + mm + '/' + yyyy;
+
+    var countTicket = 1;
+
     userDataRef.orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
-      var countTicket = 0;
+
       snapshot.forEach(function(childSnapshot) {
-        countTicket += 1;
+
         var key = childSnapshot.key;
         var childData = childSnapshot.val();
 
@@ -197,55 +247,116 @@ function showTicket(){
 
 
 
-        var table = document.getElementById("myTable");
-        var row = table.insertRow(0);
-
-        var cell_key = row.insertCell(0);
-        cell_key.innerHTML = key;
-
-        var cell_status = row.insertCell(1);
-        if (status == "stanby") {
-
-          cell_status.innerHTML = '<center><a href="activate_ticket.html?ticket='+key+'" ><button class="btn btn-primary">Activate</button></a><center>';
-
-          var cell_time_in = row.insertCell(2);
-          cell_time_in.innerHTML = '<center><a href="transfer_ticket.html?ticket='+key+'" ><button class="btn btn-danger">Transfer</button></a><center>';
-
-
-
-
-
-
-        }else if (status == "activated") {
-          cell_status.innerHTML = "Activated";
-
-          var cell_time_in = row.insertCell(2);
-          cell_time_in.innerHTML = time_in;
-
-          var cell_date_in = row.insertCell(3);
-          cell_date_in.innerHTML = date_in;
-
-          var cell_barcode = row.insertCell(4);
-          var url = 'https://barcode.tec-it.com/barcode.ashx?data=' + key + '&code=Code128&dpi=96&dataseparator=';
-          $('#barcode3').attr('src', url);
-          cell_barcode.innerHTML = '<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal2">Barcode</button>';
-
-
-        }
-
         
 
 
+
+
+
+
+        if (date_in == today || status == "stanby") {
+
+
+
+          if (status == "stanby") {
+
+            document.getElementById("p_youTicket").innerHTML = "Your Ticket : ";
+
+            var table = document.getElementById("myTable");
+            var row = table.insertRow(0);
+            var cell_key = row.insertCell(0);
+            console.log("CHECK");
+            cell_key.innerHTML = "Ticket : "+countTicket;
+            countTicket += 1;
+
+            var cell_status = row.insertCell(1);
+            cell_status.innerHTML = '<center><a href="activate_ticket.html?ticket='+key+'" ><button class="btn btn-primary">Activate</button></a><center>';
+
+            var cell_time_in = row.insertCell(2);
+            cell_time_in.innerHTML = '<center><a href="transfer_ticket.html?ticket='+key+'" ><button class="btn btn-danger">Transfer</button></a><center>';
+
+
+
+
+
+
+          }else if (status == "activated") {
+
+            document.getElementById("p_TicketActivated").innerHTML = "Ticket Activated : ";
+            var table3 = document.getElementById("myTable3");
+            var row3 = table3.insertRow(0);
+            var cell_status = row3.insertCell(0);
+            cell_status.innerHTML = "Activated";
+
+            var cell_time_in = row3.insertCell(1);
+            cell_time_in.innerHTML = time_in;
+
+            var cell_date_in = row3.insertCell(2);
+            cell_date_in.innerHTML = date_in;
+
+            var cell_barcode = row3.insertCell(3);
+
+            cell_barcode.innerHTML = '<center><a href="show_barcode_ticket.html?ticket='+key+'" ><button class="btn btn-info">Barcode</button></a><center>';
+
+
+          }
+
+        }
+
       });
-      document.getElementById("have_ticket").innerHTML = "You have "+countTicket+" ticket";
+      lastShowTicket();
+      lastShowTicket2();
     });
 
   }
 
+  
+  
+
 }
 
 
+
+
+function lastShowTicket(){
+  var table = document.getElementById("myTable");
+  var header = table.createTHead();
+  var row = header.insertRow(0);
+  var cell = row.insertCell(0);
+  cell.innerHTML = "<center><b>Ticket</b></center>";
+  var cell = row.insertCell(1);
+  cell.innerHTML = "<center><b>Activate</b></center>";
+  var cell = row.insertCell(2);
+  cell.innerHTML = "<center><b>Transfer</b></center>";
+}
+
+
+function lastShowTicket2(){
+  var table = document.getElementById("myTable3");
+  var header = table.createTHead();
+  var row = header.insertRow(0);
+  var cell = row.insertCell(0);
+  cell.innerHTML = "<center><b>Status</b></center>";
+  var cell = row.insertCell(1);
+  cell.innerHTML = "<center><b>Time In</b></center>";
+  var cell = row.insertCell(2);
+  cell.innerHTML = "<center><b>Date In</b></center>";
+  var cell = row.insertCell(3);
+  cell.innerHTML = "<center><b>Barcode</b></center>";
+}
+
+
+
+
+
+
 function showHistory(){
+  $('#loading').show();
+  var Table2 = document.getElementById("myTable2");
+  Table2.innerHTML = "";
+
+
+
   var z = document.getElementById("history");
   z.style.display = "block";
   // y.style.display = "none";
@@ -253,8 +364,106 @@ function showHistory(){
   x.style.display = "none";
   var y = document.getElementById("ticket");
   y.style.display = "none";
-  
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    showTable(user.email);
+  });
+
+
+
+  function showTable(email){
+
+
+    var userDataRef = firebase.database().ref("Ticket");
+
+    userDataRef.orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
+
+      snapshot.forEach(function(childSnapshot) {
+
+        var key = childSnapshot.key;
+        var childData = childSnapshot.val();
+
+        var date = childSnapshot.val().date;
+        var email = childSnapshot.val().email;
+        var status = childSnapshot.val().status;
+
+        var time_in = childSnapshot.val().time_in;
+        var time_out = childSnapshot.val().time_out;
+
+
+        var dateFrom = childSnapshot.val().date_in;
+        var date_in = childSnapshot.val().date_in;
+
+
+        var d1 = dateFrom.split("/");
+
+
+        var today_out = new Date();
+        var dd_out = today_out.getDate();
+        var mm_out = today_out.getMonth()+1;
+        var yyyy_out = today_out.getFullYear();
+
+
+
+        if(dd_out<10) {
+          dd_out = '0'+dd_out;
+        } 
+
+        if(mm_out<10) {
+          mm_out = '0'+mm_out;
+        } 
+
+        var dateCheck = dd_out + '/' + mm_out + '/' + yyyy_out;
+        var c = dateCheck.split("/");
+
+        var from = new Date(d1[2], parseInt(d1[1])-1, d1[0]);
+        var check = new Date(c[2], parseInt(c[1])-1, c[0]);
+
+        console.log(from);
+        console.log(check);
+        if (check > from) {
+          var table = document.getElementById("myTable2");
+          var row = table.insertRow(0);
+          var cell_key = row.insertCell(0);
+          cell_key.innerHTML = key;
+          var cell_time_in = row.insertCell(1);
+          cell_time_in.innerHTML = time_in;
+
+
+
+          var cell_date_in = row.insertCell(2);
+          cell_date_in.innerHTML = date_in;
+
+          var cell_status = row.insertCell(3);
+          cell_status.innerHTML = "Activated";
+        }
+
+      });
+      $('#loading').hide();
+
+    });
+
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function logoutOnClick(){

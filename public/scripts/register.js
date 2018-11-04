@@ -75,12 +75,12 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		birth:birth,
 		login:'no'
 	});
-	var firebaseRef2 = firebase.database().ref("Ticket");
-	firebaseRef2.push({
-		email:email,
-		valid:'-',
-		issue:'-'
-	});
+	// var firebaseRef2 = firebase.database().ref("Ticket");
+	// firebaseRef2.push({
+	// 	email:email,
+	// 	valid:'-',
+	// 	issue:'-'
+	// });
 
 	var firebaseRef3 = firebase.database().ref("Time");
 	firebaseRef3.push({

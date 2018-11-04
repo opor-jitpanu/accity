@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Show Barcode</title>
+
+	<link rel="stylesheet" type="text/css" href="styles/loading.css">
+
+
+
+
+
+	<!-- BootStrap -->
+	<!-- Latest compiled and minified CSS -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+
+	<!-- Optional theme -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+	<!-- Latest compiled and minified JavaScript -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="Template PWA">
+	<link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+	<!-- Windows -->
+	<meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+	<meta name="msapplication-TileColor" content="#2F3BA2">
+
+
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- <link rel="stylesheet" type="text/css" href="styles/materialize.css"> -->
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+
+	<script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
+
+	<link rel="manifest" href="/manifest.json">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+	<script src="scripts/JSBarcode.js"></script>
+
+	<style type="text/css">
+	body{
+		background: white;
+	}
+	#head_txt{
+		color: white;
+		font-family: 'supermarketregular';
+
+	}
+	#color_white{
+		color: white;
+	}
+	#btnBack{
+		margin-left: 2%;
+
+	}
+	.text{
+		color: white;
+		font-size: 20px;
+	}
+	#p1{
+		color: white;
+	}
+	#p2{
+		color: white;
+	}
+	#p3{
+		color: white;
+	}
+	#p4{
+		color: white;
+	}
+	#p5{
+		color: #ffce3b;;
+		font-size: 3rem;
+	}
+	#btnBar1{
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 0%;
+		width: 25%;
+		padding: 110;
+		height: 10%;
+		background-color: white;
+		text-align: center;
+	}
+	#btnBar2{
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 25%;
+		width: 25%;
+		padding: 110;
+		height: 10%;
+		background-color: white;
+		text-align: center;
+	}
+	#btnBar3{
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 50%;
+		width: 25%;
+		padding: 110;
+		height: 10%;
+		background-color: white;
+		text-align: center;
+	}
+	#btnBar4{
+		position: fixed;
+		right: 0;
+		bottom: 0;
+		left: 75%;
+		width: 25%;
+		padding: 110;
+		height: 10%;
+		background-color: white;
+		text-align: center;
+	}
+	#text_in_button{
+		text-align: center;
+		vertical-align: middle;
+		line-height: 70px;
+		color: black;
+	}
+	.text_white{
+		color: white;
+	}
+
+	table, td {
+		border: 1px solid white;
+
+	}
+	table{
+		border-collapse: collapse;
+		width: 100%;
+	}
+	#barcode2{
+		width:95%;
+	}
+	
+
+
+
+</style>
+
+
+
+
+</head>
+<body>
+	<br>
+	<button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+
+	<center><h1 class="text_white">Barcode</h1></center>
+	<center><p id="showIdTicket" class="text_white"></p></center>
+	<br>
+
+	<center><img id="barcode2" src='' 
+		alt='Barcode Generator TEC-IT'
+		
+		/></center>
+
+
+		<script type="text/javascript">
+			window.onload = function(){
+
+
+				var url_string = window.location.href;
+				var url = new URL(url_string);
+				var ticket = url.searchParams.get("ticket");
+
+				document.getElementById("showIdTicket").innerHTML = "ID : "+ticket;
+
+				var url = 'https://barcode.tec-it.com/barcode.ashx?data=' + ticket + '&code=Code128&dpi=96&dataseparator=';
+				$('#barcode2').attr('src', url);
+
+
+			}
+		</script>
+
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
+		<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+		<script>
+  // Initialize Firebase
+  var config = {
+  	apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+  	authDomain: "ancientcity-5c152.firebaseapp.com",
+  	databaseURL: "https://ancientcity-5c152.firebaseio.com",
+  	projectId: "ancientcity-5c152",
+  	storageBucket: "ancientcity-5c152.appspot.com",
+  	messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
+
+</body>
+</html>

@@ -233,6 +233,7 @@
     <div class="col-3">
       <!-- <p id="color_white" onclick="showInformation()">INFORMATION</p> -->
       <button onclick="checkinOnClick()" type="button" class="btn btn-success">Check in</button>
+      <p class="text_white" id="user_time_in"></p>
     </div>
     <!-- <div class="col-1"></div> -->
     <div class="col-3">
@@ -287,21 +288,25 @@
 
   <div id="ticket">
     <div class="row">
-      <div class="col-1"></div>
-      <div class="col-10">
-        <p id="have_ticket" class="text_white"></p>
-        <button onclick="useTicket()" type="button" id="useticket_btn" class="btn btn-light">Use Ticket</button>
+
+      <div class="col-12">
+
+
         <br>
         <br>
 
+        <p id="p_youTicket" class="text_white"></p>
         <table id="myTable" class="text_white">
+        </table>
+        <br><br>
+        <p id="p_TicketActivated" class="text_white"></p>
+        <table id="myTable3" class="text_white">
         </table>
 
 
 
-
       </div>
-      <div class="col-1"></div>
+
     </div>
   </div>
 
@@ -314,40 +319,41 @@
 </div>
 <div id="history">
   <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
-      <p id="color_white">History : </p><p id="p3" class="text"></p>
+    <div class="col-1"></div>
+    <div class="col-10">
+      <table id="myTable2" class="text_white">
+      </table>
     </div>
-    <div class="col-2"></div>
+    <div class="col-1"></div>
   </div>
 </div>
 
 <div class="modal" id="myModal2">
-        <div class="modal-dialog">
-          <div class="modal-content">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Barcode</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-              <img id="barcode3" src='' 
-              alt='Barcode Generator TEC-IT'
-              width="100%"
-              />
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-
-          </div>
-        </div>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Barcode</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <img id="barcode3" src='' 
+        alt='Barcode Generator TEC-IT'
+        width="100%"
+        />
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 
   <!-- <p id="color_white">Email : </p><p id="p1"></p>
