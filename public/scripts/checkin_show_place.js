@@ -126,7 +126,20 @@ function showInfo(id){
 	.then(function(snapshot){
 		var point = snapshot.child(id).child("point").val();
 		document.getElementById("point2_txt").innerHTML = "Point : " + point;
+
+
+		var latitude = snapshot.child(id).child("latitude").val();
+		var longtitude = snapshot.child(id).child("longtitude").val();
+		var link = document.getElementById("btnGoogleMap");
+		link.setAttribute('href', "https://maps.google.com/?q="+latitude+","+longtitude);
+
+
+
 	});
+
+
+
+
 
 	document.getElementById("loading").style.display = "none";
 
@@ -267,23 +280,23 @@ function getScoreOnClick(){
 
 	function UpdatePoint(id, userscore, placescore, email, count, place, time2, today2){
 		var sum_score = parseInt(userscore) + parseInt(placescore);
-			console.log("o");
-			var firebaseRef = firebase.database().ref("Checkin");
-			firebaseRef.push({
-				email:email,
-				location:place,
-				time_checkin:time2,
-				date:today2
-			});
+		console.log("o");
+		var firebaseRef = firebase.database().ref("Checkin");
+		firebaseRef.push({
+			email:email,
+			location:place,
+			time_checkin:time2,
+			date:today2
+		});
 
 
-			console.log(sum_score);
-			var enc = window.btoa(sum_score);
-			console.log(enc);
+		console.log(sum_score);
+		var enc = window.btoa(sum_score);
+		console.log(enc);
 
 
 
-			document.getElementById("loading").style.display = "none";
+		document.getElementById("loading").style.display = "none";
 		alert('Complete');
 		window.location.href = "checkin_complete.html?sum=" + enc;
 	}

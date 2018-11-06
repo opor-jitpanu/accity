@@ -51,7 +51,7 @@ window.onload = function(){
   }
 
   function showId2(email){
-    
+
     var ref = firebase.database().ref("Time");
     ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
 
@@ -60,7 +60,7 @@ window.onload = function(){
         var id = data.key;
 
         showPoint2(data.key);
-         
+
       });
     });
 
@@ -70,7 +70,32 @@ window.onload = function(){
     ref.once("value")
     .then(function(snapshot){
       var time_in = snapshot.child(id).child("time_in").val();
-      document.getElementById("user_time_in").innerHTML = "Time In : " + time_in;
+      var date = snapshot.child(id).child("date").val();
+
+      var today_out = new Date();
+      var dd_out = today_out.getDate();
+      var mm_out = today_out.getMonth()+1;
+      var yyyy_out = today_out.getFullYear();
+
+      if(dd_out<10) {
+        dd_out = '0'+dd_out;
+      } 
+
+      if(mm_out<10) {
+        mm_out = '0'+mm_out;
+      } 
+
+      today = dd_out + '/' + mm_out + '/' + yyyy_out;
+
+      if (today == date) {
+        document.getElementById("user_time_in").innerHTML = "Time In : " + time_in;
+        document.getElementById("user_date").innerHTML = "Date : " + date;
+      }else{
+        document.getElementById("user_time_in").innerHTML = "Time In : -";
+        document.getElementById("user_date").innerHTML = "Date : -";
+      }
+
+      
     });
     
     
@@ -389,6 +414,7 @@ function showHistory(){
 
 
     var userDataRef = firebase.database().ref("Ticket");
+    var countTicket = 1;
 
     userDataRef.orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
 
@@ -417,7 +443,7 @@ function showHistory(){
         var mm_out = today_out.getMonth()+1;
         var yyyy_out = today_out.getFullYear();
 
-
+        
 
         if(dd_out<10) {
           dd_out = '0'+dd_out;
@@ -439,7 +465,8 @@ function showHistory(){
           var table = document.getElementById("myTable2");
           var row = table.insertRow(0);
           var cell_key = row.insertCell(0);
-          cell_key.innerHTML = key;
+          cell_key.innerHTML = "Ticket : " + countTicket;
+          countTicket += 1;
           var cell_time_in = row.insertCell(1);
           cell_time_in.innerHTML = time_in;
 
@@ -454,6 +481,7 @@ function showHistory(){
 
       });
       $('#loading').hide();
+
 
     });
 

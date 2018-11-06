@@ -16,7 +16,7 @@ function SubmitCheckOnClick(){
   var email = document.getElementById('InputEmail').value;
   var ticket = document.getElementById('InputTicket').value;
 
-
+  
   var today = new Date();
   var dd = today.getDate();
   var mm = today.getMonth()+1;
