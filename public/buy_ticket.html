@@ -139,9 +139,9 @@
         <h5 class="card-title">บัตรคุ้มสยาม</h5>
         <p class="card-text">ราคา 350 บาท</p>
         <div class="qty mt-5">
-          <span class="minus bg-dark">-</span>
-          <input type="number" class="count" name="qty" id="ticket1" value="0">
-          <span class="plus bg-dark">+</span>
+          <span class="minus1 bg-dark">-</span>
+          <input type="number" class="count1" name="qty" id="ticket1" value="0">
+          <span class="plus1 bg-dark">+</span>
         </div>
       </div>
     </div>
@@ -152,12 +152,12 @@
     <div class="card card-center"  style="width: 25rem;">
       <img class="card-img-top" src="" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">บัตรคุ้มสยาม</h5>
-        <p class="card-text">ราคา 350 บาท</p>
+        <h5 class="card-title">บัตรรายเดือน</h5>
+        <p class="card-text">ราคา 400 บาท</p>
         <div class="qty mt-5">
-          <span class="minus bg-dark">-</span>
-          <input type="number" class="count" name="qty" id="ticket2" value="0">
-          <span class="plus bg-dark">+</span>
+          <span class="minus2 bg-dark">-</span>
+          <input type="number" class="count2" name="qty" id="ticket2" value="0">
+          <span class="plus2 bg-dark">+</span>
         </div>
       </div>
     </div>
@@ -169,17 +169,20 @@
     <div class="card card-center"  style="width: 25rem;">
       <img class="card-img-top" src="" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title">บัตรคุ้มสยาม</h5>
-        <p class="card-text">ราคา 350 บาท</p>
+        <h5 class="card-title">บัตรรายปี</h5>
+        <p class="card-text">ราคา 500 บาท</p>
         <div class="qty mt-5">
-          <span class="minus bg-dark">-</span>
-          <input type="number" class="count" name="qty" id="ticket3" value="0">
-          <span class="plus bg-dark">+</span>
+          <span class="minus3 bg-dark">-</span>
+          <input type="number" class="count3" name="qty" id="ticket3" value="0">
+          <span class="plus3 bg-dark">+</span>
         </div>
       </div>
     </div>
   </center>
 
+<br><br>
+<center><button onclick="registerOnClick()" type="button" class="btn btn-outline-primary btn_login">Register</button></center>
+    
 
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -196,7 +199,13 @@
 
 
 
+ <script>
 
+    function registerOnClick(){
+
+      window.location.href = "buy_ticket_confirm.html";
+    }
+  </script>
 
 
 
