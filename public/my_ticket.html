@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Buy Ticket</title>
-  <script type="text/javascript" src="scripts/buy_ticket.js"></script>
+  <title>My Ticket</title>
+  <script type="text/javascript" src="scripts/my_ticket.js"></script>
 
 
 
@@ -64,6 +64,9 @@
   #color_white{
     color: white;
   }
+  .text_white{
+    color: white;
+  }
   #btnBack{
     margin-left: 2%;
 
@@ -88,7 +91,14 @@
     color: white;
     font-size: 50px;
   }
+  table, td {
+    border: 1px solid white;
 
+  }
+  table{
+    border-collapse: collapse;
+    width: 100%;
+  }
   
 
 
@@ -101,34 +111,9 @@
 </head>
 <body>
 
- <!-- The Modal -->
- <div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Confirm</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
+   
 
-      <!-- Modal body -->
-      <div class="modal-body">
-        <p id="show_ticket1"></p>
-        <p id="show_ticket2"></p>
-        <p id="show_ticket3"></p>
-        <center><div id="paypal-button-container"></div></center>
-        <center><button onclick="SubmitCheckOnClick()" class="btn btn-primary">Submit</button></center>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-
-    </div>
-  </div>
-</div>
 
 
   <!-- <div id="loading">
@@ -136,58 +121,43 @@
   </div> -->
   <br>
   <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
-  <center><h1 id="head_txt">Buy Ticket</h1></center>
+
+
+ <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button btn-raised btn-danger" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Menu
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="checkin.html">Check in</a>
+      <a class="dropdown-item" href="promotion.html">Promotion</a>
+      <a class="dropdown-item" href="my_ticket.html">My Ticket</a>
+      <a class="dropdown-item" href="buy_ticket.html">Buy Ticket</a>
+      <a class="dropdown-item" href="#">Profile</a>
+      <a class="dropdown-item" onclick="logoutOnClick()" >Logout</a>
+    </div>
+  </div>
+
+
+
   
-
-
-
-
-
-  <center>
-    <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="https://s3-eu-west-1.amazonaws.com/ipboard-uploads/monthly_2017_11/ticket.jpg.a05eebf46ebeb3cf936146da005dd955.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">บัตรคุ้มสยาม</h5>
-        <p class="card-text">ราคา 350 บาท
-          <br>อายุ1 วันหลังจากActivateตั๋ว
-        </p>
-
-        <div class="qty mt-5">
-          <span class="minus1 bg-dark">-</span>
-          <input type="number" class="count1" name="qty" id="ticket1" value="0">
-          <span class="plus1 bg-dark">+</span>
-        </div>
-
-      </div>
-    </div>
-  </center>
+  <center><h1 id="head_txt">My Ticket</h1></center>
+  
   <br>
+  <p class="text_white">Ticket Normal : </p>
+  <table id="myTable" class="text_white">
+  </table>
 
-  <center>
-    <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="https://s3-eu-west-1.amazonaws.com/ipboard-uploads/monthly_2017_11/ticket.jpg.a05eebf46ebeb3cf936146da005dd955.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">บัตรรายปี</h5>
-        <p class="card-text">ราคา 500 บาท
-          <br>อายุ 1 ปี
-        </p>
-
-        <div class="qty mt-5">
-          <span class="minus2 bg-dark">-</span>
-          <input type="number" class="count2" name="qty" id="ticket2" value="0">
-          <span class="plus2 bg-dark">+</span>
-        </div>
-
-      </div>
-    </div>
-  </center>
   <br>
+  <p class="text_white">Ticket Year : </p>
+  <table id="myTable2" class="text_white">
+  </table>
+  
+  <br>
+  <p class="text_white">Ticket Activated : </p>
+  <table id="myTable3" class="text_white">
+  </table>
 
 
-
-
-
-  <center><button onclick="buyOnClick()" type="button" class="btn  btn-primary">Buy</button></center>
 
 
 
@@ -210,65 +180,7 @@
 <a href="reward.html"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
 <a href="checkin.html"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
 
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script>
-// Render the PayPal button
-paypal.Button.render({
-// Set your environment
-env: 'sandbox', // sandbox | production
 
-// Specify the style of the button
-style: {
-  layout: 'vertical',  // horizontal | vertical
-  size:   'medium',    // medium | large | responsive
-  shape:  'rect',      // pill | rect
-  color:  'gold'       // gold | blue | silver | white | black
-},
-
-// Specify allowed and disallowed funding sources
-//
-// Options:
-// - paypal.FUNDING.CARD
-// - paypal.FUNDING.CREDIT
-// - paypal.FUNDING.ELV
-funding: {
-  allowed: [
-  paypal.FUNDING.CARD,
-  paypal.FUNDING.CREDIT
-  ],
-  disallowed: []
-},
-
-// PayPal Client IDs - replace with your own
-// Create a PayPal app: https://developer.paypal.com/developer/applications/create
-client: {
-  sandbox: 'AR6Lb4-AObu511gWXnWgyvlSbFb39ntqtFadAw5mbwQ-9a_uJx8UeAD6RmIHZLA3DzgiD2aiDpIqRbdk',
-  production: '<insert production client id>'
-},
-
-payment: function (data, actions) {
-  return actions.payment.create({
-    payment: {
-      transactions: [
-      {
-        amount: {
-          total: '5.00',
-          currency: 'USD'
-        }
-      }
-      ]
-    }
-  });
-},
-
-onAuthorize: function (data, actions) {
-  return actions.payment.execute()
-  .then(function () {
-    window.alert('Payment Complete!');
-  });
-}
-}, '#paypal-button-container');
-</script>
 
 
 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>

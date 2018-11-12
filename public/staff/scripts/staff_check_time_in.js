@@ -15,6 +15,10 @@ function CheckTimeInOnClick(){
 	ref.once("value")
 	.then(function(snapshot){
 		var time_in = snapshot.child(ticket_id).child("time_in").val();
+
+		var type = snapshot.child(ticket_id).child("type").val();
+
+
 		console.log(time_in);
 		if (time_in == "-") {
 			var d = new Date(); 
@@ -27,12 +31,69 @@ function CheckTimeInOnClick(){
 
 			var time = hour + ":" + minute;
 
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1;
+			var yyyy = today.getFullYear();
 
-			var ref = firebase.database().ref("Ticket");
-			ref.child(ticket_id)
-			.update({ 
-				time_in: time
-			});
+
+			var nextDay = new Date(today);
+			nextDay.setDate(today.getDate()+1);
+			var ndd = nextDay.getDate();
+			var nmm = nextDay.getMonth()+1;
+			var nyyyy = nextDay.getFullYear();
+
+
+			if(ndd<10) {
+				ndd = '0'+ndd
+			} 
+
+			if(nmm<10) {
+				nmm = '0'+nmm
+			} 
+
+
+			if(dd<10) {
+				dd = '0'+dd
+			} 
+
+			if(mm<10) {
+				mm = '0'+mm
+			} 
+
+			today = dd + '/' + mm + '/' + yyyy;
+			var valid = ndd + '/' + nmm + '/' + nyyyy;
+
+
+			if (type == "normal") {
+				var ref = firebase.database().ref("Ticket");
+				ref.child(ticket_id)
+				.update({ 
+					time_in: time,
+					issue:today,
+					valid:valid
+				});
+			}else if (type == "year") {
+
+				console.log('yeaar');
+				var today = new Date();
+
+				var yyyy = today.getFullYear();
+				var issue = "01/01/"+yyyy;
+				var valid = "31/12/"+yyyy;
+
+
+				var ref = firebase.database().ref("Ticket");
+				ref.child(ticket_id)
+				.update({ 
+					time_in: time,
+					issue:issue,
+					valid:valid
+				});
+			}
+
+
+			
 
 			
 

@@ -148,7 +148,7 @@ function alertFunc(email) {
     if (countTicketActivated > 0) {
       window.location= "checkin.html";
     }else if (countTicketStanby > 0) {
-      window.location= "use_ticket.html";
+      window.location= "my_ticket.html";
     }else{
       window.location= "buy_ticket.html";
     }
