@@ -84,8 +84,6 @@
 
         today = dd + '/' + mm + '/' + yyyy;
 
-
-
         if (ticket1 > 0) { //บัตรคุ้มสยาม
           for (var i = 0; i < parseInt(ticket1); i++) {
 
