@@ -9,6 +9,7 @@
   
   <title>My Ticket</title>
   <script type="text/javascript" src="scripts/my_ticket.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/loading.css">
 
 
 
@@ -160,7 +161,9 @@
 
 </head>
 <body>
-
+  <div id="loading">
+    <img id="loading-image" src="images/loader.gif" alt="Loading..." />
+  </div>
 
 
 
@@ -207,7 +210,10 @@
     firebase.auth().signOut();
 
 
-    var timer1 =setTimeout(function() { window.location = 'login.html'; }, 3500);
+    var timer1 =setTimeout(function() { 
+      document.getElementById("loading").style.display = "block";
+      window.location = 'login.html';
+       }, 3500);
 
     
 
