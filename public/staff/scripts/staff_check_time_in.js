@@ -19,7 +19,7 @@ function CheckTimeInOnClick(){
 		var type = snapshot.child(ticket_id).child("type").val();
 
 
-		console.log(time_in);
+		
 		if (time_in == "-") {
 			var d = new Date(); 
 			var hour = d.getHours(); 
@@ -157,15 +157,95 @@ function CheckTimeInOnClick(){
 
 			}
 			alert("Time in Complete!");
-		}else{
+		}else if (type == "year") {
+			var valid = snapshot.child(ticket_id).child("valid").val();
+			var issue = snapshot.child(ticket_id).child("issue").val();
+			console.log(valid);
+			console.log(issue);
+
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1;
+			var yyyy = today.getFullYear();
+
+			today = dd + '/' + mm + '/' + yyyy;
+
+			var dateFrom = issue;
+			var dateTo = valid;
+			var dateCheck = today;
+
+			var d1 = dateFrom.split("/");
+			var d2 = dateTo.split("/");
+			var c = dateCheck.split("/");
+
+			var from = new Date(d1[2], parseInt(d1[1])-1, d1[0]);
+			var to   = new Date(d2[2], parseInt(d2[1])-1, d2[0]);
+			var check = new Date(c[2], parseInt(c[1])-1, c[0]);
+
+			console.log(check > from && check < to)
+
+			console.log(dateFrom);
+			console.log(dateTo);
+			console.log(dateCheck);
+
+			if (check > from && check < to) {
+				var firebaseRef3 = firebase.database().ref("History");
+				firebaseRef3.push({
+					id:ticket_id,
+					date:today
+				});
+
+
+
+				var ref = firebase.database().ref("Ticket");
+				ref.once("value")
+				.then(function(snapshot){
+					var email = snapshot.child(ticket_id).child("email").val();
+					var ref = firebase.database().ref("Time");
+					ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+						snapshot.forEach(function(data) {
+
+							var ref = firebase.database().ref("Time");
+							ref.child(data.key)
+							.update({ date: today
+							});
+							console.log("check");
+						});
+					});
+
+				});
+
+
+
+				
+
+
+
+
+
+
+
+
+				
+			}
+
+			alert("Ticket Year can use");
+
+
+
+		}
+
+
+		else{
 			alert("Sorry, Ticket is Activated");
 		}
 	});
 
-	
-	
 
-	
+
+
+
 
 
 

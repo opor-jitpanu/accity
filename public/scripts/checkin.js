@@ -84,7 +84,7 @@ function checkTimeIn(){
         getLocation();
       }else if (date_out != time){
         alert("Pleae Check Time In");
-        window.location.href = "home.html";
+        window.location.href = "my_ticket.html";
       }
 
     });
