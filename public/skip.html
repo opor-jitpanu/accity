@@ -61,7 +61,7 @@
     font-family: 'THSarabunNew';
 
   }
-  #color_white{
+  .color_white{
     color: white;
   }
   #btnBack{
@@ -207,60 +207,26 @@
   <!-- <div id="loading">
     <img id="loading-image" src="images/loader.gif" alt="Loading..." />
   </div> -->
-  <center><button onclick="skipOnClick()" type="button" class="btn  btn-primary">Skip for paper ticket</button></center>
+
   <br>
-  <center><h1 id="head_txt">Buy Ticket</h1></center>
+  <center><h1 id="head_txt">Ticket</h1></center>
+  <p class="color_white">For นักท่องเที่ยว ที่ใช้ตั๋วกระดาษ</p>
+    <p class="color_white">กดCheckin เพื่อร่วมกิจกรรม Checkin </p>
+
+   <center><button onclick="checkinOnClick()" type="button" class="btn  btn-primary">Check in</button></center>
   
 
 
 
 
 
-  <center>
-    <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="https://s3-eu-west-1.amazonaws.com/ipboard-uploads/monthly_2017_11/ticket.jpg.a05eebf46ebeb3cf936146da005dd955.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">บัตรคุ้มสยาม</h5>
-        <p class="card-text">ราคา 350 บาท
-          <br>อายุ1 วันหลังจากActivateตั๋ว
-        </p>
-
-        <div class="qty mt-5">
-          <span class="minus1 bg-dark">-</span>
-          <input type="number" class="count1" name="qty" id="ticket1" value="0">
-          <span class="plus1 bg-dark">+</span>
-        </div>
-
-      </div>
-    </div>
-  </center>
-  <br>
-
-  <center>
-    <div class="card" style="width: 20rem;">
-      <img class="card-img-top" src="https://s3-eu-west-1.amazonaws.com/ipboard-uploads/monthly_2017_11/ticket.jpg.a05eebf46ebeb3cf936146da005dd955.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">บัตรรายปี</h5>
-        <p class="card-text">ราคา 500 บาท
-          <br>อายุ 1 ปี
-        </p>
-
-        <div class="qty mt-5">
-          <span class="minus2 bg-dark">-</span>
-          <input type="number" class="count2" name="qty" id="ticket2" value="0">
-          <span class="plus2 bg-dark">+</span>
-        </div>
-
-      </div>
-    </div>
-  </center>
-  <br>
+  
 
 
 
 
 
-  <center><button onclick="buyOnClick()" type="button" class="btn  btn-primary">Buy</button></center>
+
   
   
 
@@ -315,74 +281,81 @@
     
   }
 
-  function skipOnClick(){
-    window.location.href = "skip.html";
+  function checkinOnClick(){
+
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+    insertEmail(user.email);
+
+  });
+
+
+
+
+
+  function insertEmail(email){
+
+    var ref = firebase.database().ref("Time");
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+      snapshot.forEach(function(data) {
+
+        edit(data.key);
+      });
+    });
   }
 
+  function edit(id){
+    var today_in = new Date();
+    var dd_in = today_in.getDate();
+    var mm_in = today_in.getMonth()+1;
+    var yyyy_in = today_in.getFullYear();
 
+    if(dd_in<10) {
+      dd_in = '0'+dd_in;
+    } 
 
+    if(mm_in<10) {
+      mm_in = '0'+mm_in;
+    } 
 
-</script>
+    date_in = dd_in + '/' + mm_in + '/' + yyyy_in;
 
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
-<script>
-// Render the PayPal button
-paypal.Button.render({
-// Set your environment
-env: 'sandbox', // sandbox | production
+    var d_in = new Date(); 
+    var hour_in = d_in.getHours();
+    var minute_in = d_in.getMinutes(); 
 
-// Specify the style of the button
-style: {
-  layout: 'vertical',  // horizontal | vertical
-  size:   'medium',    // medium | large | responsive
-  shape:  'rect',      // pill | rect
-  color:  'gold'       // gold | blue | silver | white | black
-},
-
-// Specify allowed and disallowed funding sources
-//
-// Options:
-// - paypal.FUNDING.CARD
-// - paypal.FUNDING.CREDIT
-// - paypal.FUNDING.ELV
-funding: {
-  allowed: [
-  paypal.FUNDING.CARD,
-  paypal.FUNDING.CREDIT
-  ],
-  disallowed: []
-},
-
-// PayPal Client IDs - replace with your own
-// Create a PayPal app: https://developer.paypal.com/developer/applications/create
-client: {
-  sandbox: 'AR6Lb4-AObu511gWXnWgyvlSbFb39ntqtFadAw5mbwQ-9a_uJx8UeAD6RmIHZLA3DzgiD2aiDpIqRbdk',
-  production: '<insert production client id>'
-},
-
-payment: function (data, actions) {
-  return actions.payment.create({
-    payment: {
-      transactions: [
-      {
-        amount: {
-          total: '5.00',
-          currency: 'USD'
-        }
-      }
-      ]
+    if (minute_in < 10) {
+      minute_in = '0' + minute_in;
     }
-  });
-},
 
-onAuthorize: function (data, actions) {
-  return actions.payment.execute()
-  .then(function () {
-    window.alert('Payment Complete!');
-  });
+    var time_in = hour_in + ":" + minute_in;
+
+    var ref = firebase.database().ref("Time");
+    ref.child(id)
+    .update({ date: date_in,
+     time_in: time_in,
+     time_out: '-'
+   });
+
+
+  }
+  alert("Time in Complete!");
+
+  var timer1 =setTimeout(function() {  window.location.href = "checkin.html"; }, 3000);
+
+ 
+
+
 }
-}, '#paypal-button-container');
+
+
+
 </script>
+
+
 
 
 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
