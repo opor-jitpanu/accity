@@ -151,6 +151,58 @@
   }
   
 
+
+  /* The side navigation menu */
+  .sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+
 </style>
 
 
@@ -158,107 +210,133 @@
 
 </head>
 <body>
-  <br>
-  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
-  <center><h1 class="text_white">Reward</h1></center>
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container">
-
-    <div class="col-md-4">
-
-      <div class="card">
-        <div class="image pull-left" >
-
-          <img class="card-img-top" id="image1"  alt="Card image cap">
-
-        </div>
-        <div class="content pull-left">
-          <p id="name_reward1"></p>
-          <p id="description1"></p>
-          <p id="point1"></p>
-          <p id="btnlink1"></p>
-          
-          <br>
-
-        </div>
-        <div class="clearfix">
-
-
-        </div>
-      </div>
-    </div>
-  </div> <br>
-
-
-  <div class="container">
-
-    <div class="col-md-4">
-
-      <div class="card">
-        <div class="image pull-left" >
-
-          <img class="card-img-top" id="image2"  alt="Card image cap">
-
-        </div>
-        <div class="content pull-left">
-          <p id="name_reward2"></p>
-          <p id="description2"></p>
-          <p id="point2"></p>
-          <p id="btnlink2"></p>
-
-          <br>
-
-        </div>
-        <div class="clearfix">
-
-
-        </div>
-      </div>
-    </div>
-  </div> <br>
-
-
   
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">Profile</a>
+    <a href="my_ticket.html">My Ticket</a>
+    <a href="buy_ticket.html">Buy Ticket</a>
+    <a href="promotion.html">Promotion</a>
+    <a href="logout.html">Logout</a>
+  </div>
+
+
+  <!-- Use any element to open the sidenav -->
+  <!-- <span onclick="openNav()" >open</span> -->
+  <!-- <button onclick="openNav()" id="btnBack" class="btn btn-primary">open</button> -->
+  <br>
+  <img src="images/menu.png" width="40px" onclick="openNav()">
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div id="main"><center><h1 class="text_white">Reward</h1></center>
 
 
 
-<div class="container">
-
-    <div class="col-md-4">
-
-      <div class="card">
-        <div class="image pull-left" >
-
-          <img class="card-img-top" id="image3"  alt="Card image cap">
-
-        </div>
-        <div class="content pull-left">
-          <p id="name_reward3"></p>
-          <p id="description3"></p>
-          <p id="point3"></p>
-          <p id="btnlink3"></p>
-
-          <br>
-
-        </div>
-        <div class="clearfix">
 
 
+
+
+
+
+
+
+
+    <div class="container">
+
+      <div class="col-md-4">
+
+        <div class="card">
+          <div class="image pull-left" >
+
+            <img class="card-img-top" id="image1"  alt="Card image cap">
+
+          </div>
+          <div class="content pull-left">
+            <p id="name_reward1"></p>
+            <p id="description1"></p>
+            <p id="point1"></p>
+            <p id="btnlink1"></p>
+
+            <br>
+
+          </div>
+          <div class="clearfix">
+
+
+          </div>
         </div>
       </div>
-    </div>
-  </div> <br>
+    </div> <br>
+
+
+    <div class="container">
+
+      <div class="col-md-4">
+
+        <div class="card">
+          <div class="image pull-left" >
+
+            <img class="card-img-top" id="image2"  alt="Card image cap">
+
+          </div>
+          <div class="content pull-left">
+            <p id="name_reward2"></p>
+            <p id="description2"></p>
+            <p id="point2"></p>
+            <p id="btnlink2"></p>
+
+            <br>
+
+          </div>
+          <div class="clearfix">
+
+
+          </div>
+        </div>
+      </div>
+    </div> <br>
+
+
+
+
+
+
+    <div class="container">
+
+      <div class="col-md-4">
+
+        <div class="card">
+          <div class="image pull-left" >
+
+            <img class="card-img-top" id="image3"  alt="Card image cap">
+
+          </div>
+          <div class="content pull-left">
+            <p id="name_reward3"></p>
+            <p id="description3"></p>
+            <p id="point3"></p>
+            <p id="btnlink3"></p>
+
+            <br>
+
+          </div>
+          <div class="clearfix">
+
+
+          </div>
+        </div>
+      </div>
+    </div> <br>
+
+    <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
+    <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a>
+    <a href="reward.html"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
+    <a href="checkin.html"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
+
+
+  </div>
+  
+  
 
 
 
@@ -302,16 +380,33 @@
 
 
 
-  <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
-  <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a>
-  <a href="reward.html"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
-  <a href="checkin.html"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
-
-
 
   <br><br><br><br>
 
+  <script type="text/javascript">
 
+
+
+
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+      
+    }
+
+
+
+
+
+  </script>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>	
   <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
