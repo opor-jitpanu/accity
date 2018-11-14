@@ -147,8 +147,11 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
-
-  
+  .btn-plus{
+    width: 20%;
+    color: white;
+    font-size: 1.5rem;
+  }
 
 
 
@@ -232,24 +235,14 @@
         <p class="card-text">ราคา 350 บาท
           <br>อายุ1 วันหลังจากActivateตั๋ว
         </p>
-
-       <!--  <div class="qty mt-5">
-          <span class="minus1 bg-dark">-</span>
-          <input type="number" class="count1" name="qty" id="ticket1" value="0">
-          <span class="plus1 bg-dark">+</span>
-        </div> -->
         <br>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">เลือกจำนวนตั๋ว</label>
-          <select class="form-control" id="ticket1">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
+
+
+        <button onclick="ticket1minusOnClick()" type="button" class="btn btn-red btn-plus">-</button>
+        <input type="number" class="count1" name="qty" id="ticket1" value="0">
+        <button onclick="ticket1plusOnClick()" type="button" class="btn btn-red btn-plus">+</button>
+
+
 
       </div>
     </div>
@@ -265,23 +258,13 @@
           <br>อายุ 1 ปี
         </p>
 
-        <!-- <div class="qty mt-5">
-          <span class="minus2 bg-dark">-</span>
-          <input type="number" class="count2" name="qty" id="ticket2" value="0">
-          <span class="plus2 bg-dark">+</span>
-        </div> -->
+
         <br>
-        <div class="form-group">
-          <label for="exampleFormControlSelect1">เลือกจำนวนตั๋ว</label>
-          <select class="form-control" id="ticket2">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
+
+        <button onclick="ticket2minusOnClick()" type="button" class="btn btn-red btn-plus">-</button>
+        <input type="number" class="count1" name="qty" id="ticket2" value="0">
+        <button onclick="ticket2plusOnClick()" type="button" class="btn btn-red btn-plus">+</button>
+        
 
       </div>
     </div>

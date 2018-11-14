@@ -44,6 +44,82 @@
 
 
 
+
+
+    function ticket1minusOnClick(){
+      var ticket = document.getElementById('ticket1').value;
+      // console.log(ticket);
+      if (ticket > 0) {
+        ticket = parseInt(ticket);
+        ticket -= 1;
+        // console.log("tet");
+
+        document.getElementById("ticket1").value = ticket;
+      }
+
+    }
+
+
+    function ticket1plusOnClick(){
+
+      var ticket = document.getElementById('ticket1').value;
+      // console.log(ticket);
+      if (ticket >= 0) {
+        ticket = parseInt(ticket);
+        ticket += 1;
+        // console.log("tet");
+
+        document.getElementById("ticket1").value = ticket;
+      }
+
+    }
+
+
+
+    function ticket2minusOnClick(){
+      var ticket = document.getElementById('ticket2').value;
+      // console.log(ticket);
+      if (ticket > 0) {
+        ticket = parseInt(ticket);
+        ticket -= 1;
+        // console.log("tet");
+
+        document.getElementById("ticket2").value = ticket;
+      }
+
+    }
+
+
+    function ticket2plusOnClick(){
+
+      var ticket = document.getElementById('ticket2').value;
+      // console.log(ticket);
+      if (ticket >= 0) {
+        ticket = parseInt(ticket);
+        ticket += 1;
+        // console.log("tet");
+
+        document.getElementById("ticket2").value = ticket;
+      }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     function buyOnClick(){
       $('#myModal').modal('show');
       var ticket1 = document.getElementById('ticket1').value;
