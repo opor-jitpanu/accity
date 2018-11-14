@@ -40,7 +40,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <!-- <link rel="stylesheet" type="text/css" href="styles/materialize.css"> -->
-  <link rel="stylesheet" type="text/css" href="styles/buy_ticket.css">
+
 
   <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script>
 
@@ -139,8 +139,21 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
+  .box{
 
-  
+    width: 70%;
+    background-color: white;
+    margin:0 auto;
+    padding: 10%;
+    border-radius: 30px;
+
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
 
 
 
@@ -176,18 +189,22 @@
   <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
   <div id="main">
 
-   
+
 
     <br>
     <center><h1 id="head_txt">Profile</h1></center>
     
+    <img src="images/256_7.png" class="center" width="50%">
 
+    <br>
+    <div class="box">
+      <center>
+        <p id="firstlastname" ></p>
+        <p id="tel" ></p>
+        <p id="email"></p>
+      </center>
 
-
-    <p id="firstlastname" class="color_white"></p>
-    <p id="tel" class="color_white"></p>
-
-    
+    </div>
 
     
 
@@ -239,6 +256,7 @@
   function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
+
     
   }
 
