@@ -113,7 +113,7 @@ function showInfo(id){
 	ref.once("value")
 	.then(function(snapshot){
 		var place_id = snapshot.child(id).child("place_id").val().substr(1).slice(0);
-		document.getElementById("point_txt").innerHTML = "Place ID : " + place_id;
+		// document.getElementById("point_txt").innerHTML = "Place ID : " + place_id;
 	});
 
 	ref.once("value")
