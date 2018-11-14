@@ -55,6 +55,7 @@
   <style type="text/css">
   body{
     background: #ececec;
+    
   }
   #head_txt{
     font-size: 3rem;
@@ -153,7 +154,16 @@
     .sidenav a {font-size: 18px;}
   }
 
-  
+  .btn-large{
+    width: 40%;
+    border-radius: 29px;
+    height: 40px;
+  }
+  .btn-red{
+    background-color: #88312f;
+    border-color: #ffffff;
+    color: white;
+  }
 
 
 
@@ -237,13 +247,11 @@
     <br><br><br><br>
 
     <!-- <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
-    <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a> -->
-    <a href="reward.html"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
-    <a href="checkin.html"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
+      <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a> -->
+      <a href="reward.html"><div id="btnBar3"><p id="text_in_button">Reward</p></div></a>
+      <a href="checkin.html"><div id="btnBar4"><p id="text_in_button">Check-In</p></div></a>
 
-  </div>
-
-
+    </div>
 
 
 
@@ -259,42 +267,44 @@
 
 
 
-  
-
-
-</body>
 
 
 
 
 
-<script type="text/javascript">
-
-
-
-
-  /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
-  function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-    document.getElementById("main").style.marginLeft = "250px";
-    
-  }
-
-  /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
-  function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
-    
-  }
+  </body>
 
 
 
 
 
-</script>
+  <script type="text/javascript">
 
-<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-<script>
+
+
+
+    /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+
+    }
+
+    /* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+
+    }
+
+
+
+
+
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",

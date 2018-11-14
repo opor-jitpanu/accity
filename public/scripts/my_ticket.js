@@ -106,7 +106,7 @@ window.onload = function(){
 
 						var cell_barcode = row3.insertCell(4);
 
-						cell_barcode.innerHTML = '<center><a href="show_barcode_ticket.html?ticket='+key+'" ><button class="btn btn-info">Barcode</button></a><center>';
+						cell_barcode.innerHTML = '<center><a href="show_barcode_ticket.html?ticket='+key+'" ><button class="btn btn-red">Barcode</button></a><center>';
 
 
 					}

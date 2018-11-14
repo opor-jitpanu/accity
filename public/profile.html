@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Buy Ticket</title>
+  <title>Profile</title>
   <script type="text/javascript" src="scripts/profile.js"></script>
 
 
@@ -153,7 +153,10 @@
     margin-right: auto;
     width: 50%;
   }
-
+  #btnMenu{
+    left: 40%;
+    width: 40px;
+  }
 
 
 </style>
@@ -183,7 +186,7 @@
   <!-- <span onclick="openNav()" >open</span> -->
   <!-- <button onclick="openNav()" id="btnBack" class="btn btn-primary">open</button> -->
   <br>
-  <img src="images/menu.png" width="40px" onclick="openNav()">
+  <img src="images/menu.png" id="btnMenu" onclick="openNav()">
 
   <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
   <div id="main">
@@ -198,9 +201,14 @@
     <br>
     <div class="box">
       <center>
-        <p id="firstlastname" ></p>
-        <p id="tel" ></p>
-        <p id="email"></p>
+        <img src="png/people-2x.png" alt="people">
+        <span id="firstlastname" ></span>
+        <br><br>
+        <img src="png/phone-2x.png" alt="phone">
+        <span id="tel" ></span>
+        <br><br>
+        <img src="png/comment-square-2x.png" alt="comment-square">
+        <span id="email"></span>
       </center>
 
     </div>
