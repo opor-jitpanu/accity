@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="scripts/activate_ticket.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles/loading.css">
   <!-- BootStrap -->
   <!-- Latest compiled and minified CSS -->
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
@@ -37,7 +38,7 @@
 
   <style type="text/css">
   body{
-    background-color: #520C0C;
+    background-color: #ececec;
     background-image: url("images/indexbg.png");
     background-size: 100%;
     background-repeat: repeat-x;
@@ -46,9 +47,18 @@
 
     
   }
-  .color_white{
+  .btn-large{
+    width: 40%;
+    border-radius: 29px;
+    height: 40px;
+
+  }
+  .btn-red{
+    background-color: #88312f;
+    border-color: #ffffff;
     color: white;
   }
+  
   
 }
 </style>
@@ -57,13 +67,29 @@
 <body>
 
   <br><br><br>
-  <center><h1 class="color_white">Activate Complete</h1></center>
+  <center><h1>Activate Complete</h1></center>
+  <br>
+  <center>
+
+    <p id="id"></p>
+    <p id="type"></p>
+    <p id="status"></p>
+    <p id="date"></p>
+
+  </center>
+
+
+
+<div id="loading">
+    <img id="loading-image" src="images/loader.gif" alt="Loading..." />
+  </div>
+
   <br>
   
-  <center><button class="btn btn-primary" onclick="BackOnClick()" type="submit">Back</button></center>
+  <center><button class="btn btn-red btn-large" onclick="BackOnClick()" type="submit">Back</button></center>
 
 
-<script type="text/javascript">
+  <script type="text/javascript">
 
 
 

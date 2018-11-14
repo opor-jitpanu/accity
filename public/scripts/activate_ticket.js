@@ -30,6 +30,27 @@ window.onload = function(){
 
 	});
 	
+
+	var ref = firebase.database().ref("Ticket");
+    ref.once("value")
+    .then(function(snapshot){
+      var status = snapshot.child(ticket).child("status").val();
+      var date_in = snapshot.child(ticket).child("date_in").val();
+      var type = snapshot.child(ticket).child("type").val();
+      
+
+      document.getElementById("status").innerHTML = "Status : "+ status;
+      document.getElementById("date").innerHTML = "Date : " + date_in;
+      document.getElementById("type").innerHTML = "Type : " + type;
+      document.getElementById("id").innerHTML = "ID : " + ticket;
+
+      document.getElementById("loading").style.display = "none";
+      
+    });
+
+
+
+
 	
 
 }
