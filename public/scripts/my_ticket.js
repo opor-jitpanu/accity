@@ -1,4 +1,7 @@
 window.onload = function(){
+	document.getElementById("ticket_normal").style.display = "none";
+	document.getElementById("ticket_year").style.display = "none";
+	document.getElementById("ticket_activated").style.display = "none";
 
 	firebase.auth().onAuthStateChanged(function(user) {
 		var email = user.email;
@@ -40,11 +43,6 @@ window.onload = function(){
 				var issue = childSnapshot.val().issue;
 				var valid = childSnapshot.val().valid;
 
-
-
-
-
-
 				if (date_in == today || status == "stanby") {
 
 
@@ -52,7 +50,7 @@ window.onload = function(){
 					if (status == "stanby" && type == "normal") {
 
 
-
+						document.getElementById("ticket_normal").style.display = "block";
 						var table = document.getElementById("myTable");
 						var row = table.insertRow(0);
 
@@ -71,6 +69,7 @@ window.onload = function(){
 
 
 					}else if (status == "stanby" && type == "year") {
+						document.getElementById("ticket_year").style.display = "block";
 						var table = document.getElementById("myTable2");
 						var row = table.insertRow(0);
 
@@ -87,8 +86,7 @@ window.onload = function(){
 					}
 					else if (status == "activated") {
 
-						
-
+						document.getElementById("ticket_activated").style.display = "block";
 
 						var table3 = document.getElementById("myTable3");
 						var row3 = table3.insertRow(0);

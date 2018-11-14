@@ -43,5 +43,5 @@ window.onload = function(){
 
 
 function BackOnClick(){
-	window.location.href = "home.html";
+	window.location.href = "my_ticket.html";
 }
