@@ -5,8 +5,8 @@ function getLocation(){
 
 
   function showPosition(position) {
-    var x = document.getElementById("debug_txt");
-    x.innerHTML ="Debug : " + position.coords.latitude + " , " + position.coords.longitude;
+    // var x = document.getElementById("debug_txt");
+    // x.innerHTML ="Debug : " + position.coords.latitude + " , " + position.coords.longitude;
     loadwindow(position.coords.latitude, position.coords.longitude);
   }
 
@@ -84,7 +84,7 @@ function checkTimeIn(){
         getLocation();
       }else if (date_out != time){
         alert("Pleae Check Time In");
-        window.location.href = "my_ticket.html";
+        window.location.href = "buy_ticket.html";
       }
 
     });
@@ -105,6 +105,42 @@ function reload(){
 
 
 function loadwindow(c, d){
+
+
+
+
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+    showId(user.email);
+  });
+
+  function showId(email){
+    var ref = firebase.database().ref("User");
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+      snapshot.forEach(function(data) {
+
+        var id = data.key;
+
+        showPoint(data.key);
+      });
+    });
+
+  }
+  function showPoint(id){
+    var ref = firebase.database().ref("User");
+    ref.once("value")
+    .then(function(snapshot){
+      var point = snapshot.child(id).child("point").val();
+      document.getElementById("point").innerHTML = "My point "+point;
+    });
+  }
+
+
+
+
+
 
 
 

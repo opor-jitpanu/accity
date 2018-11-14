@@ -51,10 +51,11 @@
 
   <style type="text/css">
   body{
-    background: #520C0C;
+    background: #ececec;
   }
   #head_txt{
-    color: white;
+    font-size: 3rem;
+    font-weight: bold;
     font-family: 'THSarabunNew';
 
   }
@@ -98,7 +99,7 @@
     display: inline-block;
     border: 1px solid #ddd;
     width: 100%;
-    box-shadow: 5px 10px 18px black;
+    box-shadow: 5px 10px 18px #a5a5a5;
     margin: auto;
     border-radius: 10px;
   }
@@ -190,7 +191,10 @@
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
-
+  .btn-primary{
+    background-color: #88312f;
+    border-color: #ffffff;
+  }
   
 
 
@@ -229,6 +233,7 @@
    <br>
 
    <center><h1 id="head_txt">Check In</h1></center>
+   <center><h3 id="point"></h3></center>
    <br><br>
 
   <!-- <button onclick="getLocation()" class="btn btn-primary">Get Location</button>
@@ -239,7 +244,7 @@
   
   <button onclick="refreshOnClick()" class="btn btn-primary">Refresh</button>
 
-  <center><p id="header_txt">Nearby Places</p> <br>
+  <center><p id="head_txt">Nearby Places</p> <br>
 
 
 
