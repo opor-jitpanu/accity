@@ -255,6 +255,37 @@
 
 
 
+  <!-- The Modal -->
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Activate Year Ticket</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <center>
+            <button onclick="ticketactivateminus2OnClick()" type="button" class="btn btn-red btn-plus">-</button>
+            <input type="number" class="count1" name="qty" id="ticket2" value="0">
+            <button onclick="ticketactivateplus2OnClick()" type="button" class="btn btn-red btn-plus">+</button>
+          </center>
+          <br><br>
+          <center><button onclick="SubmitCheck2OnClick()" class="btn btn-primary">Submit</button></center>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 
   <center><h1 id="head_txt">My Ticket</h1></center>
 
@@ -292,9 +323,16 @@
           <div id="normal_ticket">
             <h5 class="card-title">Year Ticket</h5>
             <p class="card-text">อายุการใช้งาน 1 ปี</p>
-            <p id="ticket_normal_count"></p>
-            <p id="ticket_normal_activate"></p>
-            <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/>
+            <p id="ticket_year_count"></p>
+            <!-- <p id="ticket_year_activate"></p> -->
+
+            <table id="myTable">
+            </table>
+
+
+
+            <br>
+           
           </div>
         </div>
       </div>
