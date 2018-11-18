@@ -46,8 +46,11 @@
 
   <link rel="manifest" href="/manifest.json">
 
-
-
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://afernandezgarcia.com/codepen/carousel/js/touchswipe.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://afernandezgarcia.com/codepen/carousel/js/bootstrap.js"></script>
 
 
 
@@ -58,7 +61,7 @@
 
   }
   #head_txt{
-    font-size: 3rem;
+    font-size: 40px;
     font-weight: bold;
     font-family: 'THSarabunNew';
 
@@ -175,19 +178,22 @@
     border-color: #ffffff;
   }
 
+  .btn-plus {
+    width: 14%;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 91px;
+  }
 
 
 </style>
 
 <link rel="stylesheet" type="text/css" href="styles/loading.css">
-<link rel="stylesheet" type="text/css" href="styles/ticket.css">
+<link rel="stylesheet" href="dist/css/swiper.min.css">
 
 
 </head>
 <body>
-
-
-
 
 
 
@@ -215,127 +221,86 @@
   <div id="main">
 
 
-    <center><h1 id="head_txt">My Ticket</h1></center>
 
-    <br>
-    <center>
+   <!-- The Modal -->
+   <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
-      <button class="open-walkthrough">Start</button>
-
-      <div class="walkthrough show reveal">
-
-        <div class="walkthrough-pagination">
-          <a class="dot active"></a>
-          <a class="dot"></a>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Activate Ticket</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
 
-        <div class="walkthrough-body">
+        <!-- Modal body -->
+        <div class="modal-body">
+          <center>
+            <button onclick="ticketactivateminusOnClick()" type="button" class="btn btn-red btn-plus">-</button>
+            <input type="number" class="count1" name="qty" id="ticket1" value="0">
+            <button onclick="ticketactivateplusOnClick()" type="button" class="btn btn-red btn-plus">+</button>
+          </center>
+          <br><br>
+          <center><button onclick="SubmitCheckOnClick()" class="btn btn-primary">Submit</button></center>
+        </div>
 
-          <ul class="screens animate">
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
 
-            <li class="screen active">
-              <br><br><br>
-              <h3>
-                Normal Ticket
-                <br/>
-              </h3>
-              <p>อายุการใช้งาน 1 วัน</p>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <center><h1 id="head_txt">My Ticket</h1></center>
+
+  <br>
+
+
+
+
+
+
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+
+        <div class="card" style="width: 23rem;">
+          <div class="card-body">
+            <div id="normal_ticket">
+              <h5 class="card-title">Normal Ticket</h5>
+              <p class="card-text">อายุการใช้งาน 1 วัน</p>
               <p id="ticket_normal_count"></p>
               <p id="ticket_normal_activate"></p>
               <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/>
-            </li>
-
-            <li class="screen">
-              <br><br><br>
-
-              <h3>
-                Year Ticket
-                <br/>
-              </h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-            </li>
-
-          </ul>
-          <button class="prev-screen">
-            <i class="icon-angle-left"><</i>
-          </button>
-          <button class="next-screen">
-            <i class="icon-angle-right">></i>
-          </button>
+              <br>
+              <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal" data-target="#myModal">Activate</button>
+            </div>
+          </div>
         </div>
 
       </div>
-      <br>
-    </center>
+      <div class="swiper-slide"> 
 
-
-
-
-
-
-
-
-
-
-
-
-    <div class="card" style="width: 23rem;">
-      <div class="card-body">
-        <button onclick="normalOnClick()" id="btn_normal" class="btn btn-primary">Normal</button>
-        <button onclick="yearOnClick()" id="btn_normal" class="btn btn-primary">Year</button>
-        <br><br>
-
-
-
-        <div id="normal_ticket">
-          <h5 class="card-title">Normal Ticket</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
+       <div class="card" style="width: 23rem;">
+        <div class="card-body">
+          <div id="normal_ticket">
+            <h5 class="card-title">Year Ticket</h5>
+            <p class="card-text">อายุการใช้งาน 1 ปี</p>
+            <p id="ticket_normal_count"></p>
+            <p id="ticket_normal_activate"></p>
+            <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/>
+          </div>
         </div>
-
-
-        <div id="year_ticket">
-          <h5 class="card-title">Year Ticket</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
-
-        
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    <br>
-    <p class="font1" id="ticket_normal">Ticket Normal : </p>
-    <table id="myTable" >
-    </table>
-
-    <br>
-    <p class="font1" id="ticket_year">Ticket Year : </p>
-    <table id="myTable2" >
-    </table>
-
-    <br>
-    <p class="font1" id="ticket_activated">Ticket Activated : </p>
-    <table id="myTable3" >
-    </table>
+  </div>
+</div>
 
 
 
@@ -350,9 +315,7 @@
 
 
 
-
-
-    <br><br><br><br>
+<br><br><br><br>
 
     <!-- <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
       <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a> -->
@@ -407,9 +370,25 @@
 
 
 
-
-
   </script>
+
+
+
+
+
+
+
+  <script src="dist/js/swiper.min.js"></script>
+  
+  <script>
+    var swiper = new Swiper('.swiper-container');
+  </script>
+
+
+
+
+
+
 
   <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
   <script>
