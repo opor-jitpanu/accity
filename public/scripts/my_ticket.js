@@ -99,7 +99,11 @@ window.onload = function(){
 				$('#btn_modal').hide();
 			}
 
+
+
+			document.getElementById("loading").style.display = "none";
 		});
+		
 	});
 
 
@@ -238,6 +242,9 @@ window.onload = function(){
 			// 	window.location.href = "my_ticket.html";
 			// }
 		});
+
+
+
 		
 	});
 
