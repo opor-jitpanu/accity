@@ -136,6 +136,8 @@
 
     function SubmitCheckOnClick(){
 
+      // document.getElementById("loading").style.display = "block";
+
       firebase.auth().onAuthStateChanged(function(user) {
 
         console.log(user.email);
@@ -201,7 +203,13 @@
 
 
 
-        alert("Complete");  
+        alert("Complete"); 
+
+
+        var timer1 =setTimeout(function() { window.location.href = "my_ticket.html"; }, 3000);
+
+
+
 
       });
 
@@ -211,4 +219,26 @@
 
 
     }
+
+
+
+
+
+
+    window.onload = function(){
+      // document.getElementById("loading").style.display = "none";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 

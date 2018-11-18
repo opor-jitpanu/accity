@@ -173,13 +173,14 @@
     color: #fff;
     background-color: #03A9F4;
     border-color: #ffffff;
-}
+  }
 
 
 
 </style>
 
 <link rel="stylesheet" type="text/css" href="styles/loading.css">
+<link rel="stylesheet" type="text/css" href="styles/ticket.css">
 
 
 </head>
@@ -213,16 +214,113 @@
   <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
   <div id="main">
 
-    <br>
-
-
-
-
-
-
-
 
     <center><h1 id="head_txt">My Ticket</h1></center>
+
+    <br>
+    <center>
+
+      <button class="open-walkthrough">Start</button>
+
+      <div class="walkthrough show reveal">
+
+        <div class="walkthrough-pagination">
+          <a class="dot active"></a>
+          <a class="dot"></a>
+        </div>
+
+        <div class="walkthrough-body">
+
+          <ul class="screens animate">
+
+            <li class="screen active">
+              <br><br><br>
+              <h3>
+                Normal Ticket
+                <br/>
+              </h3>
+              <p>อายุการใช้งาน 1 วัน</p>
+              <p id="ticket_normal_count"></p>
+              <p id="ticket_normal_activate"></p>
+              <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/>
+            </li>
+
+            <li class="screen">
+              <br><br><br>
+
+              <h3>
+                Year Ticket
+                <br/>
+              </h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+            </li>
+
+          </ul>
+          <button class="prev-screen">
+            <i class="icon-angle-left"><</i>
+          </button>
+          <button class="next-screen">
+            <i class="icon-angle-right">></i>
+          </button>
+        </div>
+
+      </div>
+      <br>
+    </center>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="card" style="width: 23rem;">
+      <div class="card-body">
+        <button onclick="normalOnClick()" id="btn_normal" class="btn btn-primary">Normal</button>
+        <button onclick="yearOnClick()" id="btn_normal" class="btn btn-primary">Year</button>
+        <br><br>
+
+
+
+        <div id="normal_ticket">
+          <h5 class="card-title">Normal Ticket</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+
+
+        <div id="year_ticket">
+          <h5 class="card-title">Year Ticket</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+
+        
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
     <br>
     <p class="font1" id="ticket_normal">Ticket Normal : </p>
