@@ -97,6 +97,7 @@ window.onload = function(){
 
 			if (countNormal == 0) {
 				$('#btn_modal').hide();
+				$('#btn_modal2').hide();
 			}
 
 
@@ -255,30 +256,38 @@ window.onload = function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
 
 
+function ticketactivateminus3OnClick(){
+	var ticket = document.getElementById('ticket3').value;
+      // console.log(ticket);
+      if (ticket > 0) {
+      	ticket = parseInt(ticket);
+      	ticket -= 1;
+        // console.log("tet");
 
+        document.getElementById("ticket3").value = ticket;
+    }
+
+}
+
+
+function ticketactivateplus3OnClick(){
+
+	var ticket = document.getElementById('ticket3').value;
+      // console.log(ticket);
+      if (ticket >= 0 && ticket < countNormal) {
+      	ticket = parseInt(ticket);
+      	ticket += 1;
+        // console.log("tet");
+
+        document.getElementById("ticket3").value = ticket;
+    }
+
+}
 
 
 
@@ -455,5 +464,109 @@ function SubmitCheck2OnClick(){
 	
 }
 
+
+
+
+
+
+
+
+
+
+
+
+function transferOnClick(){
+	var ticket = document.getElementById('ticket3').value;
+	var email_transfer = document.getElementById('InputEmail').value;
+	var userDataRef = firebase.database().ref("Ticket");
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+		dd = '0'+dd
+	} 
+
+	if(mm<10) {
+		mm = '0'+mm
+	} 
+
+	today = dd + '/' + mm + '/' + yyyy;
+
+	var check = 0;
+	firebase.auth().onAuthStateChanged(function(user) {
+		var email = user.email;
+		userDataRef.orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
+			snapshot.forEach(function(childSnapshot) {
+
+				var key = childSnapshot.key;
+				var childData = childSnapshot.val();
+
+				var date = childSnapshot.val().date;
+				var email = childSnapshot.val().email;
+				var status = childSnapshot.val().status;
+
+				var time_in = childSnapshot.val().time_in;
+				var time_out = childSnapshot.val().time_out;
+				var date_in = childSnapshot.val().date_in;
+				var date_out = childSnapshot.val().date_out;
+
+				var type = childSnapshot.val().type;
+
+				var issue = childSnapshot.val().issue;
+				var valid = childSnapshot.val().valid;
+
+				
+
+				if (date_in == today || status == "stanby") {
+
+					if (status == "stanby" && type == "normal") {
+
+
+						if (check < ticket) {
+
+							var today = new Date();
+							var dd = today.getDate();
+							var mm = today.getMonth()+1;
+							var yyyy = today.getFullYear();
+
+							if(dd<10) {
+								dd = '0'+dd
+							} 
+
+							if(mm<10) {
+								mm = '0'+mm
+							} 
+
+							today = dd + '/' + mm + '/' + yyyy;
+
+
+
+							var ref = firebase.database().ref("Ticket");
+							ref.child(key)
+							.update({ 
+								email : email_transfer
+
+							});
+							check += 1;
+						}else if (check == ticket) {
+							window.location.href = "my_ticket.html";
+						}else{
+							window.location.href = "my_ticket.html";
+						}
+
+					}
+
+				}
+
+			});
+			if (check == ticket) {
+				window.location.href = "my_ticket.html";
+			}
+		});
+		
+	});
+}
 
 

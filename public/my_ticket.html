@@ -176,7 +176,7 @@
     color: #7d0000;
     background-color: #ffffff;
     border-color: #7d0000;
-}
+  }
 
   .btn-plus {
     width: 14%;
@@ -196,148 +196,188 @@
 <body>
 
 
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="profile.html">Profile</a>
+    <a href="my_ticket.html">My Ticket</a>
+    <a href="buy_ticket.html">Buy Ticket</a>
+    <a href="promotion.html">Promotion</a>
+    <a href="logout.html">Logout</a>
+  </div>
+
+
+  <!-- Use any element to open the sidenav -->
+  <!-- <span onclick="openNav()" >open</span> -->
+  <!-- <button onclick="openNav()" id="btnBack" class="btn btn-primary">open</button> -->
+  <br>
+  <img src="images/menu.png" width="40px" onclick="openNav()">
+
+  <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+  <div id="main">
 
 
 
+   <!-- The Modal -->
+   <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Activate Ticket</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="profile.html">Profile</a>
-  <a href="my_ticket.html">My Ticket</a>
-  <a href="buy_ticket.html">Buy Ticket</a>
-  <a href="promotion.html">Promotion</a>
-  <a href="logout.html">Logout</a>
-</div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <center>
+            <button onclick="ticketactivateminusOnClick()" type="button" class="btn btn-red btn-plus">-</button>
+            <input type="number" class="count1" name="qty" id="ticket1" value="0">
+            <button onclick="ticketactivateplusOnClick()" type="button" class="btn btn-red btn-plus">+</button>
+          </center>
+          <br><br>
+          <center><button onclick="SubmitCheckOnClick()" class="btn btn-primary">Submit</button></center>
+        </div>
 
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
 
-<!-- Use any element to open the sidenav -->
-<!-- <span onclick="openNav()" >open</span> -->
-<!-- <button onclick="openNav()" id="btnBack" class="btn btn-primary">open</button> -->
-<br>
-<img src="images/menu.png" width="40px" onclick="openNav()">
-
-<!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-<div id="main">
-
-
-
- <!-- The Modal -->
- <div class="modal" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Activate Ticket</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <center>
-          <button onclick="ticketactivateminusOnClick()" type="button" class="btn btn-red btn-plus">-</button>
-          <input type="number" class="count1" name="qty" id="ticket1" value="0">
-          <button onclick="ticketactivateplusOnClick()" type="button" class="btn btn-red btn-plus">+</button>
-        </center>
-        <br><br>
-        <center><button onclick="SubmitCheckOnClick()" class="btn btn-primary">Submit</button></center>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-
     </div>
   </div>
-</div>
 
 
 
-<!-- The Modal -->
-<div class="modal" id="myModal2">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <!-- The Modal -->
+  <div class="modal" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">Activate Year Ticket</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Activate Year Ticket</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <center>
+            <button onclick="ticketactivateminus2OnClick()" type="button" class="btn btn-red btn-plus">-</button>
+            <input type="number" class="count1" name="qty" id="ticket2" value="0">
+            <button onclick="ticketactivateplus2OnClick()" type="button" class="btn btn-red btn-plus">+</button>
+          </center>
+          <br><br>
+          <center><button onclick="SubmitCheck2OnClick()" class="btn btn-primary">Submit</button></center>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
       </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <center>
-          <button onclick="ticketactivateminus2OnClick()" type="button" class="btn btn-red btn-plus">-</button>
-          <input type="number" class="count1" name="qty" id="ticket2" value="0">
-          <button onclick="ticketactivateplus2OnClick()" type="button" class="btn btn-red btn-plus">+</button>
-        </center>
-        <br><br>
-        <center><button onclick="SubmitCheck2OnClick()" class="btn btn-primary">Submit</button></center>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-      </div>
-
     </div>
   </div>
-</div>
-
-
-<center><h1 id="head_txt">My Ticket</h1></center>
-
-<br>
 
 
 
+  <!-- The Modal -->
+  <div class="modal" id="transfermyModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Transfer Ticket</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <center>
+            <button onclick="ticketactivateminus3OnClick()" type="button" class="btn btn-red btn-plus">-</button>
+            <input type="number" class="count1" name="qty" id="ticket3" value="0">
+            <button onclick="ticketactivateplus3OnClick()" type="button" class="btn btn-red btn-plus">+</button>
+          </center>
+
+
+
+          <div class="form-group">
+            <label for="InputEmail" id="color_white">E-mail : </label>
+            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+
+
+          <br><br>
+          <center><button onclick="transferOnClick()" class="btn btn-primary">Submit</button></center>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 
 
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    <div class="swiper-slide">
+  <center><h1 id="head_txt">My Ticket</h1></center>
 
-      <div class="card" style="width: 23rem;">
+  <br>
+
+
+
+
+
+
+
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+
+        <div class="card" style="width: 23rem;">
+          <div class="card-body">
+            <div id="normal_ticket">
+              <h5 class="card-title">Normal Ticket</h5>
+              <p class="card-text">อายุการใช้งาน 1 วัน</p>
+              <p id="ticket_normal_count"></p>
+              <p id="ticket_normal_activate"></p>
+              <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/>
+              <br><br>
+              <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal" data-target="#myModal">Activate</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal2" data-target="#transfermyModal">Tranfer Ticket</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="swiper-slide"> 
+
+       <div class="card" style="width: 23rem;">
         <div class="card-body">
           <div id="normal_ticket">
-            <h5 class="card-title">Normal Ticket</h5>
-            <p class="card-text">อายุการใช้งาน 1 วัน</p>
-            <p id="ticket_normal_count"></p>
-            <p id="ticket_normal_activate"></p>
-            <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/>
+            <h5 class="card-title">Year Ticket</h5>
+            <p class="card-text">อายุการใช้งาน 1 ปี</p>
+            <p id="ticket_year_count"></p>
+            <!-- <p id="ticket_year_activate"></p> -->
+
+            <table id="myTable">
+            </table>
+
+
+
             <br>
-            <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal" data-target="#myModal">Activate</button>
+
           </div>
         </div>
       </div>
-
-    </div>
-    <div class="swiper-slide"> 
-
-     <div class="card" style="width: 23rem;">
-      <div class="card-body">
-        <div id="normal_ticket">
-          <h5 class="card-title">Year Ticket</h5>
-          <p class="card-text">อายุการใช้งาน 1 ปี</p>
-          <p id="ticket_year_count"></p>
-          <!-- <p id="ticket_year_activate"></p> -->
-
-          <table id="myTable">
-          </table>
-
-
-
-          <br>
-
-        </div>
-      </div>
     </div>
   </div>
-</div>
 </div>
 
 
