@@ -173,6 +173,26 @@ function alertFunc(email) {
 
 
 
+function forgetpassOnClick(){
+
+  var emailAddress = document.getElementById('InputEmail').value;
+  
+
+  var auth = firebase.auth();
+  // var emailAddress = "user@example.com";
+
+  auth.sendPasswordResetEmail(emailAddress).then(function() {
+    alert("Please Check Your Email");
+    window.location= "login.html";
+  }).catch(function(error) {
+    console.log(error);
+  });
+
+
+}
+
+
+
 
 
 

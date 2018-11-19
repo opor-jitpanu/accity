@@ -130,7 +130,7 @@ function signUp(){
 
 	function alertFunc() {
 	    
-	    window.location= "index.html";
+	    window.location= "login.html";
 	}
 
 
