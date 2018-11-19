@@ -124,19 +124,79 @@
       $('#myModal').modal('show');
       var ticket1 = document.getElementById('ticket1').value;
       var ticket2 = document.getElementById('ticket2').value;
-      document.getElementById("show_ticket1").innerHTML = "บัตรคุ้มสยาม : " + ticket1 +"ใบ รวมเป็น : "+ticket1*350 ;
-      document.getElementById("show_ticket2").innerHTML = "บัตรรายปี : " + ticket2 +"ใบ รวมเป็น : "+ticket2*500 ;
-      document.getElementById("show_ticket3").innerHTML = "รวมราคาทั้งหมด : " + ((ticket2*500)+(ticket1*350)) ;
+      // document.getElementById("show_ticket1").innerHTML = "บัตรคุ้มสยาม : " + ticket1 +"ใบ รวมเป็น : "+ticket1*350 ;
+      // document.getElementById("show_ticket2").innerHTML = "บัตรรายปี : " + ticket2 +"ใบ รวมเป็น : "+ticket2*500 ;
+      // document.getElementById("show_ticket3").innerHTML = "รวมราคาทั้งหมด : " + ((ticket2*500)+(ticket1*350)) ;
 
+
+      var table = document.getElementById("myTable");
+      var row = table.insertRow(0);
+
+      var cell_place_id = row.insertCell(0);
+      cell_place_id.innerHTML = "Total";
+
+      var cell_place_name = row.insertCell(1);
+      cell_place_name.innerHTML = parseInt(ticket1)+parseInt(ticket2);
+
+      var cell_place_name = row.insertCell(2);
+      cell_place_name.innerHTML = ticket1 * 350 +" + "+ticket2 * 500 +" = "+ (parseInt(ticket2 * 500)+parseInt(ticket1*350));
+
+      if (ticket1 > 0) {
+
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(0);
+
+        var cell_place_id = row.insertCell(0);
+        cell_place_id.innerHTML = "Normal Ticket";
+
+        var cell_place_name = row.insertCell(1);
+        cell_place_name.innerHTML = ticket1;
+
+        var cell_place_name = row.insertCell(2);
+        cell_place_name.innerHTML = ticket1+"x 350 = "+ticket1 * 350;
+        
+      }
+
+      if (ticket2 > 0) {
+
+        var table = document.getElementById("myTable");
+        var row = table.insertRow(0);
+        
+        var cell_place_id = row.insertCell(0);
+        cell_place_id.innerHTML = "Year Ticket";
+
+        var cell_place_name = row.insertCell(1);
+        cell_place_name.innerHTML = ticket2;
+
+        var cell_place_name = row.insertCell(2);
+        cell_place_name.innerHTML = ticket2+"x 500 = "+ticket2 * 500;
+        
+      }
+      last();
 
     }
 
+    function last(){
 
+
+
+
+
+      var table = document.getElementById("myTable");
+      var header = table.createTHead();
+      var row = header.insertRow(0);
+      var cell = row.insertCell(0);
+      cell.innerHTML = "<center><b>Type</b></center>";
+      var cell = row.insertCell(1);
+      cell.innerHTML = "<center><b>Count</b></center>";
+      var cell = row.insertCell(2);
+      cell.innerHTML = "<center><b>Price</b></center>";
+    }
 
 
     function SubmitCheckOnClick(){
 
-      // document.getElementById("loading").style.display = "block";
+
 
       firebase.auth().onAuthStateChanged(function(user) {
 

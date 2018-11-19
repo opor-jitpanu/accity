@@ -25,7 +25,6 @@ window.onload = function(){
       });
     });
 
-
     var ref2 = firebase.database().ref("Time");
     ref2.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
       snapshot.forEach(function(data) {
@@ -41,14 +40,8 @@ window.onload = function(){
       });
     });
 
-
-
-
-
-
   });
 
-
-
-
 }
+
+

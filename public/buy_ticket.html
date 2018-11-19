@@ -165,7 +165,16 @@
 
 
 </style>
+<style>
+table, td {
+  border: 1px solid black;
 
+}
+table{
+  border-collapse: collapse;
+  width: 100%;
+}
+</style>
 <link rel="stylesheet" type="text/css" href="styles/loading.css">
 
 
@@ -207,9 +216,9 @@
 
         <!-- Modal body -->
         <div class="modal-body">
-          <p id="show_ticket1"></p>
-          <p id="show_ticket2"></p>
-          <p id="show_ticket3"></p>
+          <table id="myTable">
+          </table>
+          <br><br>
           <center><div id="paypal-button-container"></div></center>
           <center><button onclick="SubmitCheckOnClick()" class="btn btn-primary">Submit</button></center>
         </div>
