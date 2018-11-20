@@ -119,7 +119,7 @@ function showInfo(id){
 	ref.once("value")
 	.then(function(snapshot){
 		var description = snapshot.child(id).child("description").val();
-		document.getElementById("description_txt").innerHTML = "Description : " + description;
+		document.getElementById("description_txt").innerHTML = description;
 	});
 
 	ref.once("value")
