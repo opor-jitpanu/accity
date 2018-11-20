@@ -186,6 +186,7 @@ function forgetpassOnClick(){
     window.location= "login.html";
   }).catch(function(error) {
     console.log(error);
+    alert(error);
   });
 
 
