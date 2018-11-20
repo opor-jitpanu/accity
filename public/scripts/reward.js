@@ -2,6 +2,40 @@
 window.onload = function(){
 
 
+
+
+
+	firebase.auth().onAuthStateChanged(function(user) {
+
+		showId(user.email);
+	});
+
+	function showId(email){
+		var ref = firebase.database().ref("User");
+		ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+			snapshot.forEach(function(data) {
+
+				var id = data.key;
+
+				showPoint(data.key);
+			});
+		});
+
+	}
+	function showPoint(id){
+		var ref = firebase.database().ref("User");
+		ref.once("value")
+		.then(function(snapshot){
+			var point = snapshot.child(id).child("point").val();
+			document.getElementById("point").innerHTML = "My point "+point;
+		});
+	}
+
+
+
+
+
 	
 
 	

@@ -213,9 +213,9 @@
   </div>
 
 
-  <!-- <div id="loading">
+  <div id="loading">
     <img id="loading-image" src="images/loader.gif" alt="Loading..." />
-  </div> -->
+  </div>
 
   <br>
   <center><h1 id="head_txt">Ticket</h1></center>
@@ -275,7 +275,9 @@
 <script type="text/javascript">
 
 
-
+  window.onload = function(){
+    document.getElementById("loading").style.display = "none";
+  }
 
   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px and add a black background color to body */
   function openNav() {
@@ -294,7 +296,7 @@
   function checkinOnClick(){
 
 
-
+    document.getElementById("loading").style.display = "block";
     firebase.auth().onAuthStateChanged(function(user) {
 
       insertEmail(user.email);
@@ -354,7 +356,9 @@
     }
     alert("Time in Complete!");
 
-    var timer1 =setTimeout(function() {  window.location.href = "checkin.html"; }, 3000);
+    var timer1 =setTimeout(function() {  
+      window.location.href = "checkin.html";
+    }, 3000);
 
 
 
