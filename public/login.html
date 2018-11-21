@@ -146,6 +146,9 @@ background-size: 100% 55%;
 #text_forget{
   color: #8e8e8e;
 }
+.btn_forget{
+  width: 10px;
+}
 </style>
 
 
@@ -214,17 +217,20 @@ background-size: 100% 55%;
       <div class="form-group">
         <label for="exampleInputPassword1" class="bmd-label-floating">Password</label>
         <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+        <!-- <p data-toggle="modal" data-target="#myModal" id="text_forget">Forget Password</p> -->
+        <!-- <button type="button" class="btn btn-outline-primary btn_forget" data-toggle="modal" id="btn_modal" data-target="#myModal">Forget Password</button> -->
+
         <!-- <input type="password" class="form-control" id="loginPassword" a placeholder="Enter Password"> -->
       </div>
     </div>
     <center><button onclick="signInOnClick()" type="button" class="btn btn-outline-primary btn_login">Login</button></center>
     
-    <center><p data-toggle="modal" data-target="#myModal" id="text_forget">Forget Password</p></center>
+    <!-- <center><p data-toggle="modal" data-target="#myModal" id="text_forget">Forget Password</p></center> -->
     <!-- <center><a data-toggle="modal" data-target="#myModal" id="text_forget">Forget Password</a></center> -->
     
-
-    <!-- <center><button type="button" class="btn btn-outline-primary btn_login" data-toggle="modal" id="btn_modal" data-target="#myModal">Forget Password</button></center> -->
-    
+    <br>
+    <center><button type="button" class="btn btn-outline-primary btn_login" data-toggle="modal" id="btn_modal" data-target="#myModal">Forget Password</button></center>
+    <br>
     <center><button onclick="registerOnClick()" type="button" class="btn btn-outline-primary btn_login">Register</button></center>
     <br>
 
