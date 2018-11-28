@@ -87,10 +87,13 @@ window.onload = function(){
 
 			console.log(barcode);
 			if (countAcNormal > 0) {
-				var url = 'https://barcode.tec-it.com/barcode.ashx?data=' + barcode + '&code=Code128&dpi=96&dataseparator=';
-				$('#barcode2').attr('src', url);
+				// var url = 'https://barcode.tec-it.com/barcode.ashx?data=' + barcode + '&code=Code128&dpi=96&dataseparator=';
+				// $('#barcode2').attr('src', url);
+				var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + barcode + '&amp;size=50x50';
+				$('#barcode').attr('src', url);
 			}else{
-				$('#barcode2').hide();
+				// $('#barcode2').hide();
+				$('#barcode').hide();
 			}
 
 
@@ -98,7 +101,11 @@ window.onload = function(){
 			if (countNormal == 0) {
 				$('#btn_modal').hide();
 				$('#btn_modal2').hide();
+				
 			}
+
+
+			document.getElementById("loading").style.display = "none";
 
 
 

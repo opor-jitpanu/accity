@@ -35,6 +35,11 @@ window.onload = function(){
 		});
 		document.getElementById("point_txt").innerHTML = "Your current point : " + sum;
 		document.getElementById("loading").style.display = "none";
+
+
+		var timer2 =setTimeout(function() { 
+			window.location.href = "checkin.html";
+		}, 1000);
 	}
 	
 }

@@ -182,7 +182,7 @@ function loadwindow(c, d){
     }else if(distance2 >= 301){
       check = 'no';
     }
-    showImage(sortedCities[0][0],1);
+    showImage(sortedCities[0][0],1, check);
     showNamePlace(sortedCities[0][0], 1);
     var x2 = document.getElementById("btnlink1");
     x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[0][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
@@ -197,7 +197,7 @@ function loadwindow(c, d){
     }else if(distance2 >= 301){
       check = 'no';
     }
-    showImage(sortedCities[1][0],2);
+    showImage(sortedCities[1][0],2, check);
     showNamePlace(sortedCities[1][0], 2);
     var x2 = document.getElementById("btnlink2");
     x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[1][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
@@ -211,7 +211,7 @@ function loadwindow(c, d){
     }else if(distance2 >= 301){
       check = 'no';
     }
-    showImage(sortedCities[2][0],3);
+    showImage(sortedCities[2][0],3, check);
     showNamePlace(sortedCities[2][0], 3);
     var x2 = document.getElementById("btnlink3");
     x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[2][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
@@ -225,7 +225,7 @@ function loadwindow(c, d){
     }else if(distance2 >= 301){
       check = 'no';
     }
-    showImage(sortedCities[3][0],4);
+    showImage(sortedCities[3][0],4, check);
     showNamePlace(sortedCities[3][0], 4);
     var x2 = document.getElementById("btnlink4");
     x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[3][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
@@ -239,7 +239,7 @@ function loadwindow(c, d){
     }else if(distance2 >= 301){
       check = 'no';
     }
-    showImage(sortedCities[4][0],5);
+    showImage(sortedCities[4][0],5, check);
     showNamePlace(sortedCities[4][0], 5);
     var x2 = document.getElementById("btnlink5");
     x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[4][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
@@ -254,7 +254,7 @@ function loadwindow(c, d){
 
       check = 'no';
     }
-    showImage(sortedCities[5][0],6);
+    showImage(sortedCities[5][0],6, check);
     showNamePlace(sortedCities[5][0], 6);
     var x2 = document.getElementById("btnlink6");
     x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[5][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
@@ -282,12 +282,22 @@ function showNamePlace(place,line){
 }
 
 
-function showImage(place, line){
+function showImage(place, line, check){
   var storageRef = firebase.storage().ref();
   var spaceRef = storageRef.child('images/'+place+'.jpg');
   storageRef.child('images/'+place+'.jpg').getDownloadURL().then(function(url) {
     var test = url;
     document.getElementById('image'+line).src = url;
+
+    if (check == "yes") { //can check
+      document.getElementById('image'+line).style.opacity = '1';
+    }else if(check == "no"){ //not check
+      document.getElementById('image'+line).style.opacity = '0.5';
+    }
+
+
+
+
 
 
   }).catch(function(error) {

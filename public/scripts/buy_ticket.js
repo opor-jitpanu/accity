@@ -264,19 +264,14 @@
 
 
         alert("Complete"); 
-
-
+        $('#myModal').modal('hide');
+        document.getElementById("loading").style.display = "block";
         var timer1 =setTimeout(function() { window.location.href = "my_ticket.html"; }, 3000);
 
 
 
 
       });
-
-
-
-      
-
 
     }
 
@@ -286,14 +281,22 @@
 
 
     window.onload = function(){
-      // document.getElementById("loading").style.display = "none";
+      // // document.getElementById("loading").style.display = "none";
+      // var timer2 =setTimeout(function() { 
+      //   document.getElementById("loading").style.display = "none"; 
+      // }, 1000);
     }
 
 
 
 
 
+function CloseOnClick(){
 
+  var Table = document.getElementById("myTable");
+  Table.innerHTML = "";
+
+}
 
 
 

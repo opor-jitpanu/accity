@@ -186,7 +186,11 @@
   }
 
 
+
 </style>
+
+
+<link rel="stylesheet" type="text/css" href="styles/loading.css">
 
 <link rel="stylesheet" type="text/css" href="styles/loading.css">
 <link rel="stylesheet" href="dist/css/swiper.min.css">
@@ -323,7 +327,9 @@
     </div>
   </div>
 
-
+  <div id="loading">
+    <img id="loading-image" src="images/loader.gif" alt="Loading..." />
+  </div>
 
 
   <center><h1 id="head_txt">My Ticket</h1></center>
@@ -347,38 +353,45 @@
               <p class="card-text">One day ticket</p>
               <p id="ticket_normal_count"></p>
               <p id="ticket_normal_activate"></p>
-              <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/>
+              <!-- <img id="barcode2" src='' width="100%" alt='Barcode Generator TEC-IT'/> -->
               <br><br>
-              <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal" data-target="#myModal">Activate</button>
-              <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal2" data-target="#transfermyModal">Tranfer Ticket</button>
+              <center><img id='barcode' 
+                src="" 
+                alt="" 
+                title="HELLO" 
+                width="170" 
+                height="170" /></center>
+                <br><br>
+                <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal" data-target="#myModal">Activate</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" id="btn_modal2" data-target="#transfermyModal">Tranfer Ticket</button>
+              </div>
             </div>
           </div>
+
         </div>
+        <div class="swiper-slide"> 
 
-      </div>
-      <div class="swiper-slide"> 
+         <div class="card" style="width: 23rem;">
+          <div class="card-body">
+            <div id="normal_ticket">
+              <h5 class="card-title">Year Ticket</h5>
+              <p class="card-text">365 day ticket</p>
+              <p id="ticket_year_count"></p>
+              <!-- <p id="ticket_year_activate"></p> -->
 
-       <div class="card" style="width: 23rem;">
-        <div class="card-body">
-          <div id="normal_ticket">
-            <h5 class="card-title">Year Ticket</h5>
-            <p class="card-text">365 day ticket</p>
-            <p id="ticket_year_count"></p>
-            <!-- <p id="ticket_year_activate"></p> -->
-
-            <table id="myTable">
-            </table>
+              <table id="myTable">
+              </table>
 
 
 
-            <br>
+              <br>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
 
 
@@ -393,7 +406,7 @@
 
 
 
-<br><br><br><br>
+  <br><br><br><br>
 
     <!-- <a href="home.html"><div id="btnBar1"><p id="text_in_button">Home</p></div></a>
       <a href="promotion.html"><div id="btnBar2"><p id="text_in_button">Promotion</p></div></a> -->
