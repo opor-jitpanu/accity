@@ -144,7 +144,6 @@ function loadwindow(c, d){
 
 
 
-
   var a = 13.548565;
   var b = 100.628249;
   // var myLocation = [13.548565, 100.628249];
@@ -287,23 +286,43 @@ function showImage(place, line, check){
   var spaceRef = storageRef.child('images/'+place+'.jpg');
   storageRef.child('images/'+place+'.jpg').getDownloadURL().then(function(url) {
     var test = url;
-    document.getElementById('image'+line).src = url;
-
-    if (check == "yes") { //can check
-      document.getElementById('image'+line).style.opacity = '1';
-    }else if(check == "no"){ //not check
-      document.getElementById('image'+line).style.opacity = '0.5';
-    }
-
-
-
-
-
+    document.getElementById('image'+line).src = url; 
 
   }).catch(function(error) {
 
   });
+
+  firebase.auth().onAuthStateChanged(function(user) {
+
+    var ref2 = firebase.database().ref("Checkin");
+    var ref = firebase.database().ref("Checkin");
+    var check = '';
+    ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
+      snapshot.forEach(function(data) {
+        var id = data.key;
+        ref2.once("value")
+        .then(function(snapshot){
+
+          var location = snapshot.child(id).child("location").val();
+
+          if (location == place) {
+            console.log("check" + location +" "+place);
+            document.getElementById('image'+line).style.opacity = "0.3";
+          }
+
+        });
+
+
+      });
+
+    });
+
+
+  });
+
+
 }
+
 
 
 
