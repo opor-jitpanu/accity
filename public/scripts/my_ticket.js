@@ -69,11 +69,21 @@ window.onload = function(){
 						
 					}else if (status == "activated" && type == "normal" && issue == '-') {
 
-						countAcYear += 1;
+						
 
 					}
 
 				}
+
+
+
+
+				if (type == "year" && status == "activated") {
+					countAcYear += 1;
+				}
+
+
+
 
 			});
 
@@ -83,9 +93,11 @@ window.onload = function(){
 
 
 			document.getElementById("ticket_year_count").innerHTML = '#Tickets : ' + countYear;
-			// document.getElementById("ticket_year_activate").innerHTML = '#Tickets Activated : ' + countAcYear;
+			document.getElementById("ticket_year_activated").innerHTML = '#Tickets Activated : ' + countAcYear;
+			
 
 			console.log(barcode);
+			console.log(countAcYear);
 			if (countAcNormal > 0) {
 				// var url = 'https://barcode.tec-it.com/barcode.ashx?data=' + barcode + '&code=Code128&dpi=96&dataseparator=';
 				// $('#barcode2').attr('src', url);
@@ -96,6 +108,17 @@ window.onload = function(){
 				$('#barcode').hide();
 			}
 
+			
+
+			if (countAcYear > 0 ) {
+
+				console.log('countAcYear : ' + countAcYear);
+
+				
+
+			}
+
+
 
 
 			if (countNormal == 0) {
@@ -103,6 +126,8 @@ window.onload = function(){
 				$('#btn_modal2').hide();
 				
 			}
+
+
 
 
 			document.getElementById("loading").style.display = "none";
@@ -118,25 +143,12 @@ window.onload = function(){
 
 
 
-
-
-
-
-
-
-
-
-	// var table = document.getElementById("myTable");
-	// var row = table.insertRow(0);
-
-	// var cell_place_id = row.insertCell(0);
-	// cell_place_id.innerHTML = place_id;
-
-	// var cell_place_name = row.insertCell(1);
-	// cell_place_name.innerHTML = place_name;
 	var userDataRef = firebase.database().ref("Ticket");
 	var today = new Date();
 	var yyyy = today.getFullYear();
+
+	var check1 = 0;
+	var check2 = 0;
 
 	
 	
@@ -148,6 +160,9 @@ window.onload = function(){
 
 				var table = document.getElementById("myTable");
 				var row = table.insertRow(0);
+
+				var table2 = document.getElementById("myTable2");
+				var row2 = table2.insertRow(0);
 
 				var key = childSnapshot.key;
 				var childData = childSnapshot.val();
@@ -167,7 +182,7 @@ window.onload = function(){
 				var valid = childSnapshot.val().valid;
 
 
-
+				var name = childSnapshot.val().name;
 
 				var today = new Date();
 				var dd = today.getDate();
@@ -188,73 +203,60 @@ window.onload = function(){
 				var to   = new Date(d2[2], parseInt(d2[1])-1, d2[0]);
 				var check = new Date(c[2], parseInt(c[1])-1, c[0]);
 
-				// console.log(check > from && check < to)
+				
 
 
 
 				if (type == "year") {
 					if (valid == "-" || check > from && check < to) {
+
+
+
+						if (name !== '-') {
+							check1 += 1;
+							var cell_id = row.insertCell(0);
+							cell_id.innerHTML = '<img id="barcode2" src="https://barcode.tec-it.com/barcode.ashx?data=' + key + '**&code=Code128&dpi=96&dataseparator=+"" width="100%" alt="Barcode Generator TEC-IT"/><br>Name : '+name+'<br>Issue : '+issue+'<br>Valid : '+ valid;
+							console.log(key+'**');
+						}
 						
-						var cell_id = row.insertCell(0);
-						cell_id.innerHTML = '<img id="barcode2" src="https://barcode.tec-it.com/barcode.ashx?data=' + key + '**&code=Code128&dpi=96&dataseparator=+"" width="100%" alt="Barcode Generator TEC-IT"/><br>Issue : '+issue+'<br>Valid : '+ valid;
-						console.log(key+'**');
-						
+						if (name == '-') {
+							check2 += 1;
+							var cell_id2 = row2.insertCell(0);
+							cell_id2.innerHTML = '<img id="barcode2" src="https://barcode.tec-it.com/barcode.ashx?data=' + key + '**&code=Code128&dpi=96&dataseparator=+"" width="100%" alt="Barcode Generator TEC-IT"/><br><a href="activate_ticket_year.html?ticket='+key+'" class="btn btn-primary">Activate</a>';
+							console.log(key+'**');
+						}
 
 					}
 				}
 
 
 
-			// if (date_in == today || status == "stanby") {
-
-			// 	if (status == "stanby" && type == "normal") {
 
 
-			// 		if (check < ticket) {
-			// 			console.log(key);
-			// 			var today = new Date();
-			// 			var dd = today.getDate();
-			// 			var mm = today.getMonth()+1;
-			// 			var yyyy = today.getFullYear();
+			});
 
-			// 			if(dd<10) {
-			// 				dd = '0'+dd
-			// 			} 
+			if (check1 == 0) {
+				var c = document.getElementById("txt_ticket_activated");
+				c.style.display = "none";
+			}
 
-			// 			if(mm<10) {
-			// 				mm = '0'+mm
-			// 			} 
-
-			// 			today = dd + '/' + mm + '/' + yyyy;
-
-			// 			console.log(today);
-
-			// 			var ref = firebase.database().ref("Ticket");
-			// 			ref.child(key)
-			// 			.update({ 
-			// 				status : 'activated',
-			// 				date_in : today
-
-			// 			});
-			// 			check += 1;
-			// 		}else if (check == ticket) {
-			// 			window.location.href = "my_ticket.html";
-			// 		}else{
-			// 			window.location.href = "my_ticket.html";
-			// 		}
-
-			// 	}
-
-			// }
-
-		});
-			// if (check == ticket) {
-			// 	window.location.href = "my_ticket.html";
-			// }
+			if (check2 == 0) {
+				var a = document.getElementById("txt_ticket_no_activated");
+				a.style.display = "none";
+			}
+			if (check1 > 0) {
+				var c = document.getElementById("txt_ticket_activated");
+				c.style.display = "block";
+			}
+			if (check2 > 0) {
+				console.log('check2');
+				var a = document.getElementById("txt_ticket_no_activated");
+				a.style.display = "block";
+			}
+			
 		});
 
-
-
+		
 		
 	});
 
@@ -266,6 +268,34 @@ window.onload = function(){
 }
 
 
+
+function ticketactivateminusYearOnClick(){
+	var ticket = document.getElementById('ticketYear').value;
+      // console.log(ticket);
+      if (ticket > 0) {
+      	ticket = parseInt(ticket);
+      	ticket -= 1;
+        // console.log("tet");
+
+        document.getElementById("ticketYear").value = ticket;
+    }
+
+}
+
+
+function ticketactivateplusYearOnClick(){
+
+	var ticket = document.getElementById('ticketYear').value;
+      // console.log(ticket);
+      if (ticket >= 0 && ticket < countYear) {
+      	ticket = parseInt(ticket);
+      	ticket += 1;
+        // console.log("tet");
+
+        document.getElementById("ticketYear").value = ticket;
+    }
+
+}
 
 
 function ticketactivateminus3OnClick(){

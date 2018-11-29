@@ -116,7 +116,8 @@ function checkin(ticket){
 				.update({ 
 					time_in: time,
 					issue:issue,
-					valid:valid
+					valid:valid,
+					status:'activated'
 				});
 			}
 

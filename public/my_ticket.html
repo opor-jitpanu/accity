@@ -327,6 +327,62 @@
     </div>
   </div>
 
+
+
+
+
+
+
+
+
+
+
+  <!-- The Modal -->
+  <div class="modal" id="AcYearModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Activate Year Ticket</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <center>
+            <button onclick="ticketactivateminusYearOnClick()" type="button" class="btn btn-red btn-plus">-</button>
+            <input type="number" class="count1" name="qty" id="ticketYear" value="0">
+            <button onclick="ticketactivateplusYearOnClick()" type="button" class="btn btn-red btn-plus">+</button>
+          </center>
+          <br><br>
+          <center><button onclick="SubmitCheckYearOnClick()" class="btn btn-primary">Submit</button></center>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div id="loading">
     <img id="loading-image" src="images/loader.gif" alt="Loading..." />
   </div>
@@ -377,11 +433,17 @@
               <h5 class="card-title">Year Ticket</h5>
               <p class="card-text">365 day ticket</p>
               <p id="ticket_year_count"></p>
+              <p id="ticket_year_activated"></p>
+              
               <!-- <p id="ticket_year_activate"></p> -->
 
+              <p id="txt_ticket_activated">Ticket Activated</p>
               <table id="myTable">
               </table>
-
+              <br>
+              <p id="txt_ticket_no_activated">Ticket No Activate</p>
+              <table id="myTable2">
+              </table>
 
 
               <br>

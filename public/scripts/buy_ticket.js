@@ -235,7 +235,8 @@
               status:'stanby',
               time_in:'-',
               time_out:'-',
-              date_in:'-'
+              date_in:'-',
+              name:'-'
             });
 
           }
@@ -255,7 +256,8 @@
               status:'stanby',
               time_in:'-',
               time_out:'-',
-              date_in:'-'
+              date_in:'-',
+              name:'-'
             });
 
           }
