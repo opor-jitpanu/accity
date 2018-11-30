@@ -266,19 +266,26 @@ document.getElementById("loading").style.display = "none";
 
 
 
+
+
 function showNamePlace(place,line){
-
-
 
   var ref = firebase.database().ref("Place");
   ref.orderByChild('place_id').equalTo(place).on("value", function(snapshot) {
     snapshot.forEach(function(data) {
       var div_place = "name_place" + line;
-      document.getElementById(div_place).innerHTML = data.child("name").val();
+      var name = data.child("name").val();
+      console.log(name.length);
+
+      document.getElementById(div_place).innerHTML = name;
     });
   });
 
 }
+
+
+
+
 
 
 function showImage(place, line, check){
