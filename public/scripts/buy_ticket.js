@@ -140,6 +140,8 @@
 
       var cell_place_name = row.insertCell(2);
       cell_place_name.innerHTML = ticket1 * 350 +" + "+ticket2 * 500 +" = "+ (parseInt(ticket2 * 500)+parseInt(ticket1*350));
+      document.getElementById("total_all").innerHTML = ""+(parseInt(ticket2 * 500)+parseInt(ticket1*350));
+
 
       if (ticket1 > 0) {
 
@@ -196,84 +198,85 @@
 
     function SubmitCheckOnClick(){
 
+      var ticket1 = document.getElementById('ticket1').value;
+      var ticket2 = document.getElementById('ticket2').value;
+      window.location.href = 'submit_buy_ticket.html?t1='+ticket1+'&t2='+ticket2+'&sum='+(parseInt(ticket2 * 500)+parseInt(ticket1*350));
+      // firebase.auth().onAuthStateChanged(function(user) {
+
+      //   console.log(user.email);
+
+      //   var email = user.email;
+
+      //   var ticket1 = document.getElementById('ticket1').value;
+      //   var ticket2 = document.getElementById('ticket2').value;
+
+      //   var today = new Date();
+      //   var dd = today.getDate();
+      //   var mm = today.getMonth()+1;
+      //   var yyyy = today.getFullYear();
+
+      //   if(dd<10) {
+      //     dd = '0'+dd
+      //   } 
+
+      //   if(mm<10) {
+      //     mm = '0'+mm
+      //   } 
+
+      //   today = dd + '/' + mm + '/' + yyyy;
+
+      //   if (ticket1 > 0) { //บัตรคุ้มสยาม
+      //     for (var i = 0; i < parseInt(ticket1); i++) {
+
+      //       var firebaseRef = firebase.database().ref("Ticket");
+      //       var newPostRef = firebaseRef.push({
+      //         issue:'-',
+      //         valid:'-',
+      //         type:'normal',
+      //         email:email,
+      //         date_buy:today,
+      //         status:'stanby',
+      //         time_in:'-',
+      //         time_out:'-',
+      //         date_in:'-',
+      //         name:'-'
+      //       });
+
+      //     }
+      //   }
 
 
-      firebase.auth().onAuthStateChanged(function(user) {
+      //   if (ticket2 > 0) { //บัตรรายปี
+      //     for (var i = 0; i < parseInt(ticket2); i++) {
 
-        console.log(user.email);
+      //       var firebaseRef = firebase.database().ref("Ticket");
+      //       var newPostRef = firebaseRef.push({
+      //         issue:'-',
+      //         valid:'-',
+      //         type:'year',
+      //         email:email,
+      //         date_buy:today,
+      //         status:'stanby',
+      //         time_in:'-',
+      //         time_out:'-',
+      //         date_in:'-',
+      //         name:'-'
+      //       });
 
-        var email = user.email;
-
-        var ticket1 = document.getElementById('ticket1').value;
-        var ticket2 = document.getElementById('ticket2').value;
-
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth()+1;
-        var yyyy = today.getFullYear();
-
-        if(dd<10) {
-          dd = '0'+dd
-        } 
-
-        if(mm<10) {
-          mm = '0'+mm
-        } 
-
-        today = dd + '/' + mm + '/' + yyyy;
-
-        if (ticket1 > 0) { //บัตรคุ้มสยาม
-          for (var i = 0; i < parseInt(ticket1); i++) {
-
-            var firebaseRef = firebase.database().ref("Ticket");
-            var newPostRef = firebaseRef.push({
-              issue:'-',
-              valid:'-',
-              type:'normal',
-              email:email,
-              date_buy:today,
-              status:'stanby',
-              time_in:'-',
-              time_out:'-',
-              date_in:'-',
-              name:'-'
-            });
-
-          }
-        }
-
-
-        if (ticket2 > 0) { //บัตรรายปี
-          for (var i = 0; i < parseInt(ticket2); i++) {
-
-            var firebaseRef = firebase.database().ref("Ticket");
-            var newPostRef = firebaseRef.push({
-              issue:'-',
-              valid:'-',
-              type:'year',
-              email:email,
-              date_buy:today,
-              status:'stanby',
-              time_in:'-',
-              time_out:'-',
-              date_in:'-',
-              name:'-'
-            });
-
-          }
-        }
-
-
-
-        alert("Complete"); 
-        $('#myModal').modal('hide');
-        document.getElementById("loading").style.display = "block";
-        var timer1 =setTimeout(function() { window.location.href = "my_ticket.html"; }, 3000);
+      //     }
+      //   }
 
 
 
+      //   alert("Complete"); 
+      //   $('#myModal').modal('hide');
+      //   document.getElementById("loading").style.display = "block";
+      //   var timer1 =setTimeout(function() { window.location.href = "my_ticket.html"; }, 3000);
 
-      });
+
+
+
+      // });
 
     }
 
@@ -293,12 +296,12 @@
 
 
 
-function CloseOnClick(){
+    function CloseOnClick(){
 
-  var Table = document.getElementById("myTable");
-  Table.innerHTML = "";
+      var Table = document.getElementById("myTable");
+      Table.innerHTML = "";
 
-}
+    }
 
 
 
