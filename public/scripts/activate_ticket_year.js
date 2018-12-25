@@ -30,7 +30,7 @@ function saveNameOnClick(){
 
   var timer2 =setTimeout(function() { 
     window.location.href = "my_ticket.html";
-  }, 1000);
+  }, 4000);
 
 
 
