@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Show Reward</title>
-  <script type="text/javascript" src="scripts/reward_show.js"></script>
+  <script type="text/javascript" src="scripts/reward_code.js"></script>
 
 
   <link rel="stylesheet" type="text/css" href="styles/loading.css">
@@ -136,24 +136,18 @@
     <img id="loading-image" src="images/loader.gif" alt="Loading..." />
   </div> -->
 
-  <center><h1 id="head_txt">Reward</h1></center>
-  <center><h3 id="point" class="white_txt"></h3></center>
-  <p id="hide_point"></p>
+  <center><h1 id="head_txt">Reward Complete</h1></center>
+ 
   
-
-  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
-
 
 
   <center>
     <div class="card" style="width: 18rem; width: 80%">
-      <img class="card-img-top" id="image1" alt="Card image cap">
       <div class="card-body">
-        <h5 class="card-title font_med" id="name_head">Card title</h5>
-        <p class="card-text font_med" id="description_txt"></p>
-        <p class="card-text font_med" id="point2_txt"></p>
+        <p class="card-text font_med" id="point"></p>
+        <p class="card-text font_med" id="code"></p>
         <div id="btnCheckin">
-          <button onclick="getRewardOnClick()" id="btnScore" class="btn btn-primary font_small">Get Reward</button>
+          <button onclick="getRewardOnClick()" id="btnScore" class="btn btn-primary font_small">Back</button>
         </div>
       </div>
     </div>
