@@ -68,6 +68,8 @@ function checkPoint(curPoint, point){
 		document.getElementById("btnCheckin").style.display = "none";
 	}
 
+	document.getElementById("loading").style.display = "none";
+
 
 }
 
@@ -119,6 +121,7 @@ function getPoint(id, curPoint){
 	.then(function(snapshot){
 		var point = snapshot.child(id).child("point").val();
 		cutpoint(curPoint, point);
+
 
 	});
 }

@@ -1,6 +1,11 @@
 window.onload = function(){
 
 
+
+
+	var num = 1;
+
+
 	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var point = url.searchParams.get("point");
@@ -30,23 +35,30 @@ window.onload = function(){
 		.update({ point: point
 		});
 		document.getElementById("point").innerHTML = "Your current point : " + point;
-
-
-
-
-		firebase.auth().onAuthStateChanged(function(user) {
-
-			var firebaseRef = firebase.database().ref("Code");
-			var firebasea = firebaseRef.push({
-				email:user.email,
-				status:'stanby'
-			});
-
-			console.log(firebasea.name());
-
-			
-		});
+		AddCode(point);
 
 	}
 
+
+	function AddCode(point){
+		if (num == 1) {
+			var firebaseRef = firebase.database().ref("Code");
+			var firebasea = firebaseRef.push({
+				email:'1',
+				status:'stanby'
+			});
+
+			console.log(firebasea.getKey());
+			document.getElementById("code").innerHTML = "Your Code : " + firebasea.getKey();
+			window.location.href = "reward_code_show.html?key="+firebasea.getKey()+"&point="+point;
+			num += 1;
+		}
+	}
+
+}
+
+
+
+function BackOnClick(){
+	window.location.href = "reward.html";
 }
