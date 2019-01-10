@@ -4,8 +4,15 @@ window.onload = function(){
 }
 
 
+
+function validateEmail(email) {
+	var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	return re.test(email);
+}
+
+
 function saveRegisterOnClick() {
-	// console.log("opor");
+	
 	var firstname = document.getElementById('InputFirstname');
 	var lastname = document.getElementById('InputLastname');
 	var email = document.getElementById('InputEmail');
@@ -14,7 +21,7 @@ function saveRegisterOnClick() {
 	var tel = document.getElementById('InputTelephone');
 
 	if (document.getElementById('radio1').checked) {
-  		sex_value = document.getElementById('radio1').value;
+		sex_value = document.getElementById('radio1').value;
 	}else if (document.getElementById('radio2').checked){
 		sex_value = document.getElementById('radio2').value;
 	}
@@ -26,24 +33,19 @@ function saveRegisterOnClick() {
 	var year = document.getElementById('InputBirthYear').value;
 
 	var birth = day+' '+month+' '+year;
-	// console.log(birth);
-
-	// console.log(country);
-
-	// var rates = document.getElementById('rates').value;
-	// console.log(password.value.length);
+	
 
 	var today = new Date();
 	var dd = today.getDate();
-	var mm = today.getMonth()+1; //January is 0!
+	var mm = today.getMonth()+1;
 	var yyyy = today.getFullYear();
 
 	if(dd<10) {
-	    dd = '0'+dd
+		dd = '0'+dd
 	} 
 
 	if(mm<10) {
-	    mm = '0'+mm
+		mm = '0'+mm
 	} 
 
 	today = dd + '/' + mm + '/' + yyyy;
@@ -51,9 +53,16 @@ function saveRegisterOnClick() {
 
 	if (password.value.length >= 6) {
 		console.log("yes");
-		insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
+
+
+		if (validateEmail(email.value)) {
+			insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
+		} else {
+			alert("Email is not email");
+		}
 		
-		
+
+
 	}else{
 		console.log("no");
 		alert("Your password is too short. (Must be at least 6 characters.)");
@@ -108,10 +117,10 @@ function signUp(){
 	var email = document.getElementById('InputEmail').value;
 	var password = document.getElementById('InputPassword').value;
 	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error)
-		{
-			var errorCode = error.code;
-			var errorMessage = error.message;
-			if(errorCode === 'auth/weak-password'){
+	{
+		var errorCode = error.code;
+		var errorMessage = error.message;
+		if(errorCode === 'auth/weak-password'){
 				// alert('The password is too weak');
 
 			}else{
@@ -125,12 +134,12 @@ function signUp(){
 	var myVar;
 
 	function myFunction() {
-	    myVar = setTimeout(alertFunc, 2000);
+		myVar = setTimeout(alertFunc, 2000);
 	}
 
 	function alertFunc() {
-	    
-	    window.location= "login.html";
+
+		window.location= "login.html";
 	}
 
 

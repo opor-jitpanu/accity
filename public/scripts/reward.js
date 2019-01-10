@@ -55,8 +55,9 @@ window.onload = function(){
 			var point = childSnapshot.val().point;
 			var description = childSnapshot.val().description;
 
-
-			var div = '<div class="container"><div class="col-md-4"><div class="card"><div class="image pull-left" ><img class="card-img-top" id="image"  alt="Card image cap"></div><div class="content pull-left"><p>'+name+'</p><p>'+description+'</p><p>'+point+'</p><p id="btnlink2"></p><center><a href="reward_show.html?id='+key+'"><button class="btn btn-primary">More Information</button></a><center><br></div><div class="clearfix"></div></div></div></div> <br>';
+			console.log("id"+id);
+			console.log("key"+key);
+			var div = '<div class="container"><div class="col-md-4"><div class="card"><div class="image pull-left" ><img src="images/reward/'+key+'.jpg" class="card-img-top" id="image"  alt="Card image cap"></div><div class="content pull-left"><p>'+name+'</p><p>'+description+'</p><p>'+point+'</p><p id="btnlink2"></p><center><a href="reward_show.html?id='+key+'"><button class="btn btn-primary">More Information</button></a><center><br></div><div class="clearfix"></div></div></div></div> <br>';
 
 
 			// var x = document.getElementById("name_reward" + id);

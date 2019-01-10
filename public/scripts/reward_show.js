@@ -5,6 +5,8 @@ window.onload = function(){
 	var url = new URL(url_string);
 	var id2 = url.searchParams.get("id");
 
+	document.getElementById("image1").src="images/reward/"+id2+".jpg";
+
 
 	firebase.auth().onAuthStateChanged(function(user) {
 
