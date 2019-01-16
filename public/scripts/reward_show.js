@@ -4,9 +4,10 @@ window.onload = function(){
 	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var id2 = url.searchParams.get("id");
+	var idd = url.searchParams.get("id2");
 
-	document.getElementById("image1").src="images/reward/"+id2+".jpg";
-
+	
+	getImage(idd);
 
 	firebase.auth().onAuthStateChanged(function(user) {
 
@@ -37,6 +38,27 @@ window.onload = function(){
 	}
 
 	
+	
+
+}
+
+
+
+
+function getImage(idd){
+	console.log(idd);
+
+	var storageRef = firebase.storage().ref();
+	var spaceRef = storageRef.child('rewards/'+idd+'.jpg');
+	storageRef.child('rewards/'+idd+'.jpg').getDownloadURL().then(function(url) {
+		var test = url;
+			// console.log(test);
+			
+			document.getElementById("image1").src = test;
+
+		}).catch(function(error) {
+
+		});
 	
 
 }

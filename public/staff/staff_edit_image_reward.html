@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image reward</title>
+
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <!-- <script type="text/javascript" src="scripts/jquery-3.3.1.js"></script> -->
+  <script type="text/javascript" src="scripts/staff_edit_image_reward.js"></script>
+  <style>
+  table, td {
+    border: 1px solid black;
+
+  }
+  table{
+    border-collapse: collapse;
+    width: 100%;
+  }
+</style>
+
+
+</head>
+<body>
+  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+  <br>
+  <center><h1>Image Reward</h1></center>
+  
+  <br>
+
+  <center><p id="title_text"></p></center>
+  <br>
+
+  <center><img id="image1" width="50%"></center>
+  <br>
+  
+  <br>
+
+  <center><input type="file" name="pic" id="uploadImage" accept="image/*"></center>
+
+  <br>
+  <center>
+  <button onclick="changeImageOnClick()" id="btnChange" class="btn btn-primary">Change</button>
+</center>
+  <br>
+
+
+
+
+  
+
+  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+  <script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+
+
+
+  
+</script>
+
+</body>
+</html>

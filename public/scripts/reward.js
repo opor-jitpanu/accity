@@ -42,6 +42,7 @@ window.onload = function(){
 	
 
 	var userDataRef = firebase.database().ref("Reward");
+	var storageRef = firebase.storage().ref();
 	userDataRef.once("value").then(function(snapshot) {
 		var mydiv = document.getElementById('box1');
 
@@ -55,27 +56,35 @@ window.onload = function(){
 			var point = childSnapshot.val().point;
 			var description = childSnapshot.val().description;
 
-			console.log("id"+id);
-			console.log("key"+key);
-			var div = '<div class="container"><div class="col-md-4"><div class="card"><div class="image pull-left" ><img src="images/reward/'+key+'.jpg" class="card-img-top" id="image"  alt="Card image cap"></div><div class="content pull-left"><p>'+name+'</p><p>'+description+'</p><p>'+point+'</p><p id="btnlink2"></p><center><a href="reward_show.html?id='+key+'"><button class="btn btn-primary">More Information</button></a><center><br></div><div class="clearfix"></div></div></div></div> <br>';
+			console.log(id);
+			console.log(key);
 
 
-			// var x = document.getElementById("name_reward" + id);
-			// x.innerHTML = name;
 
-			// var y = document.getElementById("description" + id);
-			// y.innerHTML = description;
 
-			// var z = document.getElementById("point" + id);
-			// z.innerHTML = "Point : " + point;
+			var spaceRef = storageRef.child('rewards/'+id+'.jpg');
 
-			// var btn = document.getElementById("btnlink" + id);
-			// btn.innerHTML ='<center><a href="reward_show.html?id='+id+'"><button class="btn btn-primary">More Information</button></a><center>';
 
-			// document.getElementById('image'+id).src = 'images/reward/' + id +'.jpg';
-			// console.log(id);
 
-			mydiv.innerHTML += div;
+			storageRef.child('rewards/'+id+'.jpg').getDownloadURL().then(function(url) {
+				var test = url;
+				
+				console.log(url);
+				
+
+				var div = '<div class="container"><div class="col-md-4"><div class="card"><div class="image pull-left" ><img class="card-img-top" src="'+ test +'" alt="Card image cap"></div><div class="content pull-left"><p>'+name+'</p><p>'+description+'</p><p>'+point+'</p><p id="btnlink2"></p><center><a href="reward_show.html?id='+key+'&id2='+id+'"><button class="btn btn-primary">More Information</button></a><center><br></div><div class="clearfix"></div></div></div></div> <br>';
+
+				mydiv.innerHTML += div;
+
+
+			}).catch(function(error) {
+
+				console.log(error);
+
+			});
+
+
+
 		});
 
 		
