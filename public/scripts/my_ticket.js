@@ -215,14 +215,18 @@ window.onload = function(){
 						if (name !== '-') {
 							check1 += 1;
 							var cell_id = row.insertCell(0);
-							cell_id.innerHTML = '<img id="barcode2" src="https://barcode.tec-it.com/barcode.ashx?data=' + key + '**&code=Code128&dpi=96&dataseparator=+"" width="100%" alt="Barcode Generator TEC-IT"/><br>Name : '+name+'<br>Issue : '+issue+'<br>Valid : '+ valid;
+
+
+							cell_id.innerHTML = '<center><img id="barcode" src="https://api.qrserver.com/v1/create-qr-code/?data=' + key + '**&amp;size=50x50" alt="" title="HELLO" width="200"  height="200" /></center><br>Name : '+name+'<br>Issue : '+issue+'<br>Valid : '+ valid;
+							
+							// cell_id.innerHTML = '<img id="barcode2" src="https://barcode.tec-it.com/barcode.ashx?data=' + key + '**&code=Code128&dpi=96&dataseparator=+"" width="100%" alt="Barcode Generator TEC-IT"/><br>Name : '+name+'<br>Issue : '+issue+'<br>Valid : '+ valid;
 							console.log(key+'**');
 						}
 						
 						if (name == '-') {
 							check2 += 1;
 							var cell_id2 = row2.insertCell(0);
-							cell_id2.innerHTML = '<img id="barcode2" src="https://barcode.tec-it.com/barcode.ashx?data=' + key + '**&code=Code128&dpi=96&dataseparator=+"" width="100%" alt="Barcode Generator TEC-IT"/><br><a href="activate_ticket_year.html?ticket='+key+'" class="btn btn-primary">Activate</a>';
+							cell_id2.innerHTML = '<center><img id="barcode" src="https://api.qrserver.com/v1/create-qr-code/?data=' + key + '**&amp;size=50x50" alt="" title="HELLO" width="200"  height="200" /><br><a href="activate_ticket_year.html?ticket='+key+'" class="btn btn-primary">Activate</a></center>';
 							console.log(key+'**');
 						}
 
