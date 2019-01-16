@@ -72,7 +72,7 @@ window.onload = function(){
 				console.log(url);
 				
 
-				var div = '<div class="container"><div class="col-md-4"><div class="card"><div class="image pull-left" ><img class="card-img-top" src="'+ test +'" alt="Card image cap"></div><div class="content pull-left"><p>'+name+'</p><p>'+description+'</p><p>'+point+'</p><p id="btnlink2"></p><center><a href="reward_show.html?id='+key+'&id2='+id+'"><button class="btn btn-primary">More Information</button></a><center><br></div><div class="clearfix"></div></div></div></div> <br>';
+				var div = '<div class="container"><div class="col-md-4"><div class="card"><div class="image pull-left" ><img class="card-img-top" src="'+ test +'" alt="Card image cap"></div><div class="content pull-left"><p>'+name+'</p><p>'+description+'</p><p>Use point : '+point+'</p><p id="btnlink2"></p><center><a href="reward_show.html?id='+key+'&id2='+id+'"><button class="btn btn-primary">More Information</button></a><center><br></div><div class="clearfix"></div></div></div></div> <br>';
 
 				mydiv.innerHTML += div;
 
