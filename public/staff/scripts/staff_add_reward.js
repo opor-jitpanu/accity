@@ -35,5 +35,14 @@ function insertData(name, des, point, key){
 		id:key2
 	});
 	alert('Complete');
+	// myFunction2();
 }
 
+function myFunction2() {
+	myVar = setTimeout(nextpage(), 4000);
+}
+
+function nextpage() {
+	alert("complete");
+    window.location= "staff_reward.html";
+}

@@ -7,7 +7,7 @@ window.onload = function(){
 
 function saveNameOnClick(){
 
-  document.getElementById("loading").style.display = "block";
+  
 
   var url_string = window.location.href;
   var url = new URL(url_string);
@@ -17,21 +17,31 @@ function saveNameOnClick(){
   var firstname = document.getElementById('InputFirstname').value;
   var lastname = document.getElementById('InputLastname').value;
 
-  var name = capitalizeFirstLetter(firstname)+' '+capitalizeFirstLetter(lastname);
-
-  var ref = firebase.database().ref("Ticket");
-  ref.child(ticket)
-  .update({ 
-    name : name
-
-  });
 
 
+  if (firstname == "" || lastname == "") {
+    alert("Please check you name");
+  }else{
+    document.getElementById("loading").style.display = "block";
+    var name = capitalizeFirstLetter(firstname)+' '+capitalizeFirstLetter(lastname);
 
-  var timer2 =setTimeout(function() { 
-    window.location.href = "my_ticket.html";
-  }, 4000);
+    var ref = firebase.database().ref("Ticket");
+    ref.child(ticket)
+    .update({ 
+      name : name
 
+    });
+
+
+
+    var timer2 =setTimeout(function() { 
+      window.location.href = "my_ticket.html";
+    }, 4000);
+
+
+  }
+
+  
 
 
 
@@ -40,5 +50,5 @@ function saveNameOnClick(){
 
 
 function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }

@@ -32,7 +32,9 @@
 
 </head>
 <body>
-  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+  <!-- <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button> -->
+
+  <button onclick="homeOnClick()" id="btnBack" class="btn btn-primary">Home</button>
   <br>
   <center><h1>Place</h1></center>
   
@@ -58,6 +60,9 @@
   <script type="text/javascript">
     function addPlaceOnClick(){
       window.location.href = "staff_add_place.html"; 
+    }
+    function homeOnClick(){
+      window.location.href = "index_staff.html"; 
     }
   </script>
 

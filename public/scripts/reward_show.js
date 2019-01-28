@@ -88,7 +88,7 @@ function checkPoint(curPoint, point){
 	console.log(curPoint);
 	console.log(point);
 
-	if (curPoint < point) {
+	if (parseInt(curPoint) < parseInt(point)) {
 		document.getElementById("btnCheckin").style.display = "none";
 	}
 

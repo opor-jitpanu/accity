@@ -32,7 +32,8 @@
 
 </head>
 <body>
-  <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button>
+  <!-- <button onclick="history.back(-1)" id="btnBack" class="btn btn-primary">back</button> -->
+  <button onclick="homeOnClick()" id="btnBack" class="btn btn-primary">Home</button>
   <br>
   <center><h1>Reward</h1></center>
   
@@ -58,6 +59,9 @@
   <script type="text/javascript">
     function addRewardOnClick(){
       window.location.href = "staff_add_reward.html"; 
+    }
+    function homeOnClick(){
+      window.location.href = "index_staff.html"; 
     }
   </script>
 

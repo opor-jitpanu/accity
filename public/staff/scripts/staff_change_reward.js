@@ -73,11 +73,11 @@ function last(){
 	var cell = row.insertCell(0);
 	cell.innerHTML = "<center><b>Reward ID</b></center>";
 	var cell = row.insertCell(1);
-	cell.innerHTML = "<center><b>Description</b></center>";
+	cell.innerHTML = "<center><b>Name</b></center>";
 	var cell = row.insertCell(2);
-	cell.innerHTML = "<center><b>Point</b></center>";
-	var cell = row.insertCell(3);
 	cell.innerHTML = "<center><b>Description</b></center>";
+	var cell = row.insertCell(3);
+	cell.innerHTML = "<center><b>Point</b></center>";
 	var cell = row.insertCell(4);
 	cell.innerHTML = "<center><b>Edit</b></center>";
 	var cell = row.insertCell(5);
