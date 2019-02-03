@@ -2395,6 +2395,12 @@ padding:10px 0 5px 25px;
 margin:0 0 0 10px;
 }
 
+.post_single span.post_star{
+background:url(images/star.png) no-repeat left;
+padding:10px 0 5px 25px;
+margin:0 0 0 10px;
+}
+
 /*---------------------------- OPOR-END ------------------------------*/
 
 

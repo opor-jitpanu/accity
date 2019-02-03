@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
+  <title>Reward</title>
+  <link rel="stylesheet" href="css/swiper.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+</head>
+<body id="mobile_wrap">
+
+  <div class="panel-overlay"></div>
+
+  <div class="panel panel-left panel-reveal">
+    <!-- Slider -->
+    <div class="swiper-container-subnav multinav">
+      <div class="swiper-wrapper">
+       <div class="swiper-slide">		
+        <nav class="main_nav_underline">
+          <ul>
+            <li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
+            <li><a href="profile.html"><img src="images/icons/gray/user.png" alt="" title="" /><span>Profile</span></a></li>
+            <li><a href="my_ticket.html"><img src="images/icons/gray/blog.png" alt="" title="" /><span>My Ticket</span></a></li>
+            <li><a href="buy_ticket.html"><img src="images/icons/gray/shop.png" alt="" title="" /><span>Buy Ticket</span></a></li>
+            <li><a href="promotion.html"><img src="images/icons/gray/electronics.png" alt="" title="" /><span>Promotions</span></a></li>
+            <li><a href="checkin.html"><img src="images/icons/gray/map.png" alt="" title="" /><span>Check-in</span></a></li>
+            <li><a href="reward.html"><img src="images/icons/gray/food.png" alt="" title="" /><span>Rewards</span></a></li>
+            <li><a href="logout.html"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
+
+          </ul>
+        </nav>
+      </div>	
+
+
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  
+
+
+
+
+
+  window.onload = function(){
+
+
+
+
+    var num = 1;
+
+
+    var url_string = window.location.href;
+    var url = new URL(url_string);
+    var point = url.searchParams.get("point");
+
+
+
+    firebase.auth().onAuthStateChanged(function(user) {
+
+      FindID(user.email);
+    });
+
+    function FindID(email){
+      var ref = firebase.database().ref("User");
+      ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+        snapshot.forEach(function(data) {
+          UpdatePoint(data.key);
+        });
+      });
+
+    }
+
+    
+
+    function UpdatePoint(id){
+      var ref = firebase.database().ref("User");
+      ref.child(id)
+      .update({ point: point
+      });
+      // document.getElementById("point").innerHTML = "Your current point : " + point;
+      AddCode(point);
+
+    }
+
+
+    function AddCode(point){
+      if (num == 1) {
+        var firebaseRef = firebase.database().ref("Code");
+        var firebasea = firebaseRef.push({
+          email:'1',
+          status:'stanby'
+        });
+
+        console.log(firebasea.getKey());
+        // document.getElementById("code").innerHTML = "Your Code : " + firebasea.getKey();
+        window.location.href = "reward_code_show.html?key="+firebasea.getKey()+"&point="+point;
+        num += 1;
+      }
+    }
+
+  }
+
+
+
+  function BackOnClick(){
+    window.location.href = "reward.html";
+  }
+
+
+
+
+
+
+  
+</script>
+
+
+
+
+
+<!-- <script src="js/reward_show.js"></script> -->
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.validate.min.js" ></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.custom.js"></script>
+</body>
+</html>
