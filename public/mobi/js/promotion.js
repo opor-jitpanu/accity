@@ -1,5 +1,8 @@
 window.onload = function(){
 
+	
+	var mydiv = document.getElementById('list');
+	
 
 
 	var leadsRef = firebase.database().ref("Promotion");
@@ -38,28 +41,44 @@ window.onload = function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 			var spaceRef = storageRef.child('promotions/'+id+'.jpg');
 
 			storageRef.child('promotions/'+id+'.jpg').getDownloadURL().then(function(url) {
-				console.log(line);
+				
 				var test = url;
 				if (check >= from && check <= to) {
+					
 					var a = '<div class="card" style="width: 20rem;"><a href="promotion_show.html?key='+id+'"><img class="card-img-top" src="'+ test +'" alt="Card image cap"></a><div class="card-body"><p>'+title+'</p><p class="card-text">'+des1+'</p></div></div><br>';
-					document.getElementById("promotion" + line).innerHTML = a;
-					line = line + 1;
+					
+					
+
+
+					var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="promotion_show.html?key='+id+'">'+title+'</a></div><h2>'+des1+'</h2></div></div></div></div></li>';
+					
+					mydiv.innerHTML += div;
 				}
-				
-				
-				
+
+
+
 
 
 			}).catch(function(error) {
 
 			});
-			document.getElementById("loading").style.display = "none";
 
 		});
-		
+
 	});
 
 	
