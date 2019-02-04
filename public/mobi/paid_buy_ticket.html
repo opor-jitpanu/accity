@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+	<link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
+	<title>Buy Ticket</title>
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+</head>
+<body id="mobile_wrap">
+
+	<div class="panel-overlay"></div>
+
+	
+
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.validate.min.js" ></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/jquery.custom.js"></script>
+
+	<script src="js/paid_buy_ticket.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+	<script>
+		var config = {
+			apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+			authDomain: "ancientcity-5c152.firebaseapp.com",
+			databaseURL: "https://ancientcity-5c152.firebaseio.com",
+			projectId: "ancientcity-5c152",
+			storageBucket: "ancientcity-5c152.appspot.com",
+			messagingSenderId: "44267136823"
+		};
+		firebase.initializeApp(config);
+	</script>
+</body>
+</html>
