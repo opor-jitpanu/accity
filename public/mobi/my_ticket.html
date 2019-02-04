@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
+  <title>My Ticket</title>
+  <link rel="stylesheet" href="css/swiper.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+</head>
+<body id="mobile_wrap">
+
+  <div class="panel-overlay"></div>
+
+  <div class="panel panel-left panel-reveal">
+    <!-- Slider -->
+    <div class="swiper-container-subnav multinav">
+      <div class="swiper-wrapper">
+       <div class="swiper-slide">		
+        <nav class="main_nav_underline">
+          <ul>
+            <li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
+            <li><a href="profile.html"><img src="images/icons/gray/user.png" alt="" title="" /><span>Profile</span></a></li>
+            <li><a href="my_ticket.html"><img src="images/icons/gray/blog.png" alt="" title="" /><span>My Ticket</span></a></li>
+            <li><a href="buy_ticket.html"><img src="images/icons/gray/shop.png" alt="" title="" /><span>Buy Ticket</span></a></li>
+            <li><a href="promotion.html"><img src="images/icons/gray/electronics.png" alt="" title="" /><span>Promotions</span></a></li>
+            <li><a href="checkin.html"><img src="images/icons/gray/map.png" alt="" title="" /><span>Check-in</span></a></li>
+            <li><a href="reward.html"><img src="images/icons/gray/food.png" alt="" title="" /><span>Rewards</span></a></li>
+            <li><a href="logout.html"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
+          </ul>
+        </nav>
+      </div>	
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="views">
+
+  <div class="view view-main">
+    <div class="pages">
+      <div data-page="blogsingle" class="page">
+        <div class="page-content">
+
+          <div class="navbar navbar--fixed navbar--fixed-top navbar--bg">
+           <div class="navbar__col navbar__col--title">
+            <a href="index.html">ACCITY</a>
+          </div>
+
+          <div class="navbar__col navbar__col--icon navbar__col--icon-right">
+            <a href="#" data-panel="left" class="open-panel"><img src="images/icons/white/menu.png" alt="" title="" /></a>
+          </div>
+        </div>
+
+        <div id="pages_maincontent">
+
+
+
+
+         <div class="page_single layout_fullwidth_padding">	
+
+          <br><br>
+
+
+          <div class="tabs">
+
+           <input type="radio" name="tabs" class="tabradio" id="tabone" checked="checked">
+           <label class="tablabel tablabel--12" for="tabone">Normal Ticket</label>
+
+
+
+
+           <div class="tab">
+
+            <p>One day ticket</p>
+            <p id="ticket_normal_count"></p>
+            <p id="ticket_normal_activate"></p>
+            <center><img id='barcode' 
+              src="" 
+              alt="" 
+              title="HELLO" 
+              width="170" 
+              height="170" /></center><br>
+
+              <a href="#" class="btn btn--full action1 open-popup" data-popup=".popup-social">Activate</a>
+              <!-- <a href="#" onclick="getScoreOnClick()" class="btn btn--full" id="btnCheckin">Activate</a> -->
+
+              <a href="#" class="btn btn--full action1 open-popup" data-popup=".popup-social2">Transfer</a>
+
+
+
+            </div>
+
+
+
+
+
+
+            <input type="radio" name="tabs" class="tabradio" id="tabtwo">
+            <label class="tablabel tablabel--12" for="tabtwo">Year Ticket</label>
+
+
+
+
+            <div class="tab">
+
+
+              <p>Year ticket</p>
+              <p id="ticket_year_count"></p>
+
+
+              <table id="myTable">
+              </table>
+
+              <br>
+              <table id="myTable2">
+              </table>
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+        </div>     
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+
+
+
+<!-- Activate Daily Ticket Popup -->
+<div class="popup popup-social">
+  <div class="content-block">
+    <h4>Activate Daily Ticket</h4>
+    
+    <div class="item_qnty_shop">
+
+      <input type="button" onclick="ticketactivateMinusOnClick()" value="-" class="qntyminusshop"  />
+      <input type="text" name="quantity" id="ticket1" value="0" class="qntyshop" />
+      <input type="button" onclick="ticketactivatePlusOnClick()" value="+" class="qntyplusshop"  />
+
+    </div>
+    
+    <a href="#" onclick="SubmitCheckOnClick()" class="btn btn--full" id="btnCheckin">Activate</a>
+    
+
+    <div class="close_popup_button"><a href="#" class="close-popup" data-popup=".popup-social"><img src="images/icons/black/menu_close.png" alt="" title="" /></a></div>
+  </div>
+</div>
+
+
+
+
+
+<!-- Transfer Daily Ticket Popup -->
+<div class="popup popup-social2">
+  <div class="content-block">
+    <h4>Transfer Ticket</h4>
+    
+    <div class="item_qnty_shop">
+
+      <input type="button" onclick="ticketactivateminus3OnClick()" value="-" class="qntyminusshop"  />
+      <input type="text" name="quantity" id="ticket3" value="0" class="qntyshop" />
+      <input type="button" onclick="ticketactivateplus3OnClick()" value="+" class="qntyplusshop"  />
+
+    </div>
+    <br><br><br>
+
+    <div class="form-group">
+      <label for="InputEmail" id="color_white">E-mail : </label>
+      <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    
+    <a href="#" onclick="SubmitCheckOnClick()" class="btn btn--full" id="btnCheckin">Activate</a>
+    <br><br><br>
+
+    <div class="close_popup_button"><a href="#" class="close-popup" data-popup=".popup-social2"><img src="images/icons/black/menu_close.png" alt="" title="" /></a></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script src="js/my_ticket.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.validate.min.js" ></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.custom.js"></script>
+</body>
+</html>
