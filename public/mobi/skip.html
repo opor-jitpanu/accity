@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+  <link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
+  <title>Skip</title>
+  <link rel="stylesheet" href="css/swiper.css">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+</head>
+<body id="mobile_wrap">
+
+  <div class="panel-overlay"></div>
+
+  <div class="panel panel-left panel-reveal">
+    <!-- Slider -->
+    <div class="swiper-container-subnav multinav">
+      <div class="swiper-wrapper">
+       <div class="swiper-slide">		
+        <nav class="main_nav_underline">
+          <ul>
+            <li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
+            <li><a href="profile.html"><img src="images/icons/gray/user.png" alt="" title="" /><span>Profile</span></a></li>
+            <li><a href="my_ticket.html"><img src="images/icons/gray/blog.png" alt="" title="" /><span>My Ticket</span></a></li>
+            <li><a href="buy_ticket.html"><img src="images/icons/gray/shop.png" alt="" title="" /><span>Buy Ticket</span></a></li>
+            <li><a href="promotion.html"><img src="images/icons/gray/electronics.png" alt="" title="" /><span>Promotions</span></a></li>
+            <li><a href="checkin.html"><img src="images/icons/gray/map.png" alt="" title="" /><span>Check-in</span></a></li>
+            <li><a href="reward.html"><img src="images/icons/gray/food.png" alt="" title="" /><span>Rewards</span></a></li>
+            <li><a href="logout.html"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
+          </ul>
+        </nav>
+      </div>	
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="views">
+
+  <div class="view view-main">
+    <div class="pages">
+      <div data-page="shop" class="page">
+        <div class="page-content">
+
+          <div class="navbar navbar--fixed navbar--fixed-top navbar--bg">
+           <div class="navbar__col navbar__col--title">
+            <a href="index.html">ACCITY</a>
+          </div>
+			<!-- <div class="navbar__col navbar__col--icon navbar__col--icon-right">
+				<a href="cart.html"><img src="images/icons/white/cart.png" alt="" title="" /><span class="navbar__icon-bullet">3</span></a>
+			</div> -->
+			<!-- <div class="navbar__col navbar__col--icon navbar__col--icon-right">
+				<a href="#" data-panel="right" class="open-panel"><img src="images/icons/white/user.png" alt="" title="" /></a>
+			</div> -->
+			<div class="navbar__col navbar__col--icon navbar__col--icon-right">
+				<a href="#" data-panel="left" class="open-panel"><img src="images/icons/white/menu.png" alt="" title="" /></a>
+			</div>
+    </div>
+
+    <div id="pages_maincontent">
+
+     <h2 class="page_title">Skip</h2>
+
+     <div class="page_single layout_fullwidth_padding">
+
+      <center>
+        <p class="">สำหรับนักท่องเที่ยว ที่ใช้ตั๋วกระดาษ</p>
+        <p class="">กด Checkin เพื่อร่วมกิจกรรม Checkin </p>
+      </center>
+      
+      <a href="#" onclick="checkinOnClick()" class="btn btn--full open-popup" id="btnCheckin">Check in</a>
+      
+      
+    </div>
+
+  </div>
+
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+  
+
+
+
+  function checkinOnClick(){
+
+
+    // document.getElementById("loading").style.display = "block";
+    firebase.auth().onAuthStateChanged(function(user) {
+
+      insertEmail(user.email);
+
+    });
+
+
+
+
+
+    function insertEmail(email){
+
+      var ref = firebase.database().ref("Time");
+      ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+        snapshot.forEach(function(data) {
+
+          edit(data.key);
+        });
+      });
+    }
+
+    function edit(id){
+      var today_in = new Date();
+      var dd_in = today_in.getDate();
+      var mm_in = today_in.getMonth()+1;
+      var yyyy_in = today_in.getFullYear();
+
+      if(dd_in<10) {
+        dd_in = '0'+dd_in;
+      } 
+
+      if(mm_in<10) {
+        mm_in = '0'+mm_in;
+      } 
+
+      date_in = dd_in + '/' + mm_in + '/' + yyyy_in;
+
+      var d_in = new Date(); 
+      var hour_in = d_in.getHours();
+      var minute_in = d_in.getMinutes(); 
+
+      if (minute_in < 10) {
+        minute_in = '0' + minute_in;
+      }
+
+      var time_in = hour_in + ":" + minute_in;
+
+      var ref = firebase.database().ref("Time");
+      ref.child(id)
+      .update({ date: date_in,
+       time_in: time_in,
+       time_out: '-'
+     });
+
+
+    }
+    alert("Time in Complete!");
+
+    var timer1 =setTimeout(function() {  
+      window.location.href = "checkin.html";
+    }, 3000);
+
+
+
+
+  }
+
+  
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/jquery.validate.min.js" ></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.custom.js"></script>
+</body>
+</html>

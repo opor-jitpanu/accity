@@ -87,7 +87,7 @@ function checkTimeIn(){
         getLocation();
       }else if (date_out != time){
         alert("Pleae Check Time In");
-        window.location.href = "buy_ticket.html";
+        window.location.href = "skip.html";
       }
 
     });
