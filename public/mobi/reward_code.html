@@ -60,6 +60,7 @@
     var url_string = window.location.href;
     var url = new URL(url_string);
     var point = url.searchParams.get("point");
+    var idReward = url.searchParams.get("id");
 
 
 
@@ -72,7 +73,7 @@
       var ref = firebase.database().ref("User");
       ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
         snapshot.forEach(function(data) {
-          UpdatePoint(data.key);
+          UpdatePoint(data.key,email);
         });
       });
 
@@ -80,23 +81,24 @@
 
     
 
-    function UpdatePoint(id){
+    function UpdatePoint(id,email){
       var ref = firebase.database().ref("User");
       ref.child(id)
       .update({ point: point
       });
       // document.getElementById("point").innerHTML = "Your current point : " + point;
-      AddCode(point);
+      AddCode(point,email);
 
     }
 
 
-    function AddCode(point){
+    function AddCode(point, email){
       if (num == 1) {
         var firebaseRef = firebase.database().ref("Code");
         var firebasea = firebaseRef.push({
-          email:'1',
-          status:'stanby'
+          email:email,
+          status:'stanby',
+          id:idReward
         });
 
         console.log(firebasea.getKey());

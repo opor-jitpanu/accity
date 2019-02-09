@@ -23,13 +23,79 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
+	<style type="text/css">
+	.load-bar {
+		position: relative;
+		margin-top: 20px;
+		width: 100%;
+		height: 6px;
+		background-color: #fdba2c;
+	}
+	.bar {
+		content: "";
+		display: inline;
+		position: absolute;
+		width: 0;
+		height: 100%;
+		left: 50%;
+		text-align: center;
+	}
+	.bar:nth-child(1) {
+		background-color: #da4733;
+		animation: loading 3s linear infinite;
+	}
+	.bar:nth-child(2) {
+		background-color: #3b78e7;
+		animation: loading 3s linear 1s infinite;
+	}
+	.bar:nth-child(3) {
+		background-color: #fdba2c;
+		animation: loading 3s linear 2s infinite;
+	}
+	@keyframes loading {
+		from {left: 50%; width: 0;z-index:100;}
+		33.3333% {left: 0; width: 100%;z-index: 10;}
+		to {left: 0; width: 100%;}
+	}
+
+	#loading {
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		position: fixed;
+		opacity: 0.7;
+		background-color: #fff;
+		z-index: 99;
+		text-align: center;
+		display: none;
+	} 
+	#loading-image {
+		position: absolute;
+		top: 40%;
+		left: 35%;
+		z-index: 100;
+	}
+
+</style>
+
+
 
 </head>
 <body id="mobile_wrap">
 
+
+	<div id="loading">
+		<img id="loading-image" src="images/loading/loading.gif" alt="Loading..." />
+	</div>
+
 	
 
-	<div class="panel-overlay"></div>
+	<div class="panel-overlay">
+
+	</div>
+
+
 
 	<div class="panel panel-left panel-reveal">
 		<!-- Slider -->
@@ -61,43 +127,32 @@
 
 
 
-	<div class="panel panel-right panel-reveal">
-		<div class="user_login_info">
 
-			<div class="user_thumb">
 
-				<div class="user_details">
-					<p>Welcome, <span>Nathalie</span></p>
-				</div>  
-				<div class="user_avatar"><img src="images/avatar3.jpg" alt="" title="" /></div>       
-			</div>
 
-			<nav class="user-nav">
-				<ul>
-					<li><a href="features.html"><img src="images/icons/gray/settings.png" alt="" title="" /><span>Account Settings</span></a></li>
-					<li><a href="features.html"><img src="images/icons/gray/briefcase.png" alt="" title="" /><span>My Account</span></a></li>
-					<li><a href="features.html"><img src="images/icons/gray/message.png" alt="" title="" /><span>Messages</span><strong>12</strong></a></li>
-					<li><a href="features.html"><img src="images/icons/gray/love.png" alt="" title="" /><span>Favorites</span><strong>5</strong></a></li>
-					<li><a href="logout.html"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
-				</ul>
-			</nav>
-		</div>
-	</div>
+	
 
 	<div class="views">
+
+
+
 
 		<div class="view view-main">
 
 
 
+
+
 			<div class="pages">
+
+
 
 				<div data-page="index" class="page homepage">
 					<div class="page-content">
 
 						<div class="navbar navbar--fixed navbar--fixed-top">
 							<div class="navbar__col navbar__col--title">
-								<a href="index.html">ACCITY</a>
+								<a href="index.html">ANCIENT CITY</a>
 								
 								<p style="display:inline">Hi, </p>
 								<p style="display:inline" id="name_hi"></p>
@@ -106,6 +161,13 @@
 								<a href="#" data-panel="left" class="open-panel"><img src="images/icons/white/menu.png" alt="" title="" /></a>
 							</div>			
 						</div>
+
+
+
+
+
+
+
 
 						<!-- Slider -->
 						<div class="swiper-container slidertoolbar">
@@ -116,17 +178,17 @@
 									<div class="slider-caption">
 
 										<h2 data-swiper-parallax="-100%" class="title--white">Buy E-Ticket</h2>
-										<p data-swiper-parallax="-30%" class="text--white">Design and create, and build the most wonderful place in the world. But it takes people to make the dream a reality.</p>
+										<p data-swiper-parallax="-30%" class="text--white">Choose and buy your tickets.</p>
 										<a href="buy_ticket.html" class="slider-caption__more" data-swiper-parallax="-60%">BUY TICKET</a>
 									</div>
 								</div> 
 
-								<div class="swiper-slide" style="background-image:url(images/h-slide2.png);">
+								<div class="swiper-slide" style="background-image:url(images/h-slide2.jpg);">
 
 									<div class="slider-caption">
 
 										<h2 data-swiper-parallax="-100%" class="title--white">Check In</h2>
-										<p data-swiper-parallax="-30%" class="text--white">You can design and create, and build the most wonderful place in the world. But it takes people to make the dream a reality.</p>
+										<p data-swiper-parallax="-30%" class="text--white">Explore and check-in to collect your points!</p>
 										<a href="checkin.html" class="slider-caption__more" data-swiper-parallax="-60%">CHECK IN</a>
 									</div>	
 
@@ -136,7 +198,7 @@
 									<div class="slider-caption">
 
 										<h2 data-swiper-parallax="-100%" class="title--white">Reward</h2>
-										<p data-swiper-parallax="-30%" class="text--white">You can design and create, and build the most wonderful place in the world. But it takes people to make the dream a reality.</p>
+										<p data-swiper-parallax="-30%" class="text--white">Your check-in points can be redeemed for benefits!</p>
 										<a href="reward.html" class="slider-caption__more" data-swiper-parallax="-60%">REWARD</a>
 									</div>
 
