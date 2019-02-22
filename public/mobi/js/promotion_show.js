@@ -51,6 +51,7 @@ window.onload = function(){
 
 		document.getElementById("blog_title").innerHTML = title;
 		document.getElementById("blog_des").innerHTML = des2;
+		document.getElementById("loading").style.display = 'none';
 
 	}
 

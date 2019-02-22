@@ -297,7 +297,7 @@ function loadwindow(c, d){
 
 
 
-
+    document.getElementById("loading").style.display = 'none';
 
   });
 

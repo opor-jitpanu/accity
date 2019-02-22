@@ -34,11 +34,13 @@ window.onload = function(){
           var date = snapshot.child(id).child("date").val();
           var time_in = snapshot.child(id).child("time_in").val();
           document.getElementById("time_profile").innerHTML = "Last Time In : " + date +' .. ' + time_in;
-          
+          document.getElementById("loading").style.display = 'none';
         });
       });
     });
 
   });
+
+
 
 }

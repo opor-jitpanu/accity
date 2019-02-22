@@ -39,6 +39,9 @@ window.onload = function(){
 		var timer2 =setTimeout(function() { 
 			window.location.href = "checkin.html";
 		}, 1000);
+
+
+		document.getElementById("loading").style.display = 'none';
 	}
 	
 }

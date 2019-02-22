@@ -1,5 +1,6 @@
 window.onload = function(){
-	
+	document.getElementById("loading").style.display = 'none';
+
 	
 }
 
@@ -72,6 +73,8 @@ function saveRegisterOnClick() {
 }
 
 function insertData(firstname, lastname, email, password, sex, country, tel, birth, today){
+	document.getElementById("loading").style.display = 'block';
+
 	var firebaseRef = firebase.database().ref("User");
 	firebaseRef.push({
 		firstname:firstname,
@@ -80,6 +83,7 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		password:password,
 		sex:sex,
 		point:'0',
+		point_all:'0',
 		country:country,
 		tel:tel,
 		birth:birth,

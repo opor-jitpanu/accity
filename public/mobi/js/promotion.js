@@ -70,7 +70,7 @@ window.onload = function(){
 				}
 
 
-
+				document.getElementById("loading").style.display = 'none';
 
 
 			}).catch(function(error) {

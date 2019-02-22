@@ -15,6 +15,8 @@ window.onload = function(){
 	var url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + key + '&amp;size=50x50';
 	$('#barcode').attr('src', url);
 
+	document.getElementById("loading").style.display = 'none';
+
 
 
 

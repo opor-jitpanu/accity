@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+  <link rel="stylesheet" href="styles/loading.css">
 </head>
 <body id="mobile_wrap">
 
@@ -86,24 +87,27 @@
     </div>
 
     <div id="pages_maincontent">
+      <div id="loading">
+        <img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
+      </div>
 
-     <h2 class="page_title">Buy E-Ticket</h2>
+      <h2 class="page_title">Buy E-Ticket</h2>
 
-     <div class="page_single layout_fullwidth_padding">
+      <div class="page_single layout_fullwidth_padding">
 
-      <p id="ticket"></p>
-      <p id="ticket2"></p>
-      <p id="sum"></p>
-      <br><br><br>
-      <center><div id="paypal-button-container"></div></center>
-      
-      
+        <p id="ticket"></p>
+        <p id="ticket2"></p>
+        <p id="sum"></p>
+        <br><br><br>
+        <center><div id="paypal-button-container"></div></center>
+        
+        
+      </div>
+
     </div>
 
+
   </div>
-
-
-</div>
 </div>
 </div>
 
@@ -114,7 +118,7 @@
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
-
+document.getElementById("loading").style.display = 'none';
 var url_string = window.location.href; //window.location.href
 var url = new URL(url_string);
 var t1 = url.searchParams.get("t1");

@@ -135,7 +135,7 @@ function showInfo(id){
 		var link = document.getElementById("btnGoogleMap");
 		link.setAttribute('href', "https://maps.google.com/?q="+latitude+","+longtitude);
 
-
+		document.getElementById("loading").style.display = 'none';
 
 	});
 
@@ -148,6 +148,7 @@ function showInfo(id){
 
 
 function getScoreOnClick(){
+	document.getElementById("loading").style.display = 'block';
 	var count = 0;
 
 	firebase.auth().onAuthStateChanged(function(user) {

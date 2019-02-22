@@ -1,12 +1,6 @@
 window.onload = function(){
 
 
-	document.getElementById("btnCheckin").style.display = "none";
-
-	
-
-
-
 
 	var url_string = window.location.href;
 	var url = new URL(url_string);
@@ -39,7 +33,7 @@ window.onload = function(){
 		ref.once("value")
 		.then(function(snapshot){
 			var point = snapshot.child(id).child("point").val();
-			document.getElementById("my_point").innerHTML = "My point "+point;
+			document.getElementById("my_point").innerHTML = "My Points : "+point;
 			showInfo(id2, point);
 		});
 	}
@@ -83,33 +77,33 @@ function getImage(idd){
 			document.getElementById("description_txt").innerHTML = description;
 
 			var point = snapshot.child(id).child("point").val();
-			document.getElementById("point2_txt").innerHTML = "Use : " + point + " point";
+			document.getElementById("point2_txt").innerHTML = "Require : " + point + " Points";
+			document.getElementById("loading").style.display = 'none';
 
 
-
-			checkPoint(curPoint, point);
+			// checkPoint(curPoint, point);
 			
 		});
 	}
 
 
-	function checkPoint(curPoint, point){
+	// function checkPoint(curPoint, point){
 
-		console.log("CURpoint " + curPoint);
-		console.log("point " + point);
-		console.log(parseInt(curPoint)+parseInt(point));
+	// 	console.log("CURpoint " + curPoint);
+	// 	console.log("point " + point);
+	// 	console.log(parseInt(curPoint)+parseInt(point));
 
-		if (parseInt(curPoint) >= parseInt(point)) {
-			console.log('more');
-			document.getElementById("btnCheckin").style.display = "block";
-			// $("btnCheckin").hide();
-			
-		}
+	// 	if (parseInt(curPoint) >= parseInt(point)) {
+	// 		console.log('more');
+	// 		document.getElementById("btnCheckin").style.display = "block";
 
 
+	// 	}
 
 
-	}
+
+
+	// }
 
 
 
@@ -117,6 +111,7 @@ function getImage(idd){
 
 
 	function getRewardOnClick(){
+		document.getElementById("loading").style.display = 'block';
 		var url_string = window.location.href;
 		var url = new URL(url_string);
 		var id2 = url.searchParams.get("id");
@@ -158,7 +153,16 @@ function getImage(idd){
 		ref.once("value")
 		.then(function(snapshot){
 			var point = snapshot.child(id).child("point").val();
-			cutpoint(curPoint, point, id);
+
+
+
+			if (parseInt(curPoint) >= parseInt(point)) {
+				cutpoint(curPoint, point, id);
+			}else{
+				alert("Your points are not enough.");
+				document.getElementById("loading").style.display = 'none';
+			}
+			
 
 
 		});

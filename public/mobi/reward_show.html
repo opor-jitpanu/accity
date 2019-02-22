@@ -10,7 +10,13 @@
   <title>Reward</title>
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+  <link rel="stylesheet" href="styles/loading.css">
+  <style type="text/css">
+  #image1{
+    width: 50%;
+  }
+</style> 
 </head>
 <body id="mobile_wrap">
 
@@ -61,6 +67,9 @@
         </div>
 
         <div id="pages_maincontent">
+          <div id="loading">
+            <img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
+          </div>
 
           <a href="reward.html" class="backto"><img src="images/icons/black/back.png" alt="" title="" /></a>
           <h2 class="blog_title" id="blog_title"></h2>
@@ -80,12 +89,12 @@
          </div>	
          <div class="page_single layout_fullwidth_padding">	
           <div class="post_single">
-            <center><p id="my_point"></p></center>
-            <center><p id="description_txt"></p></center>
-            <center><p id="point2_txt"></p></center>
-            
-          </div>
 
+
+          </div>
+          <center><p id="my_point"></p></center>
+          <center><p id="description_txt"></p></center>
+          <center><p id="point2_txt"></p></center>
 
           <a href="#" onclick="getRewardOnClick()" class="btn btn--full" id="btnCheckin">Get Code</a>
           

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+  <link rel="stylesheet" href="styles/loading.css">
 </head>
 <body id="mobile_wrap">
 
@@ -61,9 +62,12 @@
         </div>
 
         <div id="pages_maincontent">
+          <div id="loading">
+            <img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
+          </div>
 
           <a href="promotion.html" class="backto"><img src="images/icons/black/back.png" alt="" title="" /></a>
-          <h2 class="blog_title" id="blog_title"></h2>
+          <center><h2 class="blog_title" id="blog_title"></h2></center>
 
           <!-- Slider -->
           <div class="swiper-container-pages">
@@ -73,7 +77,7 @@
                <img src="images/page_photo.jpg" id="image1" alt="" title="" />
              </div>
              
-             	   
+
 
            </div>
            <div class="swiper-pagination"></div>
@@ -81,7 +85,7 @@
          <div class="page_single layout_fullwidth_padding">	
           <div class="post_single">
             <p id="blog_des">
-              
+
             </p>
             
           </div>
@@ -91,11 +95,11 @@
           
 
 
-      </div>     
-      
+        </div>     
+
+      </div>
     </div>
   </div>
-</div>
 
 </div>
 </div>
@@ -106,18 +110,18 @@
 
 
 <script src="js/promotion_show.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-  <script>
-    var config = {
-      apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
-      authDomain: "ancientcity-5c152.firebaseapp.com",
-      databaseURL: "https://ancientcity-5c152.firebaseio.com",
-      projectId: "ancientcity-5c152",
-      storageBucket: "ancientcity-5c152.appspot.com",
-      messagingSenderId: "44267136823"
-    };
-    firebase.initializeApp(config);
-  </script>
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
 
 
 <script src="js/jquery-3.3.1.min.js"></script>

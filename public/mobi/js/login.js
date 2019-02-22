@@ -1,4 +1,5 @@
 function signInOnClick(){
+	document.getElementById("loading").style.display = 'block';
 	
 	var email = document.getElementById('email_input').value;
 	var password = document.getElementById('password_input').value;
@@ -20,4 +21,10 @@ function signInOnClick(){
 	function myFunction2(email) {
 		myVar = setTimeout(window.location= "index.html", 1000);
 	}
+}
+
+
+
+window.onload = function(){
+	document.getElementById("loading").style.display = 'none';
 }

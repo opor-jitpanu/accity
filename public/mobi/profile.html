@@ -10,7 +10,8 @@
   <title>Profile</title>
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet">
+  <link rel="stylesheet" href="styles/loading.css">
 </head>
 <body id="mobile_wrap">
 
@@ -46,6 +47,8 @@
 
 <div class="views">
 
+
+
   <div class="view view-main">
     <div class="pages">
       <div data-page="blogsingle" class="page">
@@ -63,34 +66,37 @@
         </div>
 
         <div id="pages_maincontent">
+          <div id="loading">
+            <img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
+          </div>
 
           <!-- <a href="blog.html" class="backto"><img src="images/icons/black/back.png" alt="" title="" /></a> -->
           <h2 class="blog_title">Profile</h2>
 
-         	
-         <div class="page_single layout_fullwidth_padding">	
-          <div class="post_single">
+
+          <div class="page_single layout_fullwidth_padding">	
+            <div class="post_single">
 
 
-            
-            <center><span class="post_author"><p id="name_profile"></p></span><br></center>
-            <center><span class="post_mobile"><p id="tel_profile"></p></span><br></center>
-            <center><span class="post_email"><p id="email_profile"></p></span><br></center>
-            <center><span class="post_calendar"><p id="time_profile"></p></span><br></center>
-          </div>
-          
-          
 
-          
+              <span class="post_author"><p id="name_profile"></p></span><br>
+              <span class="post_mobile"><p id="tel_profile"></p></span><br>
+              <span class="post_email"><p id="email_profile"></p></span><br>
+              <span class="post_calendar"><p id="time_profile"></p></span><br>
+            </div>
 
 
-      </div>     
-      
+
+
+
+
+          </div>     
+
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-</div>
+  </div>
 </div>
 </div>
 
@@ -106,18 +112,18 @@
 <script src="js/jquery.custom.js"></script>
 
 <script src="js/profile.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
-  <script>
-    var config = {
-      apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
-      authDomain: "ancientcity-5c152.firebaseapp.com",
-      databaseURL: "https://ancientcity-5c152.firebaseio.com",
-      projectId: "ancientcity-5c152",
-      storageBucket: "ancientcity-5c152.appspot.com",
-      messagingSenderId: "44267136823"
-    };
-    firebase.initializeApp(config);
-  </script>
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+  var config = {
+    apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+    authDomain: "ancientcity-5c152.firebaseapp.com",
+    databaseURL: "https://ancientcity-5c152.firebaseio.com",
+    projectId: "ancientcity-5c152",
+    storageBucket: "ancientcity-5c152.appspot.com",
+    messagingSenderId: "44267136823"
+  };
+  firebase.initializeApp(config);
+</script>
 
 </body>
 </html>

@@ -57,7 +57,7 @@ window.onload = function(){
 		ref.once("value")
 		.then(function(snapshot){
 			var point = snapshot.child(id).child("point").val();
-			document.getElementById("point").innerHTML = "My point "+point;
+			document.getElementById("point").innerHTML = "My Points : "+point;
 		});
 	}
 
@@ -111,6 +111,8 @@ window.onload = function(){
 				var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="reward_show.html?id='+key+'&id2='+id+'">'+name+'</a></div><h2>'+'Point : '+point+'</h2></div></div></div></div></li>';
 
 				mydiv.innerHTML += div;
+
+				document.getElementById("loading").style.display = 'none';
 
 
 

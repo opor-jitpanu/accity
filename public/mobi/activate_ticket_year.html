@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+  <link rel="stylesheet" href="styles/loading.css">
 </head>
 <body id="mobile_wrap">
 
@@ -61,39 +62,43 @@
 
         <div id="pages_maincontent">
 
-
-
-
-         <div class="page_single layout_fullwidth_padding">	
-
-          <br><br>
-          <center><h4>Activate Year Ticket</h4></center>
-
-          <div class="form-group">
-            <label for="InputFirstname" id="color_white" >First name : </label>
-            <input type="text" class="form-control" id="InputFirstname" a placeholder="Enter First name">
-          </div>
-
-          <div class="form-group">
-            <label for="InputLastname" id="color_white">Last name : </label>
-            <input type="text" class="form-control" id="InputLastname" a placeholder="Enter Last name">
+          <div id="loading">
+            <img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
           </div>
 
 
-          <br>
-
-          <!-- <center><button onclick="saveNameOnClick()" class="btn btn-primary">Submit</button></center> -->
-          <a href="#" onclick="saveNameOnClick()" class="btn btn--full" id="btnCheckin">Submit</a>
-          
 
 
-        </div>     
+          <div class="page_single layout_fullwidth_padding">	
 
+            <br><br>
+            <center><h4>Activate Year Ticket</h4></center>
+
+            <div class="form-group">
+              <label for="InputFirstname" id="color_white" >First name : </label>
+              <input type="text" class="form-control" id="InputFirstname" a placeholder="Enter First name">
+            </div>
+
+            <div class="form-group">
+              <label for="InputLastname" id="color_white">Last name : </label>
+              <input type="text" class="form-control" id="InputLastname" a placeholder="Enter Last name">
+            </div>
+
+
+            <br>
+
+            <!-- <center><button onclick="saveNameOnClick()" class="btn btn-primary">Submit</button></center> -->
+            <a href="#" onclick="saveNameOnClick()" class="btn btn--full" id="btnCheckin">Submit</a>
+
+
+
+          </div>     
+
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
+  </div>
 </div>
 </div>
 
@@ -110,7 +115,7 @@
 
 
   window.onload = function(){
-    // document.getElementById("loading").style.display = "none";
+    document.getElementById("loading").style.display = 'none';
 
 
   }
@@ -119,7 +124,7 @@
   function saveNameOnClick(){
 
 
-
+    document.getElementById("loading").style.display = 'block';
     var url_string = window.location.href;
     var url = new URL(url_string);
     var ticket = url.searchParams.get("ticket");
