@@ -3,6 +3,7 @@ window.onload = function(){
 	var url_string = window.location.href; //window.location.href
 	var url = new URL(url_string);
 	var score = url.searchParams.get("sum");
+	var allscore = url.searchParams.get("allscore");
 
 	var sum = window.atob(score);
 	console.log(sum);
@@ -32,6 +33,9 @@ window.onload = function(){
 		var ref = firebase.database().ref("User");
 		ref.child(id)
 		.update({ point: sum
+		});
+		ref.child(id)
+		.update({ point_all: parseInt(allscore)
 		});
 		document.getElementById("point_txt").innerHTML = "Your current point : " + sum;
 

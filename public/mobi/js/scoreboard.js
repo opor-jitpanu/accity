@@ -67,7 +67,7 @@ window.onload = function(){
 
 
 			
-				console.log(firstname +" "+ lastname + " : " + point);
+			// console.log(firstname +" "+ lastname + " : " + point);
 
 			
 
@@ -94,6 +94,25 @@ window.onload = function(){
 
 
 
+	const query = firebase.database().ref('User')
+	.orderByChild('point_all')
+	.limitToLast(10)
+
+	query.once('value', function (snapshot) {
+		var count = 10;
+		snapshot.forEach(function (childSnapshot) {
+			
+			var firstname = childSnapshot.val().firstname;
+			var lastname = childSnapshot.val().lastname;
+			var point_all = childSnapshot.val().point_all;
+			
+			document.getElementById("name" + count).innerHTML = firstname +" "+ lastname;
+			document.getElementById("score" + count).innerHTML = "Score : " + point_all;
+			
+			count -= 1;
+            
+        });
+	});
 
 
 

@@ -172,14 +172,15 @@ function getScoreOnClick(){
 		ref.once("value")
 		.then(function(snapshot){
 			var score = snapshot.child(id).child("point").val();
+			var point_all = snapshot.child(id).child("point_all").val();
 			
-			getIdPlace(score, count);
+			getIdPlace(score, count, point_all);
 
 		});
 	}
 
 
-	function getIdPlace(userscore, count){
+	function getIdPlace(userscore, count, point_all){
 		var url_string = window.location.href; //window.location.href
 		var url = new URL(url_string);
 		var place = url.searchParams.get("place");
@@ -187,19 +188,19 @@ function getScoreOnClick(){
 		ref.orderByChild('place_id').equalTo(place).on("value", function(snapshot) {
 			snapshot.forEach(function(data) {
 				var place_id = data.key;
-				getScorePlace(userscore, place_id, count);
+				getScorePlace(userscore, place_id, count, point_all);
 			});
 		});
 	}
 
 
-	function getScorePlace(userscore, place_id, count){
+	function getScorePlace(userscore, place_id, count, point_all){
 		var ref3 = firebase.database().ref("Place");
 		ref3.once("value")
 		.then(function(snapshot){
 			var placescore = snapshot.child(place_id).child("point").val();
 			
-			AddPoint(userscore, placescore, count);
+			AddPoint(userscore, placescore, count, point_all);
 			
 
 		});
@@ -212,24 +213,24 @@ function getScoreOnClick(){
 
 
 
-	function AddPoint(userscore, placescore, count){
+	function AddPoint(userscore, placescore, count, point_all){
 
 		firebase.auth().onAuthStateChanged(function(user) {
 
-			FindID(user.email,userscore, placescore, count);
+			FindID(user.email,userscore, placescore, count, point_all);
 		});
 
-		function FindID(email,userscore, placescore, count){
+		function FindID(email,userscore, placescore, count, point_all){
 
 			var ref = firebase.database().ref("User");
 			ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
 				snapshot.forEach(function(data) {
-					ChangePoint(data.key, userscore, placescore, email, count);
+					ChangePoint(data.key, userscore, placescore, email, count, point_all);
 				});
 			});
 		}
 	}
-	function ChangePoint(id, userscore, placescore, email, count){
+	function ChangePoint(id, userscore, placescore, email, count, point_all){
 		
 
 		var today2 = new Date();
@@ -267,13 +268,13 @@ function getScoreOnClick(){
 
 		var time2 = hour2 + ":" + minute2;
 
-		UpdatePoint(id, userscore, placescore, email, count, place, time2, today2);
+		UpdatePoint(id, userscore, placescore, email, count, place, time2, today2, point_all);
 		
 
 	}
 
 
-	function UpdatePoint(id, userscore, placescore, email, count, place, time2, today2){
+	function UpdatePoint(id, userscore, placescore, email, count, place, time2, today2, point_all){
 		var sum_score = parseInt(userscore) + parseInt(placescore);
 		console.log("o");
 		var firebaseRef = firebase.database().ref("Checkin");
@@ -284,14 +285,14 @@ function getScoreOnClick(){
 			date:today2
 		});
 
-
+		var allscore = parseInt(point_all) + parseInt(placescore);
 		console.log(sum_score);
 		var enc = window.btoa(sum_score);
 		console.log(enc);
 
 
 
-		window.location.href = "checkin_complete.html?sum=" + enc;
+		window.location.href = "checkin_complete.html?sum=" + enc +"&allscore="+ allscore ;
 	}
 }
 

@@ -83,7 +83,7 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		password:password,
 		sex:sex,
 		point:'0',
-		point_all:'0',
+		point_all:0,
 		country:country,
 		tel:tel,
 		birth:birth,
