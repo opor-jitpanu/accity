@@ -34,20 +34,88 @@
 <body>
 
   <button onclick="homeOnClick()" id="btnBack" class="btn btn-primary">Home</button>
-  <br>
-  <center><h1>ค้นหา</h1></center>
-  <br>
+  <button onclick="refreshOnClick()" id="btnBack" class="btn btn-primary">Refresh</button>
 
-  <div class="form_row">
-    <label>First Name : </label>
-    <input type="text" name="name" value="" id="inputFirstname" class="form_input" />
+
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+
+
+
+      <br>
+      <center><h1>Search</h1></center>
+      <br>
+
+      <div class="form_row">
+        <label>First Name : </label>
+        <input type="text" name="name" value="" id="inputFirstname" class="form_input" />
+      </div>
+
+      <div class="form_row">
+        <label>Last Name : </label>
+        <input type="text" name="name" value="" id="inputLastname" class="form_input" />
+      </div>
+
+
+      <div class="form_row">
+        <label>Email : </label>
+        <input type="text" name="name" value="" id="inputEmail" class="form_input" />
+      </div>
+
+      <div class="form_row">
+        <label>Tel : </label>
+        <input type="text" name="name" value="" id="inputTel" class="form_input" />
+      </div>
+
+      <div id="InputSex">
+        <label for="InputSex" id="color_white" >Gender : </label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radio1" value="male">
+          <label class="form-check-label" for="exampleRadios1" id="color_white">
+            Male
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radio2" value="female">
+          <label class="form-check-label" for="exampleRadios2" id="color_white">
+            Female
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios" id="radio3" value="" checked>
+          <label class="form-check-label" for="exampleRadios2" id="color_white">
+            None
+          </label>
+        </div>
+      </div>
+
+
+      <button onclick="submitOnClick()" id="btnBack" class="btn btn-primary">Submit</button>
+    </div>
+    <div class="col-1"></div>
   </div>
 
-  <button onclick="submitOnClick()" id="btnBack" class="btn btn-primary">Submit</button>
+
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+      <p id="text_count"></p>
+      <table id="myTable">
+      </table>
+
+    </div>
+    <div class="col-1"></div>
+  </div>
 
   <script type="text/javascript">
     function homeOnClick(){
       window.location.href = "index_staff.html"; 
+    }
+    function refreshOnClick(){
+      location.reload();
     }
   </script>
 
