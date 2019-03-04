@@ -651,7 +651,8 @@ margin:5px 0 0 0;
 display:block;
 float:left;
 text-align:left;
-padding:5px 0 0 20px;
+padding:6px 0 15px 26px;
+font-size: 20px;
 }
 .main_nav_underline ul li a{
 width:96%;
@@ -2398,7 +2399,7 @@ margin:0 0 0 10px;
 
 .post_single span.post_star{
 background:url(images/star.png) no-repeat left;
-padding:10px 0 5px 25px;
+padding:25px 0 5px 35px;
 margin:0 0 0 10px;
 }
 
@@ -3165,7 +3166,7 @@ bottom: 13%;
 bottom:10%;	
 }
 .main_nav_underline ul li img{
-max-width:8%;
+max-width:10%;
 }
 .main_nav_underline ul li a{
 font-size:13px;

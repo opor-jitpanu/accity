@@ -1,4 +1,10 @@
 function signInOnClick(){
+
+
+	
+
+
+
 	document.getElementById("loading").style.display = 'block';
 	
 	var email = document.getElementById('email_input').value;

@@ -165,7 +165,9 @@ function loadwindow(c, d){
       var place1 = childSnapshot.child("latitude").val();
       var place2 = childSnapshot.child("longtitude").val();
       var line = 1;
-      var distance = parseInt(getDistanceFromLatLonInKm(a,b,place1,place2,line));;
+      var distance = parseInt(getDistanceFromLatLonInKm(c,d,place1,place2,line));;
+      document.getElementById("location_la_long").innerHTML = "Latitude : " + c +' ,Longtitude : ' + d;
+      console.log(c,d);
       obj3[place_id] = distance;
       i+=1;
 
