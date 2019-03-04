@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/swiper.css">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+  <link rel="stylesheet" href="styles/loading.css">
 </head>
 <body id="mobile_wrap">
 
@@ -67,25 +68,29 @@
 
     <div id="pages_maincontent">
 
-     <!-- <h2 class="page_title">Skip to check-in page</h2> -->
-     <br>
+      <div id="loading">
+        <img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
+      </div>
 
-     <div class="page_single layout_fullwidth_padding">
+      <!-- <h2 class="page_title">Skip to check-in page</h2> -->
+      <br>
 
-      <center>
-        <p class="">For paper ticket</p>
-        <p class="">Press 'SKIP' to join check-in & rewards redemption</p>
-      </center>
-      
-      <a href="#" onclick="checkinOnClick()" class="btn btn--full open-popup" id="btnCheckin">SKIP</a>
-      
-      
+      <div class="page_single layout_fullwidth_padding">
+
+        <center>
+          <p class="">Please wait</p>
+          <!-- <p class="">Press 'SKIP' to join check-in & rewards redemption</p> -->
+        </center>
+
+        <!-- <a href="#" onclick="checkinOnClick()" class="btn btn--full open-popup" id="btnCheckin">SKIP</a> -->
+
+
+      </div>
+
     </div>
 
+
   </div>
-
-
-</div>
 </div>
 </div>
 
@@ -121,14 +126,14 @@
 
 
 <script type="text/javascript">
-  
 
 
 
-  function checkinOnClick(){
+
+  window.onload = function(){
 
 
-    // document.getElementById("loading").style.display = "block";
+   
     firebase.auth().onAuthStateChanged(function(user) {
 
       insertEmail(user.email);
@@ -186,11 +191,11 @@
 
 
     }
-    alert("Time in Complete!");
+    // alert("Time in Complete!");
 
     var timer1 =setTimeout(function() {  
       window.location.href = "checkin.html";
-    }, 3000);
+    }, 5000);
 
 
 

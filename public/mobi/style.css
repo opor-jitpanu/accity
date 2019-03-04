@@ -85,6 +85,7 @@ p{
 padding:0px;
 margin:0px;
 line-height:20px;
+font-size: 17px;
 }
 blockquote{
 background:#f1f7f8;
@@ -2324,14 +2325,14 @@ float:left;
 margin:0 0 0 4%;
 }
 .post_details h2{
-font-size:14px;
+font-size:16px;
 line-height:20px;
 font-weight:400;
 margin:10px 0 10px 0;
 padding:0px;
 }
 .post_category a{
-font-size:14px;
+font-size:17px;
 font-weight:700;
 padding:0;
 display:inline-block;
@@ -3193,7 +3194,7 @@ width: 85%;
 
 
 h2.page_title{
-font-size:16px;
+font-size:20px;
 line-height:25px;
 font-weight:400;
 padding:5px 0;

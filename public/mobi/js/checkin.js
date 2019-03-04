@@ -86,7 +86,7 @@ function checkTimeIn(){
         reload();
         getLocation();
       }else if (date_out != time){
-        alert("Pleae Check Time In");
+        // alert("Pleae Check Time In");
         window.location.href = "skip.html";
       }
 
