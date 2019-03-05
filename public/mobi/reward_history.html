@@ -7,7 +7,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 	<link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
-	<title>Reward</title>
+	<title>Reward History</title>
 	<link rel="stylesheet" href="css/swiper.css">
 	<link rel="stylesheet" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
@@ -65,16 +65,15 @@
 						</div>
 
 						<div id="pages_maincontent">
-							<div id="loading">
+							<!-- <div id="loading">
 								<img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
-							</div>
+							</div> -->
 
-							<h2 class="page_title">Rewards</h2>
+							<h2 class="page_title">Rewards History</h2>
 							
 
 							<div class="page_single layout_fullwidth_padding"> 
-								<p onclick="historyOnClick()">History</p> 
-								<p id="point"></p>
+								
 
 
 								<ul class="posts" id="list">
@@ -119,13 +118,9 @@
 	<script src="js/jquery.validate.min.js" ></script>
 	<script src="js/swiper.min.js"></script>
 	<script src="js/jquery.custom.js"></script>
-	<script type="text/javascript">
-		function historyOnClick() {
-			window.location.href = "reward_history.html";
-		}
-	</script>
+	
 
-	<script src="js/reward.js"></script>
+	<script src="js/reward_history.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
 	<script>
 		var config = {

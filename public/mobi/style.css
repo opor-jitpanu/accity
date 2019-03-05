@@ -863,7 +863,7 @@ overflow: scroll;
 bottom: 60px;
 }
 #pages_maincontent p{
-padding:0 0 15px 0;
+padding:0 0 15px 10px;
 margin:0px;
 clear:both;
 }

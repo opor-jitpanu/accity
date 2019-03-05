@@ -1,18 +1,3 @@
-// window.onload = function(){
-
-
-// 	var mydiv = document.getElementById('list');
-
-
-
-// 	var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="promotion_show.html?key='+id+'">'+title+'</a></div><h2>'+des1+'</h2></div></div></div></div></li>';
-
-// 	mydiv.innerHTML += div;
-
-
-// }
-
-
 
 
 
