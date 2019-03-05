@@ -28,7 +28,7 @@ window.onload = function(){
 		ref.once("value")
 		.then(function(snapshot){
 			var point = snapshot.child(id).child("point_all").val();
-			document.getElementById("point").innerHTML = "Your Points : "+point;
+			document.getElementById("point").innerHTML = "Your Accumulative Points : "+point;
 		});
 	}
 
