@@ -1,23 +1,9 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.onload = function(){
 
 	var mydiv = document.getElementById('list');
 
-
+	var mydiv_used = document.getElementById('used_list');
 
 	firebase.auth().onAuthStateChanged(function(user) {
 
@@ -34,6 +20,8 @@ window.onload = function(){
 	
 	
 	function showData(email_page){
+
+
 		var userDataRef = firebase.database().ref("Code");
 		var storageRef = firebase.storage().ref();
 		userDataRef.once("value").then(function(snapshot) {
@@ -74,35 +62,41 @@ window.onload = function(){
 						var test = url;
 
 						
+						var check = '';
+						if (status != 'used') {
+							var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="reward_history_show.html?id='+key_code+'&check=yes'+'">'+name+'</a></div><h2>'+'You can use this code.'+'</h2></div></div></div></div></li>';
 
+							mydiv.innerHTML += div;
+						}else{
+							var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="reward_history_show.html?id='+key_code+'&check=no'+'">'+name+'</a></div><h2>'+'Code is Used.'+'</h2></div></div></div></div></li>';
 
-						if (true) {}
-
-						var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="reward_history_show.html?id='+key_code+'">'+name+'</a></div><h2>'+'Status : '+status+'</h2></div></div></div></div></li>';
-
-						mydiv.innerHTML += div;
-
-				
-
-
-
-			}).catch(function(error) {
-
-				console.log(error);
-
-			});
+							mydiv_used.innerHTML += div;
+						}
+						
+						document.getElementById("loading").style.display = 'none';
+						
 
 
 
 
 
+					}).catch(function(error) {
+
+						console.log(error);
+
+					});
 
 
 
-			
 
 
-		});
+
+
+
+
+
+
+				});
 
 
 
@@ -120,5 +114,7 @@ window.onload = function(){
 
 	});
 	}
+
+	document.getElementById("loading").style.display = 'none';
 
 }
