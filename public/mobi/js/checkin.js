@@ -187,9 +187,9 @@ function loadwindow(c, d){
     x.innerHTML ="Distance : "+sortedCities[0][1]+" m.";
     var distance2 = parseInt(sortedCities[0][1]);
     var check  = '';
-    if (distance2 < 300) {
+    if (distance2 < 50) {
       check = 'yes';
-    }else if(distance2 >= 301){
+    }else if(distance2 >= 51){
       check = 'no';
     }
     showImage(sortedCities[0][0],1, check);
@@ -209,9 +209,9 @@ function loadwindow(c, d){
     x.innerHTML ="Distance : "+sortedCities[1][1]+" m.";
     var distance2 = parseInt(sortedCities[1][1]);
     var check  = '';
-    if (distance2 < 300) {
+    if (distance2 < 50) {
       check = 'yes';
-    }else if(distance2 >= 301){
+    }else if(distance2 >= 51){
       check = 'no';
     }
     showImage(sortedCities[1][0],2, check);
@@ -228,9 +228,9 @@ function loadwindow(c, d){
     x.innerHTML ="Distance : "+sortedCities[2][1]+" m.";
     var distance2 = parseInt(sortedCities[2][1]);
     var check  = '';
-    if (distance2 < 300) {
+    if (distance2 < 50) {
       check = 'yes';
-    }else if(distance2 >= 301){
+    }else if(distance2 >= 51){
       check = 'no';
     }
     showImage(sortedCities[2][0],3, check);
@@ -247,9 +247,9 @@ function loadwindow(c, d){
     x.innerHTML ="Distance : "+sortedCities[3][1]+" m.";
     var distance2 = parseInt(sortedCities[3][1]);
     var check  = '';
-    if (distance2 < 300) {
+    if (distance2 < 50) {
       check = 'yes';
-    }else if(distance2 >= 301){
+    }else if(distance2 >= 51){
       check = 'no';
     }
     showImage(sortedCities[3][0],4, check);
@@ -266,9 +266,9 @@ function loadwindow(c, d){
     x.innerHTML ="Distance : "+sortedCities[4][1]+" m.";
     var distance2 = parseInt(sortedCities[4][1]);
     var check  = '';
-    if (distance2 < 300) {
+    if (distance2 < 50) {
       check = 'yes';
-    }else if(distance2 >= 301){
+    }else if(distance2 >= 51){
       check = 'no';
     }
     showImage(sortedCities[4][0],5, check);
@@ -285,9 +285,9 @@ function loadwindow(c, d){
     x.innerHTML ="Distance : "+sortedCities[5][1]+" m.";
     var distance2 = parseInt(sortedCities[5][1]);
     var check  = '';
-    if (distance2 < 300) {
+    if (distance2 < 50) {
       check = 'yes';
-    }else if(distance2 >= 301){
+    }else if(distance2 >= 51){
 
       check = 'no';
     }

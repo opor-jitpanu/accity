@@ -47,5 +47,5 @@ function myFunction2() {
 
 function nextpage() {
 	alert("complete");
-    window.location= "staff_change_place.html";
+    // window.location= "staff_change_place.html";
 }
