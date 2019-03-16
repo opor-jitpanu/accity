@@ -147,8 +147,8 @@ function loadwindow(c, d){
 
 
 
-  var a = 13.548565;
-  var b = 100.628249;
+  var a = 13.546881;
+  var b = 100.628337;
   // var myLocation = [13.548565, 100.628249];
   var obj2 = {};
 
@@ -165,7 +165,7 @@ function loadwindow(c, d){
       var place1 = childSnapshot.child("latitude").val();
       var place2 = childSnapshot.child("longtitude").val();
       var line = 1;
-      var distance = parseInt(getDistanceFromLatLonInKm(c,d,place1,place2,line));;
+      var distance = parseInt(getDistanceFromLatLonInKm(a,b,place1,place2,line));;  //แก้ไข้Location ABCD
       document.getElementById("location_la_long").innerHTML = "Latitude : " + c +' ,Longtitude : ' + d;
       console.log(c,d);
       obj3[place_id] = distance;
@@ -353,14 +353,46 @@ function showImage(place, line, check){
     ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
       snapshot.forEach(function(data) {
         var id = data.key;
+        
         ref2.once("value")
         .then(function(snapshot){
 
           var location = snapshot.child(id).child("location").val();
+          var date = snapshot.child(id).child("date").val();
 
-          if (location == place) {
+
+
+          var today = new Date();
+          var dd = today.getDate();
+          var mm = today.getMonth() + 1;
+
+          var yyyy = today.getFullYear();
+          if (dd < 10) {
+            dd = '0' + dd;
+          } 
+          if (mm < 10) {
+            mm = '0' + mm;
+          } 
+          var today = dd + '/' + mm + '/' + yyyy;
+
+          if (location == place && date==today) {
+
+
+
+
+
+
             console.log("check" + location +" "+place);
             document.getElementById('image_place'+line).style.opacity = "0.3";
+
+
+
+
+
+
+
+
+
           }
 
         });
