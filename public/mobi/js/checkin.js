@@ -318,9 +318,12 @@ function showNamePlace(place,line){
     snapshot.forEach(function(data) {
       var div_place = "name_place" + line;
       var name = data.child("name").val();
+      var id = data.child("place_id").val();
+      var res = id.substring(1);
       console.log(name.length);
 
       document.getElementById(div_place).innerHTML = name;
+      document.getElementById("place_id"+line).innerHTML = "Place ID : " + res;
     });
   });
 
