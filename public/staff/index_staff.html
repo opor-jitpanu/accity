@@ -15,15 +15,15 @@
   <!-- <script type="text/javascript" src="staff_index.js"></script> -->
 
   <style>
-  table, td {
-    border: 1px solid black;
+    table, td {
+      border: 1px solid black;
 
-  }
-  table{
-    border-collapse: collapse;
-    width: 100%;
-  }
-</style>
+    }
+    table{
+      border-collapse: collapse;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
 
@@ -39,6 +39,8 @@
     <button type="button" class="btn btn-info btn-lg" onclick="CheckTimeInOnClick()">เช็คอิน</button>
     <!-- <button type="button" class="btn btn-info btn-lg" onclick="AnaOnClick()">วิเคราะห์</button> -->
     <button type="button" class="btn btn-info btn-lg" onclick="checkrewardOnClick()">เช็คของรางวัล</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="countPlaceOnClick()">จำนวนการเช็คอินสถานที่</button>
+    <button type="button" class="btn btn-info btn-lg" onclick="countDeleteCheckinByEmailOnClick()">ลบประวัติการเช็คอินด้วยอีเมล</button>
     <!-- <button type="button" class="btn btn-info btn-lg" onclick="checkrewardByEmailOnClick()">เช็คของรางวัล By Email</button> -->
     <!-- <button type="button" class="btn btn-info btn-lg" onclick="AnaOnClick2()">วิเคราะห์2</button> -->
     <!-- <button type="button" class="btn btn-info btn-lg" onclick="changeLogoutOnClick()">Change Logout</button> -->
@@ -113,6 +115,14 @@
 
     function searchOnClick(){
       window.location.href = "staff_search.html";
+    }
+
+    function countPlaceOnClick(){
+      window.location.href = "staff_count_place.html";
+    }
+
+    function countDeleteCheckinByEmailOnClick(){
+      window.location.href = "staff_delete_checkin_email.html";
     }
 
   </script>
