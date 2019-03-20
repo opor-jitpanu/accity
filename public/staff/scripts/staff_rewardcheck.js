@@ -15,6 +15,7 @@ function CheckRewardOnClick() {
 				document.getElementById("email_user").innerHTML = 'Email : ' + email;
 				document.getElementById("status_user").innerHTML = 'Key Status : ' + status;
 				showReward(id3);
+				// chageStatus(reward_id);
 			});
 		});
 	});
@@ -45,9 +46,30 @@ function showReward(id){
 				document.getElementById("reward_name").innerHTML = 'Reward Name : ' + name;
 				document.getElementById("description").innerHTML = 'Reward Description : ' + description;
 				document.getElementById("point").innerHTML = 'Reward Point : ' + point;
+
+
+				
+
 				
 			});
 		});
+	});
+
+
+
+}
+
+
+
+
+
+
+function chageStatus(id){
+
+
+	var ref = firebase.database().ref("Code");
+	ref.child(id)
+	.update({ status : "used"
 	});
 
 
