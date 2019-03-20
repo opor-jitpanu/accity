@@ -35,42 +35,99 @@ window.onload = function(){
         if (ticket1 > 0) { //บัตรคุ้มสยาม
         	for (var i = 0; i < parseInt(ticket1); i++) {
 
-        		var firebaseRef = firebase.database().ref("Ticket");
-        		var newPostRef = firebaseRef.push({
-        			issue:'-',
-        			valid:'-',
-        			type:'normal',
-        			email:email,
-        			date_buy:today,
-        			status:'stanby',
-        			time_in:'-',
-        			time_out:'-',
-        			date_in:'-',
-        			name:'-'
-        		});
+        		// var firebaseRef = firebase.database().ref("Ticket");
+        		// var newPostRef = firebaseRef.push({
+        		// 	issue:'-',
+        		// 	valid:'-',
+        		// 	type:'normal',
+        		// 	email:email,
+        		// 	date_buy:today,
+        		// 	status:'stanby',
+        		// 	time_in:'-',
+        		// 	time_out:'-',
+        		// 	date_in:'-',
+        		// 	name:'-'
+        		// });
 
-        	}
+
+
+
+                firebase.database().ref("Ticket").push({
+                    issue:'-',
+                    valid:'-',
+                    type:'normal',
+                    email:email,
+                    date_buy:today,
+                    status:'stanby',
+                    time_in:'-',
+                    time_out:'-',
+                    date_in:'-',
+                    name:'-'
+                }, function(error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        window.location.href = "my_ticket.html";
+                    }
+                });
+
+
+
+
+
+
+
+
+            }
         }
 
 
         if (ticket2 > 0) { //บัตรรายปี
         	for (var i = 0; i < parseInt(ticket2); i++) {
 
-        		var firebaseRef = firebase.database().ref("Ticket");
-        		var newPostRef = firebaseRef.push({
-        			issue:'-',
-        			valid:'-',
-        			type:'year',
-        			email:email,
-        			date_buy:today,
-        			status:'stanby',
-        			time_in:'-',
-        			time_out:'-',
-        			date_in:'-',
-        			name:'-'
-        		});
+        		// var firebaseRef = firebase.database().ref("Ticket");
+        		// var newPostRef = firebaseRef.push({
+        		// 	issue:'-',
+        		// 	valid:'-',
+        		// 	type:'year',
+        		// 	email:email,
+        		// 	date_buy:today,
+        		// 	status:'stanby',
+        		// 	time_in:'-',
+        		// 	time_out:'-',
+        		// 	date_in:'-',
+        		// 	name:'-'
+        		// });
 
-        	}
+
+
+
+
+                firebase.database().ref("Ticket").push({
+                    issue:'-',
+                    valid:'-',
+                    type:'year',
+                    email:email,
+                    date_buy:today,
+                    status:'stanby',
+                    time_in:'-',
+                    time_out:'-',
+                    date_in:'-',
+                    name:'-'
+                }, function(error) {
+                    if (error) {
+                        alert(error);
+                    } else {
+                        window.location.href = "my_ticket.html";
+                    }
+                });
+
+
+
+
+                
+
+            }
         }
 
 
@@ -78,7 +135,7 @@ window.onload = function(){
         // alert("Complete"); 
         
         
-        var timer1 =setTimeout(function() { window.location.href = "my_ticket.html"; }, 3000);
+        // var timer1 =setTimeout(function() { window.location.href = "my_ticket.html"; }, 3000);
 
 
 

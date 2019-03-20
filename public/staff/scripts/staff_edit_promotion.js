@@ -80,7 +80,7 @@ function submitOnClick(){
 
 
 
-	var url_string = window.location.href; //window.location.href
+	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var key = url.searchParams.get("key");
 
@@ -97,23 +97,30 @@ function submitOnClick(){
 		var ref = firebase.database().ref("Promotion");
 		ref.orderByChild('id').equalTo(key).on("value", function(snapshot) {
 			snapshot.forEach(function(data) {
-        // alert(data.key);
-        edit(data.key);
-    });
+
+				edit(data.key);
+			});
 		});
 	}
 
 	function edit(id){
-		var ref = firebase.database().ref("Promotion");
-		ref.child(id)
-		.update({ title : title,
+
+		firebase.database().ref("Promotion").child(id).update({
+			title : title,
 			description1 : description1,
 			description2 : description2,
 			date_in : date2_in,
 			date_out : date2_out
+		}, function(error) {
+			if (error) {
+				alert(error);
+			} else {
+				window.location.href = "staff_promotion.html";
+			}
 		});
-		alert("Complete");
-		window.location.href = "staff_promotion.html";
+
+		
+		
 	}
 }
 

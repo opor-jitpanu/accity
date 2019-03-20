@@ -14,7 +14,24 @@ function addPlaceOnClick(){
 		alert('Only jpg files allowed!');
 	}else{
 		var uploadTask = storageRef.child('images/' + place + ".jpg").put(file);
-		alert('Complete');
+		
+		uploadTask.on('state_changed', function(snapshot){
+			var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+			console.log('Upload is ' + progress);
+			switch (snapshot.state) {
+				case firebase.storage.TaskState.PAUSED: 
+				console.log('Upload is paused');
+				break;
+				case firebase.storage.TaskState.RUNNING: 
+				console.log('Upload is running');
+				break;
+			}
+		}, function(error) {
+			alert(error);
+		}, function() {
+
+			window.location= "staff_change_place.html";
+		});
 	}
 
 

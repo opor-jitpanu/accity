@@ -17,7 +17,27 @@ function AddRewardOnClick() {
 		alert('Only jpg files allowed!');
 	}else{
 		var uploadTask = storageRef.child('rewards/' + key + ".jpg").put(file);
-		insertData(name, des, point, key);
+
+
+		uploadTask.on('state_changed', function(snapshot){
+			var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+			console.log('Upload is ' + progress);
+			switch (snapshot.state) {
+				case firebase.storage.TaskState.PAUSED: 
+				console.log('Upload is paused');
+				break;
+				case firebase.storage.TaskState.RUNNING: 
+				console.log('Upload is running');
+				break;
+			}
+		}, function(error) {
+			alert(error);
+		}, function() {
+
+			insertData(name, des, point, key);
+		});
+
+		
 		
 	}
 
@@ -27,22 +47,28 @@ function AddRewardOnClick() {
 
 function insertData(name, des, point, key){
 	var key2 = key.toString();
-	var firebaseRef = firebase.database().ref("Reward");
-	firebaseRef.push({
+
+	firebase.database().ref("Reward").push({
 		name:name,
 		description:des,
 		point:point,
 		id:key2
+	}, function(error) {
+		if (error) {
+			alert(error);
+		} else {
+			window.location= "staff_reward.html";
+		}
 	});
-	alert('Complete');
-	// myFunction2();
+
+
+
+
+
+	
 }
 
-function myFunction2() {
-	myVar = setTimeout(nextpage(), 4000);
-}
 
-function nextpage() {
-	alert("complete");
-    window.location= "staff_reward.html";
-}
+
+
+

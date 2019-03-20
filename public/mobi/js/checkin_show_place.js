@@ -43,6 +43,7 @@ function showBtn(place, check_distance){
 		var ref2 = firebase.database().ref("Checkin");
 		var ref = firebase.database().ref("Checkin");
 		var check = '';
+		var hide = 0;
 		ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
 			snapshot.forEach(function(data) {
 				var id = data.key;
@@ -50,40 +51,78 @@ function showBtn(place, check_distance){
 				.then(function(snapshot){
 					
 					var location = snapshot.child(id).child("location").val();
-					if (location == place) {//CHECKED
-						// var x = document.getElementById("btnCheckin");
-						// x.style.display = "none";
-						// console.log("CHECKED");
-						check = "checked";
-						console.log("1");
-					}else if (location !== place && check == 'checked') {
-						check = "checked";
-						console.log("2");
-					}else if (location !== place && check !== 'checked') {
-						check = "no";
-						console.log("3");
+					var date = snapshot.child(id).child("date").val();
+					
+
+
+					var today = new Date();
+					var dd = today.getDate();
+					var mm = today.getMonth() + 1;
+
+					var yyyy = today.getFullYear();
+					if (dd < 10) {
+						dd = '0' + dd;
+					} 
+					if (mm < 10) {
+						mm = '0' + mm;
+					} 
+					var today = dd + '/' + mm + '/' + yyyy;
+
+
+
+					console.log(location+place);
+					console.log(date+today);
+					if (location == place && date==today){
+						document.getElementById("btnCheckin").style.display = 'none';
+						console.log('check');
+						hide = 1;
+					}else{
+						if (hide == 1) {
+							document.getElementById("btnCheckin").style.display = 'none';
+						}
+						else{
+							document.getElementById("btnCheckin").style.display = 'block';
+						}
+						
 					}
 
 
-					if (check == "no" && check_distance == "yes") {
-						console.log("block");
-						document.getElementById("btnCheckin").style.display = 'block';
-						// var x = document.getElementById("btnCheckin");
-						// x.style.display = "block";
-						// document.getElementById("check1_txt").innerHTML = "You can Check In";
-					}else if (check == "no" && check_distance == "no") {
-						console.log("block");
-						document.getElementById("btnCheckin").style.display = 'none';
-						// var x = document.getElementById("btnCheckin");
-						// x.style.display = "none";
-						// document.getElementById("check1_txt").innerHTML = "You are far from place";
-					}else if (check == "checked") {
-						console.log("none");
-						document.getElementById("btnCheckin").style.display = 'none';
-						// var x = document.getElementById("btnCheckin");
-						// x.style.display = "none";
-						// document.getElementById("check1_txt").innerHTML = "You are Checked";
-					}
+
+
+					// if (today !== date) {
+
+					// 	console.log(date+"  "+location);
+
+					// 	if (location == place) {
+
+					// 		check = "checked";
+					// 		console.log("1");
+					// 	}else if (location !== place && check == 'checked') {
+					// 		check = "checked";
+					// 		console.log("2");
+					// 	}else if (location !== place && check !== 'checked') {
+					// 		check = "no";
+					// 		console.log("3");
+					// 	}
+
+
+					// 	if (check == "no" && check_distance == "yes") {
+					// 		console.log("block");
+					// 		document.getElementById("btnCheckin").style.display = 'block';
+					// 	}else if (check == "no" && check_distance == "no") {
+					// 		console.log("block");
+					// 		document.getElementById("btnCheckin").style.display = 'none';
+					// 	}else if (check == "checked") {
+					// 		console.log("none");
+					// 		document.getElementById("btnCheckin").style.display = 'none';
+					// 	}
+
+					// }
+
+
+					
+
+					
 
 				});
 
@@ -277,22 +316,35 @@ function getScoreOnClick(){
 	function UpdatePoint(id, userscore, placescore, email, count, place, time2, today2, point_all){
 		var sum_score = parseInt(userscore) + parseInt(placescore);
 		console.log("o");
-		var firebaseRef = firebase.database().ref("Checkin");
-		firebaseRef.push({
+
+
+
+		firebase.database().ref("Checkin").push({
 			email:email,
 			location:place,
 			time_checkin:time2,
 			date:today2
+		}, function(error) {
+			if (error) {
+				alert(error);
+			} else {
+				var allscore = parseInt(point_all) + parseInt(placescore);
+				console.log(sum_score);
+				var enc = window.btoa(sum_score);
+				console.log(enc);
+
+
+
+				window.location.href = "checkin_complete.html?sum=" + enc +"&allscore="+ allscore ;
+			}
 		});
 
-		var allscore = parseInt(point_all) + parseInt(placescore);
-		console.log(sum_score);
-		var enc = window.btoa(sum_score);
-		console.log(enc);
 
 
 
-		window.location.href = "checkin_complete.html?sum=" + enc +"&allscore="+ allscore ;
+
+
+		
 	}
 }
 

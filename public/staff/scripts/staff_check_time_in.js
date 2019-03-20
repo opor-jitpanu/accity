@@ -9,7 +9,6 @@ function BackHome(){
 
 function CheckTimeInOnClick(){
 	var ticket_id = document.getElementById('ticket_id').value;
-	// var ticket_id = '-LRbNjYORSmh2YBm9PDw**-LRbNjYSor7O0CU6COzO**';
 	var ticket = '';
 
 
@@ -94,13 +93,32 @@ function checkin(ticket){
 
 
 			if (type == "normal") {
-				var ref = firebase.database().ref("Ticket");
-				ref.child(ticket)
-				.update({ 
+
+				// var ref = firebase.database().ref("Ticket");
+				// ref.child(ticket)
+				// .update({ 
+				// 	time_in: time,
+				// 	issue:today,
+				// 	valid:valid
+				// });
+
+
+
+				firebase.database().ref("Ticket").child(ticket).update({
 					time_in: time,
 					issue:today,
 					valid:valid
+				}, function(error) {
+					if (error) {
+						alert(error);
+					} else {
+						//complete
+					}
 				});
+
+
+
+
 			}else if (type == "year") {
 
 				console.log('yeaar');
@@ -111,14 +129,33 @@ function checkin(ticket){
 				var valid = "31/12/"+yyyy;
 
 
-				var ref = firebase.database().ref("Ticket");
-				ref.child(ticket)
-				.update({ 
+				// var ref = firebase.database().ref("Ticket");
+				// ref.child(ticket)
+				// .update({ 
+				// 	time_in: time,
+				// 	issue:issue,
+				// 	valid:valid,
+				// 	status:'activated'
+				// });
+
+
+
+
+				firebase.database().ref("Ticket").child(ticket).update({
 					time_in: time,
 					issue:issue,
 					valid:valid,
 					status:'activated'
+				}, function(error) {
+					if (error) {
+						alert(error);
+					} else {
+						//complete
+
+					}
 				});
+
+
 			}
 
 
@@ -170,12 +207,29 @@ function checkin(ticket){
 
 				var time_in = hour_in + ":" + minute_in;
 
-				var ref = firebase.database().ref("Time");
-				ref.child(id)
-				.update({ date: date_in,
+				// var ref = firebase.database().ref("Time");
+				// ref.child(id)
+				// .update({ date: date_in,
+				// 	time_in: time_in,
+				// 	time_out: '-'
+				// });
+
+
+				firebase.database().ref("Time").child(id).update({
+					date: date_in,
 					time_in: time_in,
 					time_out: '-'
+				}, function(error) {
+					if (error) {
+						alert(error);
+					} else {
+						//complete
+
+					}
 				});
+
+
+
 
 
 			}
@@ -212,10 +266,24 @@ function checkin(ticket){
 			console.log(dateCheck);
 
 			if (check > from && check < to) {
-				var firebaseRef3 = firebase.database().ref("History");
-				firebaseRef3.push({
+				// var firebaseRef3 = firebase.database().ref("History");
+				// firebaseRef3.push({
+				// 	id:ticket,
+				// 	date:today
+				// });
+
+
+
+				firebase.database().ref("History").push({
 					id:ticket,
 					date:today
+				}, function(error) {
+					if (error) {
+						alert(error);
+					} else {
+						//complete
+
+					}
 				});
 
 
@@ -229,10 +297,24 @@ function checkin(ticket){
 
 						snapshot.forEach(function(data) {
 
-							var ref = firebase.database().ref("Time");
-							ref.child(data.key)
-							.update({ date: today
+							// var ref = firebase.database().ref("Time");
+							// ref.child(data.key)
+							// .update({ date: today
+							// });
+
+
+							firebase.database().ref("Time").child(data.key).update({
+								date: today
+							}, function(error) {
+								if (error) {
+									alert(error);
+								} else {
+									
+
+								}
 							});
+
+
 							console.log("check");
 						});
 					});

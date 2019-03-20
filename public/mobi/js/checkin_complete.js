@@ -30,22 +30,43 @@ window.onload = function(){
 	
 
 	function AddPoint(id){
-		var ref = firebase.database().ref("User");
-		ref.child(id)
-		.update({ point: sum
+
+		// var ref = firebase.database().ref("User");
+		// ref.child(id)
+		// .update({ 
+		// 	point: sum,
+		// 	point_all: parseInt(allscore)
+		// });
+
+
+
+		firebase.database().ref("User").child(id).update({
+			point: sum,
+			point_all: parseInt(allscore)
+		}, function(error) {
+			if (error) {
+				alert(error);
+			} else {
+				document.getElementById("point_txt").innerHTML = "Your current point : " + sum;
+
+
+				var timer2 =setTimeout(function() { 
+					window.location.href = "checkin.html";
+				}, 1000);
+
+
+				document.getElementById("loading").style.display = 'none';
+			}
 		});
-		ref.child(id)
-		.update({ point_all: parseInt(allscore)
-		});
-		document.getElementById("point_txt").innerHTML = "Your current point : " + sum;
 
 
-		var timer2 =setTimeout(function() { 
-			window.location.href = "checkin.html";
-		}, 1000);
 
 
-		document.getElementById("loading").style.display = 'none';
+		// ref.child(id)
+		// .update({ point_all: parseInt(allscore)
+		// });
+
+		
 	}
 	
 }

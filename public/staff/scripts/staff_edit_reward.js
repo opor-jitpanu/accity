@@ -1,6 +1,6 @@
 window.onload = function(){
 
-	var url_string = window.location.href; //window.location.href
+	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var place = url.searchParams.get("place");
 
@@ -49,7 +49,7 @@ function submitOnClick(){
 
 
 
-	var url_string = window.location.href; //window.location.href
+	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var place = url.searchParams.get("place");
 
@@ -70,21 +70,26 @@ function submitOnClick(){
 		var ref = firebase.database().ref("Reward");
 		ref.orderByChild('id').equalTo(place).on("value", function(snapshot) {
 			snapshot.forEach(function(data) {
-        // alert(data.key);
-        edit(data.key);
-    });
+
+				edit(data.key);
+			});
 		});
 	}
 
 	function edit(id){
-		var ref = firebase.database().ref("Reward");
-		ref.child(id)
-		.update({ name : name,
+
+		firebase.database().ref("Reward").child(id).update({
+			name : name,
 			description : description,
 			point : point
+		}, function(error) {
+			if (error) {
+				alert(error);
+			} else {
+				window.location.href = "staff_reward.html";
+			}
 		});
 
-		window.location.href = "staff_reward.html";
 	}
 }
 
