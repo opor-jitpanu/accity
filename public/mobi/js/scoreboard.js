@@ -41,22 +41,20 @@ window.onload = function(){
 	
 	
 
-	var userDataRef = firebase.database().ref("User");
-	var storageRef = firebase.storage().ref();
-	userDataRef.once("value").then(function(snapshot) {
+	// var userDataRef = firebase.database().ref("User");
+	// var storageRef = firebase.storage().ref();
+	// userDataRef.once("value").then(function(snapshot) {
 		
 
-		snapshot.forEach(function(childSnapshot) {
+	// 	snapshot.forEach(function(childSnapshot) {
 
-			var key = childSnapshot.key;
-			var childData = childSnapshot.val();
-
-			
-			var point = childSnapshot.val().point_all;
-			var firstname = childSnapshot.val().firstname;
-			var lastname = childSnapshot.val().lastname;
+	// 		var key = childSnapshot.key;
+	// 		var childData = childSnapshot.val();
 
 
+	// 		var point = childSnapshot.val().point_all;
+	// 		var firstname = childSnapshot.val().firstname;
+	// 		var lastname = childSnapshot.val().lastname;
 
 
 
@@ -66,33 +64,36 @@ window.onload = function(){
 
 
 
-			
-			// console.log(firstname +" "+ lastname + " : " + point);
-
-			
-
-
-			var div = '';
-
-			mydiv.innerHTML += div;
-
-
-			document.getElementById("loading").style.display = 'none';
-
-
-			
 
 
 
-		});
-
-		
-
-	});
+	// 		// console.log(firstname +" "+ lastname + " : " + point);
 
 
 
 
+	// 		var div = '';
+
+	// 		mydiv.innerHTML += div;
+
+
+	// 		document.getElementById("loading").style.display = 'none';
+
+
+
+
+
+
+	// 	});
+
+
+
+	// });
+
+
+
+
+	document.getElementById("loading").style.display = 'none';
 
 	const query = firebase.database().ref('User')
 	.orderByChild('point_all')
@@ -100,19 +101,66 @@ window.onload = function(){
 
 	query.once('value', function (snapshot) {
 		var count = 10;
+		var count3 = 10;
 		snapshot.forEach(function (childSnapshot) {
 			
 			var firstname = childSnapshot.val().firstname;
 			var lastname = childSnapshot.val().lastname;
 			var point_all = childSnapshot.val().point_all;
+			var email = childSnapshot.val().email;
 			
 			document.getElementById("name" + count).innerHTML = firstname +" "+ lastname;
-			document.getElementById("score" + count).innerHTML = "Score : " + point_all;
+			document.getElementById("place" + count).innerHTML = "Score : " + point_all;
+			
 			
 			count -= 1;
-            
-        });
+
+
+
+
+
+
+
+			const query = firebase.database().ref('Checkin')
+			.orderByChild('email')
+			.equalTo(email)
+
+			query.once('value', function (snapshot) {
+				
+				var count2 = 1;
+				snapshot.forEach(function (childSnapshot) {
+
+					count2 += 1;
+
+					
+
+				});
+				document.getElementById("score" + count3).innerHTML = "Count Checkin : " + count2;
+
+				count3 -=1;
+				
+			});
+
+
+
+			
+
+
+
+
+
+		});
 	});
+
+
+
+
+
+
+
+
+
+
 
 
 
