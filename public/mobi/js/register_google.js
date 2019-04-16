@@ -13,11 +13,16 @@ function validateEmail(email) {
 
 
 function saveRegisterOnClick() {
+
+
+	var url_string = window.location.href;
+	var url = new URL(url_string);
+	var email = url.searchParams.get("email");
+
 	
 	var firstname = document.getElementById('InputFirstname');
 	var lastname = document.getElementById('InputLastname');
-	var email = document.getElementById('InputEmail');
-	var password = document.getElementById('InputPassword');
+	// var password = document.getElementById('InputPassword');
 	var sex = document.getElementById('InputSex').value;
 	var tel = document.getElementById('InputTelephone');
 
@@ -52,34 +57,33 @@ function saveRegisterOnClick() {
 	today = dd + '/' + mm + '/' + yyyy;
 
 
-	if (password.value.length >= 6) {
-		console.log("yes");
 
 
-		if (validateEmail(email.value)) {
-
-
-
-			
+	
 
 
 
-			
-			insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
-		} else {
-			alert("Email is not email");
-		}
-		
+	if (validateEmail(email)) {
 
 
-	}else{
-		console.log("no");
-		alert("Your password is too short. (Must be at least 6 characters.)");
+
+
+
+
+
+		console.log(email);
+		insertData(firstname.value,lastname.value, email,  sex_value, country, tel.value, birth, today);
+	} else {
+		alert("Email is not email");
 	}
+
+
+
+	
 	
 }
 
-function insertData(firstname, lastname, email, password, sex, country, tel, birth, today){
+function insertData(firstname, lastname, email,  sex, country, tel, birth, today){
 	document.getElementById("loading").style.display = 'block';
 
 	var firebaseRef = firebase.database().ref("User");
@@ -126,20 +130,7 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 
 
 function signUp(){
-	var email = document.getElementById('InputEmail').value;
-	var password = document.getElementById('InputPassword').value;
-	firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error)
-	{
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		if(errorCode === 'auth/weak-password'){
-				// alert('The password is too weak');
-
-			}else{
-				// alert('errorMessage');
-			}
-			console.log(error);
-		});
+	
 	myFunction();
 
 
@@ -151,7 +142,7 @@ function signUp(){
 
 	function alertFunc() {
 
-		window.location= "login.html";
+		window.location= "index.html";
 	}
 
 
@@ -160,21 +151,21 @@ function signUp(){
 
 
 
-function signIn(){
-	var email = document.getElementById('loginEmail').value;
-	var password = document.getElementById('loginPassword').value;
-	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error){
-		var errorCode = error.code;
-		var errorMessage = error.message;
-		if(errorCode === 'auth/wrong-password'){
-			alert('wrong-password');
-		}else{
-			alert(errorMessage);
-		}
-		console.log(error);
-	});
-	window.location.assign("index.html")
-	
+// function signIn(){
+// 	var email = document.getElementById('loginEmail').value;
+// 	var password = document.getElementById('loginPassword').value;
+// 	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error){
+// 		var errorCode = error.code;
+// 		var errorMessage = error.message;
+// 		if(errorCode === 'auth/wrong-password'){
+// 			alert('wrong-password');
+// 		}else{
+// 			alert(errorMessage);
+// 		}
+// 		console.log(error);
+// 	});
+// 	window.location.assign("index.html")
 
-}
+
+// }
 

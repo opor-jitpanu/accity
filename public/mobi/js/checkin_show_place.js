@@ -89,6 +89,13 @@ function showBtn(place, check_distance){
 
 
 
+					if (check_distance == 'no') {
+						document.getElementById("btnCheckin").style.display = 'none';
+					}
+
+
+
+
 					// if (today !== date) {
 
 					// 	console.log(date+"  "+location);

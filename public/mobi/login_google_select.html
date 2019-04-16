@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+
+</body>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+<script>
+	var config = {
+		apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+		authDomain: "ancientcity-5c152.firebaseapp.com",
+		databaseURL: "https://ancientcity-5c152.firebaseio.com",
+		projectId: "ancientcity-5c152",
+		storageBucket: "ancientcity-5c152.appspot.com",
+		messagingSenderId: "44267136823"
+	};
+
+	firebase.initializeApp(config);
+
+
+
+
+
+
+
+
+	window.onload = function(){
+
+
+		var url_string = window.location.href;
+		var url = new URL(url_string);
+		var email = url.searchParams.get("email");
+
+
+		var ref = firebase.database().ref("User");
+		ref.orderByChild("email").equalTo(email).once("value",snapshot => {
+			if (snapshot.exists()){
+				const userData = snapshot.val();
+				console.log("exists!", userData);
+				window.location.href = "index.html";
+			}else{
+				window.location.href = "login_google_create.html?email="+email;
+			}
+		});
+
+
+
+
+
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+</html>

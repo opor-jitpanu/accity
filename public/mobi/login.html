@@ -19,8 +19,8 @@
 
 	<div class="content-block">
 		<div id="loading">
-            <img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
-          </div>
+			<img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
+		</div>
 		<center><h4>LOGIN</h4></center>
 		<div class="loginform">
 			
@@ -33,7 +33,7 @@
 			<br><br><br>
 			<center>------------------------------------------</center>
 			<br>
-			<a href="login_google.html"><input type="submit" name="submit" class="form_submit"  value="Sign in With Google" /></a>
+			<input  onclick="onSignInButtonClick()" type="submit" name="submit" class="form_submit" id="submit" value="Google Login" />
 			
 		</div>
 
@@ -47,6 +47,7 @@
 
 	<script src="js/login.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+
 	<script>
 		var config = {
 			apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
@@ -57,6 +58,28 @@
 			messagingSenderId: "44267136823"
 		};
 		firebase.initializeApp(config);
+
+
+		var provider = new firebase.auth.GoogleAuthProvider();
+		function onSignInButtonClick(){
+			firebase.auth().signInWithPopup(provider).then(function(result) {
+				var token = result.credential.accessToken;
+				var user = result.user;
+				console.log(user.email);
+				window.location.href = "login_google_select.html?email="+user.email;
+			}).catch(function(error) {
+
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				var email = error.email;
+				var credential = error.credential;
+				console.log(error);
+
+			});
+		}
+
+
+
 	</script>
 </body>
 </html>
