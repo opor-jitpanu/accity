@@ -20,6 +20,7 @@ function signInOnClick(){
 		console.log("Login Failed!");
 		console.log(error.code);
 		alert("LOGIN FAILED : " + error.code);
+		window.location= "login.html";
 	});
 
 

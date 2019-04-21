@@ -52,31 +52,68 @@ function saveRegisterOnClick() {
 	today = dd + '/' + mm + '/' + yyyy;
 
 
-	if (password.value.length >= 6) {
-		console.log("yes");
-
-
-		if (validateEmail(email.value)) {
 
 
 
-			
-
-
-
-			
-			insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
-		} else {
-			alert("Email is not email");
-		}
-		
-
-
+	if (!firstname.value || !lastname.value || !email.value || !password.value || !tel.value) {
+		console.log('Null');
+		alert('Please Check Information');
 	}else{
-		console.log("no");
-		alert("Your password is too short. (Must be at least 6 characters.)");
+
+		var ref = firebase.database().ref("User");
+		ref.orderByChild("email").equalTo(email.value).once("value",snapshot => {
+			if (snapshot.exists()){
+
+				console.log("exists!");
+				alert('Email is already Register');
+				window.location.href = "register.html";
+			}else{
+				
+				console.log('NULLLLL');
+				if (password.value.length >= 6) {
+					console.log("yes");
+
+
+					if (validateEmail(email.value)) {
+
+						// insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
+					} else {
+						alert("Email is not email");
+					}
+
+
+				}else{
+					console.log("no");
+					alert("Your password is too short. (Must be at least 6 characters.)");
+				}
+
+			}
+		});
+
+
 	}
+
+
+
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
 }
 
 function insertData(firstname, lastname, email, password, sex, country, tel, birth, today){

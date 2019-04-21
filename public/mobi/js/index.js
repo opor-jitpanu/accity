@@ -9,21 +9,44 @@ window.onload = function(){
 		// console.log(email);
 		if (user) {
 
-			console.log("Login")
-			var ref = firebase.database().ref("User");
-			ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
-				snapshot.forEach(function(data) {
-					var id = data.key;
+			emailVerified = user.emailVerified;
 
-					ref.once("value")
-					.then(function(snapshot){
-						var firstname = snapshot.child(id).child("firstname").val();
-						
-						document.getElementById("name_hi").innerHTML = firstname;
+			console.log(emailVerified);
 
+			if (emailVerified) {
+				console.log("Login")
+				var ref = firebase.database().ref("User");
+				ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
+					snapshot.forEach(function(data) {
+						var id = data.key;
+
+						ref.once("value")
+						.then(function(snapshot){
+							var firstname = snapshot.child(id).child("firstname").val();
+
+							document.getElementById("name_hi").innerHTML = firstname;
+
+
+
+						});
 					});
 				});
-			});
+
+			}else{
+				var user = firebase.auth().currentUser;
+
+				user.sendEmailVerification().then(function() {
+					console.log('send');
+				}).catch(function(error) {
+					console.log(error);
+				});
+
+				alert('Please Vertify this Email');
+				console.log("Not Login");
+				window.location.href = "logout.html";
+			}
+
+
 
 
 		} else {

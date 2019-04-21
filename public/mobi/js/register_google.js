@@ -61,21 +61,24 @@ function saveRegisterOnClick() {
 
 	
 
+	if (!firstname.value || !lastname.value || !email  || !tel.value) {
 
+		console.log('Null');
+		alert('Please Check Information');
 
-	if (validateEmail(email)) {
+	}else{
 
+		console.log('NULLLLL');
+		if (validateEmail(email)) {
+			console.log(email);
+			insertData(firstname.value,lastname.value, email,  sex_value, country, tel.value, birth, today);
+		} else {
+			alert("Email is not email");
+		}
 
-
-
-
-
-
-		console.log(email);
-		insertData(firstname.value,lastname.value, email,  sex_value, country, tel.value, birth, today);
-	} else {
-		alert("Email is not email");
 	}
+
+	
 
 
 
