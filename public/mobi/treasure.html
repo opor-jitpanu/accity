@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+	<link rel="apple-touch-startup-image" href="images/apple-touch-startup-image-640x920.png">
+	<title>Checkin</title>
+	<link rel="stylesheet" href="css/swiper.css">
+	<link rel="stylesheet" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
+	<link rel="stylesheet" href="styles/loading.css">
+
+	<style type="text/css">
+		#myProgress {
+			width: 100%;
+			background-color: grey;
+		}
+
+		#myBar {
+			width: 1%;
+			height: 30px;
+			background-color: green;
+		}
+	</style>
+
+
+</head>
+<body id="mobile_wrap">
+
+	<div class="panel-overlay"></div>
+
+	<div class="panel panel-left panel-reveal">
+		<!-- Slider -->
+		<div class="swiper-container-subnav multinav">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">		
+					<nav class="main_nav_underline">
+						<ul>
+							<li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
+							<li><a href="profile.html"><img src="images/icons/gray/user.png" alt="" title="" /><span>Profile</span></a></li>
+							<!-- <li><a href="my_ticket.html"><img src="images/icons/gray/blog.png" alt="" title="" /><span>My Ticket</span></a></li> -->
+							<!-- <li><a href="buy_ticket.html"><img src="images/icons/gray/shop.png" alt="" title="" /><span>Buy Ticket</span></a></li> -->
+							<li><a href="promotion.html"><img src="images/icons/gray/electronics.png" alt="" title="" /><span>Promotions</span></a></li>
+							<li><a href="checkin.html"><img src="images/icons/gray/map.png" alt="" title="" /><span>Check-in</span></a></li>
+							<li><a href="reward.html"><img src="images/icons/gray/food.png" alt="" title="" /><span>Rewards</span></a></li>
+							<li><a href="scoreboard.html"><img src="images/icons/gray/rocket.png" alt="" title="" /><span>Score Board</span></a></li>
+							<li><a href="logout.html"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
+
+
+						</ul>
+					</nav>
+				</div>	
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="views">
+
+		<div class="view view-main">
+			<div class="pages">
+				<div data-page="blogsingle" class="page">
+					<div class="page-content">
+
+						<div class="navbar navbar--fixed navbar--fixed-top navbar--bg">
+							<div class="navbar__col navbar__col--title">
+								<a href="index.html">ANCIENT CITY</a>
+							</div>
+
+
+							<div class="navbar__col navbar__col--icon navbar__col--icon-right">
+								<a href="#" data-panel="left" class="open-panel"><img src="images/icons/white/menu.png" alt="" title="" /></a>
+							</div>
+						</div>
+
+						<div id="pages_maincontent">
+							<div id="loading">
+								<img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
+							</div>
+
+							<div id="myProgress">
+								<div id="myBar"></div>
+							</div>
+
+							<h2 class="blog_title" id="name_head"></h2>
+
+							<!-- Slider -->
+							<div class="swiper-container-pages">
+								<div class="swiper-wrapper">
+
+									<div class="swiper-slide">
+										<img src="images/page_photo.jpg" id="image1" alt="" title="" />
+									</div>
+
+
+
+								</div>
+								<div class="swiper-pagination"></div>
+							</div>	
+							<div class="page_single layout_fullwidth_padding">	
+								<div class="post_single">
+									<p id="description_txt">
+
+									</p>
+
+									<!-- <span class="post_star"><p id="point2_txt"></p></span> -->
+								</div>
+								<a href="#" class="btn btn--full" id="btnGoogleMap">Google Map</a>
+								<a href="#"  class="btn btn--full" id="btnCheckin">Check In</a>
+
+
+
+
+							</div>     
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/jquery.validate.min.js" ></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/jquery.custom.js"></script>
+
+	<script src="js/treasure.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+	<script>
+		var config = {
+			apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+			authDomain: "ancientcity-5c152.firebaseapp.com",
+			databaseURL: "https://ancientcity-5c152.firebaseio.com",
+			projectId: "ancientcity-5c152",
+			storageBucket: "ancientcity-5c152.appspot.com",
+			messagingSenderId: "44267136823"
+		};
+		firebase.initializeApp(config);
+	</script>
+
+
+
+
+</body>
+</html>
