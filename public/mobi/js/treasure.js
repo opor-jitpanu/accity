@@ -54,7 +54,6 @@ window.onload = function(){
 
 
 function place1(){
-
 	var elem = document.getElementById("myBar"); 
 	var width = 1;
 	var id = setInterval(frame, 10);
@@ -85,7 +84,7 @@ function place1(){
 	.on('child_added', function(snapshot) { 
 		var place = snapshot.val();
 		
-		document.getElementById("name_head").innerHTML = place.name;
+		document.getElementById("name_head").innerHTML = place.name + '   | Place 1';
 		document.getElementById("description_txt").innerHTML = place.description;
 
 
@@ -126,22 +125,125 @@ function place1(){
 
 }
 
-
-function get1(){
-
-
-	
-}
-
-
 function deg2rad(deg) {
 	return deg * (Math.PI/180)
 }
 
 
 
+function get1(){
+	firebase.auth().onAuthStateChanged(function(user) {
+		var ref = firebase.database().ref("Treasure");
+		ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
+			snapshot.forEach(function(data) {
+				firebase.database().ref("Treasure").child(data.key).update({
+					one: 'unlock'
+				}, function(error) {
+					if (error) {
+						alert(error);
+					} else {
+						window.location.href = "treasure.html";
+					}
+				});
+			});
+		});
+	});
+}
+
+
+
+
+
 function place2(){
 
+	var elem = document.getElementById("myBar"); 
+	var width = 1;
+	var id = setInterval(frame, 10);
+	function frame() {
+		if (width >= 20) {
+			clearInterval(id);
+		} else {
+			width++; 
+			elem.style.width = width + '%'; 
+		}
+	}
+
+	var storageRef = firebase.storage().ref();
+	var spaceRef = storageRef.child('images/'+'p151'+'.jpg');
+	storageRef.child('images/'+'p151'+'.jpg').getDownloadURL().then(function(url) {
+		var test = url;
+		document.getElementById('image1').src= url;
+
+
+	}).catch(function(error) {
+
+	});
+
+	var ref = firebase.database().ref('Place');
+	ref
+	.orderByChild('place_id')
+	.equalTo('p151')
+	.on('child_added', function(snapshot) { 
+		var place = snapshot.val();
+		
+		document.getElementById("name_head").innerHTML = place.name  + '   | Place 2';
+		document.getElementById("description_txt").innerHTML = place.description;
+
+
+		var link = document.getElementById("btnGoogleMap");
+		link.setAttribute('href', "https://maps.google.com/?q="+place.latitude+","+place.longtitude);
+
+		document.getElementById("btnCheckin").onclick = get2;
+
+
+
+
+
+		var x = document.getElementById("location");
+		navigator.geolocation.getCurrentPosition(showPosition);
+		function showPosition(position) {
+			var R = 6371; 
+			var dLat = deg2rad(position.coords.latitude-place.latitude);  
+			var dLon = deg2rad(position.coords.longitude-place.longtitude); 
+			var a = 
+			Math.sin(dLat/2) * Math.sin(dLat/2) +
+			Math.cos(deg2rad(place.latitude)) * Math.cos(deg2rad(position.coords.latitude)) * 
+			Math.sin(dLon/2) * Math.sin(dLon/2)
+			; 
+			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+			var d = R * c; 
+
+			console.log((d*1000).toFixed(0));
+
+
+			if (((d*1000).toFixed(0))<= 100) {
+				document.getElementById("btnCheckin").style.display = 'block';
+			}else{
+				document.getElementById("btnCheckin").style.display = 'block';  //none
+			}
+		}
+		document.getElementById("loading").style.display = "none";
+	});
+
+}
+
+function get2(){
+	firebase.auth().onAuthStateChanged(function(user) {
+		var ref = firebase.database().ref("Treasure");
+		ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
+			snapshot.forEach(function(data) {
+				firebase.database().ref("Treasure").child(data.key).update({
+					two: 'unlock'
+				}, function(error) {
+					if (error) {
+						alert(error);
+					} else {
+						window.location.href = "treasure.html";
+					}
+				});
+			});
+		});
+	});
 }
 
 function place3(){
