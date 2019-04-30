@@ -1,5 +1,14 @@
 window.onload = function(){
 
+
+	
+
+	document.getElementById("btn_place1").style.display = 'none';
+	document.getElementById("btn_place2").style.display = 'none';
+	document.getElementById("btn_place3").style.display = 'none';
+	document.getElementById("btn_place4").style.display = 'none';
+	document.getElementById("btn_place5").style.display = 'none';
+
 	
 
 	firebase.auth().onAuthStateChanged(function(user) {
@@ -23,26 +32,96 @@ window.onload = function(){
 						var user = snapshot.val();
 
 						if (user.one == 'lock') {
-							place1();
+
+							document.getElementById("btn_place1").style.display = 'block';
+							document.getElementById("btn_place1").style.background = "linear-gradient(60deg, #9E9E9E, #607D8B)"; //grey
+							document.getElementById("count_place").innerHTML = "Unlock 0/5";
+							document.getElementById("btn_place1").onclick = goto_place1;
+								
 
 						}else if(user.two == 'lock'){
 
-							place2();
+							document.getElementById("btn_place1").style.display = 'block';
+							document.getElementById("btn_place1").style.background = "linear-gradient(60deg, #E91E63, #FFC107)"; //pink
+							document.getElementById("btn_place2").style.display = 'block';
+							document.getElementById("btn_place2").style.background = "linear-gradient(60deg, #9E9E9E, #607D8B)";
+							document.getElementById("count_place").innerHTML = "Unlock 1/5";
+							document.getElementById("btn_place2").onclick = goto_place2;
+
+							document.getElementById("btn_place1").onclick = checked;
+							
 
 						}else if(user.three == 'lock'){
+							document.getElementById("btn_place1").style.display = 'block';
+							document.getElementById("btn_place1").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place2").style.display = 'block';
+							document.getElementById("btn_place2").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place3").style.display = 'block';
+							document.getElementById("btn_place3").style.background = "linear-gradient(60deg, #9E9E9E, #607D8B)";
+							document.getElementById("count_place").innerHTML = "Unlock 2/5";
+							document.getElementById("btn_place3").onclick = goto_place3;
 
-							place3();
+							document.getElementById("btn_place1").onclick = checked;
+							document.getElementById("btn_place2").onclick = checked;
+
 
 						}else if(user.four == 'lock'){
+							document.getElementById("btn_place1").style.display = 'block';
+							document.getElementById("btn_place1").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place2").style.display = 'block';
+							document.getElementById("btn_place2").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place3").style.display = 'block';
+							document.getElementById("btn_place3").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place4").style.display = 'block';
+							document.getElementById("btn_place4").style.background = "linear-gradient(60deg, #9E9E9E, #607D8B)";
+							document.getElementById("count_place").innerHTML = "Unlock 3/5";
+							document.getElementById("btn_place4").onclick = goto_place4;
 
-							place4();
+							document.getElementById("btn_place1").onclick = checked;
+							document.getElementById("btn_place2").onclick = checked;
+							document.getElementById("btn_place3").onclick = checked;
+
 
 						}else if(user.five == 'lock'){
 
-							place5();
+							document.getElementById("btn_place1").style.display = 'block';
+							document.getElementById("btn_place1").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place2").style.display = 'block';
+							document.getElementById("btn_place2").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place3").style.display = 'block';
+							document.getElementById("btn_place3").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place4").style.display = 'block';
+							document.getElementById("btn_place4").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place5").style.display = 'block';
+							document.getElementById("btn_place5").style.background = "linear-gradient(60deg, #9E9E9E, #607D8B)";
+							document.getElementById("count_place").innerHTML = "Unlock 4/5";
+							document.getElementById("btn_place5").onclick = goto_place5;
+
+							document.getElementById("btn_place1").onclick = checked;
+							document.getElementById("btn_place2").onclick = checked;
+							document.getElementById("btn_place3").onclick = checked;
+							document.getElementById("btn_place4").onclick = checked;
+							
 
 						}else{
-							finish();
+							document.getElementById("btn_place1").style.display = 'block';
+							document.getElementById("btn_place1").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place2").style.display = 'block';
+							document.getElementById("btn_place2").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place3").style.display = 'block';
+							document.getElementById("btn_place3").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place4").style.display = 'block';
+							document.getElementById("btn_place4").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("btn_place5").style.display = 'block';
+							document.getElementById("btn_place5").style.background = "linear-gradient(60deg, #E91E63, #FFC107)";
+							document.getElementById("count_place").innerHTML = "Unlock 5/5";
+
+							document.getElementById("btn_place1").onclick = checked;
+							document.getElementById("btn_place2").onclick = checked;
+							document.getElementById("btn_place3").onclick = checked;
+							document.getElementById("btn_place4").onclick = checked;
+							document.getElementById("btn_place5").onclick = checked;
+							
 						}
 					});
 				});
@@ -53,211 +132,24 @@ window.onload = function(){
 }
 
 
-function place1(){
-	var elem = document.getElementById("myBar"); 
-	var width = 1;
-	var id = setInterval(frame, 10);
-	function frame() {
-		if (width >= 1) {
-			clearInterval(id);
-		} else {
-			width++; 
-			elem.style.width = width + '%'; 
-		}
-	}
-
-	var storageRef = firebase.storage().ref();
-	var spaceRef = storageRef.child('images/'+'p152'+'.jpg');
-	storageRef.child('images/'+'p152'+'.jpg').getDownloadURL().then(function(url) {
-		var test = url;
-		document.getElementById('image1').src= url;
-
-
-	}).catch(function(error) {
-
-	});
-
-	var ref = firebase.database().ref('Place');
-	ref
-	.orderByChild('place_id')
-	.equalTo('p152')
-	.on('child_added', function(snapshot) { 
-		var place = snapshot.val();
-		
-		document.getElementById("name_head").innerHTML = place.name + '   | Place 1';
-		document.getElementById("description_txt").innerHTML = place.description;
-
-
-		var link = document.getElementById("btnGoogleMap");
-		link.setAttribute('href', "https://maps.google.com/?q="+place.latitude+","+place.longtitude);
-
-		document.getElementById("btnCheckin").onclick = get1;
-
-
-
-
-
-		var x = document.getElementById("location");
-		navigator.geolocation.getCurrentPosition(showPosition);
-		function showPosition(position) {
-			var R = 6371; 
-			var dLat = deg2rad(position.coords.latitude-place.latitude);  
-			var dLon = deg2rad(position.coords.longitude-place.longtitude); 
-			var a = 
-			Math.sin(dLat/2) * Math.sin(dLat/2) +
-			Math.cos(deg2rad(place.latitude)) * Math.cos(deg2rad(position.coords.latitude)) * 
-			Math.sin(dLon/2) * Math.sin(dLon/2)
-			; 
-			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-			var d = R * c; 
-
-			console.log((d*1000).toFixed(0));
-
-
-			if (((d*1000).toFixed(0))<= 100) {
-				document.getElementById("btnCheckin").style.display = 'block';
-			}else{
-				document.getElementById("btnCheckin").style.display = 'block';  //none
-			}
-		}
-		document.getElementById("loading").style.display = "none";
-	});
-
+function goto_place1(){
+	window.location.href = "treasure_show_place.html?place=one";
+}
+function goto_place2(){
+	window.location.href = "treasure_show_place.html?place=two";
+}
+function goto_place3(){
+	window.location.href = "treasure_show_place.html?place=three";
+}
+function goto_place4(){
+	window.location.href = "treasure_show_place.html?place=four";
+}
+function goto_place5(){
+	window.location.href = "treasure_show_place.html?place=five";
 }
 
-function deg2rad(deg) {
-	return deg * (Math.PI/180)
+function checked(){
+	alert('You Checked');
 }
 
 
-
-function get1(){
-	firebase.auth().onAuthStateChanged(function(user) {
-		var ref = firebase.database().ref("Treasure");
-		ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
-			snapshot.forEach(function(data) {
-				firebase.database().ref("Treasure").child(data.key).update({
-					one: 'unlock'
-				}, function(error) {
-					if (error) {
-						alert(error);
-					} else {
-						window.location.href = "treasure.html";
-					}
-				});
-			});
-		});
-	});
-}
-
-
-
-
-
-function place2(){
-
-	var elem = document.getElementById("myBar"); 
-	var width = 1;
-	var id = setInterval(frame, 10);
-	function frame() {
-		if (width >= 20) {
-			clearInterval(id);
-		} else {
-			width++; 
-			elem.style.width = width + '%'; 
-		}
-	}
-
-	var storageRef = firebase.storage().ref();
-	var spaceRef = storageRef.child('images/'+'p151'+'.jpg');
-	storageRef.child('images/'+'p151'+'.jpg').getDownloadURL().then(function(url) {
-		var test = url;
-		document.getElementById('image1').src= url;
-
-
-	}).catch(function(error) {
-
-	});
-
-	var ref = firebase.database().ref('Place');
-	ref
-	.orderByChild('place_id')
-	.equalTo('p151')
-	.on('child_added', function(snapshot) { 
-		var place = snapshot.val();
-		
-		document.getElementById("name_head").innerHTML = place.name  + '   | Place 2';
-		document.getElementById("description_txt").innerHTML = place.description;
-
-
-		var link = document.getElementById("btnGoogleMap");
-		link.setAttribute('href', "https://maps.google.com/?q="+place.latitude+","+place.longtitude);
-
-		document.getElementById("btnCheckin").onclick = get2;
-
-
-
-
-
-		var x = document.getElementById("location");
-		navigator.geolocation.getCurrentPosition(showPosition);
-		function showPosition(position) {
-			var R = 6371; 
-			var dLat = deg2rad(position.coords.latitude-place.latitude);  
-			var dLon = deg2rad(position.coords.longitude-place.longtitude); 
-			var a = 
-			Math.sin(dLat/2) * Math.sin(dLat/2) +
-			Math.cos(deg2rad(place.latitude)) * Math.cos(deg2rad(position.coords.latitude)) * 
-			Math.sin(dLon/2) * Math.sin(dLon/2)
-			; 
-			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-			var d = R * c; 
-
-			console.log((d*1000).toFixed(0));
-
-
-			if (((d*1000).toFixed(0))<= 100) {
-				document.getElementById("btnCheckin").style.display = 'block';
-			}else{
-				document.getElementById("btnCheckin").style.display = 'block';  //none
-			}
-		}
-		document.getElementById("loading").style.display = "none";
-	});
-
-}
-
-function get2(){
-	firebase.auth().onAuthStateChanged(function(user) {
-		var ref = firebase.database().ref("Treasure");
-		ref.orderByChild('email').equalTo(user.email).on("value", function(snapshot) {
-			snapshot.forEach(function(data) {
-				firebase.database().ref("Treasure").child(data.key).update({
-					two: 'unlock'
-				}, function(error) {
-					if (error) {
-						alert(error);
-					} else {
-						window.location.href = "treasure.html";
-					}
-				});
-			});
-		});
-	});
-}
-
-function place3(){
-
-}
-
-function place4(){
-
-}
-
-function place5(){
-
-}
-
-function finish(){
-
-}
