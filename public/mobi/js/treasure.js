@@ -9,6 +9,64 @@ window.onload = function(){
 	document.getElementById("btn_place4").style.display = 'none';
 	document.getElementById("btn_place5").style.display = 'none';
 
+
+
+
+
+
+	var ref = firebase.database().ref('TreasurePlace');
+	var ref2 = firebase.database().ref('Place');
+	ref
+	.orderByKey()
+	.equalTo('key')
+	.on('child_added', function(snapshot) { 
+		var place = snapshot.val();
+		
+		ref2
+		.orderByChild('place_id')
+		.equalTo(place.one)
+		.on('child_added', function(snapshot) { 
+			var place = snapshot.val();
+
+			document.getElementById('btn_place1').innerText = place.name;
+		});
+		ref2
+		.orderByChild('place_id')
+		.equalTo(place.two)
+		.on('child_added', function(snapshot) { 
+			var place = snapshot.val();
+
+			document.getElementById('btn_place2').innerText = place.name;
+		});
+		ref2
+		.orderByChild('place_id')
+		.equalTo(place.three)
+		.on('child_added', function(snapshot) { 
+			var place = snapshot.val();
+
+			document.getElementById('btn_place3').innerText = place.name;
+		});
+		ref2
+		.orderByChild('place_id')
+		.equalTo(place.four)
+		.on('child_added', function(snapshot) { 
+			var place = snapshot.val();
+
+			document.getElementById('btn_place4').innerText = place.name;
+		});
+		ref2
+		.orderByChild('place_id')
+		.equalTo(place.five)
+		.on('child_added', function(snapshot) { 
+			var place = snapshot.val();
+
+			document.getElementById('btn_place5').innerText = place.name;
+		});
+	});
+
+
+
+
 	
 
 	firebase.auth().onAuthStateChanged(function(user) {
@@ -37,7 +95,7 @@ window.onload = function(){
 							document.getElementById("btn_place1").style.background = "linear-gradient(60deg, #9E9E9E, #607D8B)"; //grey
 							document.getElementById("count_place").innerHTML = "Unlock 0/5";
 							document.getElementById("btn_place1").onclick = goto_place1;
-								
+
 
 						}else if(user.two == 'lock'){
 
@@ -124,10 +182,10 @@ window.onload = function(){
 							
 						}
 					});
-				});
-			});
-		});
-	});
+});
+});
+});
+});
 
 }
 
