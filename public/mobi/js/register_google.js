@@ -94,7 +94,7 @@ function insertData(firstname, lastname, email,  sex, country, tel, birth, today
 		firstname:firstname,
 		lastname:lastname,
 		email:email,
-		password:password,
+		password:'-',
 		sex:sex,
 		point:'0',
 		point_all:0,

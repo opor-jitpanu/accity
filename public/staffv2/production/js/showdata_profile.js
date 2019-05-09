@@ -166,3 +166,52 @@ function showReward(email){
   });
 
 }
+
+
+
+
+
+
+
+function deleteAccount(){
+
+
+  var url_string = window.location.href; 
+  var url = new URL(url_string);
+  var email = url.searchParams.get("email");
+
+  var ref = firebase.database().ref("User");
+  ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+    snapshot.forEach(function(data) {
+      ref.child(data.key).remove();
+      alert("Delete Complete");
+      
+    });
+
+  });
+
+
+
+  var ref2 = firebase.database().ref("Time");
+  ref2.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+    snapshot.forEach(function(data) {
+      ref2.child(data.key).remove();
+      alert("Delete Complete");
+      
+    });
+
+  });
+
+
+   var ref3 = firebase.database().ref("Checkin");
+  ref3.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+    snapshot.forEach(function(data) {
+      ref3.child(data.key).remove();
+      alert("Delete Complete");
+      
+    });
+
+  });
+
+
+}
