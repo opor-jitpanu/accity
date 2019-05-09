@@ -102,7 +102,7 @@ function reload(){
   setTimeout(function(){
     getLocation();
     reload();
-  }, 1000);
+  }, 60000);
 
 }
 
