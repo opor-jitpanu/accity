@@ -60,7 +60,299 @@ window.onload = function(){
 		
 	});
 
+	showGraphLine();
+	showGengerGraph();
+	showTicketGraph();
+
+
+}
+
+
+
+function showGraphLine(){
+
+
+
+
+
+	var ref2 = firebase.database().ref("Checkin");
+	ref2.on("value", function(snapshot) {
+		line(snapshot.numChildren());
+	})
+
+
 
 
 
 }
+
+
+function line(line){
+
+	var num1 = 0;
+	var num2 = 0;
+	var num3 = 0;
+	var num4 = 0;
+	var num5 = 0;
+	var num6 = 0;
+	var num7 = 0;
+	var num8 = 0;
+	var num9 = 0;
+	var num10 = 0;
+	var num11 = 0;
+	var num12 = 0;
+	var num13 = 0;
+	var num14 = 0;
+
+
+
+
+
+	var count = 0;
+
+
+
+
+	// console.log(line);
+	var ref1 = firebase.database().ref('Checkin');
+
+
+	ref1
+	.on('child_added', function(snapshot) { 
+		var checkin = snapshot.val();
+
+
+		var time = checkin.time_checkin;
+		var time2 = time[0]+time[1];
+
+
+		if (time2 == '08' ) {
+			num1 += 1;
+		}else if (time2 == '09' ) {
+			num2 += 1;
+		}else if (time2 == '10' ) {
+			num3 += 1;
+		}else if (time2 == '11' ) {
+			num4 += 1;
+		}else if (time2 == '12' ) {
+			num5 += 1;
+		}else if (time2 == '13' ) {
+			num6 += 1;
+		}else if (time2 == '14' ) {
+			num7 += 1;
+		}else if (time2 == '15' ) {
+			num8 += 1;
+		}else if (time2 == '16' ) {
+			num9 += 1;
+		}else if (time2 == '17' ) {
+			num10 += 1;
+		}else if (time2 == '18' ) {
+			num11 += 1;
+		}else if (time2 == '19' ) {
+			num12 += 1;
+		}else if (time2 == '20' ) {
+			num13 += 1;
+		}else if (time2 == '21' ) {
+			num14 += 1;
+		}
+
+		count += 1;
+
+		if (count == line) {
+
+
+			new Morris.Line({
+
+				element: 'myfirstchart',
+
+				data: [
+				{ time: '2012-04-10 08:00', value: num1 },
+				{ time: '2012-04-10 09:00', value: num2 },
+				{ time: '2012-04-10 10:00', value: num3 },
+				{ time: '2012-04-10 11:00', value: num4 },
+				{ time: '2012-04-10 12:00', value: num5 },
+				{ time: '2012-04-10 13:00', value: num6 },
+				{ time: '2012-04-10 14:00', value: num7 },
+				{ time: '2012-04-10 15:00', value: num8 },
+				{ time: '2012-04-10 16:00', value: num9 },
+				{ time: '2012-04-10 17:00', value: num10 },
+				{ time: '2012-04-10 18:00', value: num11 },
+				{ time: '2012-04-10 19:00', value: num12 },
+				{ time: '2012-04-10 20:00', value: num13 },
+				{ time: '2012-04-10 21:00', value: num14 }
+				],
+
+				xkey: 'time',
+
+				ykeys: ['value'],
+
+				labels: ['Value']
+			});
+
+		}
+
+
+	});
+
+
+}
+
+
+function showGengerGraph(){
+
+
+
+	var ref1 = firebase.database().ref('User');
+	var male = 0;
+	var female = 0;
+	var count2 = 0;
+
+
+	var ref = firebase.database().ref("User");
+	ref.on("value", function(snapshot2) {
+
+
+		
+
+
+		ref1
+		.on('child_added', function(snapshot) { 
+			var user = snapshot.val();
+			if (user.sex == 'male') {
+
+				male += 1;
+
+			}else if(user.sex == 'female'){
+				female += 1;
+			}
+
+			count2 += 1;
+
+
+			if (count2 == snapshot2.numChildren()) {
+				
+				showGengerGraph2(male, female);
+			}
+
+
+
+
+		});
+
+
+		
+	})
+
+
+
+
+}
+
+
+
+function showGengerGraph2(male, female){
+
+
+	document.getElementById("male_txt").innerHTML = "เพศชาย : " + male;
+	document.getElementById("female_txt").innerHTML = "เพศหญิง : " + female;
+
+
+	new Chart(document.getElementById("doughnut-chart"), {
+		type: 'doughnut',
+		data: {
+			labels: ["ชาย", "หญิง"],
+			datasets: [
+			{
+				label: "Population (millions)",
+				backgroundColor: ["#5371a3", "#a35e84"],
+				data: [male,female]
+			}
+			]
+		},
+		options: {
+			title: {
+				display: true
+			}
+		}
+	});
+
+
+}
+
+
+function showTicketGraph(){
+
+
+	var ref1 = firebase.database().ref('Ticket');
+	var day = 0;
+	var year = 0;
+	var count3 = 0;
+
+
+	var ref = firebase.database().ref("Ticket");
+	ref.on("value", function(snapshot2) {
+
+
+		
+
+
+		ref1
+		.on('child_added', function(snapshot) { 
+			var ticket = snapshot.val();
+			if (ticket.type == 'year') {
+
+				year += 1;
+
+			}else if(ticket.type == 'normal'){
+				day += 1;
+			}
+
+			count3 += 1;
+
+
+			if (count3 == snapshot2.numChildren()) {
+				
+				showTicketGraph2(day,year);
+				
+			}
+
+
+
+
+		});
+
+
+		
+	})
+
+}
+
+
+function showTicketGraph2(day,year){
+
+	document.getElementById("day_txt").innerHTML = "ตั๋วรายวัน : " + day;
+	document.getElementById("year_txt").innerHTML = "ตั๋วรายปี : " + year;
+
+
+	new Chart(document.getElementById("ticket_chart"), {
+		type: 'doughnut',
+		data: {
+			labels: ["ตั๋วรายวัน", "ตั๋วรายปี"],
+			datasets: [
+			{
+				label: "Population (millions)",
+				backgroundColor: ["#5371a3", "#a35e84"],
+				data: [day,year]
+			}
+			]
+		},
+		options: {
+			title: {
+				display: true
+			}
+		}
+	});
+
+}
+
+
