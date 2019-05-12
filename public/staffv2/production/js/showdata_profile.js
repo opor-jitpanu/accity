@@ -214,4 +214,19 @@ function deleteAccount(){
   });
 
 
+
+
+  var ref4 = firebase.database().ref("Treasure");
+  ref4.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+    snapshot.forEach(function(data) {
+      ref4.child(data.key).remove();
+      alert("Delete Complete");
+      
+    });
+
+  });
+
+
+
+
 }

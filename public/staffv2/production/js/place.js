@@ -22,7 +22,7 @@ function showData(){
 			place.place_id,
 			place.name,
 			place.point,
-			place.description,
+			
 			'<center><a href="place_edit.html?place='+place.place_id+'" ><button class="btn btn-primary">Edit</button></a><center>',
 			'<center><a href="place_delete.html?place='+place.place_id+'" ><button class="btn btn-danger">Delete</button></a><center>',
 			'<center><a href="place_image.html?place='+place.place_id+'" ><button class="btn btn-info">Image</button></a><center>'

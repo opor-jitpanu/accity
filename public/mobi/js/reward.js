@@ -1,19 +1,57 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 window.onload = function(){
+
+	firebase.auth().onAuthStateChanged(function(user) {
+		// var email = user.email;
+		// console.log(email);
+		
+
+		emailVerified = user.emailVerified;
+
+		console.log(emailVerified);
+
+		if (emailVerified) {
+
+
+
+			show();
+
+		}else{
+			var user = firebase.auth().currentUser;
+
+			user.sendEmailVerification().then(function() {
+				console.log('send');
+				window.location.href = "index.html";
+			}).catch(function(error) {
+				console.log(error);
+				alert(error.code);
+			});
+
+			alert('Please Vertify this Email');
+			console.log("Not Login");
+			
+		}
+
+
+
+
+		
+	});
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function show(){
 
 	var mydiv = document.getElementById('list');
 
@@ -47,13 +85,6 @@ window.onload = function(){
 	}
 
 
-
-
-
-	
-
-	
-	
 
 	var userDataRef = firebase.database().ref("Reward");
 	var storageRef = firebase.storage().ref();

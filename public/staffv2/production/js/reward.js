@@ -18,7 +18,7 @@ function showData(){
 
 		t.row.add( [
 			reward.name,
-			reward.description,
+			 
 			reward.point,
 			'<center><a href="reward_edit.html?place='+reward.id+'" ><button class="btn btn-primary">Edit</button></a><center>',
 			'<center><a href="reward_delete.html?place='+reward.id+'" ><button class="btn btn-danger">Delete</button></a><center>',

@@ -22,7 +22,6 @@ function saveRegisterOnClick() {
 	
 	var firstname = document.getElementById('InputFirstname');
 	var lastname = document.getElementById('InputLastname');
-	// var password = document.getElementById('InputPassword');
 	var sex = document.getElementById('InputSex').value;
 	var tel = document.getElementById('InputTelephone');
 

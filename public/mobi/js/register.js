@@ -55,66 +55,47 @@ function saveRegisterOnClick() {
 
 	console.log('1123');
 
-	// if (!firstname.value || !lastname.value || !email.value || !password.value || !tel.value) {
-	// 	console.log('Null');
-	// 	alert('Please Check Information');
-	// }else{
+	if (!firstname.value || !lastname.value || !email.value || !password.value || !tel.value) {
+		console.log('Null');
+		alert('Please Check Information');
+	}else{
 
-	// 	var ref = firebase.database().ref("User");
-	// 	ref.orderByChild("email").equalTo(email.value).once("value",snapshot => {
-	// 		if (snapshot.exists()){
+		var ref = firebase.database().ref("User");
+		ref.orderByChild("email").equalTo(email.value).once("value",snapshot => {
+			if (snapshot.exists()){
 
-	// 			console.log("exists!");
-	// 			alert('Email is already Register');
-	// 			window.location.href = "register.html";
-	// 		}else{
+				console.log("exists!");
+				alert('Email is already Register');
+				window.location.href = "register.html";
+			}else{
 				
-	// 			console.log('NULLLLL');
-	// 			if (password.value.length >= 6) {
-	// 				console.log("yes");
+				console.log('NULLLLL');
+				if (password.value.length >= 6) {
+					console.log("yes");
 
 
-	// 				if (validateEmail(email.value)) {
+					if (validateEmail(email.value)) {
 
-	// 					insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
-	// 				} else {
-	// 					alert("Email is not email");
-	// 				}
-
-
-	// 			}else{
-	// 				console.log("no");
-	// 				alert("Your password is too short. (Must be at least 6 characters.)");
-	// 			}
-
-	// 		}
-	// 	});
+						insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
+					} else {
+						alert("Email is not email");
+					}
 
 
-	// }
+				}else{
+					console.log("no");
+					alert("Your password is too short. (Must be at least 6 characters.)");
+				}
+
+			}
+		});
 
 
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-
-
-
-
+	}
 }
+
+
+
 
 function insertData(firstname, lastname, email, password, sex, country, tel, birth, today){
 	document.getElementById("loading").style.display = 'block';
@@ -146,6 +127,16 @@ function insertData(firstname, lastname, email, password, sex, country, tel, bir
 		email:email,
 		time_in:'-',
 		time_out:'-'
+	});
+
+	var firebaseRef5 = firebase.database().ref("Treasure");
+	firebaseRef5.push({
+		email:email,
+		one:'lock',
+		two:'lock',
+		three:'lock',
+		four:'lock',
+		five:'lock'
 	});
 
 	var firebaseRef4 = firebase.database().ref("Checkin");
@@ -188,7 +179,7 @@ function signUp(){
 
 	function alertFunc() {
 
-		window.location= "login.html";
+		signIn();
 	}
 
 
@@ -198,8 +189,8 @@ function signUp(){
 
 
 function signIn(){
-	var email = document.getElementById('loginEmail').value;
-	var password = document.getElementById('loginPassword').value;
+	var email = document.getElementById('InputEmail').value;
+	var password = document.getElementById('InputPassword').value;
 	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error){
 		var errorCode = error.code;
 		var errorMessage = error.message;
@@ -210,8 +201,75 @@ function signIn(){
 		}
 		console.log(error);
 	});
-	window.location.assign("index.html")
+
+
+
+	sendEmail();
+
 	
 
 }
+
+
+
+
+function sendEmail(){
+
+
+
+
+	firebase.auth().onAuthStateChanged(function(user) {
+
+		
+
+		emailVerified = user.emailVerified;
+
+		console.log(emailVerified);
+
+
+		var user = firebase.auth().currentUser;
+
+		user.sendEmailVerification().then(function() {
+			console.log('send');
+		}).catch(function(error) {
+			console.log(error);
+		});
+
+		alert('Please Vertify this Email');
+		window.location.href = "index.html";
+		
+
+
+
+
+		
+	});
+
+
+
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

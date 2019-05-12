@@ -21,7 +21,7 @@ function showData(){
 		t.row.add( [
 			promotion.title,
 			promotion.description1,
-			promotion.description2,
+			
 			promotion.date_in +" - "+ promotion.date_out,
 			'<center><a href="promotion_edit.html?place='+promotion.id+'" ><button class="btn btn-primary">Edit</button></a><center>',
 			'<center><a href="promotion_delete.html?key='+promotion.id+'" ><button class="btn btn-danger">Delete</button></a><center>',
