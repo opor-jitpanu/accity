@@ -23,9 +23,9 @@ function showData(){
 			promotion.description1,
 			
 			promotion.date_in +" - "+ promotion.date_out,
-			'<center><a href="promotion_edit.html?place='+promotion.id+'" ><button class="btn btn-primary">Edit</button></a><center>',
-			'<center><a href="promotion_delete.html?key='+promotion.id+'" ><button class="btn btn-danger">Delete</button></a><center>',
-			'<center><a href="promotion_image.html?key='+promotion.id+'" ><button class="btn btn-info">Image</button></a><center>'
+			'<center><a href="promotion_edit.html?place='+promotion.id+'" ><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</button></a><center>'+
+			'<center><a href="promotion_delete.html?key='+promotion.id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a><center>'+
+			'<center><a href="promotion_image.html?key='+promotion.id+'" ><button class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i> Image</button></a><center>'
 			] ).draw( false );
 	});
 }

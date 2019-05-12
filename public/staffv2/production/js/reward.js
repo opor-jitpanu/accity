@@ -20,9 +20,9 @@ function showData(){
 			reward.name,
 			 
 			reward.point,
-			'<center><a href="reward_edit.html?place='+reward.id+'" ><button class="btn btn-primary">Edit</button></a><center>',
-			'<center><a href="reward_delete.html?place='+reward.id+'" ><button class="btn btn-danger">Delete</button></a><center>',
-			'<center><a href="reward_image.html?place='+reward.id+'" ><button class="btn btn-info">Image</button></a><center>'
+			'<a href="reward_edit.html?place='+reward.id+'" ><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</button></a>'+
+			'<a href="reward_delete.html?place='+reward.id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a>'+
+			'<a href="reward_image.html?place='+reward.id+'" ><button class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i> Image</button></a>'
 			] ).draw( false );
 	});
 }

@@ -180,38 +180,14 @@ function deleteAccount(){
   var url = new URL(url_string);
   var email = url.searchParams.get("email");
 
-  var ref = firebase.database().ref("User");
-  ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-    snapshot.forEach(function(data) {
-      ref.child(data.key).remove();
-      alert("Delete Complete");
-      
-    });
-
-  });
 
 
 
-  var ref2 = firebase.database().ref("Time");
-  ref2.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-    snapshot.forEach(function(data) {
-      ref2.child(data.key).remove();
-      alert("Delete Complete");
-      
-    });
-
-  });
 
 
-   var ref3 = firebase.database().ref("Checkin");
-  ref3.orderByChild('email').equalTo(email).on("value", function(snapshot) {
-    snapshot.forEach(function(data) {
-      ref3.child(data.key).remove();
-      alert("Delete Complete");
-      
-    });
 
-  });
+
+
 
 
 
@@ -219,12 +195,87 @@ function deleteAccount(){
   var ref4 = firebase.database().ref("Treasure");
   ref4.orderByChild('email').equalTo(email).on("value", function(snapshot) {
     snapshot.forEach(function(data) {
-      ref4.child(data.key).remove();
-      alert("Delete Complete");
+      ref4.child(data.key).remove()
+      .then(function() {
+
+
+
+        var ref = firebase.database().ref("User");
+        ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+          snapshot.forEach(function(data) {
+            ref.child(data.key).remove()
+            .then(function() {
+
+
+
+              var ref2 = firebase.database().ref("Time");
+              ref2.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+                snapshot.forEach(function(data) {
+                  ref2.child(data.key).remove()
+                  .then(function() {
+
+
+
+
+                    var ref3 = firebase.database().ref("Checkin");
+                    ref3.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+                      snapshot.forEach(function(data) {
+                        ref3.child(data.key).remove()
+                        .then(function() {
+                          console.log("Remove succeeded.")
+                          window.location= "search.html";
+
+
+
+                        })
+                        .catch(function(error) {
+                          console.log("Remove failed: " + error.message)
+                        });
+
+                      });
+
+                    });
+
+
+
+                  })
+                  .catch(function(error) {
+                    console.log("Remove failed: " + error.message)
+                  });
+
+                });
+
+              });
+
+
+
+
+            })
+            .catch(function(error) {
+              console.log("Remove failed: " + error.message)
+            });
+
+
+
+          });
+
+        });
+
+
+
+
+      })
+      .catch(function(error) {
+        console.log("Remove failed: " + error.message)
+      });
+      
       
     });
 
   });
+
+
+
 
 
 

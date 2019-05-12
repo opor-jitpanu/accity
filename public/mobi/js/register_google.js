@@ -117,6 +117,17 @@ function insertData(firstname, lastname, email,  sex, country, tel, birth, today
 		time_out:'-'
 	});
 
+
+	var firebaseRef5 = firebase.database().ref("Treasure");
+	firebaseRef5.push({
+		email:email,
+		one:'lock',
+		two:'lock',
+		three:'lock',
+		four:'lock',
+		five:'lock'
+	});
+
 	var firebaseRef4 = firebase.database().ref("Checkin");
 	firebaseRef4.push({
 		email:email,
@@ -124,6 +135,9 @@ function insertData(firstname, lastname, email,  sex, country, tel, birth, today
 		location:'-',
 		time_checkin:'-'
 	});
+
+
+
 
 
 	console.log("Insert to Database Success");

@@ -23,9 +23,9 @@ function showData(){
 			place.name,
 			place.point,
 			
-			'<center><a href="place_edit.html?place='+place.place_id+'" ><button class="btn btn-primary">Edit</button></a><center>',
-			'<center><a href="place_delete.html?place='+place.place_id+'" ><button class="btn btn-danger">Delete</button></a><center>',
-			'<center><a href="place_image.html?place='+place.place_id+'" ><button class="btn btn-info">Image</button></a><center>'
+			'<a href="place_edit.html?place='+place.place_id+'" ><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</button></a>'+
+			'<a href="place_delete.html?place='+place.place_id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a>'+
+			'<a href="place_image.html?place='+place.place_id+'" ><button class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i> Image</button></a>'
 			] ).draw( false );
 	});
 }
@@ -34,5 +34,4 @@ function showData(){
 function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 
