@@ -1,4 +1,10 @@
 window.onload = function(){
+
+	if (sessionStorage.getItem("login") == 'yes') {
+		
+	}else{
+		window.location.href = "login.html";
+	}
 	
 }
 

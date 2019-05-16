@@ -1,5 +1,10 @@
 window.onload = function(){
-	showData();
+	
+	if (sessionStorage.getItem("login") == 'yes') {
+		showData();
+	}else{
+		window.location.href = "login.html";
+	}
 }
 
 

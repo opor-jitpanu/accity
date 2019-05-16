@@ -1,3 +1,23 @@
+
+
+
+window.onload = function(){
+	
+	if (sessionStorage.getItem("login") == 'yes') {
+		
+	}else{
+		window.location.href = "login.html";
+	}
+}
+
+
+
+
+
+
+
+
+
 function CheckRewardOnClick() {
 	var reward_id = document.getElementById('reward_id').value;
 
@@ -64,12 +84,6 @@ function showReward(id){
 function chageStatus(id){
 
 
-
-
-
-
-
-
 	var d = new Date(); 
 	var hour = d.getHours(); 
 	var minute = d.getMinutes();
@@ -79,13 +93,6 @@ function chageStatus(id){
 	}
 
 	var time = hour + ":" + minute;
-
-
-
-
-
-
-
 
 	var today_in = new Date();
 	var dd_in = today_in.getDate();
@@ -110,7 +117,5 @@ function chageStatus(id){
 		date:date
 
 	});
-
-
 
 }

@@ -1,9 +1,15 @@
 window.onload = function(){
 
-  var url_string = window.location.href; 
-  var url = new URL(url_string);
-  var email = url.searchParams.get("email");
-  getId(email);
+  if (sessionStorage.getItem("login") == 'yes') {
+   var url_string = window.location.href; 
+   var url = new URL(url_string);
+   var email = url.searchParams.get("email");
+   getId(email);
+ }else{
+  window.location.href = "login.html";
+}
+
+
 
 }
 

@@ -88,6 +88,7 @@
                         <li><a href="passdoor.html"><i class="fa fa-cubes"></i> ระบบเช็คผ่านประตู </a>
                           <li><a href="redeem.html"><i class="fa fa-gift"></i> แลกของรางวัล </a>
                             <li><a href="treasure.html"><i class="fa fa-flag-checkered"></i> โหมดล่าสมบัติ </a>
+                              
 
                             </li>
 
@@ -99,116 +100,117 @@
 
                             <li><a href="place_count.html"><i class="fa fa-delicious"></i> จำนวนการเช็คอินสถานที่ </a>
                               <li><a href="delete_checkin_email.html"><i class="fa fa-cut"></i> ลบประวัติการเช็คอินด้วยอีเมล </a>
+                                <li><a href="logout.html"><i class="fa fa-power-off"></i> ออกจากระบบ </a>
 
 
-                              </ul>
+                                </ul>
+                              </div>
+
+                            </div>
+                            <!-- /sidebar menu -->
+
+
+                          </div>
+                        </div>
+
+                        <!-- top navigation -->
+                        <div class="top_nav">
+                          <div class="nav_menu">
+                            <nav>
+                              <div class="nav toggle">
+                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                              </div>
+
+
+                            </nav>
+                          </div>
+                        </div>
+                        <!-- /top navigation -->
+
+                        <!-- page content -->
+                        <div class="right_col" role="main">
+                          <!-- top tiles -->
+                          <div class="row tile_count">
+
+                            <a href="search.html">
+                              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> จำนวนสมาชิกในระบบ</span>
+                                <div class="count" id="count_all_user">0</div>
+                                <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
+                              </div>
+                            </a>
+
+
+                            <a href="user_today.html">
+                              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> จำนวนคนใช้ระบบในวันนี้</span>
+                                <div class="count" id="count_all_user_today">0</div>
+                                <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
+                              </div>
+                            </a>
+
+                            <a href="all_checkin.html">
+                              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> จำนวนเช็คอินทั้งหมด</span>
+                                <div class="count" id="count_all_checkin">0</div>
+                                <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
+                              </div>
+                            </a>
+
+
+                            <a href="place.html">
+                              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> จำนวนสถานที่</span>
+                                <div class="count" id="count_all_place">0</div>
+                                <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
+                              </div>
+                            </a>
+
+                            <a href="all_ticket.html">
+                              <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                                <span class="count_top"><i class="fa fa-user"></i> จำนวนตั๋วทั้งหมด</span>
+                                <div class="count" id="count_all_ticket">0</div>
+                                <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
+                              </div>
+                            </a>
+
+
+                          </div>
+                          <!-- /top tiles -->
+
+
+
+
+                          <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                              <div class="dashboard_graph">
+
+                                <div class="row x_title">
+                                  <div class="col-md-6">
+                                    <h3> จำนวนการเช็คอินตามระยะเวลา </h3>
+                                  </div>
+                                  <div class="col-md-6">
+
+                                  </div>
+                                </div>
+
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                  <div id="myfirstchart" style="height: 250px;"></div>
+                                </div>
+
+
+                                <div class="clearfix"></div>
+                              </div>
                             </div>
 
                           </div>
-                          <!-- /sidebar menu -->
-
-
-                        </div>
-                      </div>
-
-                      <!-- top navigation -->
-                      <div class="top_nav">
-                        <div class="nav_menu">
-                          <nav>
-                            <div class="nav toggle">
-                              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                            </div>
-
-
-                          </nav>
-                        </div>
-                      </div>
-                      <!-- /top navigation -->
-
-                      <!-- page content -->
-                      <div class="right_col" role="main">
-                        <!-- top tiles -->
-                        <div class="row tile_count">
-
-                          <a href="search.html">
-                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                              <span class="count_top"><i class="fa fa-user"></i> จำนวนสมาชิกในระบบ</span>
-                              <div class="count" id="count_all_user">0</div>
-                              <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
-                            </div>
-                          </a>
-
-
-                          <a href="user_today.html">
-                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                              <span class="count_top"><i class="fa fa-user"></i> จำนวนคนใช้ระบบในวันนี้</span>
-                              <div class="count" id="count_all_user_today">0</div>
-                              <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
-                            </div>
-                          </a>
-
-                          <a href="all_checkin.html">
-                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                              <span class="count_top"><i class="fa fa-user"></i> จำนวนเช็คอินทั้งหมด</span>
-                              <div class="count" id="count_all_checkin">0</div>
-                              <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
-                            </div>
-                          </a>
-
-
-                          <a href="place.html">
-                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                              <span class="count_top"><i class="fa fa-user"></i> จำนวนสถานที่</span>
-                              <div class="count" id="count_all_place">0</div>
-                              <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
-                            </div>
-                          </a>
-
-                          <a href="all_ticket.html">
-                            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                              <span class="count_top"><i class="fa fa-user"></i> จำนวนตั๋วทั้งหมด</span>
-                              <div class="count" id="count_all_ticket">0</div>
-                              <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
-                            </div>
-                          </a>
-
-
-                        </div>
-                        <!-- /top tiles -->
 
 
 
 
-                        <div class="row">
-                          <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="dashboard_graph">
+                          <br />
 
-                              <div class="row x_title">
-                                <div class="col-md-6">
-                                  <h3> จำนวนการเช็คอินตามระยะเวลา </h3>
-                                </div>
-                                <div class="col-md-6">
-
-                                </div>
-                              </div>
-
-                              <div class="col-md-12 col-sm-12 col-xs-12">
-                                <div id="myfirstchart" style="height: 250px;"></div>
-                              </div>
-                              
-
-                              <div class="clearfix"></div>
-                            </div>
-                          </div>
-
-                        </div>
-
-
-
-
-                        <br />
-
-                        <div class="row">
+                          <div class="row">
 
 
                           <!-- <div class="col-md-4 col-sm-4 col-xs-12">

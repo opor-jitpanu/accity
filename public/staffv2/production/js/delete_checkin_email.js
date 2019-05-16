@@ -1,3 +1,17 @@
+
+window.onload = function(){
+
+
+
+	if (sessionStorage.getItem("login") == 'yes') {
+		
+	}else{
+		window.location.href = "login.html";
+	}
+	
+}
+
+
 function  submitOnClick() {
 	var count = 0;
 	var time = 1;
@@ -15,11 +29,6 @@ function  submitOnClick() {
 		alert("Delete Complete");
 
 	});
-
-
-
-	
-
 
 
 }
