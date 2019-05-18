@@ -1,7 +1,7 @@
 window.onload = function(){
 
 	if (sessionStorage.getItem("login") == 'yes') {
-		
+
 	}else{
 		window.location.href = "login.html";
 	}
@@ -10,6 +10,26 @@ window.onload = function(){
 
 function BackHome(){
 	window.location.href = "index_staff.html";
+}
+
+function cameraOnclick(){
+
+
+	let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+	scanner.addListener('scan', function (content) {
+		console.log(content);
+		document.getElementById("ticket_id").value = content;
+	});
+	Instascan.Camera.getCameras().then(function (cameras) {
+		if (cameras.length > 0) {
+			scanner.start(cameras[0]);
+		} else {
+			console.error('No cameras found.');
+		}
+	}).catch(function (e) {
+		console.error(e);
+	});
+
 }
 
 

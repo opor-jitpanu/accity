@@ -4,6 +4,7 @@
 window.onload = function(){
 	
 	if (sessionStorage.getItem("login") == 'yes') {
+		document.getElementById('btn_refresh').style.visibility = 'hidden';
 		
 	}else{
 		window.location.href = "login.html";
@@ -13,7 +14,25 @@ window.onload = function(){
 
 
 
+function cameraOnclick(){
 
+
+	let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+	scanner.addListener('scan', function (content) {
+		console.log(content);
+		document.getElementById("reward_id").value = content;
+	});
+	Instascan.Camera.getCameras().then(function (cameras) {
+		if (cameras.length > 0) {
+			scanner.start(cameras[0]);
+		} else {
+			console.error('No cameras found.');
+		}
+	}).catch(function (e) {
+		console.error(e);
+	});
+
+}
 
 
 
@@ -64,7 +83,7 @@ function showReward(id){
 				document.getElementById("description").innerHTML = 'Reward Description : ' + description;
 				document.getElementById("point").innerHTML = 'Reward Point : ' + point;
 
-
+				document.getElementById('btn_refresh').style.visibility = 'visible';
 				
 
 				
@@ -74,6 +93,12 @@ function showReward(id){
 
 
 
+}
+
+
+
+function refreshOnclick(){
+	window.location.href = "redeem.html";
 }
 
 
