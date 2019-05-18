@@ -94,7 +94,36 @@ function showCheckin(email){
 
 
 
+function deleteTicket(objButton){
 
+
+  var ref3 = firebase.database().ref("Ticket");
+  ref3.orderByKey().equalTo(objButton.value).on("value", function(snapshot) {
+    snapshot.forEach(function(data) {
+      ref3.child(data.key).remove()
+      .then(function() {
+        console.log("Remove succeeded.")
+
+
+
+        var url_string = window.location.href; 
+        var url = new URL(url_string);
+        var email = url.searchParams.get("email");
+        window.location= "showdata_profile.html?email="+email;
+
+
+
+      })
+      .catch(function(error) {
+        console.log("Remove failed: " + error.message)
+      });
+
+    });
+
+  });
+
+
+}
 
 
 
@@ -111,10 +140,12 @@ function showTicket(email){
       var t = $('#datatableTicket').DataTable();
 
       t.row.add( [
+        key,
         childData.date_buy,
         childData.date_in,
         childData.issue,
-        childData.type
+        childData.type,
+        '<button class="btn btn-primary btn-xs" onclick="deleteTicket(this)" value='+'"'+key+'"'+'><i class="fa fa-trash"></i> Delete </button>'
         ] ).draw();
 
 
