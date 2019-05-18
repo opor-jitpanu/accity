@@ -7,7 +7,23 @@ function getLocation(){
   function showPosition(position) {
     // var x = document.getElementById("debug_txt");
     // x.innerHTML ="Debug : " + position.coords.latitude + " , " + position.coords.longitude;
-    loadwindow(position.coords.latitude, position.coords.longitude);
+    // loadwindow(position.coords.latitude, position.coords.longitude);
+    var a = 13.546881;
+    var b = 100.628337;
+
+    loadwindow(a, b);
+
+
+    setTimeout(function(){
+
+      var c = 13.551831;
+      var d = 100.632090;
+
+      loadwindow(c, d);
+    }, 10000);
+
+
+
   }
 
 
@@ -147,8 +163,7 @@ function loadwindow(c, d){
 
 
 
-  var a = 13.546881;
-  var b = 100.628337;
+  
   // var myLocation = [13.548565, 100.628249];
   var obj2 = {};
 
@@ -165,7 +180,10 @@ function loadwindow(c, d){
       var place1 = childSnapshot.child("latitude").val();
       var place2 = childSnapshot.child("longtitude").val();
       var line = 1;
-      var distance = parseInt(getDistanceFromLatLonInKm(a,b,place1,place2,line));;  //แก้ไข้Location ABCD
+
+
+
+      var distance = parseInt(getDistanceFromLatLonInKm(c,d,place1,place2,line));;  //แก้ไข้Location ABCD
       // document.getElementById("location_la_long").innerHTML = "Latitude : " + c +' ,Longtitude : ' + d;
       console.log(c,d);
       obj3[place_id] = distance;

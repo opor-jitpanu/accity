@@ -124,7 +124,7 @@ function show(){
 
 
 
-				var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="reward_show.html?id='+key+'&id2='+id+'">'+name+'</a></div><h2>'+'Point : '+point+'</h2></div></div></div></div></li>';
+				var div = '<a href="reward_show.html?id='+key+'&id2='+id+'">'+'<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category">'+name+'</div><h2>'+'Point : '+point+'</h2></div></div></div></div></li></a>';
 
 				mydiv.innerHTML += div;
 
