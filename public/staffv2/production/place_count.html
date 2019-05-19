@@ -27,7 +27,10 @@
 
 
 
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 
 
 
@@ -60,34 +63,34 @@
 
           <br />
 
-           <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
-                <h3>ทั่วไป</h3>
-                <ul class="nav side-menu">
-                  <li><a href="index.html"><i class="fa fa-home"></i> หน้าหลัก </a>
+          <!-- sidebar menu -->
+          <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+              <h3>ทั่วไป</h3>
+              <ul class="nav side-menu">
+                <li><a href="index.html"><i class="fa fa-home"></i> หน้าหลัก </a>
 
-                  </li>
-                  <li><a href="search.html"><i class="fa fa-search"></i> ค้นหานักท่องเที่ยว</a>
-                   <li><a href="place.html"><i class="fa fa-info-circle"></i> ข้อมูลสถานที่ </a>
-                    <li><a href="promotion.html"><i class="fa fa-info-circle"></i> ข้อมูลโปรโมชัน </a>
-                      <li><a href="reward.html"><i class="fa fa-info-circle"></i> ข้อมูลของรางวัล </a>
+                </li>
+                <li><a href="search.html"><i class="fa fa-search"></i> ค้นหานักท่องเที่ยว</a>
+                 <li><a href="place.html"><i class="fa fa-info-circle"></i> ข้อมูลสถานที่ </a>
+                  <li><a href="promotion.html"><i class="fa fa-info-circle"></i> ข้อมูลโปรโมชัน </a>
+                    <li><a href="reward.html"><i class="fa fa-info-circle"></i> ข้อมูลของรางวัล </a>
 
-                        <li><a href="passdoor.html"><i class="fa fa-cubes"></i> ระบบเช็คผ่านประตู </a>
-                          <li><a href="redeem.html"><i class="fa fa-gift"></i> แลกของรางวัล </a>
-                            <li><a href="treasure.html"><i class="fa fa-flag-checkered"></i> โหมดล่าสมบัติ </a>
+                      <li><a href="passdoor.html"><i class="fa fa-cubes"></i> ระบบเช็คผ่านประตู </a>
+                        <li><a href="redeem.html"><i class="fa fa-gift"></i> แลกของรางวัล </a>
+                          <li><a href="treasure.html"><i class="fa fa-flag-checkered"></i> โหมดล่าสมบัติ </a>
 
-                            </li>
+                          </li>
 
-                          </ul>
-                        </div>
-                        <div class="menu_section">
-                          <h3>ขั้นสูง</h3>
-                          <ul class="nav side-menu">
+                        </ul>
+                      </div>
+                      <div class="menu_section">
+                        <h3>ขั้นสูง</h3>
+                        <ul class="nav side-menu">
 
-                            <li><a href="place_count.html"><i class="fa fa-delicious"></i> จำนวนการเช็คอินสถานที่ </a>
-                              <li><a href="delete_checkin_email.html"><i class="fa fa-cut"></i> ลบประวัติการเช็คอินด้วยอีเมล </a>
-                                <li><a href="logout.html"><i class="fa fa-power-off"></i> ออกจากระบบ </a>
+                          <li><a href="place_count.html"><i class="fa fa-delicious"></i> จำนวนการเช็คอินสถานที่ </a>
+                            <li><a href="delete_checkin_email.html"><i class="fa fa-cut"></i> ลบประวัติการเช็คอินด้วยอีเมล </a>
+                              <li><a href="logout.html"><i class="fa fa-power-off"></i> ออกจากระบบ </a>
 
 
                               </ul>
@@ -96,57 +99,60 @@
                           </div>
                           <!-- /sidebar menu -->
 
-                        
+
+                        </div>
                       </div>
+
+                      <!-- top navigation -->
+                      <div class="top_nav">
+                        <div class="nav_menu">
+                          <nav>
+                            <div class="nav toggle">
+                              <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                            </div>
+
+
+                          </li>
+                        </ul>
+                      </nav>
                     </div>
-
-                    <!-- top navigation -->
-                    <div class="top_nav">
-                      <div class="nav_menu">
-                        <nav>
-                          <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                          </div>
-
-
-                        </li>
-                      </ul>
-                    </nav>
                   </div>
-                </div>
-                <!-- /top navigation -->
+                  <!-- /top navigation -->
 
-                <!-- page content -->
-                <div class="right_col" role="main">
-                  <div class="">
-                    <div class="page-title">
-                      <div class="title_left">
+                  <!-- page content -->
+                  <div class="right_col" role="main">
+                    <div class="">
+                      <div class="page-title">
+                        <div class="title_left">
 
+                        </div>
                       </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="row">
-                      <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="x_panel">
-                          <div class="x_title">
-                            <h2>จำนวนการเช็คอินแต่ละสถานที่</h2>
-                            <div class="clearfix"></div>
-                          </div>
-                          <div class="x_content">
-                            <p class="text-muted font-13 m-b-30">
-                            </p>
+                      <div class="clearfix"></div>
+                      <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                          <div class="x_panel">
+                            <div class="x_title">
+                              <h2>จำนวนการเช็คอินแต่ละสถานที่</h2>
+                              <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                              <p class="text-muted font-13 m-b-30">
+                              </p>
 
 
-                            <div class="form-horizontal form-label-left">
+                              <div class="form-horizontal form-label-left">
 
 
 
 
 
                                 <div class="form-group">
-                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">รหัสสถานที่ : </label>
+                                  <label class="control-label col-md-3 col-sm-3 col-xs-12">สถานที่ :</label>
                                   <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" id="inputPlaceid2" class="form-control" placeholder="รหัสสถานที่">
+                                    <select class="form-control" id="t1">
+                                      <option>Choose option</option>
+
+                                    </select>
                                   </div>
                                 </div>
 
@@ -163,8 +169,6 @@
 
 
                                   <p id="text_count"></p>
-                                  <p id="male_text"></p>
-                                  <p id="female_text"></p>
 
 
 
@@ -174,6 +178,34 @@
                               </div>
                             </div>
                           </div>
+
+                          <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="x_panel tile fixed_height_320">
+                              <div class="x_title">
+                                <h2>เพศ</h2>
+                                
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content">
+                                <div class="dashboard-widget-content">
+
+
+
+
+                                  <canvas id="ticket_chart2" width="800" height="450"></canvas>
+
+                                  <p id="day_txt2"></p>
+                                  <p id="year_txt2"></p>
+
+
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+
+
                         </div>
                       </div>
                     </div>
@@ -198,27 +230,42 @@
                 <script src="../vendors/fastclick/lib/fastclick.js"></script>
                 <!-- NProgress -->
                 <script src="../vendors/nprogress/nprogress.js"></script>
+                <!-- morris.js -->
+                <script src="../vendors/raphael/raphael.min.js"></script>
+                <script src="../vendors/morris.js/morris.min.js"></script>
+                <!-- Chart.js -->
+                <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+                <!-- gauge.js -->
+                <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+                <!-- bootstrap-progressbar -->
+                <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
                 <!-- iCheck -->
                 <script src="../vendors/iCheck/icheck.min.js"></script>
-                <!-- Datatables -->
-                <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-                <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-                <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-                <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-                <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-                <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-                <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-                <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-                <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-                <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-                <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-                <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-                <script src="../vendors/jszip/dist/jszip.min.js"></script>
-                <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-                <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+                <!-- Skycons -->
+                <script src="../vendors/skycons/skycons.js"></script>
+                <!-- Flot -->
+                <script src="../vendors/Flot/jquery.flot.js"></script>
+                <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+                <script src="../vendors/Flot/jquery.flot.time.js"></script>
+                <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+                <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+                <!-- Flot plugins -->
+                <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+                <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+                <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+                <!-- DateJS -->
+                <script src="../vendors/DateJS/build/date.js"></script>
+                <!-- JQVMap -->
+                <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+                <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+                <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+                <!-- bootstrap-daterangepicker -->
+                <script src="../vendors/moment/min/moment.min.js"></script>
+                <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
                 <!-- Custom Theme Scripts -->
                 <script src="../build/js/custom.min.js"></script>
+
 
                 <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
                 <script>

@@ -70,6 +70,7 @@ window.onload = function(){
 		showGraphLine();
 		showGengerGraph();
 		showTicketGraph();
+		showSaleGraph();
 		
 	}else{
 		window.location.href = "login.html";
@@ -181,20 +182,20 @@ function line(line){
 				element: 'myfirstchart',
 
 				data: [
-				{ time: '2012-04-10 08:00', value: num1 },
-				{ time: '2012-04-10 09:00', value: num2 },
-				{ time: '2012-04-10 10:00', value: num3 },
-				{ time: '2012-04-10 11:00', value: num4 },
-				{ time: '2012-04-10 12:00', value: num5 },
-				{ time: '2012-04-10 13:00', value: num6 },
-				{ time: '2012-04-10 14:00', value: num7 },
-				{ time: '2012-04-10 15:00', value: num8 },
-				{ time: '2012-04-10 16:00', value: num9 },
-				{ time: '2012-04-10 17:00', value: num10 },
-				{ time: '2012-04-10 18:00', value: num11 },
-				{ time: '2012-04-10 19:00', value: num12 },
-				{ time: '2012-04-10 20:00', value: num13 },
-				{ time: '2012-04-10 21:00', value: num14 }
+				{ time: '2019-05-21 08:00', value: num1 },
+				{ time: '2019-05-21 09:00', value: num2 },
+				{ time: '2019-05-21 10:00', value: num3 },
+				{ time: '2019-05-21 11:00', value: num4 },
+				{ time: '2019-05-21 12:00', value: num5 },
+				{ time: '2019-05-21 13:00', value: num6 },
+				{ time: '2019-05-21 14:00', value: num7 },
+				{ time: '2019-05-21 15:00', value: num8 },
+				{ time: '2019-05-21 16:00', value: num9 },
+				{ time: '2019-05-21 17:00', value: num10 },
+				{ time: '2019-05-21 18:00', value: num11 },
+				{ time: '2019-05-21 19:00', value: num12 },
+				{ time: '2019-05-21 20:00', value: num13 },
+				{ time: '2019-05-21 21:00', value: num14 }
 				],
 
 				xkey: 'time',
@@ -371,3 +372,81 @@ function showTicketGraph2(day,year){
 }
 
 
+
+
+
+
+
+function showSaleGraph(){
+
+	var ref1 = firebase.database().ref('Ticket');
+	var day = 0;
+	var year = 0;
+	var count3 = 0;
+
+
+	var ref = firebase.database().ref("Ticket");
+	ref.on("value", function(snapshot2) {
+
+
+		
+
+
+		ref1
+		.on('child_added', function(snapshot) { 
+			var ticket = snapshot.val();
+			if (ticket.type == 'year') {
+
+				year += 1;
+
+			}else if(ticket.type == 'normal'){
+				day += 1;
+			}
+
+			count3 += 1;
+
+
+			if (count3 == snapshot2.numChildren()) {
+				
+				showSaleGraph2(day,year);
+				
+			}
+
+
+
+
+		});
+
+
+		
+	})
+
+}
+
+
+function showSaleGraph2(day,year){
+
+	document.getElementById("day_txt2").innerHTML = "ตั๋วรายวัน : " + (day*500) +" บาท";
+	document.getElementById("year_txt2").innerHTML = "ตั๋วรายปี : " + (year*999) +" บาท";
+
+
+	new Chart(document.getElementById("ticket_chart2"), {
+		type: 'doughnut',
+		data: {
+			labels: ["ตั๋วรายวัน", "ตั๋วรายปี"],
+			datasets: [
+			{
+				label: "Population (millions)",
+				backgroundColor: ["#5371a3", "#a35e84"],
+				data: [day*500,year*999]
+			}
+			]
+		},
+		options: {
+			title: {
+				display: true
+			}
+		}
+	});
+
+}

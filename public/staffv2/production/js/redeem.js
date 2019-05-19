@@ -42,21 +42,52 @@ function CheckRewardOnClick() {
 
 	var ref = firebase.database().ref("Code");
 	ref.orderByKey().equalTo(reward_id).on("value", function(snapshot) {
-		snapshot.forEach(function(data) {
-			var id = data.key;
 
-			ref.once("value")
-			.then(function(snapshot){
-				var email = snapshot.child(id).child("email").val();
-				var status = snapshot.child(id).child("status").val();
-				var id3 = snapshot.child(id).child("id").val();
 
-				document.getElementById("email_user").innerHTML = 'Email : ' + email;
-				document.getElementById("status_user").innerHTML = 'Key Status : ' + status;
-				showReward(id3);
-				chageStatus(reward_id);
+
+		var value = snapshot.val();
+
+		if (value) {
+
+
+			snapshot.forEach(function(data) {
+				var id = data.key;
+
+				ref.once("value")
+				.then(function(snapshot){
+					var email = snapshot.child(id).child("email").val();
+					var status = snapshot.child(id).child("status").val();
+					var id3 = snapshot.child(id).child("id").val();
+
+					document.getElementById("email_user").innerHTML = 'อีเมลนักท่องเที่ยว : ' + email;
+					// document.getElementById("status_user").innerHTML = 'Key Status : ' + status;
+
+
+					
+					showReward(id3,reward_id);
+					chageStatus(reward_id);
+
+					
+
+					
+					
+				});
+
+
+
 			});
-		});
+
+		} else {
+			console.log('not found');
+			document.getElementById("txt_success").innerHTML = '<i class="fa fa-close"></i>  รหัสไม่ถูกต้อง ไม่พบของรางวัล';
+		}
+
+
+
+
+
+
+		
 	});
 
 
@@ -65,7 +96,7 @@ function CheckRewardOnClick() {
 
 
 
-function showReward(id){
+function showReward(id, reward_id){
 
 
 	var ref = firebase.database().ref("Reward");
@@ -79,15 +110,21 @@ function showReward(id){
 				var description = snapshot.child(id).child("description").val();
 				var point = snapshot.child(id).child("point").val();
 
-				document.getElementById("reward_name").innerHTML = 'Reward Name : ' + name;
-				document.getElementById("description").innerHTML = 'Reward Description : ' + description;
-				document.getElementById("point").innerHTML = 'Reward Point : ' + point;
+				document.getElementById("txt_success").innerHTML = '<i class="fa fa-flag-checkered"></i> แลกของรางวัลสำเร็จ';
+				document.getElementById("reward_name").innerHTML = 'ชื่อของรางวัล : ' + name;
+				document.getElementById("description").innerHTML = 'รายละเอียด : ' + description;
+				document.getElementById("point").innerHTML = 'คะแนน : ' + point;
 
 				document.getElementById('btn_refresh').style.visibility = 'visible';
+
+
 				
 
 				
 			});
+
+
+
 		});
 	});
 
@@ -105,8 +142,11 @@ function refreshOnclick(){
 
 
 
-
 function chageStatus(id){
+
+	
+
+
 
 
 	var d = new Date(); 
@@ -142,5 +182,6 @@ function chageStatus(id){
 		date:date
 
 	});
+	
 
 }

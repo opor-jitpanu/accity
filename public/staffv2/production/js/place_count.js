@@ -1,4 +1,84 @@
+window.onload = function(){
 
+	if (sessionStorage.getItem("login") == 'yes') {
+
+		var ref = firebase.database().ref('Place');
+		ref
+		.on('child_added', function(snapshot) { 
+			var place = snapshot.val();
+			
+			addInDropdown(place.name, place.place_id);
+			
+
+		});
+
+	}else{
+		window.location.href = "login.html";
+	}
+
+
+	
+
+}
+
+
+
+
+
+
+
+function showfGenderGraph(male,female){
+
+	document.getElementById("day_txt2").innerHTML = "เพศชาย : " + (male) +" คน";
+	document.getElementById("year_txt2").innerHTML = "เพศหญิง : " + (female) +" คน";
+
+
+	new Chart(document.getElementById("ticket_chart2"), {
+		type: 'doughnut',
+		data: {
+			labels: ["ชาย", "หญิง"],
+			datasets: [
+			{
+				label: "Population (millions)",
+				backgroundColor: ["#5371a3", "#a35e84"],
+				data: [male,female]
+			}
+			]
+		},
+		options: {
+			title: {
+				display: true
+			}
+		}
+	});
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function addInDropdown(name, id){
+
+	var ddl = document.getElementById("t1");
+	var option = document.createElement("OPTION");
+
+
+
+	option.innerHTML = 'ID : ' + id +"  "+name;
+	option.value = id;
+	ddl.options.add(option);
+
+
+
+}
 
 
 
@@ -10,7 +90,7 @@ function submitMaleOnClick(){
 	var female = 0;
 	
 
-	var place_id = document.getElementById('inputPlaceid2').value;
+	var place_id = document.getElementById('t1').value;
 	
 
 
@@ -40,14 +120,13 @@ function submitMaleOnClick(){
 				console.log(email2);
 			}
 
-			document.getElementById("male_text").innerHTML = "Male : " + male;
-			document.getElementById("female_text").innerHTML = "Female : " + female;
+			showfGenderGraph(male, female);
 
 		});
 		// console.log(email);
 		count += 1;
 
-		document.getElementById("text_count").innerHTML = "Place ID : " + place_id + " --> " + count;
+		document.getElementById("text_count").innerHTML = "นักท่องเที่ยวเช็คอินสถานที่นี้ทั้งหมด : " + count +" คน";
 
 	});
 }

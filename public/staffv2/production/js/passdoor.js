@@ -1,5 +1,8 @@
 window.onload = function(){
 
+	var ticket_day_count = 0;
+	var ticket_year_count = 0;
+
 	if (sessionStorage.getItem("login") == 'yes') {
 
 	}else{
@@ -7,6 +10,10 @@ window.onload = function(){
 	}
 	
 }
+
+
+var ticket_day_count = 0;
+var ticket_year_count = 0;
 
 function BackHome(){
 	window.location.href = "index_staff.html";
@@ -66,6 +73,7 @@ function checkin(ticket){
 	console.log(ticket);
 
 	ref.once("value").then(function(snapshot){
+
 
 
 		console.log(ticket);
@@ -128,7 +136,7 @@ function checkin(ticket){
 				// 	valid:valid
 				// });
 
-
+				
 
 				firebase.database().ref("Ticket").child(ticket).update({
 					time_in: time,
@@ -165,7 +173,7 @@ function checkin(ticket){
 				// });
 
 
-
+				
 
 				firebase.database().ref("Ticket").child(ticket).update({
 					time_in: time,
@@ -259,7 +267,12 @@ function checkin(ticket){
 
 
 			}
-			alert("Time in Complete!");
+			ticket_day_count += 1;
+			
+			console.log(ticket_day_count);
+			document.getElementById("status_ticket").innerHTML = 'รหัสตั๋วสามารถใช้ได้';
+			document.getElementById("count_ticket").innerHTML = 'จำนวนตั๋ว : ' + ticket_day_count;
+
 		}else if (type == "year") {
 			var valid = snapshot.child(ticket).child("valid").val();
 			var issue = snapshot.child(ticket).child("issue").val();
@@ -352,14 +365,15 @@ function checkin(ticket){
 
 			alert("Ticket Year can use");
 
+
 		}
 
 		else{
-			alert("Sorry, Ticket is Activated");
+			alert("กรุณาตรวจสอบรหัสตั๋วใหม่อีกครั้ง");
 		}
 	});
 
-
+console.log(ticket_day_count);
 }
 
 
