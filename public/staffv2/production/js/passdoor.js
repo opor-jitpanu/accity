@@ -4,11 +4,17 @@ window.onload = function(){
 	var ticket_year_count = 0;
 
 	if (sessionStorage.getItem("login") == 'yes') {
+		document.getElementById('btn_refresh').style.visibility = 'hidden';
 
 	}else{
 		window.location.href = "login.html";
 	}
 	
+}
+
+
+function refreshOnclick(){
+	window.location.href = "passdoor.html";
 }
 
 
@@ -270,8 +276,9 @@ function checkin(ticket){
 			ticket_day_count += 1;
 			
 			console.log(ticket_day_count);
-			document.getElementById("status_ticket").innerHTML = 'รหัสตั๋วสามารถใช้ได้';
+			document.getElementById("status_ticket").innerHTML = '<i class="fa fa-check"> รหัสตั๋วสามารถใช้ได้';
 			document.getElementById("count_ticket").innerHTML = 'จำนวนตั๋ว : ' + ticket_day_count;
+			document.getElementById('btn_refresh').style.visibility = 'visible';
 
 		}else if (type == "year") {
 			var valid = snapshot.child(ticket).child("valid").val();
@@ -369,7 +376,9 @@ function checkin(ticket){
 		}
 
 		else{
-			alert("กรุณาตรวจสอบรหัสตั๋วใหม่อีกครั้ง");
+			// alert("กรุณาตรวจสอบรหัสตั๋วใหม่อีกครั้ง");
+			document.getElementById("status_ticket").innerHTML = '<i class="fa fa-ban"> รหัสตั๋วไม่สามารถใช้ได้ กรุณาตรวจสอบรหัสตั๋วใหม่อีกครั้ง';
+			document.getElementById('btn_refresh').style.visibility = 'visible';
 		}
 	});
 
