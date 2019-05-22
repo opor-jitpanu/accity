@@ -54,16 +54,33 @@ function reCount(place_id, name, point){
 	.on("value", function(snapshot) {
 
 
-		t.row.add( [
-			place_id,
-			name,
-			point,
-			snapshot.numChildren(),
-			
-			'<a href="place_edit.html?place='+place_id+'" ><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</button></a>'+
-			'<a href="place_delete.html?place='+place_id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a>'+
-			'<a href="place_image.html?place='+place_id+'" ><button class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i> Image</button></a>'
-			] ).draw( false );
+		var storageRef = firebase.storage().ref();
+		var spaceRef = storageRef.child('images/'+place_id+'.jpg');
+		storageRef.child('images/'+place_id+'.jpg').getDownloadURL().then(function(url) {
+			var test = url;
+
+
+
+			t.row.add( [
+				'<a href="place_image.html?place='+place_id+'" ><img id="image1" src="'+url+'" width="100%"></a>',
+				'<a href="place_edit.html?place='+place_id+'" >'+place_id+'</a>',
+				'<a href="place_edit.html?place='+place_id+'" >'+name+'</a>',
+				point,
+				snapshot.numChildren(),
+
+				
+				'<a href="place_delete.html?place='+place_id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>'
+				
+				] ).draw( false );
+
+
+
+		}).catch(function(error) {
+
+		});
+
+
+		
 
 
 

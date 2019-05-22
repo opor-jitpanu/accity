@@ -22,17 +22,35 @@ function showData(){
 	ref
 	.on('child_added', function(snapshot) { 
 		var promotion = snapshot.val();
+
+
+		var storageRef = firebase.storage().ref();
+		var spaceRef = storageRef.child('promotions/'+promotion.id+'.jpg');
+		storageRef.child('promotions/'+promotion.id+'.jpg').getDownloadURL().then(function(url) {
+			var test = url;
+
+
+			t.row.add( [
+
+				'<a href="promotion_image.html?key='+promotion.id+'" ><img id="image1" src="'+url+'" width="100%"></a>',
+				'<a href="promotion_edit.html?place='+promotion.id+'" >'+promotion.title+'</a>',
+
+				promotion.description1,
+
+				promotion.date_in +" - "+ promotion.date_out,
+				
+				'<a href="promotion_delete.html?key='+promotion.id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>'
+				
+				] ).draw( false );
+
+
+
+		}).catch(function(error) {
+
+		});
 		
 
-		t.row.add( [
-			promotion.title,
-			promotion.description1,
-			
-			promotion.date_in +" - "+ promotion.date_out,
-			'<a href="promotion_edit.html?place='+promotion.id+'" ><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</button></a>'+
-			'<a href="promotion_delete.html?key='+promotion.id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a>'+
-			'<a href="promotion_image.html?key='+promotion.id+'" ><button class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i> Image</button></a>'
-			] ).draw( false );
+		
 	});
 }
 

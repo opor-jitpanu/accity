@@ -21,16 +21,32 @@ function showData(){
 	ref
 	.on('child_added', function(snapshot) { 
 		var reward = snapshot.val();
+
+
+
+		var storageRef = firebase.storage().ref();
+		var spaceRef = storageRef.child('rewards/'+reward.id+'.jpg');
+		storageRef.child('rewards/'+reward.id+'.jpg').getDownloadURL().then(function(url) {
+			var test = url;
+			
+
+			t.row.add( [
+				'<a href="reward_image.html?place='+reward.id+'" ><img id="image1" src="'+url+'" width="100%"></a>',
+				'<a href="reward_edit.html?place='+reward.id+'" >'+reward.name+'</a>',
+
+				reward.point,
+				
+				'<a href="reward_delete.html?place='+reward.id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></button></a>'
+				
+				] ).draw( false );
+
+
+		}).catch(function(error) {
+
+		});
 		
 
-		t.row.add( [
-			reward.name,
-			 
-			reward.point,
-			'<a href="reward_edit.html?place='+reward.id+'" ><button class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Edit</button></a>'+
-			'<a href="reward_delete.html?place='+reward.id+'" ><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a>'+
-			'<a href="reward_image.html?place='+reward.id+'" ><button class="btn btn-info btn-xs"><i class="fa fa-file-image-o"></i> Image</button></a>'
-			] ).draw( false );
+
 	});
 }
 
