@@ -65,7 +65,7 @@ function saveRegisterOnClick() {
 			if (snapshot.exists()){
 
 				console.log("exists!");
-				alert('Email is already Register');
+				alert('The email address is already in use by another account.');
 				window.location.href = "register.html";
 			}else{
 				
@@ -78,7 +78,7 @@ function saveRegisterOnClick() {
 
 						insertData(firstname.value,lastname.value, email.value, password.value, sex_value, country, tel.value, birth, today);
 					} else {
-						alert("Email is not email");
+						alert("Invalid email format");
 					}
 
 
