@@ -56,7 +56,7 @@ function showData(place_id){
 		document.getElementById("name_head").innerHTML = place.name;
 		document.getElementById("description_txt").innerHTML = place.description;
 
-		document.getElementById("point_txt").innerHTML = parseInt(place.point)*1.2;
+		document.getElementById("point_txt").innerHTML = "Point : " + parseInt(place.point)*1.2;
 
 
 		var link = document.getElementById("btnGoogleMap");
@@ -155,6 +155,7 @@ function get1(){
 
 
 								var plusscore = ((parseInt(place2.point)*1.2) + parseInt(user2.point)).toString();;
+								var comscore = (parseInt(place2.point)*1.2) + parseInt(user2.point_all);
 								console.log(parseInt(place2.point)*1.2);
 								console.log(plusscore);
 
@@ -168,7 +169,8 @@ function get1(){
 										alert(error);
 									} else {
 										firebase.database().ref("User").child(snapshot2.key).update({
-											point: plusscore
+											point: plusscore,
+											point_all:comscore
 										}, function(error) {
 											if (error) {
 												alert(error);
@@ -228,6 +230,7 @@ function get1(){
 
 
 								var plusscore = ((parseInt(place2.point)*1.2) + parseInt(user2.point)).toString();;
+								var comscore = (parseInt(place2.point)*1.2) + parseInt(user2.point_all);
 								console.log(parseInt(place2.point)*1.2);
 								console.log(plusscore);
 
@@ -241,7 +244,8 @@ function get1(){
 										alert(error);
 									} else {
 										firebase.database().ref("User").child(snapshot2.key).update({
-											point: plusscore
+											point: plusscore,
+											point_all : comscore
 										}, function(error) {
 											if (error) {
 												alert(error);
@@ -301,6 +305,7 @@ function get1(){
 
 
 								var plusscore = ((parseInt(place2.point)*1.2) + parseInt(user2.point)).toString();;
+								var comscore = (parseInt(place2.point)*1.2) + parseInt(user2.point_all);
 								console.log(parseInt(place2.point)*1.2);
 								console.log(plusscore);
 
@@ -314,7 +319,8 @@ function get1(){
 										alert(error);
 									} else {
 										firebase.database().ref("User").child(snapshot2.key).update({
-											point: plusscore
+											point: plusscore,
+											point_all : comscore
 										}, function(error) {
 											if (error) {
 												alert(error);
@@ -374,6 +380,7 @@ function get1(){
 
 
 								var plusscore = ((parseInt(place2.point)*1.2) + parseInt(user2.point)).toString();;
+								var comscore = (parseInt(place2.point)*1.2) + parseInt(user2.point_all);
 								console.log(parseInt(place2.point)*1.2);
 								console.log(plusscore);
 
@@ -387,7 +394,8 @@ function get1(){
 										alert(error);
 									} else {
 										firebase.database().ref("User").child(snapshot2.key).update({
-											point: plusscore
+											point: plusscore,
+											point_all : comscore
 										}, function(error) {
 											if (error) {
 												alert(error);
@@ -447,6 +455,7 @@ function get1(){
 
 
 								var plusscore = ((parseInt(place2.point)*1.2) + parseInt(user2.point) + 1000).toString();;
+								var comscore = (parseInt(place2.point)*1.2) + parseInt(user2.point_all + 1000);
 								console.log(parseInt(place2.point)*1.2);
 								console.log(plusscore);
 
@@ -460,7 +469,8 @@ function get1(){
 										alert(error);
 									} else {
 										firebase.database().ref("User").child(snapshot2.key).update({
-											point: plusscore
+											point: plusscore,
+											point_all : comscore
 										}, function(error) {
 											if (error) {
 												alert(error);
