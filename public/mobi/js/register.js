@@ -195,9 +195,9 @@ function signIn(){
 		var errorCode = error.code;
 		var errorMessage = error.message;
 		if(errorCode === 'auth/wrong-password'){
-			alert('wrong-password');
+			console.log('wrong-password');
 		}else{
-			alert(errorMessage);
+			console.log(errorMessage);
 		}
 		console.log(error);
 	});

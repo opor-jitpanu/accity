@@ -14,13 +14,13 @@ function getLocation(){
     loadwindow(a, b);
 
 
-    setTimeout(function(){
+    // setTimeout(function(){
 
-      var c = 13.551831;
-      var d = 100.632090;
+    //   var c = 13.551831;
+    //   var d = 100.632090;
 
-      loadwindow(c, d);
-    }, 10000);
+    //   loadwindow(c, d);
+    // }, 10000);
 
 
 

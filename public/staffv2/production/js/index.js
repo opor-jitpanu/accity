@@ -182,20 +182,20 @@ function line(line){
 				element: 'myfirstchart',
 
 				data: [
-				{ time: '2019-05-21 08:00', value: num1 },
-				{ time: '2019-05-21 09:00', value: num2 },
-				{ time: '2019-05-21 10:00', value: num3 },
-				{ time: '2019-05-21 11:00', value: num4 },
-				{ time: '2019-05-21 12:00', value: num5 },
-				{ time: '2019-05-21 13:00', value: num6 },
-				{ time: '2019-05-21 14:00', value: num7 },
-				{ time: '2019-05-21 15:00', value: num8 },
-				{ time: '2019-05-21 16:00', value: num9 },
-				{ time: '2019-05-21 17:00', value: num10 },
-				{ time: '2019-05-21 18:00', value: num11 },
-				{ time: '2019-05-21 19:00', value: num12 },
-				{ time: '2019-05-21 20:00', value: num13 },
-				{ time: '2019-05-21 21:00', value: num14 }
+				{ time: '2019-05-27 08:00', value: num1 },
+				{ time: '2019-05-27 09:00', value: num2 },
+				{ time: '2019-05-27 10:00', value: num3 },
+				{ time: '2019-05-27 11:00', value: num4 },
+				{ time: '2019-05-27 12:00', value: num5 },
+				{ time: '2019-05-27 13:00', value: num6 },
+				{ time: '2019-05-27 14:00', value: num7 },
+				{ time: '2019-05-27 15:00', value: num8 },
+				{ time: '2019-05-27 16:00', value: num9 },
+				{ time: '2019-05-27 17:00', value: num10 },
+				{ time: '2019-05-27 18:00', value: num11 },
+				{ time: '2019-05-27 19:00', value: num12 },
+				{ time: '2019-05-27 20:00', value: num13 },
+				{ time: '2019-05-27 21:00', value: num14 }
 				],
 
 				xkey: 'time',
@@ -269,8 +269,8 @@ function showGengerGraph(){
 function showGengerGraph2(male, female){
 
 
-	document.getElementById("male_txt").innerHTML = "เพศชาย : " + male;
-	document.getElementById("female_txt").innerHTML = "เพศหญิง : " + female;
+	document.getElementById("male_txt").innerHTML = "เพศชาย : " + ((male*100)/(male + female)).toFixed(2) +" % ";
+	document.getElementById("female_txt").innerHTML = "เพศหญิง : " + ((female*100)/(male + female)).toFixed(2) +" % ";
 
 
 	new Chart(document.getElementById("doughnut-chart"), {
@@ -281,7 +281,7 @@ function showGengerGraph2(male, female){
 			{
 				label: "Population (millions)",
 				backgroundColor: ["#5371a3", "#a35e84"],
-				data: [male,female]
+				data: [((male*100)/(male + female)).toFixed(2),((female*100)/(male + female)).toFixed(2)]
 			}
 			]
 		},
@@ -346,8 +346,8 @@ function showTicketGraph(){
 
 function showTicketGraph2(day,year){
 
-	document.getElementById("day_txt").innerHTML = "ตั๋วรายวัน : " + day;
-	document.getElementById("year_txt").innerHTML = "ตั๋วรายปี : " + year;
+	document.getElementById("day_txt").innerHTML = "ตั๋วรายวัน : " + ((day*100)/(day+year)).toFixed(2) + " % ";
+	document.getElementById("year_txt").innerHTML = "ตั๋วรายปี : " + ((year*100)/(day+year)).toFixed(2) + " % ";
 
 
 	new Chart(document.getElementById("ticket_chart"), {
@@ -358,7 +358,7 @@ function showTicketGraph2(day,year){
 			{
 				label: "Population (millions)",
 				backgroundColor: ["#5371a3", "#a35e84"],
-				data: [day,year]
+				data: [((day*100)/(day+year)).toFixed(2),((year*100)/(day+year)).toFixed(2)]
 			}
 			]
 		},
@@ -426,8 +426,12 @@ function showSaleGraph(){
 
 function showSaleGraph2(day,year){
 
-	document.getElementById("day_txt2").innerHTML = "ตั๋วรายวัน : " + (day*500) +" บาท";
-	document.getElementById("year_txt2").innerHTML = "ตั๋วรายปี : " + (year*999) +" บาท";
+
+	var day2 = day*500;
+	var year2 = year * 999; 
+
+	document.getElementById("day_txt2").innerHTML = "ตั๋วรายวัน : " + ((day2*100)/(day2+year2)).toFixed(2) +" % ";
+	document.getElementById("year_txt2").innerHTML = "ตั๋วรายปี : " + ((year2*100)/(day2+year2)).toFixed(2) +" % ";
 
 
 	new Chart(document.getElementById("ticket_chart2"), {
@@ -438,7 +442,7 @@ function showSaleGraph2(day,year){
 			{
 				label: "Population (millions)",
 				backgroundColor: ["#5371a3", "#a35e84"],
-				data: [day*500,year*999]
+				data: [((day2*100)/(day2+year2)).toFixed(2),((year2*100)/(day2+year2)).toFixed(2)]
 			}
 			]
 		},

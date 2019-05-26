@@ -29,7 +29,14 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
   <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
 
-
+  <style type="text/css">
+    #point2{
+      color: white;
+    }
+    #email2{
+      color: white;
+    }
+  </style>
 
 
 
@@ -176,8 +183,13 @@
                                     <p id="reward_name"></p>
                                     <p id="description"></p>
                                     <p id="point"></p>
+                                    <p id="point2"></p>
+                                    <p id="email2"></p>
 
-                                    <center><button onclick="refreshOnclick()" id="btn_refresh" class="btn btn-primary">Refresh</button><center>
+                                    <center>
+                                      <button onclick="returnOnclick()" id="btn_return" class="btn btn-primary">คืนคะแนน</button>
+                                      <button onclick="refreshOnclick()" id="btn_refresh" class="btn btn-primary">Refresh</button>
+                                    </center>
 
 
                                     <center>

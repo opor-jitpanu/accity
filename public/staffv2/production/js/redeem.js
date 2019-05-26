@@ -5,6 +5,9 @@ window.onload = function(){
 	
 	if (sessionStorage.getItem("login") == 'yes') {
 		document.getElementById('btn_refresh').style.visibility = 'hidden';
+		document.getElementById('btn_return').style.visibility = 'hidden';
+
+		sessionStorage.removeItem('score');
 		
 	}else{
 		window.location.href = "login.html";
@@ -60,6 +63,7 @@ function CheckRewardOnClick() {
 					var id3 = snapshot.child(id).child("id").val();
 
 					document.getElementById("email_user").innerHTML = 'อีเมลนักท่องเที่ยว : ' + email;
+					document.getElementById("email2").innerHTML = email;
 					// document.getElementById("status_user").innerHTML = 'Key Status : ' + status;
 
 
@@ -114,8 +118,11 @@ function showReward(id, reward_id){
 				document.getElementById("reward_name").innerHTML = 'ชื่อของรางวัล : ' + name;
 				document.getElementById("description").innerHTML = 'รายละเอียด : ' + description;
 				document.getElementById("point").innerHTML = 'คะแนน : ' + point;
+				document.getElementById("point2").innerHTML = point;
+				sessionStorage.setItem("score", point);
 
 				document.getElementById('btn_refresh').style.visibility = 'visible';
+				// document.getElementById('btn_return').style.visibility = 'visible';
 
 
 				
@@ -143,10 +150,6 @@ function refreshOnclick(){
 
 
 function chageStatus(id){
-
-	
-
-
 
 
 	var d = new Date(); 
@@ -185,3 +188,88 @@ function chageStatus(id){
 	
 
 }
+
+
+
+
+
+
+
+function returnOnclick(){
+
+
+	var reward_id = document.getElementById('reward_id').value;
+
+	var node = document.getElementById('point2');
+
+	var email_node = document.getElementById('email2');
+
+	var point = node.textContent;
+	var email = email_node.textContent;
+
+	console.log(email);
+	
+	var ref = firebase.database().ref("User");
+	ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+
+		snapshot.forEach(function(data) {
+
+			var id = data.key;
+
+			showPoint(data.key);
+
+		});
+	});
+
+	
+	function showPoint(id){
+		var reward_id = document.getElementById('reward_id').value;
+		var ref = firebase.database().ref("User");
+		ref.once("value")
+		.then(function(snapshot){
+			var point_user = snapshot.child(id).child("point").val();
+
+			var pointreward = sessionStorage.getItem("score");
+
+			var updatepoint = parseInt(point_user) + parseInt(pointreward);
+			console.log(point_user + " : " + pointreward);
+
+			AddPoint(updatepoint ,email, id);
+			
+			
+			
+			
+		});
+	}
+
+
+	function AddPoint(point3, email, id){
+
+		var point2 = point3.toString();
+
+
+		console.log(point2);
+		console.log(id);
+
+		firebase.database().ref("User").child(id).update({
+			point: point2
+
+		}, function(error) {
+			if (error) {
+				alert(error);
+			} else {
+
+				window.location.href = "redeem.html";
+
+			}
+		});
+
+	}
+
+}
+
+
+
+
+
+
