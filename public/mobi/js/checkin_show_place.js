@@ -1,10 +1,18 @@
 window.onload = function(){
 
 
+
+
 	var url_string = window.location.href;
 	var url = new URL(url_string);
 	var place = url.searchParams.get("place");
-	var check_distance = url.searchParams.get("check");
+
+
+
+	var check_distance = sessionStorage.getItem(place);
+
+
+	sessionStorage.clear();
 
 	var ref = firebase.database().ref("Place");
 	ref.orderByChild('place_id').equalTo(place).on("value", function(snapshot) {
@@ -341,8 +349,9 @@ function getScoreOnClick(){
 				console.log(enc);
 
 
-
-				window.location.href = "checkin_complete.html?sum=" + enc +"&allscore="+ allscore ;
+				sessionStorage.setItem("sum", enc);
+				sessionStorage.setItem("allscore", allscore);
+				window.location.href = "checkin_complete.html";
 			}
 		});
 

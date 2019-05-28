@@ -192,6 +192,11 @@ onAuthorize: function (data, actions) {
   .then(function () {
 
     window.location.href = 'paid_buy_ticket.html?t1='+t1+'&t2='+t2;
+
+    sessionStorage.setItem("submit_ticket_day", t1);
+    sessionStorage.setItem("submit_ticket_year", t2);
+
+
   });
 }
 }, '#paypal-button-container');

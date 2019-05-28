@@ -22,12 +22,24 @@ function showData(){
 		var user = snapshot.val();
 		
 
-		t.row.add( [
+
+		if (user.sex == 'male') {
+			t.row.add( [
+				'<center><a href="showdata_profile.html?email='+user.email+'" >' + user.firstname + " " + user.lastname + '</a><center>',
+				user.email,
+				'ชาย',
+				user.birth
+				] ).draw( false );
+		}else {
+			t.row.add( [
 			'<center><a href="showdata_profile.html?email='+user.email+'" >' + user.firstname + " " + user.lastname + '</a><center>',
 			user.email,
-			user.sex,
+			'หญิง',
 			user.birth
 			] ).draw( false );
+		}
+
+		
 	});
 }
 

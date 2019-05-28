@@ -6,6 +6,11 @@ window.onload = function(){
 	var t2 = url.searchParams.get("t2");
 	var sum = url.searchParams.get("sum");
 
+
+
+
+	sessionStorage.clear();
+
 	
 
 

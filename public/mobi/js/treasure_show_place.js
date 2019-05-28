@@ -140,7 +140,7 @@ function get1(){
 						var ref3 = firebase.database().ref('Place');
 						ref3
 						.orderByChild('place_id')
-						.equalTo(place.three)
+						.equalTo(place.one)
 						.on('child_added', function(snapshot) { 
 							var place2 = snapshot.val();
 							console.log(place2.point);
@@ -160,7 +160,10 @@ function get1(){
 								console.log(plusscore);
 
 
-								console.log(snapshot2.key);
+								// console.log(snapshot2.key);
+
+								console.log(place2.point);
+								console.log(parseInt(user2.point));
 
 								firebase.database().ref("Treasure").child(data.key).update({
 									one: 'unlock'
@@ -215,7 +218,7 @@ function get1(){
 						var ref3 = firebase.database().ref('Place');
 						ref3
 						.orderByChild('place_id')
-						.equalTo(place.three)
+						.equalTo(place.two)
 						.on('child_added', function(snapshot) { 
 							var place2 = snapshot.val();
 							console.log(place2.point);
@@ -365,7 +368,7 @@ function get1(){
 						var ref3 = firebase.database().ref('Place');
 						ref3
 						.orderByChild('place_id')
-						.equalTo(place.three)
+						.equalTo(place.four)
 						.on('child_added', function(snapshot) { 
 							var place2 = snapshot.val();
 							console.log(place2.point);
@@ -440,7 +443,7 @@ function get1(){
 						var ref3 = firebase.database().ref('Place');
 						ref3
 						.orderByChild('place_id')
-						.equalTo(place.three)
+						.equalTo(place.five)
 						.on('child_added', function(snapshot) { 
 							var place2 = snapshot.val();
 							console.log(place2.point);

@@ -40,7 +40,7 @@ function refreshOnClick(){
 
 window.onload = function(){
 
-
+  sessionStorage.clear();
 
 
   if (check == 0) {
@@ -214,9 +214,9 @@ function loadwindow(c, d){
     showNamePlace(sortedCities[0][0], 1);
     // var x2 = document.getElementById("btnlink1");
     // x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[0][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
-    document.getElementById("link1").href= "checkin_show_place.html?place="+sortedCities[0][0]+"&check="+check; 
+    document.getElementById("link1").href= "checkin_show_place.html?place="+sortedCities[0][0]; 
 
-
+    sessionStorage.setItem(sortedCities[0][0], check);
 
 
 
@@ -236,7 +236,8 @@ function loadwindow(c, d){
     showNamePlace(sortedCities[1][0], 2);
     // var x2 = document.getElementById("btnlink2");
     // x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[1][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
-    document.getElementById("link2").href= "checkin_show_place.html?place="+sortedCities[1][0]+"&check="+check; 
+    document.getElementById("link2").href= "checkin_show_place.html?place="+sortedCities[1][0]; 
+    sessionStorage.setItem(sortedCities[1][0], check);
 
 
 
@@ -255,7 +256,8 @@ function loadwindow(c, d){
     showNamePlace(sortedCities[2][0], 3);
     // var x2 = document.getElementById("btnlink3");
     // x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[2][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
-    document.getElementById("link3").href= "checkin_show_place.html?place="+sortedCities[2][0]+"&check="+check; 
+    document.getElementById("link3").href= "checkin_show_place.html?place="+sortedCities[2][0]; 
+    sessionStorage.setItem(sortedCities[2][0], check);
 
 
 
@@ -274,7 +276,8 @@ function loadwindow(c, d){
     showNamePlace(sortedCities[3][0], 4);
     // var x2 = document.getElementById("btnlink4");
     // x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[3][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
-    document.getElementById("link4").href= "checkin_show_place.html?place="+sortedCities[3][0]+"&check="+check; 
+    document.getElementById("link4").href= "checkin_show_place.html?place="+sortedCities[3][0]; 
+    sessionStorage.setItem(sortedCities[3][0], check);
 
 
 
@@ -293,7 +296,8 @@ function loadwindow(c, d){
     showNamePlace(sortedCities[4][0], 5);
     // var x2 = document.getElementById("btnlink5");
     // x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[4][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
-    document.getElementById("link5").href= "checkin_show_place.html?place="+sortedCities[4][0]+"&check="+check; 
+    document.getElementById("link5").href= "checkin_show_place.html?place="+sortedCities[4][0]; 
+    sessionStorage.setItem(sortedCities[4][0], check);
 
 
 
@@ -313,7 +317,8 @@ function loadwindow(c, d){
     showNamePlace(sortedCities[5][0], 6);
     // var x2 = document.getElementById("btnlink6");
     // x2.innerHTML ='<center><a href="checkin_show_place.html?place='+sortedCities[5][0]+'&'+'check='+check+'"><button class="btn btn-primary">More Information</button></a><center>';
-    document.getElementById("link6").href= "checkin_show_place.html?place="+sortedCities[5][0]+"&check="+check; 
+    document.getElementById("link6").href= "checkin_show_place.html?place="+sortedCities[5][0]; 
+    sessionStorage.setItem(sortedCities[5][0], check);
 
 
 

@@ -150,7 +150,7 @@ window.onload = function(){
 
 
 									$('#info', myPopup).on('click', function() {
-										goto_place4();
+										goto_place1();
 									});
 
 
@@ -224,7 +224,7 @@ window.onload = function(){
 
 
 									$('#info', myPopup).on('click', function() {
-										goto_place4();
+										goto_place2();
 									});
 
 
@@ -311,7 +311,7 @@ window.onload = function(){
 
 
 									$('#info', myPopup).on('click', function() {
-										goto_place4();
+										goto_place3();
 									});
 
 

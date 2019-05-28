@@ -71,6 +71,7 @@ function saveRegisterOnClick() {
 		if (validateEmail(email)) {
 			console.log(email);
 			insertData(firstname.value,lastname.value, email,  sex_value, country, tel.value, birth, today);
+			// console.log(firstname.value,lastname.value, email,  sex_value, country, tel.value, birth, today);
 		} else {
 			alert("Email is not email");
 		}

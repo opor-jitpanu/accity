@@ -1,9 +1,14 @@
 window.onload = function(){
 
-	var url_string = window.location.href; //window.location.href
-	var url = new URL(url_string);
-	var score = url.searchParams.get("sum");
-	var allscore = url.searchParams.get("allscore");
+	// var url_string = window.location.href;
+	// var url = new URL(url_string);
+
+
+
+
+
+	var score = sessionStorage.getItem("sum");
+	var allscore = sessionStorage.getItem("allscore");
 
 	var sum = window.atob(score);
 	console.log(sum);
@@ -31,12 +36,7 @@ window.onload = function(){
 
 	function AddPoint(id){
 
-		// var ref = firebase.database().ref("User");
-		// ref.child(id)
-		// .update({ 
-		// 	point: sum,
-		// 	point_all: parseInt(allscore)
-		// });
+
 
 
 
@@ -51,6 +51,7 @@ window.onload = function(){
 
 
 				var timer2 =setTimeout(function() { 
+					sessionStorage.clear();
 					window.location.href = "checkin.html";
 				}, 1000);
 
@@ -62,9 +63,6 @@ window.onload = function(){
 
 
 
-		// ref.child(id)
-		// .update({ point_all: parseInt(allscore)
-		// });
 
 		
 	}
