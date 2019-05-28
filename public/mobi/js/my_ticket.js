@@ -521,6 +521,9 @@ function transferOnClick(){
 
 function SubmitCheckOnClick(){
 	var ticket = document.getElementById('ticket1').value;
+
+	console.log(ticket);
+
 	var userDataRef = firebase.database().ref("Ticket");
 	var today = new Date();
 	var dd = today.getDate();
@@ -560,15 +563,20 @@ function SubmitCheckOnClick(){
 				var issue = childSnapshot.val().issue;
 				var valid = childSnapshot.val().valid;
 
+
 				
 
 				if (date_in == today || status == "stanby") {
 
 					if (status == "stanby" && type == "normal") {
 
+						
+
 
 						if (check < ticket) {
-							console.log(key);
+
+							
+							// console.log(key);
 							var today = new Date();
 							var dd = today.getDate();
 							var mm = today.getMonth()+1;
@@ -584,20 +592,42 @@ function SubmitCheckOnClick(){
 
 							today = dd + '/' + mm + '/' + yyyy;
 
-							console.log(today);
+							// console.log(today);
 
-							var ref = firebase.database().ref("Ticket");
-							ref.child(key)
-							.update({ 
+							// var ref = firebase.database().ref("Ticket");
+							// ref.child(key)
+							// .update({ 
+							// 	status : 'activated',
+							// 	date_in : today
+
+							// });
+
+							console.log(key);
+
+							firebase.database().ref("Ticket").child(key).update({
 								status : 'activated',
 								date_in : today
+							}, function(error) {
+								if (error) {
+									alert(error);
+								} else {
 
+
+								}
 							});
+
+
 							check += 1;
+
+
+
+							
 						}else if (check == ticket) {
-							window.location.href = "my_ticket.html";
+							// console.log("check1");
+							// window.location.href = "my_ticket.html";
 						}else{
-							window.location.href = "my_ticket.html";
+							// console.log("check2");
+							// window.location.href = "my_ticket.html";
 						}
 
 					}
@@ -605,7 +635,10 @@ function SubmitCheckOnClick(){
 				}
 
 			});
+
 			if (check == ticket) {
+
+				console.log("check3");
 				window.location.href = "my_ticket.html";
 			}
 		});

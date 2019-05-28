@@ -13,6 +13,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,900" rel="stylesheet"> 
 	<link rel="stylesheet" href="styles/loading.css">
 
+	<script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css">
+
+
 	<style type="text/css">
 		.container {
 			position: relative;
@@ -104,6 +108,13 @@
 			border-radius: 5px;
 			text-align: center;
 		}
+		html,
+		body {
+			height: 100%;
+		}
+		#map {
+			height: 75%;
+		}
 	</style>
 
 </head>
@@ -118,7 +129,7 @@
 				<div class="swiper-slide">		
 					<nav class="main_nav_underline">
 						<ul>
-								<li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
+							<li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
 							<li><a href="profile.html"><img src="images/icons/gray/user.png" alt="" title="" /><span>Profile</span></a></li>
 							<li><a href="my_ticket.html"><img src="images/icons/gray/blog.png" alt="" title="" /><span>My Ticket</span></a></li>
 							<li><a href="buy_ticket.html"><img src="images/icons/gray/shop.png" alt="" title="" /><span>Buy Ticket</span></a></li>
@@ -166,17 +177,21 @@
 								<img id="loading-image" src="images/loading/loader.gif" alt="Loading..." />
 							</div> -->
 							<br>
-							<center><h2>Treasure Mode</h2></center>
-							<center><h4>การเช้คอินแบบล่าสมบัคิจะได้คะแนนที่มากกว่าการเช็คอินแบบปกติ และเมื่อได้เช็คครบ 5 สถานที่ จะได้คะแนนพิเศษ</h4></center>
+							<center><h2>Treasure Hunter Checkin</h2></center>
+							<center><h4>You will get extra points on Treasure Hunter Checkin!</h4></center>
 							<center><h3 id="count_place"></h3></center>
-							<div class="container">
+							<!-- <div class="container">
 								<img src="Ancientcitymap.jpg" alt="Snow" style="width:100%">
 								<button id="btn_place1">Place1</button>
 								<button id="btn_place2">Place2</button>
 								<button id="btn_place3">Place3</button>
 								<button id="btn_place4">Place4</button>
 								<button id="btn_place5">Place5</button>
-							</div>
+							</div> -->
+
+
+
+							<div id="map"></div>
 							
 
 
