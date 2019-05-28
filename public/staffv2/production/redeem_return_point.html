@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+
+	<script type="text/javascript">
+		
+
+		window.onload = function(){
+
+			var email = sessionStorage.getItem("email_rd");
+
+			var id = sessionStorage.getItem("id_rd");
+
+			var point1 = sessionStorage.getItem("point_rd");
+
+
+
+
+			firebase.database().ref("User").child(id).update({
+				point: point1
+
+			}, function(error) {
+				if (error) {
+					alert(error);
+				} else {
+
+
+
+					sessionStorage.removeItem('point_rd');
+
+					sessionStorage.removeItem('email_rd');
+
+					sessionStorage.removeItem('id_rd');
+
+					window.location.href = "redeem.html";
+
+				}
+			});
+
+
+		}
+
+
+
+
+
+
+	</script>
+
+
+	<script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+	<script>
+		var config = {
+			apiKey: "AIzaSyBWIHGQeMHHyZErBFXSXsVP3OaIQV8tx4I",
+			authDomain: "ancientcity-5c152.firebaseapp.com",
+			databaseURL: "https://ancientcity-5c152.firebaseio.com",
+			projectId: "ancientcity-5c152",
+			storageBucket: "ancientcity-5c152.appspot.com",
+			messagingSenderId: "44267136823"
+		};
+		firebase.initializeApp(config);
+	</script>
+
+</body>
+</html>

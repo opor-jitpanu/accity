@@ -24,16 +24,16 @@
        <div class="swiper-slide">		
         <nav class="main_nav_underline">
           <ul>
-              <li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
-              <li><a href="profile.html"><img src="images/icons/gray/user.png" alt="" title="" /><span>Profile</span></a></li>
-              <li><a href="my_ticket.html"><img src="images/icons/gray/blog.png" alt="" title="" /><span>My Ticket</span></a></li>
-              <li><a href="buy_ticket.html"><img src="images/icons/gray/shop.png" alt="" title="" /><span>Buy Ticket</span></a></li>
-              <li><a href="promotion.html"><img src="images/icons/gray/electronics.png" alt="" title="" /><span>Promotions</span></a></li>
-              <li><a href="checkin.html"><img src="images/icons/gray/map.png" alt="" title="" /><span>Check-in</span></a></li>
-              <li><a href="treasure.html"><img src="images/icons/gray/send.png" alt="" title="" /><span>Treasure</span></a></li>
-              <li><a href="reward.html"><img src="images/icons/gray/food.png" alt="" title="" /><span>Rewards</span></a></li>
-              <li><a href="scoreboard.html"><img src="images/icons/gray/rocket.png" alt="" title="" /><span>Score Board</span></a></li>
-              <li><a href="logout.html"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
+            <li><a href="index.html"><img src="images/icons/gray/home.png" alt="" title="" /><span>Home</span></a></li>
+            <li><a href="profile.html"><img src="images/icons/gray/user.png" alt="" title="" /><span>Profile</span></a></li>
+            <li><a href="my_ticket.html"><img src="images/icons/gray/blog.png" alt="" title="" /><span>My Ticket</span></a></li>
+            <li><a href="buy_ticket.html"><img src="images/icons/gray/shop.png" alt="" title="" /><span>Buy Ticket</span></a></li>
+            <li><a href="promotion.html"><img src="images/icons/gray/electronics.png" alt="" title="" /><span>Promotions</span></a></li>
+            <li><a href="checkin.html"><img src="images/icons/gray/map.png" alt="" title="" /><span>Check-in</span></a></li>
+            <li><a href="treasure.html"><img src="images/icons/gray/send.png" alt="" title="" /><span>Treasure</span></a></li>
+            <li><a href="reward.html"><img src="images/icons/gray/food.png" alt="" title="" /><span>Rewards</span></a></li>
+            <li><a href="scoreboard.html"><img src="images/icons/gray/rocket.png" alt="" title="" /><span>Score Board</span></a></li>
+            <li><a href="logout.html"><img src="images/icons/gray/lock.png" alt="" title="" /><span>Logout</span></a></li>
 
 
           </ul>
@@ -97,16 +97,23 @@
 
       <h2 class="page_title">Buy E-Ticket</h2>
 
-      <div class="page_single layout_fullwidth_padding">
+      <center>
 
-        <p id="ticket"></p>
-        <p id="ticket2"></p>
-        <p id="sum"></p>
-        <br><br><br>
-        <center><div id="paypal-button-container"></div></center>
-        
-        
-      </div>
+        <div class="page_single layout_fullwidth_padding">
+
+          <br>
+          <p id="name"></p>
+          <p id="email"></p>
+          <br>
+          <p id="ticket"></p>
+          <p id="ticket2"></p>
+          <p id="sum"></p>
+          <br><br>
+          <center><div id="paypal-button-container"></div></center>
+
+
+        </div>
+      </center>
 
     </div>
 
@@ -122,7 +129,7 @@
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
-document.getElementById("loading").style.display = 'none';
+  document.getElementById("loading").style.display = 'none';
 var url_string = window.location.href; //window.location.href
 var url = new URL(url_string);
 var t1 = url.searchParams.get("t1");

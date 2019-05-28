@@ -8,6 +8,12 @@ window.onload = function(){
 		document.getElementById('btn_return').style.visibility = 'hidden';
 
 		sessionStorage.removeItem('score');
+
+		sessionStorage.removeItem('point_rd');
+
+		sessionStorage.removeItem('email_rd');
+
+		sessionStorage.removeItem('id_rd');
 		
 	}else{
 		window.location.href = "login.html";
@@ -122,7 +128,7 @@ function showReward(id, reward_id){
 				sessionStorage.setItem("score", point);
 
 				document.getElementById('btn_refresh').style.visibility = 'visible';
-				// document.getElementById('btn_return').style.visibility = 'visible';
+				document.getElementById('btn_return').style.visibility = 'visible';
 
 
 				
@@ -248,21 +254,29 @@ function returnOnclick(){
 		var point2 = point3.toString();
 
 
-		console.log(point2);
-		console.log(id);
 
-		firebase.database().ref("User").child(id).update({
-			point: point2
+		console.log(point3 +" : "+ email +" : "+ id)
 
-		}, function(error) {
-			if (error) {
-				alert(error);
-			} else {
+		sessionStorage.setItem("point_rd", point3);
 
-				window.location.href = "redeem.html";
+		sessionStorage.setItem("email_rd", email);
 
-			}
-		});
+		sessionStorage.setItem("id_rd", id);
+
+		window.location.href = "redeem_return_point.html";
+
+		// firebase.database().ref("User").child(id).update({
+		// 	point: point2
+
+		// }, function(error) {
+		// 	if (error) {
+		// 		alert(error);
+		// 	} else {
+
+		// 		window.location.href = "redeem.html";
+
+		// 	}
+		// });
 
 	}
 

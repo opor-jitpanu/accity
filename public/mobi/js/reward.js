@@ -17,17 +17,12 @@ window.onload = function(){
 			show();
 
 		}else{
-			var user = firebase.auth().currentUser;
+			
 
-			user.sendEmailVerification().then(function() {
-				console.log('send');
-				window.location.href = "index.html";
-			}).catch(function(error) {
-				console.log(error);
-				alert(error.code);
-			});
+			
 
-			alert('Please Vertify this Email');
+			alert('Please Vertify this Email or resend email vertify');
+			window.location.href = "profile.html";
 			console.log("Not Login");
 			
 		}
