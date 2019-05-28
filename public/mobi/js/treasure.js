@@ -134,13 +134,31 @@ window.onload = function(){
 								.on('child_added', function(snapshot) { 
 									var place = snapshot.val();
 
-									var marker1 = L.marker([place.latitude, place.longtitude]).addTo(map);
+									var marker2 = L.marker([place.latitude, place.longtitude]).addTo(map);
 
-									marker1.bindPopup("<b>"+place.name+"</b>").openPopup();
 
-									marker1.on("click", function (event) {
+
+
+									var myPopup = L.DomUtil.create('div', 'infoWindow');
+									myPopup.innerHTML = "<div id='info'><p id='title'>" + place.name + "</p></div>";
+
+
+
+									marker2.bindPopup(myPopup).openPopup();
+
+
+
+
+									$('#info', myPopup).on('click', function() {
+										goto_place4();
+									});
+
+
+
+									marker2.on("click", function (event) {
 										var clickedMarker = event.layer;
 										goto_place1();
+
 									});
 
 								});
@@ -192,12 +210,29 @@ window.onload = function(){
 
 									var marker2 = L.marker([place.latitude, place.longtitude]).addTo(map);
 
-									marker2.bindPopup("<b>"+place.name+"</b>").openPopup();
+
+
+
+									var myPopup = L.DomUtil.create('div', 'infoWindow');
+									myPopup.innerHTML = "<div id='info'><p id='title'>" + place.name + "</p></div>";
+
+
+
+									marker2.bindPopup(myPopup).openPopup();
+
+
+
+
+									$('#info', myPopup).on('click', function() {
+										goto_place4();
+									});
+
 
 
 									marker2.on("click", function (event) {
 										var clickedMarker = event.layer;
 										goto_place2();
+
 									});
 
 
@@ -262,11 +297,29 @@ window.onload = function(){
 
 									var marker2 = L.marker([place.latitude, place.longtitude]).addTo(map);
 
-									marker2.bindPopup("<b>"+place.name+"</b>").openPopup();
+
+
+
+									var myPopup = L.DomUtil.create('div', 'infoWindow');
+									myPopup.innerHTML = "<div id='info'><p id='title'>" + place.name + "</p></div>";
+
+
+
+									marker2.bindPopup(myPopup).openPopup();
+
+
+
+
+									$('#info', myPopup).on('click', function() {
+										goto_place4();
+									});
+
+
 
 									marker2.on("click", function (event) {
 										var clickedMarker = event.layer;
 										goto_place3();
+
 									});
 
 								});
@@ -344,12 +397,32 @@ window.onload = function(){
 
 									var marker2 = L.marker([place.latitude, place.longtitude]).addTo(map);
 
-									marker2.bindPopup("<b>"+place.name+"</b>").openPopup();
+
+
+
+									var myPopup = L.DomUtil.create('div', 'infoWindow');
+									myPopup.innerHTML = "<div id='info'><p id='title'>" + place.name + "</p></div>";
+
+
+
+									marker2.bindPopup(myPopup).openPopup();
+
+
+
+
+									$('#info', myPopup).on('click', function() {
+										goto_place4();
+									});
+
+
 
 									marker2.on("click", function (event) {
 										var clickedMarker = event.layer;
 										goto_place4();
+
 									});
+
+
 
 								});
 							});
@@ -443,11 +516,29 @@ window.onload = function(){
 
 									var marker2 = L.marker([place.latitude, place.longtitude]).addTo(map);
 
-									marker2.bindPopup("<b>"+place.name+"</b>").openPopup();
+
+
+
+									var myPopup = L.DomUtil.create('div', 'infoWindow');
+									myPopup.innerHTML = "<div id='info'><p id='title'>" + place.name + "</p></div>";
+
+
+
+									marker2.bindPopup(myPopup).openPopup();
+
+
+
+
+									$('#info', myPopup).on('click', function() {
+										goto_place5();
+									});
+
+
 
 									marker2.on("click", function (event) {
 										var clickedMarker = event.layer;
 										goto_place5();
+
 									});
 
 								});
