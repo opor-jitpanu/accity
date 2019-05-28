@@ -64,11 +64,11 @@ window.onload = function(){
 						
 						var check = '';
 						if (status != 'used') {
-							var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="reward_history_show.html?id='+key_code+'&check=yes'+'">'+name+'</a></div><h2>'+'You can use this code.'+'</h2></div></div></div></div></li>';
+							var div = '<a href="reward_history_show.html?id='+key_code+'&check=yes'+'"><li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category">'+name+'</div><h2>'+'You can use this code.'+'</h2></div></div></div></div></li></a>';
 
 							mydiv.innerHTML += div;
 						}else{
-							var div = '<li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category"><a href="reward_history_show.html?id='+key_code+'&check=no'+'">'+name+'</a></div><h2>'+'Code is Used.'+'</h2></div></div></div></div></li>';
+							var div = '<a href="reward_history_show.html?id='+key_code+'&check=no'+'"><li><div class="swiper-wrapper"><div class="swiper-slide swipeout-content item-content"><div class="post_entry"><div class="post_thumb"><img src="'+test+'" alt="" title="" /></div><div class="post_details"><div class="post_category">'+name+'</div><h2>'+'Code is Used.'+'</h2></div></div></div></div></li></a>';
 
 							mydiv_used.innerHTML += div;
 						}

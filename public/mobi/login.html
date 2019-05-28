@@ -26,10 +26,12 @@
 			
 			<input type="text" name="Username" id="email_input"  class="form_input required" placeholder="email" />
 			<input type="password" name="Password" id="password_input"  class="form_input required" placeholder="password" />
-			<!-- <div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div> -->
-			<input  onclick="signInOnClick()" type="submit" name="submit" class="form_submit" id="submit" value="SIGN IN" />
 
-			<a href="register.html"><input type="submit" name="submit" class="form_submit"  value="REGISTER" /></a>
+			<div class="forgot_pass"><a href="#" data-popup=".popup-forgot" class="open-popup">Forgot Password?</a></div>
+
+			<input  onclick="signInOnClick()" type="submit" name="submit" class="form_submit" id="submit" value="Sign in" />
+
+			<a href="register.html"><input type="submit" name="submit" class="form_submit"  value="Register" /></a>
 			<br><br><br>
 			<center>------------------------------------------</center>
 			<br>
@@ -38,6 +40,44 @@
 		</div>
 
 	</div>
+
+
+
+
+
+
+
+
+
+	<div class="popup popup-forgot">
+		<div class="content-block">
+			<h4> Forgot Password </h4>
+			<h5> Enter your email to reset password. </h5>
+
+
+			<div class="contactform">
+				<div class="form_row">
+					<label>E-mail : </label>
+					<input type="email" name="name" value="" id="InputEmail" class="form_input" />
+				</div>
+			</div>
+
+			<br><br><br><br><br><br>
+			
+
+			<a href="#" onclick="SendEmailOnClick()" class="btn btn--full" id="btnCheckin">Send</a>
+
+
+			<div class="close_popup_button"><a href="#" class="close-popup" data-popup=".popup-forgot"><img src="images/icons/black/menu_close.png" alt="" title="" /></a></div>
+		</div>
+	</div>
+
+
+
+
+
+
+
 
 
 	<script src="js/jquery-3.3.1.min.js"></script>

@@ -30,7 +30,7 @@ function showInfo(id,email){
 
   document.getElementById("firstnamelastname").innerHTML = snapshot.child(id).child("firstname").val() +"  "+ snapshot.child(id).child("lastname").val();
   document.getElementById("email_txt").innerHTML = "อีเมล : " + snapshot.child(id).child("email").val();
-  document.getElementById("password_txt").innerHTML = "รหัสผ่าน : " + snapshot.child(id).child("password").val();
+  // document.getElementById("password_txt").innerHTML = "รหัสผ่าน : " + snapshot.child(id).child("password").val();
   document.getElementById("birth_txt").innerHTML = "วันเดือนปีเกิด : " + snapshot.child(id).child("birth").val();
   document.getElementById("gender_txt").innerHTML = "เพศ : " + snapshot.child(id).child("sex").val();
   document.getElementById("telephone_txt").innerHTML = "เบอร์โทรศัพท์ : " + snapshot.child(id).child("tel").val();
@@ -40,6 +40,7 @@ function showInfo(id,email){
  showCheckin(email);
  showTicket(email);
  showReward(email);
+ showTimeIn(email);
 
 }
 
@@ -68,7 +69,7 @@ function showCheckin(email){
         ref.on('child_added', function(snapshot) { 
           var user = snapshot.val();
 
-          
+          $.fn.dataTable.ext.errMode = 'none';
 
           var t = $('#datatableCheckin').DataTable();
 
@@ -173,6 +174,8 @@ function showReward(email){
 
         var t = $('#datatableReward').DataTable();
 
+        
+
 
         if (childData.status == 'used') {
 
@@ -203,6 +206,71 @@ function showReward(email){
   });
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function showTimeIn(email){
+
+
+  var userDataRef = firebase.database().ref("TimeIn").orderByChild("email").equalTo(email);
+  userDataRef.once("value").then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      var key = childSnapshot.key;
+      var childData = childSnapshot.val();              
+
+      var t = $('#datatableTimeIn').DataTable();
+
+      t.row.add( [
+        
+        childData.date,
+        childData.time
+        ] ).draw();
+
+
+    });
+
+    
+  });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

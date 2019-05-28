@@ -49,56 +49,136 @@ function cameraOnclick(){
 function CheckRewardOnClick() {
 	var reward_id = document.getElementById('reward_id').value;
 
+
+
+
+
+	var ref = firebase.database().ref('Code');
+	ref
+	.orderByKey()
+	.equalTo(reward_id)
+	.on('child_added', function(snapshot) { 
+		var code = snapshot.val();
+		console.log(code.status);
+
+
+		if (code.status == 'used') {
+			document.getElementById("txt_success").innerHTML = '<i class="fa fa-close"></i>  รหัสรางวัลนี้ใช้ไปแล้ว';
+			document.getElementById('btn_refresh').style.visibility = 'visible';
+			
+		}else{
+
+
+
+			var ref = firebase.database().ref("Code");
+			ref.orderByKey().equalTo(reward_id).on("value", function(snapshot) {
+
+
+
+				var value = snapshot.val();
+
+				if (value) {
+
+
+					snapshot.forEach(function(data) {
+						var id = data.key;
+
+						ref.once("value")
+						.then(function(snapshot){
+							var email = snapshot.child(id).child("email").val();
+							var status = snapshot.child(id).child("status").val();
+							var id3 = snapshot.child(id).child("id").val();
+
+							document.getElementById("email_user").innerHTML = 'อีเมลนักท่องเที่ยว : ' + email;
+							document.getElementById("email2").innerHTML = email;
+
+
+
+
+
+
+
+
+							showReward(id3,reward_id);
+							chageStatus(reward_id);
+
+
+
+
+
+						});
+
+
+
+					});
+
+				} else {
+					console.log('not found');
+					document.getElementById("txt_success").innerHTML = '<i class="fa fa-close"></i>  รหัสไม่ถูกต้อง ไม่พบของรางวัล';
+					document.getElementById('btn_refresh').style.visibility = 'visible';
+				}
+
+
+
+
+
+
+
+			});
+
+
+		}
+		
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	var ref = firebase.database().ref("Code");
 	ref.orderByKey().equalTo(reward_id).on("value", function(snapshot) {
-
-
 
 		var value = snapshot.val();
 
 		if (value) {
 
 
-			snapshot.forEach(function(data) {
-				var id = data.key;
-
-				ref.once("value")
-				.then(function(snapshot){
-					var email = snapshot.child(id).child("email").val();
-					var status = snapshot.child(id).child("status").val();
-					var id3 = snapshot.child(id).child("id").val();
-
-					document.getElementById("email_user").innerHTML = 'อีเมลนักท่องเที่ยว : ' + email;
-					document.getElementById("email2").innerHTML = email;
-					// document.getElementById("status_user").innerHTML = 'Key Status : ' + status;
-
-
-					
-					showReward(id3,reward_id);
-					chageStatus(reward_id);
-
-					
-
-					
-					
-				});
-
-
-
-			});
-
 		} else {
 			console.log('not found');
 			document.getElementById("txt_success").innerHTML = '<i class="fa fa-close"></i>  รหัสไม่ถูกต้อง ไม่พบของรางวัล';
+			document.getElementById('btn_refresh').style.visibility = 'visible';
 		}
 
-
-
-
-
-
-		
 	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -131,9 +211,9 @@ function showReward(id, reward_id){
 				document.getElementById('btn_return').style.visibility = 'visible';
 
 
-				
 
-				
+
+
 			});
 
 
@@ -191,7 +271,7 @@ function chageStatus(id){
 		date:date
 
 	});
-	
+
 
 }
 
@@ -214,7 +294,7 @@ function returnOnclick(){
 	var email = email_node.textContent;
 
 	console.log(email);
-	
+
 	var ref = firebase.database().ref("User");
 	ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
 
@@ -227,7 +307,7 @@ function returnOnclick(){
 		});
 	});
 
-	
+
 	function showPoint(id){
 		var reward_id = document.getElementById('reward_id').value;
 		var ref = firebase.database().ref("User");
@@ -241,10 +321,10 @@ function returnOnclick(){
 			console.log(point_user + " : " + pointreward);
 
 			AddPoint(updatepoint ,email, id);
-			
-			
-			
-			
+
+
+
+
 		});
 	}
 

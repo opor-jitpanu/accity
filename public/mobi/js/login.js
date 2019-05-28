@@ -19,7 +19,7 @@ function signInOnClick(){
 	.catch(function(error) {
 		console.log("Login Failed!");
 		console.log(error.code);
-		alert("LOGIN FAILED : " + error.code);
+		alert("LOGIN FAILED : " + error.message);
 		window.location= "login.html";
 	});
 
@@ -34,4 +34,32 @@ function signInOnClick(){
 
 window.onload = function(){
 	document.getElementById("loading").style.display = 'none';
+}
+
+
+
+
+
+function SendEmailOnClick(){
+
+
+	var emailAddress = document.getElementById('InputEmail').value;
+
+	console.log(emailAddress);
+
+	var auth = firebase.auth();
+
+	auth.sendPasswordResetEmail(emailAddress).then(function() {
+
+		alert("Send email, Please check you inbox");
+		window.location= "login.html";
+
+
+	}).catch(function(error) {
+
+		alert(error.message);
+	});
+
+
+
 }
