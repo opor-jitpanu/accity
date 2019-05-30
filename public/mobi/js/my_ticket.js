@@ -317,7 +317,7 @@ window.onload = function(){
 							var cell_id = row.insertCell(0);
 
 
-							cell_id.innerHTML = '<center><div id="box_code2"><br><img id="barcode" src="https://api.qrserver.com/v1/create-qr-code/?data=' + key + '**&amp;size=150x150" alt="" title="HELLO" width="170"  height="170" /><br>Name : '+name+'<br>Issue Date : '+issue+'<br>Valid Until: '+ valid +'</div></center>';
+							cell_id.innerHTML = '<center><div id="box_code2"><br><img id="barcode" src="https://api.qrserver.com/v1/create-qr-code/?data=' + key + '**&amp;size=150x150" alt="" title="HELLO" width="170"  height="170" /><br>Name : '+name+'<br>Issue Date : '+issue+'<br>Valid Until: '+ valid +'</div></center><br><br>';
 							
 							// cell_id.innerHTML = '<img id="barcode2" src="https://barcode.tec-it.com/barcode.ashx?data=' + key + '**&code=Code128&dpi=96&dataseparator=+"" width="100%" alt="Barcode Generator TEC-IT"/><br>Name : '+name+'<br>Issue : '+issue+'<br>Valid : '+ valid;
 							console.log(key+'**');
@@ -509,20 +509,11 @@ function transferOnClick(){
 
 
 
-
-
-
-
-
-
-
-
-
-
 function SubmitCheckOnClick(){
+	var list = [];
 	var ticket = document.getElementById('ticket1').value;
 
-	console.log(ticket);
+	
 
 	var userDataRef = firebase.database().ref("Ticket");
 	var today = new Date();
@@ -564,64 +555,33 @@ function SubmitCheckOnClick(){
 				var valid = childSnapshot.val().valid;
 
 
-				
+
 
 				if (date_in == today || status == "stanby") {
 
 					if (status == "stanby" && type == "normal") {
 
-						
+
 
 
 						if (check < ticket) {
 
+
 							
-							// console.log(key);
-							var today = new Date();
-							var dd = today.getDate();
-							var mm = today.getMonth()+1;
-							var yyyy = today.getFullYear();
 
-							if(dd<10) {
-								dd = '0'+dd
-							} 
-
-							if(mm<10) {
-								mm = '0'+mm
-							} 
-
-							today = dd + '/' + mm + '/' + yyyy;
-
-							// console.log(today);
-
-							// var ref = firebase.database().ref("Ticket");
-							// ref.child(key)
-							// .update({ 
-							// 	status : 'activated',
-							// 	date_in : today
-
-							// });
+							
 
 							console.log(key);
 
-							firebase.database().ref("Ticket").child(key).update({
-								status : 'activated',
-								date_in : today
-							}, function(error) {
-								if (error) {
-									alert(error);
-								} else {
-
-
-								}
-							});
+							
+							list.push(key);
 
 
 							check += 1;
 
 
 
-							
+
 						}else if (check == ticket) {
 							// console.log("check1");
 							// window.location.href = "my_ticket.html";
@@ -638,12 +598,224 @@ function SubmitCheckOnClick(){
 
 			if (check == ticket) {
 
-				console.log("check3");
-				window.location.href = "my_ticket.html";
+				changeStanby(list);
+
 			}
 		});
-		
+
 	});
+
+
+}
+
+
+
+
+
+
+
+
+
+
+function changeStanby(list){
+
+
+
+	if (list.length == 0) {
+		window.location.href = "my_ticket.html";
+	}
+
+
+
+
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
+
+	if(dd<10) {
+		dd = '0'+dd
+	} 
+
+	if(mm<10) {
+		mm = '0'+mm
+	} 
+
+	today = dd + '/' + mm + '/' + yyyy;
+
+	
+
+	var count = 0;
+
+	if (list.length > 0) {
+
+		
+
+
+
+		var key = list[0];
+
+		console.log(key);
+
+		firebase.database().ref("Ticket").child(key).update({
+			status : 'activated',
+			date_in : today
+		}, function(error) {
+			if (error) {
+				alert(error);
+			} else {
+
+				list.shift();
+				changeStanby(list);
+
+			}
+		});
+
+
+
+		
+	}
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function SubmitCheckOnClick9(){
+	// var ticket = document.getElementById('ticket1').value;
+
+	// console.log(ticket);
+
+	// var userDataRef = firebase.database().ref("Ticket");
+	// var today = new Date();
+	// var dd = today.getDate();
+	// var mm = today.getMonth()+1;
+	// var yyyy = today.getFullYear();
+
+	// if(dd<10) {
+	// 	dd = '0'+dd
+	// } 
+
+	// if(mm<10) {
+	// 	mm = '0'+mm
+	// } 
+
+	// today = dd + '/' + mm + '/' + yyyy;
+
+	// var check = 0;
+	// firebase.auth().onAuthStateChanged(function(user) {
+	// 	var email = user.email;
+	// 	userDataRef.orderByChild("email").equalTo(email).once("value").then(function(snapshot) {
+	// 		snapshot.forEach(function(childSnapshot) {
+
+	// 			var key = childSnapshot.key;
+	// 			var childData = childSnapshot.val();
+
+	// 			var date = childSnapshot.val().date;
+	// 			var email = childSnapshot.val().email;
+	// 			var status = childSnapshot.val().status;
+
+	// 			var time_in = childSnapshot.val().time_in;
+	// 			var time_out = childSnapshot.val().time_out;
+	// 			var date_in = childSnapshot.val().date_in;
+	// 			var date_out = childSnapshot.val().date_out;
+
+	// 			var type = childSnapshot.val().type;
+
+	// 			var issue = childSnapshot.val().issue;
+	// 			var valid = childSnapshot.val().valid;
+
+
+
+
+	// 			if (date_in == today || status == "stanby") {
+
+	// 				if (status == "stanby" && type == "normal") {
+
+
+
+
+	// 					if (check < ticket) {
+
+
+	// 						// console.log(key);
+	// 						var today = new Date();
+	// 						var dd = today.getDate();
+	// 						var mm = today.getMonth()+1;
+	// 						var yyyy = today.getFullYear();
+
+	// 						if(dd<10) {
+	// 							dd = '0'+dd
+	// 						} 
+
+	// 						if(mm<10) {
+	// 							mm = '0'+mm
+	// 						} 
+
+	// 						today = dd + '/' + mm + '/' + yyyy;
+
+	// 						// console.log(today);
+
+	// 						// var ref = firebase.database().ref("Ticket");
+	// 						// ref.child(key)
+	// 						// .update({ 
+	// 						// 	status : 'activated',
+	// 						// 	date_in : today
+
+	// 						// });
+
+	// 						console.log(key);
+
+	// 						firebase.database().ref("Ticket").child(key).update({
+	// 							status : 'activated',
+	// 							date_in : today
+	// 						}, function(error) {
+	// 							if (error) {
+	// 								alert(error);
+	// 							} else {
+
+
+	// 							}
+	// 						});
+
+
+	// 						check += 1;
+
+
+
+
+	// 					}else if (check == ticket) {
+	// 						// console.log("check1");
+	// 						// window.location.href = "my_ticket.html";
+	// 					}else{
+	// 						// console.log("check2");
+	// 						// window.location.href = "my_ticket.html";
+	// 					}
+
+	// 				}
+
+	// 			}
+
+	// 		});
+
+	// 		if (check == ticket) {
+
+	// 			console.log("check3");
+	// 			window.location.href = "my_ticket.html";
+	// 		}
+	// 	});
+
+	// });
 
 }
 
