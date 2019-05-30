@@ -36,6 +36,13 @@ function showInfo(id,email){
   document.getElementById("telephone_txt").innerHTML = "เบอร์โทรศัพท์ : " + snapshot.child(id).child("tel").val();
   document.getElementById("country_txt").innerHTML = "ประเทศ : " + snapshot.child(id).child("country").val();
   document.getElementById("point_txt").innerHTML = "คะแนน : " + snapshot.child(id).child("point").val();
+
+
+  document.getElementById('telephone_txt').style.display = "none";
+  document.getElementById('popup_pass').style.display = "none";
+
+
+
 });
  showCheckin(email);
  showTicket(email);
@@ -239,7 +246,7 @@ function showTimeIn(email){
       var t = $('#datatableTimeIn').DataTable();
 
       t.row.add( [
-        
+
         childData.date,
         childData.time
         ] ).draw();
@@ -261,11 +268,30 @@ function showTimeIn(email){
 
 
 
+function showInfoAdvance(){
+
+  document.getElementById('popup_pass').style.display = "block";
+
+}
 
 
 
+function showInfoAdvanceSubmit(){
 
 
+
+  var pass = document.getElementById('pass').value;
+
+
+  if(pass == "0000"){
+    document.getElementById('telephone_txt').style.display = "block";
+    document.getElementById('popup_pass').style.display = "none";
+  }else{
+    alert("รหัสผ่านไม่ถูกต้อง");
+  }
+
+  
+}
 
 
 
