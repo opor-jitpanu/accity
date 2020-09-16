@@ -120,8 +120,8 @@ window.onload = function(){
 				if (user.email == email) {
 					document.getElementById("name" + count).innerHTML = " ME : " + firstname +" "+ lastname;
 					document.getElementById("place" + count).innerHTML = "Score : " + point_all;
-					document.getElementById("name" + count).style.color = "#E91E63";
-					document.getElementById("place" + count).style.color = "#E91E63";
+					document.getElementById("name" + count).style.color = "#455dfe";
+					document.getElementById("place" + count).style.color = "#455dfe";
 					document.getElementById("name" + count).style.fontWeight = "bold";
 					document.getElementById("place" + count).style.fontWeight = "bold";
 					document.getElementById("name" + count).style.fontSize = "x-large";
