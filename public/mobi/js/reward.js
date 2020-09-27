@@ -10,22 +10,22 @@ window.onload = function(){
 
 		console.log(emailVerified);
 
-		if (emailVerified) {
+		// if (emailVerified) {
 
 
 
 			show();
 
-		}else{
+		// }else{
 			
 
 			
 
-			alert('Please Vertify this Email or resend email vertify');
-			window.location.href = "profile.html";
-			console.log("Not Login");
+		// 	alert('Please Vertify this Email or resend email vertify');
+		// 	window.location.href = "profile.html";
+		// 	console.log("Not Login");
 			
-		}
+		// }
 
 
 
